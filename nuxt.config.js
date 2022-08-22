@@ -22,7 +22,21 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy'},
+      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/bootstrap/css/bootstrap.min.css'},
+      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/bootstrap/css/bootstrap-icons.css'},
+      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/boxicons/css/boxicons.min.css'},
+      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/glightbox/css/glightbox.min.css'},
+      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/swiper/css/swiper-bundle.min.css'}
+    ],
+    script: [
+      { src: '/assets/vendor/purecounter/purecounter_vanilla.js'},
+      { src: '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'},
+      { src: '/assets/vendor/glightbox/js/glightbox.min.js'},
+      { src: '/assets/vendor/isotope-layout/isotope.pkgd.min.js'},
+      { src: '/assets/vendor/swiper/swiper-bundle.min.js'},
+      { src: '/assets/vendor/waypoints/noframework.waypoints.js'}
     ]
   },
 
@@ -34,7 +48,7 @@ export default {
   plugins: [
     "~/plugins/contentful",
     "~/plugins/posts",
-    "~/plugins/authors"
+    "~/plugins/profiles"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

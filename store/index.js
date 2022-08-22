@@ -2,17 +2,17 @@ import client from "~/plugins/contentful";
 
 export const state = () => ({
  posts: null,
- authors: null
+ profiles: null
 });
 
 export const mutations = {
- updatePosts: (state, posts) => {
-   state.posts = posts;
- },
- updateAuthors: (state, authors) => {
-  state.authors = authors
- }
-};
+  updatePosts: (state, posts) => {
+    state.posts = posts;
+  },
+  updateProfiles: (state, profiles) => {
+    state.profiles = profiles
+  }
+}
 
 export const actions = {
  async getPosts({ commit }) {
@@ -21,22 +21,21 @@ export const actions = {
      const response = await client.getEntries({
        content_type: "myBlog"
      });
-     if (response.items.length > 0) commit("updatePosts", response.items);
+     if (response.items.length > 0) commit("updaterofiles", response.items);
    } catch (err) {
      console.error(err);
    }
  },
 
- async getAuthors({commit}){
-  try{
-    if(!client) return
-
-    const response = await client.getEntries({
-      content_type: "author"
-    })
-    if(response.items.length > 0) commit("updateAuthors", response.items)
-  }catch(err){
-    console.error(err)
+  async getProfiles({commit}){
+    try{
+      if(!client) return;
+      const response = await client.getEntries({
+        content_type: "profile"
+      })
+      if (response.items.length > 0) commit("updateProfiles", response.items);
+    } catch (err) {
+       console.error(err);
+    }
   }
- }
 };
