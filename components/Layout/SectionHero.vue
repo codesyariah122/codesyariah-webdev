@@ -12,8 +12,8 @@
 	export default {
 		data(){
 			return {
-				bg_mobile: `background: url(${require('~/assets/img/webdev-bg-5.png')}) top right no-repeat;`,
-				bg_desktop: `background: url(${require('~/assets/img/webdev-hero2.jpg')}) top right no-repeat;`
+				bg_mobile: `background: url(${require('~/assets/img/webdev-bg-5.png')}) top right no-repeat; height: 70vh;`,
+				bg_desktop: `background: url(${require('~/assets/img/webdev-hero2.jpg')}) top right no-repeat; height: 100vh;`
 			}
 		}
 	}
