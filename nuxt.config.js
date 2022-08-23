@@ -137,17 +137,17 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     meta: {
-      title: 'Toko.Kelontong - Online',
-      author: 'PPKC',
+      title: 'Codesyariah WebDev',
+      author: 'Puji',
       icon: true,
-      canonical: 'https://toko-kelontong.vercel.app/',
-      description: 'Belanja Grosir Mudah, Murah Dengan Kualitas Terbaik',
-      keywords: 'Toko Kelontong Online',
-      ogUrl: 'https://toko-kelontong.vercel.app/',
+      canonical: 'https://codesyariah-webdev.vercel.app/',
+      description: 'Jasa pembuatan website sesuai permintaan dengan harga yang bersahabat dan bersaudara.',
+      keywords: 'Jasa Pembuatan Website - Codesyariah WebDev',
+      ogUrl: 'https://codesyariah-webdev.vercel.app/',
       ogType: 'website',
-      ogSiteName: 'Toko.Kelontong - Online',
-      ogTitle: 'Toko.Kelontong - Online',
-      ogImage: '512.png',
+      ogSiteName: 'Codesyariah WebDev',
+      ogTitle: 'Codesyariah WebDev',
+      ogImage: '/icon.png',
       ogImageWidth: '600',
       ogImageHeight: '400'
     },
