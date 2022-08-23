@@ -9,6 +9,8 @@
 
     <HomepageAbout/>
 
+    <HomepageContact/>
+
   </main>
 </template>
 

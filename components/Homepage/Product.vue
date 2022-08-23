@@ -139,6 +139,22 @@
 					image: require('~/assets/img/website-category/business-page-2.png'),
 					description: 'Design website yang menyajikan kualitas UI/UX yang sedap dipandang, mempresentasikan target bisnis anda agar semakin terfokus, dan tools-tools bisnis yang siap kami bangun untuk memanage bisnis anda.',
 					price: 2000000
+				},
+				{
+					id: 5,
+					title: 'Floral WebBlog',
+					categories: 'blog',
+					image: require('~/assets/img/website-category/blog-1.webp'),
+					description: '',
+					price: 1500000
+				},
+				{
+					id: 5,
+					title: 'Web Stories',
+					categories: 'blog',
+					image: require('~/assets/img/website-category/blog-2.webp'),
+					description: '',
+					price: 1500000
 				}
 				]
 			}
