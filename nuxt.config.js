@@ -153,9 +153,9 @@ export default {
     },
     manifest: {
       lang: 'en',
-      name: 'Toko.Kelontong - Online',
-      short_name: 'Toko.Kelontong',
-      description : "Toko.Kelontong - Online",
+      name: 'Codesyariah WebDevelopment',
+      short_name: 'Codesyariah WebDev',
+      description : "Jasa Pembuatan Website - Codesyariah WebDev",
       start_url: '/',
       lang: 'en',
       display: 'standalone',

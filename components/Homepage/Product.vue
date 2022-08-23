@@ -190,7 +190,7 @@
 				<p class="text-center">Product-product karya kami yang bisa anda pilih dan disesuaikan dengan kebutuhan dan ide bisnis anda</p>
 			</div>
 			
-			<ul id="portfolio-flters" :class="`${$device.isDesktop ? 'd-inline-flex justify-content-center' : 'd-flex align-content-start flex-wrap'}`">
+			<ul id="portfolio-flters" :class="`${$device.isDesktop ? 'd-inline-flex justify-content-center' : 'd-flex align-content-stretch flex-wrap'}`">
 				<li @click="RemoveFilter" data-filter="*" :class="`${first ? 'filter-active' : ''}`">All</li>
 				<li v-for="category in categories" :data-filter="`.filter-${category.name}`" @click="FilterLists(category.name); active_tab=category.name;" v-bind:class="`${active_tab === category.name ? 'filter-active' : ''}`">{{category.title}}</li>
 			</ul>
