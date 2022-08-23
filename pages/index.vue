@@ -1,6 +1,14 @@
 <template>
   <main id="main">
+    
+    <HomepageProduct/>
+
+    <HomepageServices/>
+
+    <HomepageTestimonial/>
+
     <HomepageAbout/>
+
   </main>
 </template>
 
@@ -12,20 +20,7 @@
      posts() {
        return this.$store.state.posts;
      }
-   },
-   head: {
-      link: [
-        {
-          rel: 'stylesheet',
-          href: '/assets/css/style.css',
-          type: 'text/css'
-        }
-      ],
-      script: [
-        {
-          src: '/assets/js/main.js'
-        }
-      ],
-    }
+   }
+   
  };
 </script>

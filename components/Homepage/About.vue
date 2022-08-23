@@ -1,7 +1,6 @@
 <template>
 	<section id="about" class="about">
 		<div class="container">
-
 			<div class="section-title">
 				<span>About Me</span>
 				<h2>About Me</h2>
@@ -52,13 +51,39 @@
 							<div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
 								<div class="count-box">
 									<i class="bi bi-clock" style="color: #2cbdee;"></i>
-									<span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
-									<p><strong>Years of experience</strong> With this one year's experience we can handle every project as well as possible</p>
+									<span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
+									<p><strong>Years of experience</strong> With this five year's experience we can handle every project as well as possible</p>
 								</div>
 							</div>
 
 						</div>
 					</div>
+
+					<div class="skills-content ps-lg-4">
+						<div class="progress">
+							<span class="skill">satisfaction value <i class="val">100%</i></span>
+							<div class="progress-bar-wrap">
+								<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
+
+						<div class="progress">
+							<span class="skill">Build Projects <i class="val">90%</i></span>
+							<div class="progress-bar-wrap">
+								<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
+
+						<div class="progress">
+							<span class="skill">Work Experience <i class="val">95%</i></span>
+							<div class="progress-bar-wrap">
+								<div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 col-sm-12 d-flex flex-column align-items-stretch mt-3">
+					<GlobalsMap :city="profiles.fields.city"/>
 				</div>
 			</div>
 		</div>

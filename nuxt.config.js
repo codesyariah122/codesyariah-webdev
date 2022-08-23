@@ -5,13 +5,24 @@ export default {
 
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
+  loading: {
+    color: '#ffb727',
+    height: '11px'
+  },
   env: {
    CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE,
    CONTENTFUL_ACCESSTOKEN: process.env.CONTENTFUL_ACCESSTOKEN,
    CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT
   },
-
+  generate: {
+   dir: 'dist',
+    cache: {
+      ignore: [
+      'docs'
+      ]
+    }
+  },
+  body: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'codesyariah-webdev',
@@ -25,16 +36,16 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy'},
       { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/bootstrap/css/bootstrap.min.css'},
-      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/bootstrap/css/bootstrap-icons.css'},
+      { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'},
       { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/boxicons/css/boxicons.min.css'},
       { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/glightbox/css/glightbox.min.css'},
-      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/swiper/css/swiper-bundle.min.css'}
+      { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/swiper/swiper-bundle.min.css'},
+      { rel: 'stylesheet', href: '/assets/css/style.css', type: 'text/css' }
     ],
     script: [
       { src: '/assets/vendor/purecounter/purecounter_vanilla.js'},
       { src: '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'},
       { src: '/assets/vendor/glightbox/js/glightbox.min.js'},
-      { src: '/assets/vendor/isotope-layout/isotope.pkgd.min.js'},
       { src: '/assets/vendor/swiper/swiper-bundle.min.js'},
       { src: '/assets/vendor/waypoints/noframework.waypoints.js'}
     ]
@@ -46,9 +57,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "~/plugins/contentful",
-    "~/plugins/posts",
-    "~/plugins/profiles"
+    { src: "~/plugins/contentful" },
+    { src: "~/plugins/posts" },
+    { src: "~/plugins/profiles" },
+    { src: '~/plugins/nuxt-leaflet', mode: 'client', ssr: false },
+    { src: '~/plugins/isotope', mode: 'client', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -56,7 +69,8 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/device'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -76,11 +90,138 @@ export default {
     baseURL: '/',
   },
 
+  workbox: {
+    workboxOptions: {
+      skipWaiting: true
+    },
+    // offline: true,
+    // offlineStrategy: 'NetworkFirst',
+    // offlinePage: null,
+    // offlineAssets: [],
+    runtimeCaching: [
+    {
+      urlPattern: '/assets/css/.*',
+      handler: 'cacheFirst',
+      method: 'GET',
+      strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    },
+    {
+      urlPattern: '/assets/fonts/.*',
+      handler: 'cacheFirst',
+      method: 'GET',
+      strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    },
+    {
+      urlPattern: '/assets/img/.*',
+      method: 'GET',
+      strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    },
+    {
+      urlPattern: '/assets/js/.*',
+      method: 'GET',
+      strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    },
+    {
+      urlPattern: '/assets/scss/.*',
+      method: 'GET',
+      strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    },
+    {
+      urlPattern: '/assets/vendor/.*',
+      method: 'GET',
+      strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    }
+    ]
+  },
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    meta: {
+      title: 'Toko.Kelontong - Online',
+      author: 'PPKC',
+      icon: true,
+      canonical: 'https://toko-kelontong.vercel.app/',
+      description: 'Belanja Grosir Mudah, Murah Dengan Kualitas Terbaik',
+      keywords: 'Toko Kelontong Online',
+      ogUrl: 'https://toko-kelontong.vercel.app/',
+      ogType: 'website',
+      ogSiteName: 'Toko.Kelontong - Online',
+      ogTitle: 'Toko.Kelontong - Online',
+      ogImage: '512.png',
+      ogImageWidth: '600',
+      ogImageHeight: '400'
+    },
     manifest: {
-      lang: 'en'
-    }
+      lang: 'en',
+      name: 'Toko.Kelontong - Online',
+      short_name: 'Toko.Kelontong',
+      description : "Toko.Kelontong - Online",
+      start_url: '/',
+      lang: 'en',
+      display: 'standalone',
+      theme_color: '#12b07f',
+      background_color: '#12b07f',
+      icons: [
+        {
+          "src": "/icon-48x48.png",
+          "sizes": "48x48",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-72x72.png",
+          "sizes": "72x72",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-128x128.png",
+          "sizes": "128x128",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-144x144.png",
+          "sizes": "144x144",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-152x152.png",
+          "sizes": "152x152",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-384x384.png",
+          "sizes": "384x384",
+          "type": "image/png",
+          "purpose": "maskable any"
+        },
+        {
+          "src": "/icon-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "maskable any"
+        }
+      ]
+    },
+  },
+  robots: {
+    UserAgent: '*',
+    Disallow: '/'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

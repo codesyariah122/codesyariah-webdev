@@ -21,7 +21,7 @@ export const actions = {
      const response = await client.getEntries({
        content_type: "myBlog"
      });
-     if (response.items.length > 0) commit("updaterofiles", response.items);
+     if (response.items.length > 0) commit("updateProfiles", response.items);
    } catch (err) {
      console.error(err);
    }
