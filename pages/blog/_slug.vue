@@ -17,6 +17,38 @@
 			}
 			img{
 				margin-bottom: 2rem;
+				margin-top: 2rem;
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		
+	}
+
+	@media (max-width: 420px) {
+		.inner-page{		
+			article{
+				h2{
+					font-weight: 800;
+					font-family: 'Ubuntu', sans-serif;
+				}
+				h3{
+					margin-top: 2rem;
+					font-weight: 700;
+					font-family: 'Ubuntu', sans-serif;
+				}
+				p{
+					font-family: 'Roboto Mono', monospace;
+					line-height: 31px;
+					word-spacing: 5px;
+					text-align: left;
+				}
+				img{
+					max-width: 300px;
+					margin-top:2rem;
+					margin-bottom: 2rem;
+				}
 			}
 		}
 	}
@@ -29,7 +61,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-12 col-sm-12">
 						<p class="back">
-							<nuxt-link to="/">⟵ Back to Home</nuxt-link>
+							<a href="/">⟵ Back to Home</a>
 						</p>
 						<article v-html="$md.render(post.fields.body)"></article>
 					</div>
@@ -41,7 +73,7 @@
 					<div v-for="tag in post.fields.tags" class="col-md-1">
 						<span class="badge rounded-pill bg-warning text-white">
 							#{{tag}}
-						</span>
+						</span>&nbsp;&nbsp;
 					</div>
 				</div>
 			</div>
