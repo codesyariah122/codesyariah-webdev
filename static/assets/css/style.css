@@ -314,8 +314,9 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
-  width: 100%;
-  background: url("../img/hero-bg.jpg") top right;
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;*/
   background-size: cover;
   position: relative;
 }

@@ -3,13 +3,14 @@
     
     <HomepageProduct/>
 
+    <HomepageBlog/>
+    
     <HomepageServices/>
 
     <HomepageTestimonial/>
 
     <HomepageAbout/>
 
-    <HomepageBlog/>
 
     <HomepageContact/>
 

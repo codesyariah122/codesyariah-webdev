@@ -1,28 +1,58 @@
+<style lang="scss">
+	.inner-page{		
+		article{
+			h2{
+				font-weight: 800;
+				font-family: 'Ubuntu', sans-serif;
+			}
+			h3{
+				margin-top: 2rem;
+				font-weight: 700;
+				font-family: 'Ubuntu', sans-serif;
+			}
+			p{
+				font-family: 'Roboto Mono', monospace;
+				line-height: 31px;
+				word-spacing: 5px;
+			}
+			img{
+				margin-bottom: 2rem;
+			}
+		}
+	}
+</style>
 <template>
- <section class="container">
-   <p class="back">
-     <nuxt-link to="/">⟵ Back to Home</nuxt-link>
-   </p>
-
-   <pre>
-   	{{post}}
-   </pre>
-   <h1>{{ post.fields.title }}</h1>
-   <p class="author">By {{ post.fields.author.fields.name }}</p>
-   <div
-     class="image"
-     :style="
-       `background: url(https:${post.fields.heroImage.fields.file.url}) center center no-repeat`
-     "
-   ></div>
-   <article v-html="$md.render(post.fields.body)"></article>
- </section>
+	<div>
+		<LayoutSlugSectionHero :post="post"/>
+		<section id="post" class="inner-page">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-12 col-sm-12">
+						<p class="back">
+							<nuxt-link to="/">⟵ Back to Home</nuxt-link>
+						</p>
+						<article v-html="$md.render(post.fields.body)"></article>
+					</div>
+				</div>
+				<div class="d-flex flex-wrap mt-5 mb-5">
+					<div class="col-md-1">
+						<strong>Tags : </strong> 
+					</div>
+					<div v-for="tag in post.fields.tags" class="col-md-1">
+						<span class="badge rounded-pill bg-warning text-white">
+							#{{tag}}
+						</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </template>
 
 <script>
 	export default{
 		name: 'blog',
-		layout: 'default',
+		layout: 'slug',
 
 		data() {
 			return {

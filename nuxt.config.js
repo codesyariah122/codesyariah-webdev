@@ -82,6 +82,18 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit'
   ],
+
+  device: {
+    refreshOnResize: true
+  },
+
+  styleResources: {
+    scss: [
+    '~assets/scss/_variables.scss',
+    '~assets/scss/_blog.scss'
+    ]
+  },
+
   markdownit: {
     injected: true
   },

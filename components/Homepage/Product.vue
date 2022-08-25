@@ -181,7 +181,7 @@
 </style>
 
 <template>
-	<section id="portfolio" class="portfolio">
+	<section id="product" class="portfolio">
 		<div class="container">
 
 			<div class="section-title">
