@@ -12,7 +12,7 @@
 	export default {
 		data(){
 			return {
-				bg_mobile: `background: url(${require('~/assets/img/webdev-bg-5.png')}) top right no-repeat; height: 70vh;width: 100%;`,
+				bg_mobile: `background: url(${require('~/assets/img/new-hero-bg-1.jpg')}) top right no-repeat; height: 70vh;width: 100%;`,
 				bg_desktop: `background: url(${require('~/assets/img/new-hero-bg-1.jpg')}) no-repeat center; height: 100vh;width: 100%;`
 			}
 		}
