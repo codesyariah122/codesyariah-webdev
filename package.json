@@ -27,6 +27,7 @@
   "devDependencies": {
     "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/moment": "^1.6.1",
     "contentful": "^9.1.34"
   }
 }

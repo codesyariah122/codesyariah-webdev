@@ -3,6 +3,10 @@
    <p class="back">
      <nuxt-link to="/">⟵ Back to Home</nuxt-link>
    </p>
+
+   <pre>
+   	{{post}}
+   </pre>
    <h1>{{ post.fields.title }}</h1>
    <p class="author">By {{ post.fields.author.fields.name }}</p>
    <div
@@ -17,6 +21,9 @@
 
 <script>
 	export default{
+		name: 'blog',
+		layout: 'default',
+
 		data() {
 			return {
 				slug: this.$route.params.slug

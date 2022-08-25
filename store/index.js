@@ -19,9 +19,11 @@ export const actions = {
    try {
      if (!client) return;
      const response = await client.getEntries({
-       content_type: "myBlog"
+       content_type: "myBlog",
+       'order':'-sys.createdAt'
      });
-     if (response.items.length > 0) commit("updateProfiles", response.items);
+     console.log(response)
+     if (response.items.length > 0) commit("updatePosts", response.items);
    } catch (err) {
      console.error(err);
    }

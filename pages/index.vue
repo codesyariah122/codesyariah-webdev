@@ -9,6 +9,8 @@
 
     <HomepageAbout/>
 
+    <HomepageBlog/>
+
     <HomepageContact/>
 
   </main>
@@ -17,12 +19,7 @@
 <script>
   export default {
     name: 'IndexPage',
-    layout: 'default',
-    computed: {
-     posts() {
-       return this.$store.state.posts;
-     }
-   }
+    layout: 'default'
    
  };
 </script>

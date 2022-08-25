@@ -23,11 +23,15 @@
 							</div>
 							<div class="col-lg-6">
 								<ul>
-									<li><i class="bi bi-chevron-right"></i> <strong>Instagram : </strong> <a :href="profiles.fields.instagram">
+									<li><i class="bi bi-chevron-right"></i> <strong>Instagram : </strong> <a :href="`https://www.instagram.com/${profiles.fields.instagram}`">
 										<span>{{profiles.fields.instagram}}</span>
 									</a> </li>
 									<li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-									<li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{profiles.fields.email}}</span></li>
+									<li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+										<a :href="`mailto:${profiles.fields.email}`">
+											<span>{{profiles.fields.email}}</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
