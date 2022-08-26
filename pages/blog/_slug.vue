@@ -191,7 +191,7 @@
 						<div class="blog-comment">
 							<h3 class="text-success">Comments</h3>
 							<hr/>
-							<ul class="comments">
+							<ul v-if="comments" class="comments">
 								<li v-for="comment in comments.comments" class="clearfix">
 									<img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
 									<div class="post-comments">
