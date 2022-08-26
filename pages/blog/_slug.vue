@@ -62,10 +62,10 @@
 		<section id="post" class="inner-page">
 			<div class="container mb-5">
 				<div class="back float-start">
-					<a href="/"><i class='bx bx-left-arrow-alt'></i> Back to Home</a>
+					<a href="../#blog"><i class='bx bx-left-arrow-alt'></i> Back to Home</a>
 				</div>
 				<div class="back float-end">
-					<a href="/blog">All Posts <i class='bx bx-right-arrow-alt' ></i></a>
+					<nuxt-link to="/blog">All Posts <i class='bx bx-right-arrow-alt' ></i></nuxt-link>
 				</div>
 			</div>
 			<div class="container">
