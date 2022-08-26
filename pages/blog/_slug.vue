@@ -1,6 +1,7 @@
 <style lang="scss">
 	.inner-page{		
 		article{
+			margin-left: -3rem;
 			h2{
 				font-weight: 800;
 				font-family: 'Ubuntu', sans-serif;
@@ -45,7 +46,7 @@
 					text-align: left;
 				}
 				img{
-					max-width: 300px;
+					max-width: 335px;
 					margin-top:2rem;
 					margin-bottom: 2rem;
 				}
@@ -57,12 +58,17 @@
 	<div>
 		<LayoutSlugSectionHero :post="post"/>
 		<section id="post" class="inner-page">
+			<div class="container mb-5">
+				<div class="back float-start">
+					<a href="/"><i class='bx bx-left-arrow-alt'></i> Back to Home</a>
+				</div>
+				<div class="back float-end">
+					<a href="/blog">All Posts <i class='bx bx-right-arrow-alt' ></i></a>
+				</div>
+			</div>
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-12 col-sm-12">
-						<p class="back">
-							<a href="/">⟵ Back to Home</a>
-						</p>
 						<article v-html="$md.render(post.fields.body)"></article>
 					</div>
 				</div>
@@ -76,6 +82,15 @@
 						</span>&nbsp;&nbsp;
 					</div>
 				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-lg-12 col-sm-12">
+						<pre>
+							{{comments}}
+						</pre>
+					</div>
+				</div>
+
 			</div>
 		</section>
 	</div>
@@ -93,10 +108,18 @@
 		},
 		computed: {
 			post() {
-				let post = this.$store.state.posts.filter(
+				let post = this.$store.state.allposts.filter(
 					el => el.fields.slug === this.slug
 					);
 				return post[0];
+			},
+
+			comments(){
+				let comment = this.$store.state.allposts.filter(
+					el=>el.fields.slug === this.slug
+					)
+
+				return comment[0].fields.comments
 			}
 		},
 		head() {

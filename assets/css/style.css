@@ -346,10 +346,9 @@ h6 {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 71px;
+  font-size: 64px;
   font-family: "Satisfy", serif;
   color: #fff;
-  text-align: center;
 }
 
 #hero h2 {
@@ -359,7 +358,6 @@ h6 {
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  text-align: center;
 }
 
 #hero .btn-scroll {

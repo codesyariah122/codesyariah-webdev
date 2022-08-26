@@ -38,7 +38,7 @@ export const actions = {
      if (!client) return;
      const response = await client.getEntries({
        content_type: "myBlog",
-       'order':'-sys.createdAt',
+       'order':'-sys.updatedAt',
        'limit': 100
      });
      console.log(response)
