@@ -3,7 +3,8 @@ import client from "~/plugins/contentful";
 export const state = () => ({
  posts: null,
  allposts: null,
- profiles: null
+ profiles: null,
+ comments: []
 });
 
 export const mutations = {
@@ -15,6 +16,15 @@ export const mutations = {
   },
   updateProfiles: (state, profiles) => {
     state.profiles = profiles
+  },
+  allComments: (state, comments) => {
+    state.comments = comments
+  },
+  updateComments: (state, data) => {
+    // state.comments.comments.push(data)
+   
+    // state.comments.comments.splice(data.positions, 0, data)
+    console.log(data.position+1)
   }
 }
 
@@ -41,11 +51,29 @@ export const actions = {
        'order':'-sys.updatedAt',
        'limit': 100
      });
-     console.log(response)
      if (response.items.length > 0) commit("allPosts", response.items);
    } catch (err) {
      console.error(err);
    }
+  },
+
+  async allComments({commit}, slug){
+    try {
+     if (!client) return;
+     const response = await client.getEntries({
+       content_type: "myBlog",
+       'order':'-sys.updatedAt',
+       'limit': 1
+     });
+     const comment = response.items.filter(d => d.fields.slug === slug)
+     commit("allComments", comment[0].fields.comments);
+   } catch (err) {
+     console.error(err);
+   }
+  },
+
+  async updateComments({commit}, data){
+    commit('updateComments', JSON.parse(data))
   },
 
   async getProfiles({commit}){
@@ -58,5 +86,15 @@ export const actions = {
     } catch (err) {
      console.error(err);
    }
+  }
+}
+
+
+export const getters = {
+  getAllComments(state){
+    return state.comments
+  },
+  updateNewComment(state){
+    return state.comments
   }
 }

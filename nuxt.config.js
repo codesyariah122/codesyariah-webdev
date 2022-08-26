@@ -62,7 +62,8 @@ export default {
     { src: "~/plugins/posts" },
     { src: "~/plugins/profiles" },
     { src: '~/plugins/nuxt-leaflet', mode: 'client', ssr: false },
-    { src: '~/plugins/isotope', mode: 'client', ssr: false }
+    { src: '~/plugins/isotope', mode: 'client', ssr: false },
+    { src: '~/plugins/disqus', mode: 'client', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
