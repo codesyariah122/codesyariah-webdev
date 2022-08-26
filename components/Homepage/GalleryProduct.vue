@@ -1,10 +1,5 @@
 
 <style lang="css">
-	/*.portfolio-container{
-		position: relative;
-	}*/
-	
-
 	.portfolio #portfolio-flters li {
 		cursor: pointer;
 		display: inline-block;
@@ -181,13 +176,13 @@
 </style>
 
 <template>
-	<section id="product" class="portfolio">
+	<section id="gallery" class="portfolio">
 		<div class="container">
 
 			<div class="section-title">
-				<span>Our Product</span>
-				<h2>Our Product</h2>
-				<p class="text-center">Product-product karya kami yang bisa anda pilih dan disesuaikan dengan kebutuhan dan ide bisnis anda</p>
+				<span>Product Gallery</span>
+				<h2>Product Gallery</h2>
+				<p class="text-center">Gallery project yang beberapa waktu lalu telah kami kerjakan.</p>
 			</div>
 			
 			<ul id="portfolio-flters" :class="`${$device.isDesktop ? 'd-inline-flex justify-content-center' : 'd-flex align-content-stretch flex-wrap'}`">
@@ -211,18 +206,19 @@
 					<div class="portfolio-info">
 						<h4>{{list.title}}</h4>
 						<p>{{list.categories}}</p>
-						<a :href="list.image" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" :title="list.title">
-							<i class="bx bx-plus"></i>
-						</a>
-						<a href="portfolio-details.html" class="details-link" title="More Details">
-							<i class="bx bx-link"></i>
-						</a>
-					</div>
+						<a :href="list.image" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" :data-title="list.title"
+						:data-description="list.description">
+						<i class="bx bx-plus"></i>
+					</a>
+					<a :href="list.image" class="details-link" title="More Details">
+						<i class="bx bx-link"></i>
+					</a>
 				</div>
-
 			</div>
+
 		</div>
-	</section>
+	</div>
+</section>
 </template>
 
 <script>
@@ -311,39 +307,39 @@
 					title: 'Hiro Landing Page',
 					categories: 'landing',
 					image: require('~/assets/img/website-category/landing-page-1.jpg'),
-					description: 'Hiro landing page dibuat dengan fundamental responsive website, bootstrap, scss dan package content pendukung yang kami sediakan untuk anda.',
-					price: 2500000
+					description: 'Landing page yang ditargetkan fokus alur bisnis dengan penyajian artistik yang abstract design namun simple, mengejar target product bisnis, alur bisnis yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
+					price: 250000
 				},
 				{
 					id: 2,
 					title: 'Marshmallow Landing Page',
 					categories: 'landing',
 					image: require('~/assets/img/website-category/landing-page-2.jpg'),
-					description: 'Design yang simple dan elegan menjadi keunggulan karya kami yang satu ini, dengan tambahan package content yang siap kami bangun untuk anda.',
-					price: 2500000
+					description: 'Design yang simple dan elegan menjadi keunggulan karya kami yang satu ini, dengan tambahan package content yang siap kami bangun untuk anda, dan fokus utama yaitu menjadikan booster alur bisnis dan product bisnis,alur bisnis yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
+					price: 250000
 				},
 				{
 					id: 3,
 					title: 'ISO Business Website',
 					categories: 'business',
 					image: require('~/assets/img/website-category/business-page-1.png'),
-					description: 'Dengan design clean dan fokus pada target project anda, menjadi booster dalam media pemasaran dan kuat mempresentasikan produk bisnis anda.',
-					price: 2500000
+					description: 'Dengan design clean dan fokus pada target project dan alur bisnis client, menjadi booster dalam media pemasaran yang kuat dan professional mempresentasikan produk bisnis secara elegan, alur bisnis yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
+					price: 3500000
 				},
 				{
 					id: 4,
 					title: 'Glorified Business Website',
 					categories: 'business',
 					image: require('~/assets/img/website-category/business-page-2.png'),
-					description: 'Design website yang menyajikan kualitas UI/UX yang sedap dipandang, mempresentasikan target bisnis anda agar semakin terfokus, dan tools-tools bisnis yang siap kami bangun untuk memanage bisnis anda.',
-					price: 2000000
+					description: 'Design website yang menyajikan kualitas UI/UX yang sedap dipandang, mempresentasikan target bisnis anda dengan sentuhan santai namun tetap menjaga fokus utama pada bisnis anda disertai tools-tools bisnis yang siap kami bangun untuk memanage bisnis anda, management alur bisnis yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami',
+					price: 3000000
 				},
 				{
 					id: 5,
 					title: 'Floral WebBlog',
 					categories: 'blog',
 					image: require('~/assets/img/website-category/blog-1.webp'),
-					description: '',
+					description: 'Bagi kalangan yang memiliki hoby jurnalistik ataupun berkarir di bidang jurnalistik dan hoby menulis independent dalam media pribadi, Web Blog ini sangat cocok untuk kalian para jurnalis atau kalangan yang menyukai kegiatan penulisan secara independent.',
 					price: 1500000
 				},
 				{
@@ -351,8 +347,24 @@
 					title: 'Web Stories',
 					categories: 'blog',
 					image: require('~/assets/img/website-category/blog-2.webp'),
-					description: '',
+					description: 'Web stories menjadi project kami di category Website Blog/News, dengan penyajian design yang penuh artistik tidak mengurangi fokus utama yaitu pada tulisan dan tema tulisan karya anda dan menambah nilai elegan dalam dunia jurnalistik.',
 					price: 1500000
+				},
+				{
+					id: 6,
+					title: 'Flexstar Business',
+					categories: 'eccomerce',
+					image: require('~/assets/img/website-category/business-website.jpg'),
+					description: 'Bagi anda pelaku bisnis baik itu product retail, home industries ataupun UMKM, dan kesulitan mencari media digital untuk memasarkan dan membuat management alur bisnis sendiri yang bisa anda sesuaikan saat konsultasi gratis bersama team kami, akan cocok dengan package jasa pembuatan website kategori ecommerce ini.',
+					price: 5000000
+				},
+				{
+					id: 7,
+					title: 'Responsive Clean Portfolio',
+					categories: 'portfolio',
+					image: require('~/assets/img/website-category/website-portfolio.jpg'),
+					description: 'Bagi anda pelaku bisnis baik itu product retail, home industries ataupun UMKM, dan kesulitan mencari media digital untuk memasarkan dan membuat management alur bisnis sendiri yang bisa anda sesuaikan saat konsultasi gratis bersama team kami, akan cocok dengan package jasa pembuatan website kategori ecommerce ini.',
+					price: 150000
 				}
 				]
 			}

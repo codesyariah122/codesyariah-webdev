@@ -1,7 +1,7 @@
 <template>
   <main id="main">
-    
-    <HomepageProduct/>
+
+    <HomepageGalleryProduct/>
 
     <HomepageBlog/>
     
@@ -9,8 +9,9 @@
 
     <HomepageTestimonial/>
 
-    <HomepageAbout/>
+    <HomepagePricing/>
 
+    <HomepageAbout/>
 
     <HomepageContact/>
 
