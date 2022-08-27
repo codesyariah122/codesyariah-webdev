@@ -5,7 +5,7 @@
 			<div class="section-title">
 				<span>Contact Me</span>
 				<h2>Contact Me</h2>
-				<p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
+				<p>Kontak kami selalu aktif di jam kerja 1x24jam senin - sabtu</p>
 			</div>
 
 			<div class="row">

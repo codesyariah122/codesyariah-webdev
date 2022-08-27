@@ -307,7 +307,7 @@
 					title: 'Hiro Landing Page',
 					categories: 'landing',
 					image: require('~/assets/img/website-category/landing-page-1.jpg'),
-					description: 'Landing page website ini berfokus pada target alur bisnis dengan penyajian design penuh artistik dan minimalist, dengan fitur-fitur lengkap ditambah media content yang dapat menyesuaikan dengan format yang anda mau dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
+					description: 'Landing page website ini berfokus langsung pada target alur bisnis dengan penyajian design penuh artistik dan minimalist, dengan fitur-fitur lengkap ditambah media content yang dapat menyesuaikan dengan format yang anda mau dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
 					price: 250000
 				},
 				{
@@ -315,7 +315,7 @@
 					title: 'Marshmallow Landing Page',
 					categories: 'landing',
 					image: require('~/assets/img/website-category/landing-page-2.jpg'),
-					description: 'Design yang simple dan elegan menjadi keunggulan karya kami yang satu ini, dengan tambahan package content yang siap kami bangun untuk anda, dan fokus utama yaitu menjadikan booster bisnis dan product bisnis, dan untuk kebutuhan bisnis logic yang bisa di sesuikan dengan request yang telah dikomunikasikan saat konsultasi bersama team kami.',
+					description: 'Design yang simple dan elegan menjadi keunggulan karya kami yang satu ini, dengan tambahan fitur media content yang siap kami bangun, dan fokus utama yaitu menambah kredibelitas dan awerness sehingga menjadikan booster bagi perkembangan bisnis dan product bisnis anda, dan untuk kebutuhan bisnis logic yang bisa anda di sesuikan dengan request yang telah dikomunikasikan saat konsultasi bersama team kami.',
 					price: 250000
 				},
 				{
@@ -323,7 +323,7 @@
 					title: 'ISO Business Website',
 					categories: 'business',
 					image: require('~/assets/img/website-category/business-page-1.png'),
-					description: 'Dengan design clean dan fokus pada target project dan alur bisnis client, menjadi booster dalam media pemasaran yang kuat dan professional mempresentasikan produk bisnis secara elegan, dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
+					description: 'Dengan design clean dan fokus pada target project dan alur bisnis client, menambah daya jual dan kredibelitas bisnis juga product bisnis anda dalam media pemasaran yang kuat dan professional mempresentasikan produk bisnis secara elegan, dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
 					price: 3500000
 				},
 				{
@@ -331,7 +331,7 @@
 					title: 'Glorified Business Website',
 					categories: 'business',
 					image: require('~/assets/img/website-category/business-page-2.png'),
-					description: 'Design website yang menyajikan kualitas UI/UX yang sedap dipandang, mempresentasikan target bisnis anda dengan sentuhan santai namun tetap menjaga fokus utama pada bisnis anda disertai tools-tools bisnis yang siap kami bangun untuk memanage bisnis anda, management product bisnis dan bisnis logic yang bisa di sesuikan request yang telah dikomunikasikan saat konsultasi bersama team kami',
+					description: 'Design website yang menyajikan kualitas UI/UX yang sedap dipandang, mempresentasikan target bisnis anda dengan sentuhan nuansa yang santai namun tetap menjaga fokus utama pada bisnis anda disertai tools-tools bisnis yang siap kami bangun untuk memanage bisnis anda, management product bisnis dan bisnis logic yang bisa di sesuikan request yang telah dikomunikasikan saat konsultasi bersama team kami',
 					price: 3000000
 				},
 				{
@@ -339,7 +339,7 @@
 					title: 'Floral WebBlog',
 					categories: 'blog',
 					image: require('~/assets/img/website-category/blog-1.webp'),
-					description: 'Bagi kalangan yang memiliki hoby jurnalistik ataupun berkarir di bidang jurnalistik dan hoby menulis independent dalam media pribadi, Web Blog ini sangat cocok untuk kalian para jurnalis atau kalangan yang menyukai kegiatan penulisan secara independent.',
+					description: 'Bagi kalangan yang memiliki hoby jurnalistik ataupun berkarir di bidang jurnalistik dan hoby menulis independent dalam media pribadi, Web Blog ini dibangun dengan tujuan menambah daya jual dari sisi design dan artistik sehingga para pembaca akan lebih fokus pada karya-karya tulisan yang disajikan sang penulis.',
 					price: 1500000
 				},
 				{
@@ -347,7 +347,7 @@
 					title: 'Web Stories',
 					categories: 'blog',
 					image: require('~/assets/img/website-category/blog-2.webp'),
-					description: 'Web stories menjadi project kami di category Website Blog/News, dengan penyajian design yang penuh artistik tidak mengurangi fokus utama yaitu pada tulisan dan tema tulisan karya anda dan menambah nilai elegan dalam dunia jurnalistik.',
+					description: 'Web stories menjadi project kami di category Website Blog/News, dengan penyajian design yang juga penuh artistik dan nilai jual dengan tidak mengurangi fokus utama yaitu pada karya tulisan dan tema tulisan karya sang penulis sehingga diharapkan dapat menambah nilai jual terhadap pembaca dari sisi artistik dalam lingkup karya-karya sang penulis.',
 					price: 1500000
 				},
 				{
@@ -355,7 +355,7 @@
 					title: 'Flexstar Business',
 					categories: 'eccomerce',
 					image: require('~/assets/img/website-category/business-website.jpg'),
-					description: 'Bagi anda pelaku bisnis baik itu product retail, home industries ataupun UMKM, sedikit mengalami kesulitan mencari media digital untuk kebutuhan memasarkan dan mengatur management product bisnis, dan untuk kebutuhan bisnis logic yang bisa anda sesuaikan saat konsultasi gratis bersama team kami, akan cocok dengan package jasa pembuatan website kategori ecommerce ini.',
+					description: 'Bagi anda pelaku bisnis baik itu Industri, Home Industries ataupun UMKM, jika dalam proses branding dan pemasaran product sedikit mengalami kesulitan mencari media digital untuk kebutuhan branding, pemasaran dan management product bisnis. Sehingga menjadi solusi terbaik bagi perkembangan bisnis para pelaku bisnis. Dan untuk kebutuhan bisnis logic yang bisa diesuaikan saat konsultasi gratis bersama team kami, Bagi anda pelaku bisnis yang ingin menambah aspek pemasaran secara masif melalui media digital akan cocok dengan package jasa pembuatan website kategori ecommerce ini.',
 					price: 5000000
 				},
 				{
@@ -363,7 +363,7 @@
 					title: 'Responsive Clean Portfolio',
 					categories: 'portfolio',
 					image: require('~/assets/img/website-category/website-portfolio.jpg'),
-					description: 'Bagi anda seorang professional atau freelancer dan atau company profile yang ingin menampilkan nilai kualitas diri maupun untuk menampilkan keunggulan dari product bisnis company anda, karena portfolio ini di design minimalist media pengisian konten yang bisa anda sesuaikan sendiri ataupun dengan layanan konsultasi gratis kami anda bisa mendalaminya, untuk menyesuaikan dengan format yang anda mau.',
+					description: 'Bagi anda seorang professional atau freelancer dan atau sebuah company yang ingin menampilkan nilai jual sebagai daya tarik terhadap client bisnis maupun untuk menampilkan keunggulan dari product bisnis company anda, karena portfolio ini di design dengan karakter minimalist ditambah fitur media konten yang bisa anda sesuaikan sendiri ataupun dengan layanan konsultasi gratis kami anda bisa mendalaminya, untuk menyesuaikan dengan format yang anda inginkan.',
 					price: 150000
 				}
 				]
