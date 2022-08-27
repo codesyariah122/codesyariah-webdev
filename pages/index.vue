@@ -9,7 +9,7 @@
 
     <HomepageTestimonial/>
 
-    <HomepagePricing/>
+    <HomepagePricing :products="products" :categories="categories"/>
 
     <HomepageAbout/>
 
@@ -21,7 +21,16 @@
 <script>
   export default {
     name: 'IndexPage',
-    layout: 'default'
-   
- };
+    layout: 'default',
+    
+    async asyncData({$commerce, $axios, $config}){
+      const {data: products} = await $commerce.products.list()
+      const categories = await $commerce.categories.list()
+
+      return {
+        products,
+        categories
+      }
+    }
+  };
 </script>

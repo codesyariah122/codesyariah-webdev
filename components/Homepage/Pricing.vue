@@ -1,5 +1,23 @@
 <style lang="css">
 	@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@300;400;700&family=Lobster&family=Montserrat:wght@300;400&family=Roboto+Mono:wght@300;400&family=Ubuntu&display=swap');
+
+	.truncate2 {
+		display: -webkit-box;
+		-webkit-line-clamp: var(--line-clamp, 2);
+		-webkit-box-orient: vertical;
+		word-break: var(--word-break, "none");
+		overflow: hidden;
+		hyphens: auto;
+		text-align: var(--align, left);
+		--is-single-line: 1 - Clamp(0, Calc(var(--line-clamp) - 1), var(--line-clamp));
+		--delay: Calc(-1s * (var(--is-single-line, 1) - 1));
+		animation: states 1s var(--delay) paused;
+		@keyframes states {
+			0% {
+				word-break: break-all;
+			}
+		}
+	}
 	.pricing .box {
 		padding: 40px 20px;
 		background: #fff;
@@ -111,72 +129,20 @@
 			</div>
 
 			<div class="row gy-4" data-aos="fade-left">
-
-				<div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-					<div class="box">
-						<h3 style="color: #07d5c0;">Free Plan</h3>
-						<div class="price"><sup>$</sup>0<span> / mo</span></div>
-						<img :src="require('~/assets/img/pricing/pricing-free.png')" class="img-fluid" alt="">
-						<ul>
-							<li>Aida dere</li>
-							<li>Nec feugiat nisl</li>
-							<li>Nulla at volutpat dola</li>
-							<li class="na">Pharetra massa</li>
-							<li class="na">Massa ultricies mi</li>
-						</ul>
-						<a href="#" class="btn-buy">Buy Now</a>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+				<div v-for="product in products" class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
 					<div class="box">
 						<span class="featured">Featured</span>
-						<h3 style="color: #65c600;">Starter Plan</h3>
-						<div class="price"><sup>$</sup>19<span> / mo</span></div>
-						<img :src="require('~/assets/img/pricing/pricing-starter.png')" class="img-fluid" alt="">
-						<ul>
-							<li>Aida dere</li>
-							<li>Nec feugiat nisl</li>
-							<li>Nulla at volutpat dola</li>
-							<li>Pharetra massa</li>
-							<li class="na">Massa ultricies mi</li>
-						</ul>
+						<h3 style="color: #07d5c0;">{{product.categories[0].name}}</h3>
+						<div class="price"><sup>{{product.price.formatted_with_code}}</sup></div>
+						<div v-for="category in product.categories">
+							<div v-for="icon in pricingicons">
+								<img v-if="icon.name === category.name" :src="icon.icon" class="img-fluid" alt="">
+							</div>
+						</div>
+						<blockquote class="blockquote-footer text-truncate" style="max-width: 550px;" v-html="product.description"></blockquote>
 						<a href="#" class="btn-buy">Buy Now</a>
 					</div>
 				</div>
-
-				<div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
-					<div class="box">
-						<h3 style="color: #ff901c;">Business Plan</h3>
-						<div class="price"><sup>$</sup>29<span> / mo</span></div>
-						<img :src="require('~/assets/img/pricing/pricing-business.png')" class="img-fluid" alt="">
-						<ul>
-							<li>Aida dere</li>
-							<li>Nec feugiat nisl</li>
-							<li>Nulla at volutpat dola</li>
-							<li>Pharetra massa</li>
-							<li>Massa ultricies mi</li>
-						</ul>
-						<a href="#" class="btn-buy">Buy Now</a>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
-					<div class="box">
-						<h3 style="color: #ff0071;">Ultimate Plan</h3>
-						<div class="price"><sup>$</sup>49<span> / mo</span></div>
-						<img :src="require('~/assets/img/pricing/pricing-ultimate.png')" class="img-fluid" alt="">
-						<ul>
-							<li>Aida dere</li>
-							<li>Nec feugiat nisl</li>
-							<li>Nulla at volutpat dola</li>
-							<li>Pharetra massa</li>
-							<li>Massa ultricies mi</li>
-						</ul>
-						<a href="#" class="btn-buy">Buy Now</a>
-					</div>
-				</div>
-
 			</div>
 
 		</div>
@@ -186,5 +152,33 @@
 
 <script>
 	export default {
+		props: ['products', 'categories'],
+
+		data(){
+			return {
+				pricingicons: [
+				{
+					id: 1,
+					name: 'landing',
+					icon: require('~/assets/img/pricing/landing.png')
+				},
+				{
+					id: 2,
+					name: 'ecommerce',
+					icon: require('~/assets/img/pricing/ecommerce.png')
+				},
+				{
+					id: 3,
+					name: 'branding',
+					icon: require('~/assets/img/pricing/branding.png')
+				},
+				{
+					id: 4,
+					name: 'blogging',
+					icon: require('~/assets/img/pricing/blogging.png')
+				}
+				]
+			}
+		}
 	}
 </script>

@@ -6,7 +6,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   loading: {
-    color: '#ffb727',
+    color: '#fee21a',
     height: '11px'
   },
   env: {
@@ -63,7 +63,8 @@ export default {
     { src: "~/plugins/profiles" },
     { src: '~/plugins/nuxt-leaflet', mode: 'client', ssr: false },
     { src: '~/plugins/isotope', mode: 'client', ssr: false },
-    { src: '~/plugins/disqus', mode: 'client', ssr: false }
+    { src: '~/plugins/disqus', mode: 'client', ssr: false },
+    { src: '~/plugins/commerce' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
