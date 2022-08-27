@@ -20,7 +20,7 @@
 
 					<div class="swiper-slide">
 						<div class="testimonial-item">
-							<img :src="require('~/assets/img/testimonials/lucy.jpg')" class="testimonial-img rounded-pill circle" alt="">
+							<img :src="require('~/assets/img/testimonials/lucy.jpg')" class="testimonial-img" alt="">
 							<h3>Lucy Straus</h3>
 							<h4>Designer</h4>
 							<p>

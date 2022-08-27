@@ -806,10 +806,13 @@ section {
 }
 
 .testimonials .testimonial-item .testimonial-img {
-  width: 170px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
   border: 6px solid rgba(255, 255, 255, 0.15);
   margin: 0 auto;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
 }
 
 .testimonials .testimonial-item h3 {
