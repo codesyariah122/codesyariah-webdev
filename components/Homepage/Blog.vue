@@ -2,8 +2,9 @@
 	<section id="blog" class="about">
 		<div class="container">
 			<div class="section-title">
-				<span>Our Blog</span>
+				<span>Blog</span>
 				<h2>Our Blog</h2>
+				<p class="text-center">Blog ini kami sajikan sebagai media news yang berupa karya jurnalistik yang ditujukan untuk menambah informasi seputar digital technology kepada khalayak ataupun sebagai media dokumentasi terupdate dari setiap kegiatan terbaru kami.</p>
 			</div>
 
 			<div class="row justify-content-center">

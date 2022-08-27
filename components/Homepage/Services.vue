@@ -3,8 +3,8 @@
       <div class="container">
 
         <div class="section-title">
-          <span>My Services</span>
-          <h2>My Services</h2>
+          <span>Services</span>
+          <h2>Our Services</h2>
           <p class="text-center">
             <b>__Codesyariah WebDeveloper__</b>, bagi kami pelayanan bukan sekedar statement semata, kami ada untuk menjadi partner terbaik anda, dalam mengembangkan ide-ide bisnis anda dan menjadikan product bisnis anda sebagai sebuah karya digital yang berkualitas dengan sejuta keuntungan yang akan mendampingi anda.
           </p>

@@ -1,5 +1,5 @@
 <template>
-	<div :style="`${$device.isDesktop ? 'height: 280px; width: 100%;z-index: 0;' : 'height: 280px; width: 335px;z-index: 0;'}`">
+	<div :style="`${$device.isDesktop ? 'height: 280px; width: 100%;z-index: 0;' : 'height: 280px; width: 345px;z-index: 0;'}`">
 
 		<client-only>
 			<l-map

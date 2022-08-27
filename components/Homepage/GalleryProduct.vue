@@ -1,4 +1,3 @@
-
 <style lang="css">
 	.portfolio #portfolio-flters li {
 		cursor: pointer;
@@ -180,8 +179,8 @@
 		<div class="container">
 
 			<div class="section-title">
-				<span>Product Gallery</span>
-				<h2>Product Gallery</h2>
+				<span>Gallery</span>
+				<h2>Projects Gallery</h2>
 				<p class="text-center">Gallery project yang beberapa waktu lalu telah kami kerjakan.</p>
 			</div>
 			

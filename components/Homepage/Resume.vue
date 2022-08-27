@@ -3,8 +3,8 @@
 		<div class="container">
 
 			<div class="section-title">
-				<span>My Resume</span>
-				<h2>My Resume</h2>
+				<span>Resume</span>
+				<h2>Our Resume</h2>
 				<p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
 			</div>
 

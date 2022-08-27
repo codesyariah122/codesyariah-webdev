@@ -3,8 +3,8 @@
 		<div class="container">
 
 			<div class="section-title">
-				<span>Contact Me</span>
-				<h2>Contact Me</h2>
+				<span>Contact</span>
+				<h2>Our Contact</h2>
 				<p>Kontak kami selalu aktif di jam kerja 1x24jam senin - sabtu</p>
 			</div>
 
