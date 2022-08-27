@@ -34,7 +34,8 @@ export const actions = {
        if (!client) return;
        const response = await client.getEntries({
          content_type: "myBlog",
-         'order':'-sys.createdAt'
+         'order':'-sys.createdAt',
+         'limit': 3
        });
        if (response.items.length > 0) commit("updatePosts", response.items);
      } catch (err) {

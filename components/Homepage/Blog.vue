@@ -20,7 +20,7 @@
 							<small><i class="far fa-clock"></i> {{$moment(post.fields.publishedDate).format("LL")}}</small>
 						</div>
 						<div class="card-footer">
-							<div class="media">
+							<div v-if="post.fields.author" class="media">
 								<img class="mr-3 rounded-circle" :src="`https://${post.fields.author.fields.profilePhoto.fields.file.url}`" alt="Generic placeholder image" style="max-width:50px">
 								<div class="media-body">
 									<h6 class="my-0 text-white d-block">{{post.fields.author.fields.name}}</h6>
