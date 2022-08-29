@@ -36,7 +36,7 @@
 		<div class="hero-container">
 			<h1>{{ post.fields.title }}</h1>
 			<h2 class="mt-5">By {{ post.fields.author.fields.name }}</h2>
-			<img :src="`https:${post.fields.author.fields.profilePhoto.fields.file.url}`" width="70" class="rounded-circle">
+			<img :src="`https:${post.fields.author.fields.profilePhoto.fields.file.url}`" style="width: 50px!important;"class="rounded-circle">
 			<a href="#post" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
 		</div>
 	</section>
