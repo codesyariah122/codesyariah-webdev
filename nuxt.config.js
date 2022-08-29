@@ -6,7 +6,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   loading: {
-    color: '#fee21a',
+    color: '#323332',
     height: '11px'
   },
   env: {
@@ -43,13 +43,16 @@ export default {
       // { rel: 'stylesheet', href: '/assets/css/style.css', type: 'text/css' }
     ],
     script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js' },
       { src: '/assets/vendor/purecounter/purecounter_vanilla.js'},
       { src: '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'},
       { src: '/assets/vendor/glightbox/js/glightbox.min.js'},
       { src: '/assets/vendor/swiper/swiper-bundle.min.js'},
       { src: '/assets/vendor/waypoints/noframework.waypoints.js'},
       { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3504444534054185', crossorigin: 'anonymous'},
-      { src: 'https://www.googletagmanager.com/gtag/js?id=G-EET58GS9QJ' },
+      { 
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-EET58GS9QJ' 
+      },
       {
         src: '/assets/js/g-tag-manager.js'
       }

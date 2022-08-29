@@ -1,232 +1,5 @@
 <style lang="css">
-	.card {
-		background-color: #fff;
-		padding: 14px;
-		border: none
-	}
-
-	.demo {
-		width: 100%
-	}
-
-	ul {
-		list-style: none outside none;
-		padding-left: 0;
-		margin-bottom: 0
-	}
-
-	li {
-		display: block;
-		float: left;
-		margin-right: 6px;
-		cursor: pointer
-	}
-
-	img {
-		display: block;
-		height: auto;
-		width: 100%
-	}
-
-	.stars i {
-		color: #f6d151
-	}
-
-	.stars span {
-		font-size: 13px
-	}
-
-	hr {
-		color: #d4d4d4
-	}
-
-	.badge {
-		padding: 5px !important;
-		padding-bottom: 6px !important
-	}
-
-	.badge i {
-		font-size: 10px
-	}
-
-	.profile-image {
-		width: 35px
-	}
-
-	.comment-ratings i {
-		font-size: 13px
-	}
-
-	.username {
-		font-size: 12px
-	}
-
-	.comment-profile {
-		line-height: 17px
-	}
-
-	.date span {
-		font-size: 12px
-	}
-
-	.p-ratings i {
-		color: #f6d151;
-		font-size: 12px
-	}
-
-	.btn-long {
-		padding-left: 35px;
-		padding-right: 35px
-	}
-
-	.buttons {
-		margin-top: 15px
-	}
-
-	.buttons .btn {
-		height: 46px
-	}
-
-	.buttons .cart {
-		border-color: #ff7676;
-		color: #ff7676
-	}
-
-	.buttons .cart:hover {
-		background-color: #e86464 !important;
-		color: #fff
-	}
-
-	.buttons .buy {
-		color: #fff;
-		background-color: #ff7676;
-		border-color: #ff7676
-	}
-
-	.buttons .buy:focus,
-	.buy:active {
-		color: #fff;
-		background-color: #ff7676;
-		border-color: #ff7676;
-		box-shadow: none
-	}
-
-	.buttons .buy:hover {
-		color: #fff;
-		background-color: #e86464;
-		border-color: #e86464
-	}
-
-	.buttons .wishlist {
-		background-color: #fff;
-		border-color: #ff7676
-	}
-
-	.buttons .wishlist:hover {
-		background-color: #e86464;
-		border-color: #e86464;
-		color: #fff
-	}
-
-	.buttons .wishlist:hover i {
-		color: #fff
-	}
-
-	.buttons .wishlist i {
-		color: #ff7676
-	}
-
-	.comment-ratings i {
-		color: #f6d151
-	}
-
-	.followers {
-		font-size: 9px;
-		color: #d6d4d4
-	}
-
-	.store-image {
-		width: 42px
-	}
-
-	.dot {
-		height: 10px;
-		width: 10px;
-		background-color: #bbb;
-		border-radius: 50%;
-		display: inline-block;
-		margin-right: 5px
-	}
-
-	.bullet-text {
-		font-size: 12px
-	}
-
-	.my-color {
-		margin-top: 10px;
-		margin-bottom: 10px
-	}
-
-	label.radio {
-		cursor: pointer
-	}
-
-	label.radio input {
-		position: absolute;
-		top: 0;
-		left: 0;
-		visibility: hidden;
-		pointer-events: none
-	}
-
-	label.radio span {
-		border: 2px solid #8f37aa;
-		display: inline-block;
-		color: #8f37aa;
-		border-radius: 50%;
-		width: 25px;
-		height: 25px;
-		text-transform: uppercase;
-		transition: 0.5s all
-	}
-
-	label.radio .red {
-		background-color: red;
-		border-color: red
-	}
-
-	label.radio .blue {
-		background-color: blue;
-		border-color: blue
-	}
-
-	label.radio .green {
-		background-color: green;
-		border-color: green
-	}
-
-	label.radio .orange {
-		background-color: orange;
-		border-color: orange
-	}
-
-	label.radio input:checked+span {
-		color: #fff;
-		position: relative
-	}
-
-	label.radio input:checked+span::before {
-		opacity: 1;
-		content: '\2713';
-		position: absolute;
-		font-size: 13px;
-		font-weight: bold;
-		left: 4px
-	}
-
-	.card-body {
-		padding: 0.3rem 0.3rem 0.2rem
-	}
+	.card{border: none;overflow: hidden}.thumbnail_images ul{list-style: none;justify-content: center;display: flex;align-items: center;margin-top:10px}.thumbnail_images ul li{margin: 5px;padding: 10px;border: 2px solid #eee;cursor: pointer;transition: all 0.5s}.thumbnail_images ul li:hover{border: 2px solid #000}.main_image{display: flex;justify-content: center;align-items: center;border-bottom: 1px solid #eee;height: 400px;width: 100%;overflow: hidden}.heart{height: 29px;width: 29px;background-color: #eaeaea;border-radius: 50%;display: flex;justify-content: center;align-items: center}.content p{font-size: 12px}.ratings span{font-size: 14px;margin-left: 12px}.colors{margin-top: 5px}.colors ul{list-style: none;display: flex;padding-left: 0px}.colors ul li{height: 20px;width: 20px;display: flex;border-radius: 50%;margin-right: 10px;cursor: pointer}.colors ul li:nth-child(1){background-color: #6c704d}.colors ul li:nth-child(2){background-color: #96918b}.colors ul li:nth-child(3){background-color: #68778e}.colors ul li:nth-child(4){background-color: #263f55}.colors ul li:nth-child(5){background-color: black}.right-side{position: relative}.search-option{position: absolute;background-color: #000;overflow: hidden;align-items: center;color: #fff;width: 200px;height: 200px;border-radius: 49% 51% 50% 50% / 68% 69% 31% 32%;left: 30%;bottom: -250px;transition: all 0.5s;cursor: pointer}.search-option .first-search{position: absolute;top: 20px;left: 90px;font-size: 20px;opacity: 1000}.search-option .inputs{opacity: 0;transition: all 0.5s ease;transition-delay: 0.5s;position: relative}.search-option .inputs input{position: absolute;top: 200px;left: 30px;padding-left: 20px;background-color: transparent;width: 300px;border: none;color: #fff;border-bottom: 1px solid #eee;transition: all 0.5s;z-index: 10}.search-option .inputs input:focus{box-shadow: none;outline: none;z-index: 10}.search-option:hover{border-radius: 0px;width: 100%;left: 0px}.search-option:hover .inputs{opacity: 1}.search-option:hover .first-search{left: 27px;top: 25px;font-size: 15px}.search-option:hover .inputs input{top: 20px}.search-option .share{position: absolute;right: 20px;top: 22px}.buttons .btn{height: 50px;width: 150px;border-radius: 0px !important}
 </style>
 <template>
 	<div>
@@ -238,7 +11,7 @@
 
 		<Nuxt/>
 
-		<LayoutFooter/>
+		<!-- <LayoutFooter/> -->
 	</div>
 </template>
 
@@ -246,10 +19,6 @@
 	export default {
 		head: {
 			link: [
-			{ 
-				rel: 'stylesheet', 
-				href: 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.css'
-			},
 			{
 				rel: 'stylesheet', href: 'https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'
 			}
@@ -257,15 +26,6 @@
 			script: [
 			{
 				src: '/assets/js/main.js'
-			},
-			{
-				src: 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
-			},
-			{
-				src: 'https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'
-			},
-			{
-				src: '/assets/js/product-cart.js'
 			}
 			],
 		}

@@ -141,7 +141,17 @@
 							</div>
 						</div>
 						<blockquote class="blockquote-footer text-truncate" style="max-width: 550px;" v-html="product.description"></blockquote>
-						<nuxt-link :to="`/products/${product.permalink}`" class="btn-buy">Lihat Detail</nuxt-link>
+						<!-- <div class="d-grid gap-2">
+							<nuxt-link :to="`/products/detailed/${product.id}`" class="btn btn-warning text-white rounded-pill btn-sm mb-3">
+								<i class='bx bxs-chalkboard'></i> See Detailed
+							</nuxt-link>
+						</div> -->
+
+						<div class="d-grid gap-2">
+							<nuxt-link :to="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
+								<i class='bx bx-basket'></i> See Detailed
+							</nuxt-link>
+						</div>
 					</div>
 				</div>
 			</div>
