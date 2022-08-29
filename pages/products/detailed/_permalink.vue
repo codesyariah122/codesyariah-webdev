@@ -32,7 +32,7 @@
 						<div class="buttons d-flex flex-row mt-5 gap-3">
 							<!-- <nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link> -->
 
-							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Book Order</button>
+							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Booking Order</button>
 						</div>
 						<div class="search-option">
 							<i class='bx bx-search-alt-2 first-search'></i>
