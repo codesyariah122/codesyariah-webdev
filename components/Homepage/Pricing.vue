@@ -129,6 +129,7 @@
 			</div>
 
 			<div class="row gy-4" data-aos="fade-left">
+
 				<div v-for="product in products" class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
 					<div class="box">
 						<span class="featured">Featured</span>
@@ -140,7 +141,7 @@
 							</div>
 						</div>
 						<blockquote class="blockquote-footer text-truncate" style="max-width: 550px;" v-html="product.description"></blockquote>
-						<a href="#" class="btn-buy">Buy Now</a>
+						<nuxt-link :to="`/products/${product.permalink}`" class="btn-buy">Lihat Detail</nuxt-link>
 					</div>
 				</div>
 			</div>
@@ -152,7 +153,7 @@
 
 <script>
 	export default {
-		props: ['products', 'categories'],
+		props: ['products', 'categories', 'carts'],
 
 		data(){
 			return {

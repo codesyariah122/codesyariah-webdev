@@ -9,7 +9,7 @@
 
     <HomepageTestimonial/>
 
-    <HomepagePricing :products="products" :categories="categories"/>
+    <HomepagePricing :products="products" :categories="categories" />
 
     <HomepageAbout/>
 
@@ -25,7 +25,7 @@
     
     async asyncData({$commerce, $axios, $config}){
       const {data: products} = await $commerce.products.list()
-      const categories = await $commerce.categories.list()
+      const {data: categories} = await $commerce.categories.list()
 
       return {
         products,
