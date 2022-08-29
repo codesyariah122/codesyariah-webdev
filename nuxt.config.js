@@ -48,7 +48,7 @@ export default {
       { src: '/assets/vendor/glightbox/js/glightbox.min.js'},
       { src: '/assets/vendor/swiper/swiper-bundle.min.js'},
       { src: '/assets/vendor/waypoints/noframework.waypoints.js'},
-      { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3504444534054185'}
+      { src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3504444534054185', crossorigin: 'anonymous'}
     ]
   },
 
