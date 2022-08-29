@@ -30,7 +30,7 @@
 						<h3>{{product.price.formatted_with_code}}</h3>
 						
 						<div class="buttons d-flex flex-row mt-5 gap-3">
-							<nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link>
+							<!-- <nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link> -->
 
 							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Book Order</button>
 						</div>
