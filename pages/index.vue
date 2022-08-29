@@ -31,6 +31,10 @@
         products,
         categories
       }
+    },
+
+    mounted(){
+      $crisp.push(['do', 'chat:hide']);
     }
   };
 </script>

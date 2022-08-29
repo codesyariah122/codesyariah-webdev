@@ -31,6 +31,8 @@
 						
 						<div class="buttons d-flex flex-row mt-5 gap-3">
 							<nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link>
+
+							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Book Order</button>
 						</div>
 						<div class="search-option">
 							<i class='bx bx-search-alt-2 first-search'></i>
@@ -61,6 +63,10 @@
 			}
 		},
 
+		mounted(){
+			$crisp.push(['do', 'chat:hide']);
+		},
+
 		data(){
 			return {
 				change: {
@@ -75,6 +81,12 @@
 				console.log(asset)
 				this.change.status = true
 				this.change.asset = asset
+			},
+
+			openOrder(){
+				console.log("Buka")
+				$crisp.push(['do', 'chat:show']);
+				$crisp.push(['do', 'chat:open']);
 			}
 		}
 	}

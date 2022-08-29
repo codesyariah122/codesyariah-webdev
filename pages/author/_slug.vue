@@ -12,7 +12,9 @@
 <script>
 	export default {
 		name: 'author',
-
+		mounted(){
+			$crisp.push(['do', 'chat:hide']);
+		},
 		computed: {
 			authors(){
 				const param = this.$route.params

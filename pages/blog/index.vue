@@ -42,6 +42,9 @@
 	export default {
 		name: 'blog',
 		layout: 'page',
+		mounted(){
+			$crisp.push(['do', 'chat:hide']);
+		},
 		computed: {
 			allposts() {
 				return this.$store.state.allposts

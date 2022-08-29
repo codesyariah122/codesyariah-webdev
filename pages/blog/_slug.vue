@@ -96,6 +96,9 @@
 				slug: this.$route.params.slug
 			};
 		},
+		mounted(){
+			$crisp.push(['do', 'chat:hide']);
+		},
 		computed: {
 			post() {
 				let post = this.$store.state.allposts.filter(

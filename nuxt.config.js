@@ -73,6 +73,7 @@ export default {
     { src: '~/plugins/isotope', mode: 'client', ssr: false },
     { src: '~/plugins/disqus', mode: 'client', ssr: false },
     { src: '~/plugins/commerce' },
+    { src: '~/plugins/crisp', mode: 'client', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
