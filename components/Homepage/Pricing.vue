@@ -148,9 +148,9 @@
 						</div> -->
 
 						<div class="d-grid gap-2">
-							<nuxt-link :to="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
+							<a :href="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
 								<i class='bx bx-basket'></i> See Detailed
-							</nuxt-link>
+							</a>
 						</div>
 					</div>
 				</div>
