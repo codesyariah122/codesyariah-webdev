@@ -1,6 +1,20 @@
 <template>
 	<div id="product" class="container mt-5 mb-5">
-		<div class="card">
+		<div class="card mb-5">
+			<div style="margin-left: 1rem; margin-top: 1rem;" class="row justify-content-center text-center">
+				<div class="col-lg-12 col-sm-12">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item" aria-current="page">
+								{{product.name}}
+							</li>
+							<li class="breadcrumb-item"><a href="../../#pricing">
+								Back to pricelist
+							</a></li>
+						</ol>
+					</nav>
+				</div>
+			</div>
 			<div class="row g-0">
 				<div class="col-md-6 border-end">
 					<div class="d-flex flex-column justify-content-center">

@@ -8,7 +8,8 @@
 				</div>
 			</div>
 			<div class="row">
-				<div v-for="post in allposts" class="col-sm-12 col-md-6 col-lg-4 mb-4"><div class="card text-white card-has-bg click-col" :style="`background-image:url('https://${post.fields.heroImage.fields.file.url}');`">
+				<div v-for="post in allposts" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+					<div class="card text-white card-has-bg click-col" :style="`background-image:url('https://${post.fields.heroImage.fields.file.url}');`">
 					<img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
 					<div class="card-img-overlay d-flex flex-column">
 						<div class="card-body">

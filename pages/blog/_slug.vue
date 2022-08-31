@@ -65,7 +65,7 @@
 					<a href="../#blog"><i class='bx bx-left-arrow-alt'></i> Back to Home</a>
 				</div>
 				<div class="back float-end">
-					<nuxt-link to="/blog">All Posts <i class='bx bx-right-arrow-alt' ></i></nuxt-link>
+					<a href="/blog">All Posts <i class='bx bx-right-arrow-alt' ></i></a>
 				</div>
 			</div>
 			<div class="container">
