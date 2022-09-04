@@ -41,6 +41,11 @@
 					font-weight: 700;
 					font-family: 'Ubuntu', sans-serif;
 				}
+				h4{
+					margin-top: 2rem;
+					font-weight: 700;
+					font-family: 'Ubuntu', sans-serif;
+				}
 				p{
 					font-family: 'Roboto Mono', monospace;
 					line-height: 31px;

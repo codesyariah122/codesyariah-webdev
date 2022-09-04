@@ -20,7 +20,7 @@
 								<div class="social-links">
 									<a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
 									<a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-									<a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+									<a :href="`https://www.instagram.com/${profiles.fields.instagram}`" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
 									<a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
 									<a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
 								</div>
@@ -30,14 +30,14 @@
 							<div class="info-box mt-4">
 								<i class="bx bx-envelope"></i>
 								<h3>Email Me</h3>
-								<p>{{profiles.fields.email}}</p>
+								<a :href="`mailto:${profiles.fields.email}`" target="_blank">{{profiles.fields.email}}</a>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="info-box mt-4">
 								<i class="bx bx-phone-call"></i>
 								<h3>Call Me</h3>
-								<p>{{profiles.fields.phone}}</p>
+								<a :href="`https://wa.me/${profiles.fields.phone}?text=I'm%20interested%20in%20your%20product%20for%20sale`" target="_blank">{{profiles.fields.phone}}</a>
 							</div>
 						</div>
 					</div>

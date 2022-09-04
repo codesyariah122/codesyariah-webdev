@@ -2,7 +2,7 @@
 	<section id="about" class="about">
 		<div class="container">
 			<div class="section-title">
-				<span>About Me</span>
+				<span>About</span>
 				<h2>About Me</h2>
 				<article v-html="$md.render(profiles.fields.about)"></article>
 			</div>
