@@ -115,6 +115,13 @@
 		head() {
 			return {
 				title: this.post.fields.title,
+        meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.fields.title
+        }
+        ]
 			};
 		}
 	}
