@@ -20,12 +20,12 @@
 		head: {
 			link: [
 			{
-				rel: 'stylesheet', href: 'https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'
+				rel: 'stylesheet', href: 'https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css', ssr: false
 			}
 			],
 			script: [
 			{
-				src: '/assets/js/main.js'
+				src: '/assets/js/main.js', ssr: false
 			}
 			],
 		}

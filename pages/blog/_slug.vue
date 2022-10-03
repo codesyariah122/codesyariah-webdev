@@ -1,7 +1,7 @@
 <style lang="scss">
-	.inner-page{		
+	.inner-page{
 		article{
-			
+
 			h2{
 				font-weight: 800;
 				font-family: 'Ubuntu', sans-serif;
@@ -26,11 +26,11 @@
 	}
 
 	@media (max-width: 768px) {
-		
+
 	}
 
 	@media (max-width: 420px) {
-		.inner-page{		
+		.inner-page{
 			article{
 				h2{
 					font-weight: 800;
@@ -114,7 +114,7 @@
 		},
 		head() {
 			return {
-				title: this.post.fields.title
+				title: this.post.fields.title,
 			};
 		}
 	}

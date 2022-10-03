@@ -16,11 +16,11 @@
 	export default {
 		head: {
 			link: [
-			
+
 			],
 			script: [
 			{
-				src: '/assets/js/main.js'
+				src: '/assets/js/main.js', ssr: false
 			}
 			],
 		}
