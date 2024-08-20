@@ -27,7 +27,7 @@
 <style>
   .whatsapp-float {
     position: fixed;
-    bottom: 250px;
+    bottom: 180px;
     right: 20px;
     z-index: 1000;
   }
