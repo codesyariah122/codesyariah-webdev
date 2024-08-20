@@ -325,7 +325,7 @@
 					id: 3,
 					title: 'Pesona Nirwana Waterpark',
 					categories: 'business',
-					image: require('~/assets/img/website-category/business-page-1.png'),
+					image: require('~/assets/img/website-category/pesona-nirwana-waterpark3.png'),
 					description: 'Pesona Nirwana Waterpark merupakan website untuk client kami yang menjalankan bisnis di bidang pariwisata waterpark di kabupaten Bandung',
 					price: 3000000,
 					link: 'https://pesonanirwanawaterpark.com/'

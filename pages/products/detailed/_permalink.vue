@@ -68,7 +68,7 @@
 						<div class="buttons d-flex flex-row mt-3 gap-3">
 							<!-- <nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link> -->
 
-							<button @click="openOrder" class="btn btn-outline-success">Order Via Whatsapp <i class='bx bxl-whatsapp'></i></button>
+							<button @click="whatsOrder" class="btn btn-outline-success">Order Via Whatsapp <i class='bx bxl-whatsapp'></i></button>
 						</div>
 						<div class="search-option">
 							<i class='bx bx-search-alt-2 first-search'></i>
@@ -120,6 +120,12 @@
 			},
 
 			openOrder(){
+				console.log("Buka")
+				$crisp.push(['do', 'chat:show']);
+				$crisp.push(['do', 'chat:open']);
+			},
+
+			whatsOrder(){
 				const message = `Saya ingin order jasa pembuatan website ${this.product.name}`;
 				const whatsappNumber = '6285971630027'; // Ganti dengan nomor WhatsApp Anda
 				const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
