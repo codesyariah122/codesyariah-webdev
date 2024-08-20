@@ -181,7 +181,7 @@
 			<div class="section-title">
 				<span>Gallery</span>
 				<h2>Projects Gallery</h2>
-				<p class="text-center">Gallery project yang beberapa waktu lalu telah kami kerjakan.</p>
+				<p class="text-center">Gallery project yang beberapa waktu lalu telah rampung  kami kerjakan.</p>
 			</div>
 			
 			<ul id="portfolio-flters" :class="`${$device.isDesktop ? 'd-inline-flex justify-content-center' : 'd-flex align-content-stretch flex-wrap'}`">
@@ -209,7 +209,7 @@
 						:data-description="list.description">
 						<i class="bx bx-plus"></i>
 					</a>
-					<a :href="list.image" class="details-link" title="More Details">
+					<a :href="list.link" class="details-link" title="More Details" target="_blank">
 						<i class="bx bx-link"></i>
 					</a>
 				</div>
@@ -292,12 +292,14 @@
 
 			CategoriesWebsite(){
 				this.categories = [
-				{id:1, name: 'landing', title: 'Landing Page'},
-				{id:2, name: 'business', title: 'Business'},
-				{id:3, name: 'blog', title: 'Blog/News'},
-				{id:4, name: 'ecommerce', title: 'Ecommerce'},
-				{id:5, name: 'portfolio', title: 'Portfolio/Branding'}
-				];
+					{id:1, name: 'landing', title: 'Landing Page'},
+					{id:2, name: 'business', title: 'Business'},
+					{id:2, name: 'professional', title: 'Professional'},
+					{id:3, name: 'blog', title: 'Blog/News'},
+					{id:4, name: 'eccommerce', title: 'Eccommerce'},
+					{id:5, name: 'portfolio', title: 'Portfolio/Branding'},
+					{id:6, name: 'sales', title: 'Sales Promotion'}
+					];
 			},
 			WebsiteCategorySample(){
 				this.lists = [
@@ -307,74 +309,91 @@
 					categories: 'landing',
 					image: require('~/assets/img/website-category/landing-page-1.jpg'),
 					description: 'Landing page website ini berfokus langsung pada target alur bisnis dengan penyajian design penuh artistik dan minimalist, dengan fitur-fitur lengkap ditambah media content yang dapat menyesuaikan dengan format yang anda mau dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
-					price: 250000
+					price: 1500000,
+					link: ''
 				},
 				{
 					id: 2,
-					title: 'Marshmallow Landing Page',
+					title: 'Nia Bakery - Official',
 					categories: 'landing',
-					image: require('~/assets/img/website-category/landing-page-2.jpg'),
-					description: 'Design yang simple dan elegan menjadi keunggulan karya kami yang satu ini, dengan tambahan fitur media content yang siap kami bangun, dan fokus utama yaitu menambah kredibelitas dan awerness sehingga menjadikan booster bagi perkembangan bisnis dan product bisnis anda, dan untuk kebutuhan bisnis logic yang bisa anda di sesuikan dengan request yang telah dikomunikasikan saat konsultasi bersama team kami.',
-					price: 250000
+					image: require('~/assets/img/website-category/nia-bakery2.png'),
+					description: 'Nia Bakery merupakan sebuah gerai toko kue yang mempunyai produk unik nan langka yang saat ini sudah jarang di temui yaitu bolu jadul, dengan design website simple yang terfokus pada produk unggulan kami sajikan dalam satu rasa yang membuat orang penasaran untuk membeli produk dari gerai Nia Bakery secara langsung order di website.',
+					price: 1500000,
+					link: 'https://nia-bakery.vercel.app/'
 				},
 				{
 					id: 3,
-					title: 'ISO Business Website',
+					title: 'Pesona Nirwana Waterpark',
 					categories: 'business',
 					image: require('~/assets/img/website-category/business-page-1.png'),
-					description: 'Dengan design clean dan fokus pada target project dan alur bisnis client, menambah daya jual dan kredibelitas bisnis juga product bisnis anda dalam media pemasaran yang kuat dan professional mempresentasikan produk bisnis secara elegan, dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
-					price: 3500000
+					description: 'Pesona Nirwana Waterpark merupakan website untuk client kami yang menjalankan bisnis di bidang pariwisata waterpark di kabupaten Bandung',
+					price: 3000000,
+					link: 'https://pesonanirwanawaterpark.com/'
 				},
 				{
 					id: 4,
-					title: 'Glorified Business Website',
-					categories: 'business',
-					image: require('~/assets/img/website-category/business-page-2.png'),
-					description: 'Design website yang menyajikan kualitas UI/UX yang sedap dipandang, mempresentasikan target bisnis anda dengan sentuhan nuansa yang santai namun tetap menjaga fokus utama pada bisnis anda disertai tools-tools bisnis yang siap kami bangun untuk memanage bisnis anda, management product bisnis dan bisnis logic yang bisa di sesuikan request yang telah dikomunikasikan saat konsultasi bersama team kami',
-					price: 3000000
+					title: 'Rumah Brankas',
+					categories: 'eccommerce',
+					image: require('~/assets/img/website-category/rumahbrankas3.png'),
+					description: 'Website yang di design sebagai eccommerce langsung dari client kami yang menjalankan lini bisnis di bidang alat-alat safe lock, dengan design CTA yang berfokus pada ketertarikan customer untuk membeli product secara online di website yang kami buat',
+					price: 30000000,
+					link: 'https://rumahbrankas.com/'
 				},
 				{
 					id: 5,
-					title: 'Floral WebBlog',
-					categories: 'blog',
-					image: require('~/assets/img/website-category/blog-1.webp'),
-					description: 'Bagi kalangan yang memiliki hoby jurnalistik ataupun berkarir di bidang jurnalistik dan hoby menulis independent dalam media pribadi, Web Blog ini dibangun dengan tujuan menambah daya jual dari sisi design dan artistik sehingga para pembaca akan lebih fokus pada karya-karya tulisan yang disajikan sang penulis.',
-					price: 1500000
-				},
-				{
-					id: 5,
-					title: 'Web Stories',
-					categories: 'blog',
-					image: require('~/assets/img/website-category/blog-2.webp'),
-					description: 'Web stories menjadi project kami di category Website Blog/News, dengan penyajian design yang juga penuh artistik dan nilai jual dengan tidak mengurangi fokus utama yaitu pada karya tulisan dan tema tulisan karya sang penulis sehingga diharapkan dapat menambah nilai jual terhadap pembaca dari sisi artistik dalam lingkup karya-karya sang penulis.',
-					price: 1500000
+					title: 'Evadne Beauty',
+					categories: 'eccommerce',
+					image: require('~/assets/img/website-category/evadne3.png'),
+					description: 'Sebuah perusahaan kosmetik yang sedang berkembang di jakarta menghubungi kami untuk dibuatkan website eccomerce dengan skalan to point system dimana proses penghubung akan di lakukan dengan cepat sesaat customer tertarik dengan produk, berdasarkan detail dan harga dari produk tersebut.',
+					price: 15000000,
+					link: 'https://evadnebeauty.com/'
 				},
 				{
 					id: 6,
-					title: 'Flexstar Business',
-					categories: 'eccomerce',
-					image: require('~/assets/img/website-category/business-website.jpg'),
-					description: 'Bagi anda pelaku bisnis baik itu Industri, Home Industries ataupun UMKM, jika dalam proses branding dan pemasaran product sedikit mengalami kesulitan mencari media digital untuk kebutuhan branding, pemasaran dan management product bisnis. Sehingga menjadi solusi terbaik bagi perkembangan bisnis para pelaku bisnis. Dan untuk kebutuhan bisnis logic yang bisa diesuaikan saat konsultasi gratis bersama team kami, Bagi anda pelaku bisnis yang ingin menambah aspek pemasaran secara masif melalui media digital akan cocok dengan package jasa pembuatan website kategori ecommerce ini.',
-					price: 5000000
+					title: 'Toyota Djakarta',
+					categories: 'sales',
+					image: require('~/assets/img/website-category/toyota-djakarta1.png'),
+					description: 'Sales promosi akan sangat mudah menjual unit sebagai target perusahaan, proses pemasaran produk semakin mudah dan meyakinkan calon pembeli, dengan media website sales semakin gencar menjual unitnya dan dapat meraih target omset yang memuaskan.',
+					price: 2500000,
+					link: 'https://toyota-djakarta.com/'
 				},
 				{
 					id: 7,
-					title: 'Responsive Clean Portfolio',
-					categories: 'portfolio',
-					image: require('~/assets/img/website-category/website-portfolio.jpg'),
-					description: 'Bagi anda seorang professional atau freelancer dan atau sebuah company yang ingin menampilkan nilai jual sebagai daya tarik terhadap client bisnis maupun untuk menampilkan keunggulan dari product bisnis company anda, karena portfolio ini di design dengan karakter minimalist ditambah fitur media konten yang bisa anda sesuaikan sendiri ataupun dengan layanan konsultasi gratis kami anda bisa mendalaminya, untuk menyesuaikan dengan format yang anda inginkan.',
-					price: 150000
+					title: 'Toko Kelontong',
+					categories: 'business',
+					image: require('~/assets/img/website-category/tokokelonton1.png'),
+					description: 'Toko Kelontong merupakan website company profile yang juga di fungsikan sebagai eccommerce bagi produk retail mereka , target market yang terencana dan akurat menjadi tujuan pembuatan website ini.',
+					price: 1500000,
+					link: 'https://toko-kelontong.vercel.app/'
+				},
+				{
+					id: 8,
+					title: 'Trans Holiday Bandung',
+					categories: 'business',
+					image: require('~/assets/img/website-category/transholiday.png'),
+					description: 'Dekade ini sedang semarak sekali kegiatan pariwisata dan kegiatan pariwisata tentunya harus di tunjang juga oleh pengelola travel travel yang terbaik dan salah satu client kami ada di lini bisnis travel satu ini bernama trans holiday bandung',
+					price: 7000000,
+					link: ''
+				},
+				{
+					id: 9,
+					title: 'D & N Tour Travel And Rental',
+					categories: 'professional',
+					image: require('~/assets/img/website-category/dntourtravel.png'),
+					description: 'Lagi lagi client kami yang juga bergerak di bidang jasa angkutan dan sewa mobil memang kegiatan bisnis di bidang perjalanan dan akomodasi kendaraan memang sangat memerlukan media promosi handal dan professional dengan mengembangkan target market yang lebih luas lagi',
+					price: 3000000,
+					link: ''
 				}
 				]
-			}
-		},
+}
+},
 
-		computed: {
-			filterWebLists(){
-				if(!this.filter) return this.lists 
+computed: {
+	filterWebLists(){
+		if(!this.filter) return this.lists 
 
-					return this.webs
-			}
-		}
+			return this.webs
 	}
+}
+}
 </script>

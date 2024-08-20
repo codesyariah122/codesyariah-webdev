@@ -2,8 +2,6 @@
 	<section id="hero" :style="`${$device.isDesktop ? bg_desktop : bg_mobile}`">
 		<div class="hero-container">
 			<h1>{{abouts.name}} Storefront</h1>
-			<h2 class="text-center" v-html="abouts.description"></h2>
-			<img :src="logo" class="mb-3" style="width: 50px!important;">
 			<a href="#product" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
 		</div>
 	</section>

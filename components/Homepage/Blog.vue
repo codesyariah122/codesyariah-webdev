@@ -50,6 +50,10 @@
 			posts() {
 				return this.$store.state.posts
 			}
+		},
+
+		mounted() {
+			this.$store.dispatch('getPosts');
 		}
 	}
 </script>

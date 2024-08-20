@@ -1,6 +1,9 @@
-const contentful = require("contentful");
+import { createClient } from 'contentful';
 
-module.exports = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE,
-  accessToken: process.env.CONTENTFUL_ACCESSTOKEN
+const client = createClient({
+  space: process.env.NUXT_APP_CONTENTFUL_SPACE,
+  accessToken: process.env.NUXT_APP_CONTENTFUL_ACCESS_TOKEN,
+  environment: process.env.NUXT_APP_CONTENTFUL_ENVIRONMENT || 'master'
 });
+
+export default client;

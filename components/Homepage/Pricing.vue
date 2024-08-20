@@ -3,20 +3,11 @@
 
 	.truncate2 {
 		display: -webkit-box;
-		-webkit-line-clamp: var(--line-clamp, 2);
+		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
-		word-break: var(--word-break, "none");
 		overflow: hidden;
-		hyphens: auto;
-		text-align: var(--align, left);
-		--is-single-line: 1 - Clamp(0, Calc(var(--line-clamp) - 1), var(--line-clamp));
-		--delay: Calc(-1s * (var(--is-single-line, 1) - 1));
-		animation: states 1s var(--delay) paused;
-		@keyframes states {
-			0% {
-				word-break: break-all;
-			}
-		}
+		text-overflow: ellipsis;
+		white-space: normal;
 	}
 	.pricing .box {
 		padding: 40px 20px;
@@ -125,28 +116,21 @@
 			<div class="section-title">
 				<span>Pricing</span>
 				<h2>Check Our Pricing</h2>
-				<p class="text-center">Product kategori kami selalu menghadirkan solusi terbaik bagi alur dan strategy perjalanan bisnis anda.</p>
+				<p class="text-center">Product digital kami selalu menghadirkan solusi terbaik bagi alur dan strategy perjalanan bisnis anda.</p>
 			</div>
 
-			<div class="row gy-4" data-aos="fade-left">
-
-				<div v-for="product in products" class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+			<div class="row justify-content-center gy-4" data-aos="fade-left">
+				<div v-for="product in products" class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
 					<div class="box">
 						<span class="featured">Featured</span>
 						<h3 style="color: #07d5c0;">{{product.categories[0].name}}</h3>
 						<div class="price"><sup>{{product.price.formatted_with_code}}</sup></div>
 						<div v-for="category in product.categories">
 							<div v-for="icon in pricingicons">
-								<img v-if="icon.name === category.name" :src="icon.icon" class="img-fluid" alt="">
+								<img v-if="icon.name === category.slug" :src="icon.icon" class="img-fluid" alt="">
 							</div>
 						</div>
-						<blockquote class="blockquote-footer text-truncate" style="max-width: 550px;" v-html="product.description"></blockquote>
-						<!-- <div class="d-grid gap-2">
-							<nuxt-link :to="`/products/detailed/${product.id}`" class="btn btn-warning text-white rounded-pill btn-sm mb-3">
-								<i class='bx bxs-chalkboard'></i> See Detailed
-							</nuxt-link>
-						</div> -->
-
+						
 						<div class="d-grid gap-2">
 							<a :href="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
 								<i class='bx bx-basket'></i> See Detailed
@@ -170,23 +154,18 @@
 				pricingicons: [
 				{
 					id: 1,
-					name: 'landing',
+					name: 'ekonomis',
 					icon: require('~/assets/img/pricing/landing.png')
 				},
 				{
 					id: 2,
-					name: 'ecommerce',
+					name: 'business',
 					icon: require('~/assets/img/pricing/ecommerce.png')
 				},
 				{
 					id: 3,
-					name: 'branding',
+					name: 'professional',
 					icon: require('~/assets/img/pricing/branding.png')
-				},
-				{
-					id: 4,
-					name: 'blogging',
-					icon: require('~/assets/img/pricing/blogging.png')
 				}
 				]
 			}

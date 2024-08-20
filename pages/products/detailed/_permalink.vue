@@ -1,3 +1,19 @@
+<style>
+/* CSS untuk thumbnail images */
+#thumbnail {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+	gap: 10px; /* Jarak antar gambar */
+	max-height: 280px; /* Maksimum tinggi thumbnail container */
+	overflow-y: auto; /* Tambahkan scrollbar jika diperlukan */
+}
+
+#thumbnail img {
+	width: 100%;
+	object-fit: cover; /* Menjaga rasio gambar */
+}
+</style>
+
 <template>
 	<div id="product" class="container mt-5 mb-5">
 		<div class="card mb-5">
@@ -46,7 +62,13 @@
 						<div class="buttons d-flex flex-row mt-5 gap-3">
 							<!-- <nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link> -->
 
-							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Booking Order</button>
+							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Live Order Now</button>
+						</div>
+
+						<div class="buttons d-flex flex-row mt-3 gap-3">
+							<!-- <nuxt-link :to="`/products/cart/${product.permalink}`" class="btn btn-dark"><i class='bx bx-cart-add'></i> Add To Cart</nuxt-link> -->
+
+							<button @click="openOrder" class="btn btn-outline-success">Order Via Whatsapp <i class='bx bxl-whatsapp'></i></button>
 						</div>
 						<div class="search-option">
 							<i class='bx bx-search-alt-2 first-search'></i>
@@ -98,9 +120,10 @@
 			},
 
 			openOrder(){
-				console.log("Buka")
-				$crisp.push(['do', 'chat:show']);
-				$crisp.push(['do', 'chat:open']);
+				const message = `Saya ingin order jasa pembuatan website ${this.product.name}`;
+				const whatsappNumber = '6285971630027'; // Ganti dengan nomor WhatsApp Anda
+				const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+				window.open(url, '_blank');
 			}
 		}
 	}

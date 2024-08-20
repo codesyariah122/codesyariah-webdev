@@ -27,6 +27,8 @@
       const {data: products} = await $commerce.products.list()
       const {data: categories} = await $commerce.categories.list()
 
+      console.log(categories)
+
       return {
         products,
         categories
