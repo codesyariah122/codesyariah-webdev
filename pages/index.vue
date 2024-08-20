@@ -15,6 +15,12 @@
 
     <HomepageContact/>
 
+    <div class="whatsapp-float">
+      <a :href="whatsappUrl" target="_blank" class="whatsapp-button">
+        <i class='bx bxl-whatsapp'></i>
+      </a>
+    </div>
+
   </main>
 </template>
 
@@ -31,7 +37,8 @@
 
       return {
         products,
-        categories
+        categories,
+        whatsappUrl: 'https://wa.me/085971630027?text=Hallo%20codesyariah%20web%20development%2C%20saya%20ingin%20bertanya%20seputar%20jasa%20pembuatan%20website%20.'
       }
     },
 
