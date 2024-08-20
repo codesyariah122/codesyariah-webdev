@@ -24,6 +24,33 @@
   </main>
 </template>
 
+<style>
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* WhatsApp Green */
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-decoration: none;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #128C7E; /* Darker Green */
+  }
+</style>
+
 <script>
   export default {
     name: 'IndexPage',
