@@ -160,7 +160,7 @@
         }
       },
       whatsOrder(){
-        const message = `Saya ingin order PROMO jasa pembuatan website ${this.product.name}`;
+        const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
         const whatsappNumber = '6285971630027'; // Ganti dengan nomor WhatsApp Anda
         const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
