@@ -298,18 +298,19 @@
 					{id:3, name: 'blog', title: 'Blog/News'},
 					{id:4, name: 'eccommerce', title: 'Eccommerce'},
 					{id:5, name: 'portfolio', title: 'Portfolio/Branding'},
-					{id:6, name: 'sales', title: 'Sales Promotion'}
+					{id:6, name: 'sales', title: 'Sales Promotion'},
+					{id:7, name: 'education', title: 'Education'}
 					];
 			},
 			WebsiteCategorySample(){
 				this.lists = [
 				{
 					id: 1,
-					title: 'Hiro Landing Page',
-					categories: 'landing',
-					image: require('~/assets/img/website-category/landing-page-1.jpg'),
+					title: 'Al Azhar - Syifa Budi Parahyangan',
+					categories: 'education',
+					image: require('~/assets/img/website-category/al-azhar1.png'),
 					description: 'Landing page website ini berfokus langsung pada target alur bisnis dengan penyajian design penuh artistik dan minimalist, dengan fitur-fitur lengkap ditambah media content yang dapat menyesuaikan dengan format yang anda mau dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
-					price: 1500000,
+					price: 5000000,
 					link: ''
 				},
 				{
