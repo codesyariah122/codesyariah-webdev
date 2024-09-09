@@ -304,15 +304,7 @@
 			},
 			WebsiteCategorySample(){
 				this.lists = [
-				{
-					id: 1,
-					title: 'Al Azhar - Syifa Budi Parahyangan',
-					categories: 'education',
-					image: require('~/assets/img/website-category/al-azhar1.png'),
-					description: 'Landing page website ini berfokus langsung pada target alur bisnis dengan penyajian design penuh artistik dan minimalist, dengan fitur-fitur lengkap ditambah media content yang dapat menyesuaikan dengan format yang anda mau dan untuk kebutuhan bisnis logic yang bisa di sesuikan request yang telah di proses saat konsultasi bersama team kami.',
-					price: 5000000,
-					link: ''
-				},
+				
 				{
 					id: 2,
 					title: 'Nia Bakery - Official',
@@ -331,33 +323,8 @@
 					price: 3000000,
 					link: 'https://pesonanirwanawaterpark.com/'
 				},
-				{
-					id: 4,
-					title: 'Rumah Brankas',
-					categories: 'eccommerce',
-					image: require('~/assets/img/website-category/rumahbrankas3.png'),
-					description: 'Website yang di design sebagai eccommerce langsung dari client kami yang menjalankan lini bisnis di bidang alat-alat safe lock, dengan design CTA yang berfokus pada ketertarikan customer untuk membeli product secara online di website yang kami buat',
-					price: 30000000,
-					link: 'https://rumahbrankas.com/'
-				},
-				{
-					id: 5,
-					title: 'Evadne Beauty',
-					categories: 'eccommerce',
-					image: require('~/assets/img/website-category/evadne3.png'),
-					description: 'Sebuah perusahaan kosmetik yang sedang berkembang di jakarta menghubungi kami untuk dibuatkan website eccomerce dengan skalan to point system dimana proses penghubung akan di lakukan dengan cepat sesaat customer tertarik dengan produk, berdasarkan detail dan harga dari produk tersebut.',
-					price: 15000000,
-					link: 'https://evadnebeauty.com/'
-				},
-				{
-					id: 6,
-					title: 'Toyota Djakarta',
-					categories: 'sales',
-					image: require('~/assets/img/website-category/toyota-djakarta1.png'),
-					description: 'Sales promosi akan sangat mudah menjual unit sebagai target perusahaan, proses pemasaran produk semakin mudah dan meyakinkan calon pembeli, dengan media website sales semakin gencar menjual unitnya dan dapat meraih target omset yang memuaskan.',
-					price: 2500000,
-					link: 'https://toyota-djakarta.com/'
-				},
+				
+				
 				{
 					id: 7,
 					title: 'Toko Kelontong',
@@ -367,15 +334,7 @@
 					price: 1500000,
 					link: 'https://toko-kelontong.vercel.app/'
 				},
-				{
-					id: 8,
-					title: 'Trans Holiday Bandung',
-					categories: 'business',
-					image: require('~/assets/img/website-category/transholiday.png'),
-					description: 'Dekade ini sedang semarak sekali kegiatan pariwisata dan kegiatan pariwisata tentunya harus di tunjang juga oleh pengelola travel travel yang terbaik dan salah satu client kami ada di lini bisnis travel satu ini bernama trans holiday bandung',
-					price: 7000000,
-					link: ''
-				},
+				
 				{
 					id: 9,
 					title: 'D & N Tour Travel And Rental',
