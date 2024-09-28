@@ -120,12 +120,12 @@
 			</div>
 
 			<div class="row justify-content-center gy-4" data-aos="fade-left">
-				<div v-for="product in products" class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+				<div v-if="products?.length > 0" v-for="product in products" class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
 					<div class="box">
 						<span class="featured">Featured</span>
-						<h3 style="color: #07d5c0;">{{product.categories[0].name}}</h3>
-						<div class="price"><sup>{{product.price.formatted_with_code}}</sup></div>
-						<div v-for="category in product.categories">
+						<h3 style="color: #07d5c0;">{{product?.categories[0]?.name}}</h3>
+						<div class="price"><sup>{{product?.price?.formatted_with_code}}</sup></div>
+						<div v-for="category in product?.categories">
 							<div v-for="icon in pricingicons">
 								<img v-if="icon.name === category.slug" :src="icon.icon" class="img-fluid" alt="">
 							</div>
