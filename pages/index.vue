@@ -123,8 +123,8 @@
     layout: 'default',
 
     async asyncData({ $commerce, $axios, $config }) {
-      const { data: products } = await $commerce.products.list();
-      const { data: categories } = await $commerce.categories.list();
+      const { data: products } = await $commerce?.products?.list();
+      const { data: categories } = await $commerce?.categories?.list();
 
       console.log(categories);
 
