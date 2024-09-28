@@ -80,7 +80,7 @@
     text-align: center;
     max-width: 500px;
     width: 90%;
-    max-height: 100%;
+    max-height: 80%;
     overflow-y: auto; /* Enable scroll if content overflows */
     position: relative; /* Position for close button */
   }

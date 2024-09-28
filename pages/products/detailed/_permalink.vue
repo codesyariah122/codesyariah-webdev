@@ -8,7 +8,7 @@
 							<li class="breadcrumb-item" aria-current="page">
 								{{ product?.name }}
 							</li>
-							<li class="breadcrumb-item"><a href="#pricing">
+							<li class="breadcrumb-item"><a href="/#pricing">
 								Back to pricelist
 							</a></li>
 						</ol>
@@ -81,11 +81,11 @@
 					price: { formatted_with_code: 'IDR 200,000' },
 					name: 'Produk Ekonomis',
 					description: 'Produk Ekonomis dirancang khusus untuk Anda yang ingin mendapatkan kualitas terbaik dengan budget yang terjangkau. Dengan bahan berkualitas dan desain yang fungsional, produk ini cocok untuk penggunaan sehari-hari. Anda tidak perlu mengorbankan kebutuhan tanpa harus mengeluarkan biaya berlebih. Ideal untuk individu atau keluarga yang mencari solusi praktis tanpa menguras kantong.',
-					image: { url: '/assets/img/website-category/landing-page1.jpg' },
+					image: { url: require('~/assets/img/website-category/landing-page1.jpg') },
 					assets: [
-						{ id: 1, url: '/assets/img/website-category/landing-page-1.jpg' },
-						{ id: 2, url: '/assets/img/website-category/landing-page-2.jpg' },
-						{ id: 3, url: '/assets/img/website-category/draet-diet-consult1.png' },
+						{ id: 1, url: require('~/assets/img/website-category/landing-page-1.jpg') },
+						{ id: 2, url: require('~/assets/img/website-category/landing-page-2.jpg') },
+						{ id: 3, url: require('~/assets/img/website-category/draet-diet-consult1.png') },
 						],
 				},
 				{
@@ -94,11 +94,11 @@
 					price: { formatted_with_code: 'IDR 500,000' },
 					name: 'Produk Profesional',
 					description: 'Produk Bisnis hadir untuk mendukung kebutuhan profesional Anda. Dirancang dengan fitur unggulan dan material premium, produk ini membantu meningkatkan efisiensi dan produktivitas di lingkungan kerja. Cocok untuk perusahaan kecil hingga besar yang ingin memberikan nilai tambah kepada klien dan karyawan. Dengan desain elegan dan performa handal, Produk Bisnis adalah investasi yang tepat untuk kesuksesan usaha Anda.',
-					image: { url: '/assets/img/website-category/business-page-2.png' },
+					image: { url: '~/assets/img/website-category/business-page-2.png' },
 					assets: [
-						{ id: 1, url: '/assets/img/website-category/business-page-2.png' },
-						{ id: 2, url: '/assets/img/website-category/pesona-nirwana-waterpark1.png' },
-						{ id: 3, url: '/assets/img/website-category/saved5.png' },
+						{ id: 1, url: '~/assets/img/website-category/business-page-2.png' },
+						{ id: 2, url: '~/assets/img/website-category/pesona-nirwana-waterpark1.png' },
+						{ id: 3, url: '~/assets/img/website-category/saved5.png' },
 						],
 				},
 				{
@@ -107,11 +107,11 @@
 					price: { formatted_with_code: 'IDR 1,000,000' },
 					name: 'Produk Bisnis',
 					description: 'Produk Profesional adalah pilihan sempurna untuk Anda yang menginginkan kualitas tanpa kompromi. Didesain untuk memenuhi standar tertinggi dalam industri, produk ini menawarkan kinerja luar biasa dan fitur inovatif. Sangat ideal untuk para profesional yang membutuhkan alat yang dapat diandalkan dalam setiap proyek. Dengan Produk Profesional, Anda akan siap menghadapi tantangan dengan percaya diri, menghasilkan karya terbaik setiap saat.',
-					image: { url: '/assets/img/website-category/al-azhar2.png' },
+					image: { url: '~/assets/img/website-category/al-azhar2.png' },
 					assets: [
-						{ id: 1, url: '/assets/img/website-category/al-azhar2.png' },
-						{ id: 2, url: '/assets/img/website-category/dntourtravel.png' },
-						{ id: 3, url: '/assets/img/website-category/business-website.jpg' },
+						{ id: 1, url: '~/assets/img/website-category/al-azhar2.png' },
+						{ id: 2, url: '~/assets/img/website-category/dntourtravel.png' },
+						{ id: 3, url: '~/assets/img/website-category/business-website.jpg' },
 						],
 				},
 				],
