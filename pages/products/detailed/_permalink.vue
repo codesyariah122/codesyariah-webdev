@@ -98,7 +98,7 @@
 					assets: [
 						{ id: 1, url: require('~/assets/img/website-category/business-page-2.png') },
 						{ id: 2, url: require('~/assets/img/website-category/pesona-nirwana-waterpark1.png') },
-						{ id: 3, url: require('~/assets/img/website-category/saved5.png') },
+						{ id: 3, url: require('~/assets/img/website-category/saved5.jpg') },
 						],
 				},
 				{
