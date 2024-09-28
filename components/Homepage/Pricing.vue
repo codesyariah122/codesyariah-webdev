@@ -124,7 +124,7 @@
 					<div class="box">
 						<span class="featured">Featured</span>
 						<h3 style="color: #07d5c0;">{{product?.categories[0]?.name}}</h3>
-						<div class="price"><sup>{{product?.price?.formatted_with_code}}</sup></div>
+						<!-- <div class="price"><sup>{{product?.price?.formatted_with_code}}</sup></div> -->
 						<div v-for="category in product?.categories">
 							<div v-for="icon in pricingicons">
 								<img v-if="icon.name === category.slug" :src="icon.icon" class="img-fluid" alt="">

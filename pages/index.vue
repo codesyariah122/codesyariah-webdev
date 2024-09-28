@@ -8,7 +8,7 @@
 
     <HomepageTestimonial/>
 
-    <HomepagePricing :products="products" :categories="categories" />
+    <!-- <HomepagePricing :products="products" :categories="categories" /> -->
 
     <HomepageAbout/>
 
@@ -123,14 +123,14 @@
     layout: 'default',
 
     async asyncData({ $commerce, $axios, $config }) {
-      const { data: products } = await $commerce?.products?.list();
-      const { data: categories } = await $commerce?.categories?.list();
+      // const { data: products } = await $commerce?.products?.list();
+      // const { data: categories } = await $commerce?.categories?.list();
 
-      console.log(categories);
+      // console.log(categories);
 
       return {
-        products,
-        categories,
+        // products,
+        // categories,
         whatsappUrl: 'https://wa.me/085971630027?text=Hallo%20codesyariah%20web%20development%2C%20saya%20ingin%20bertanya%20seputar%20jasa%20pembuatan%20website%20.',
       };
     },
