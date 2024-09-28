@@ -143,7 +143,7 @@
 			},
 			whatsOrder() {
 				const message = `Saya ingin order jasa pembuatan website ${this.product.name}`;
-				window.open(`https://wa.me/6281380201595?text=${encodeURIComponent(message)}`, '_blank');
+				window.open(`https://wa.me/6285971630027?text=${encodeURIComponent(message)}`, '_blank');
 			}
 		}
 	}
