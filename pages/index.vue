@@ -8,7 +8,7 @@
 
     <HomepageTestimonial/>
 
-    <!-- <HomepagePricing :products="products" :categories="categories" /> -->
+    <HomepagePricing :categories="categories" />
 
     <HomepageAbout/>
 
@@ -137,7 +137,8 @@
 
     data() {
       return {
-        showPopup: true
+        showPopup: true,
+        categories: []
       };
     },
 

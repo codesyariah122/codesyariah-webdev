@@ -1,3 +1,91 @@
+<template>
+	<section id="pricing" class="pricing">
+		<div class="container" data-aos="fade-up">
+			<div class="section-title">
+				<span>Pricing</span>
+				<h2>Check Our Pricing</h2>
+				<p class="text-center">Product digital kami selalu menghadirkan solusi terbaik bagi alur dan strategy perjalanan bisnis anda.</p>
+			</div>
+
+			<div class="row justify-content-center gy-4" data-aos="fade-left">
+				<div v-if="products?.length > 0" v-for="product in products" :key="product.id" class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
+					<div class="box">
+						<span class="featured">Featured</span>
+						<h3 style="color: #07d5c0;">{{ product.categories[0]?.name }}</h3>
+						<!-- <div class="price">
+							<sup>{{ product.price.formatted_with_code }}</sup>
+						</div> -->
+						<div v-for="category in product.categories" :key="category.id">
+							<div v-for="icon in pricingicons" :key="icon.id">
+								<img v-if="icon.name === category.slug" :src="icon.icon" class="img-fluid" alt="">
+							</div>
+						</div>
+						<div class="d-grid gap-2">
+							<a :href="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
+								<i class='bx bx-basket'></i> See Detailed
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</template>
+
+<script>
+	export default {
+		props: ['categories', 'carts'],
+
+		data() {
+			return {
+				products: [
+				{
+					id: 1,
+					permalink: 'product-1',
+					price: { formatted_with_code: 'IDR 200,000' },
+					categories: [
+						{ id: 1, name: 'Ekonomis', slug: 'ekonomis' },
+						],
+				},
+				{
+					id: 2,
+					permalink: 'product-2',
+					price: { formatted_with_code: 'IDR 500,000' },
+					categories: [
+						{ id: 1, name: 'Professional', slug: 'professional' },
+						],
+				},
+				{
+					id: 3,
+					permalink: 'product-3',
+					price: { formatted_with_code: 'IDR 1,000,000' },
+					categories: [
+						{ id: 2, name: 'Business', slug: 'business' },
+						],
+				},
+				],
+				pricingicons: [
+				{
+					id: 1,
+					name: 'ekonomis',
+					icon: require('~/assets/img/pricing/landing.png'),
+				},
+				{
+					id: 2,
+					name: 'business',
+					icon: require('~/assets/img/pricing/ecommerce.png'),
+				},
+				{
+					id: 3,
+					name: 'professional',
+					icon: require('~/assets/img/pricing/branding.png'),
+				},
+				],
+			};
+		},
+	};
+</script>
+
 <style lang="css">
 	@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@300;400;700&family=Lobster&family=Montserrat:wght@300;400&family=Roboto+Mono:wght@300;400&family=Ubuntu&display=swap');
 
@@ -9,6 +97,7 @@
 		text-overflow: ellipsis;
 		white-space: normal;
 	}
+
 	.pricing .box {
 		padding: 40px 20px;
 		background: #fff;
@@ -36,7 +125,7 @@
 		font-size: 36px;
 		color: #444444;
 		font-weight: 600;
-		font-family: "Poppins", sans-serif;
+		font-family: 'Poppins', sans-serif;
 	}
 
 	.pricing .price sup {
@@ -82,7 +171,7 @@
 		transition: none;
 		font-size: 16px;
 		font-weight: 400;
-		font-family: "Ubuntu", sans-serif;
+		font-family: 'Ubuntu', sans-serif;
 		font-weight: 600;
 		transition: 0.3s;
 		border: 2px solid #e3e5e6;
@@ -105,70 +194,4 @@
 		background: #4154f1;
 		color: #fff;
 	}
-
 </style>
-
-<template>
-	<section id="pricing" class="pricing">
-
-		<div class="container" data-aos="fade-up">
-
-			<div class="section-title">
-				<span>Pricing</span>
-				<h2>Check Our Pricing</h2>
-				<p class="text-center">Product digital kami selalu menghadirkan solusi terbaik bagi alur dan strategy perjalanan bisnis anda.</p>
-			</div>
-
-			<div class="row justify-content-center gy-4" data-aos="fade-left">
-				<div v-if="products?.length > 0" v-for="product in products" class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-					<div class="box">
-						<span class="featured">Featured</span>
-						<h3 style="color: #07d5c0;">{{product?.categories[0]?.name}}</h3>
-						<!-- <div class="price"><sup>{{product?.price?.formatted_with_code}}</sup></div> -->
-						<div v-for="category in product?.categories">
-							<div v-for="icon in pricingicons">
-								<img v-if="icon.name === category.slug" :src="icon.icon" class="img-fluid" alt="">
-							</div>
-						</div>
-						
-						<div class="d-grid gap-2">
-							<a :href="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
-								<i class='bx bx-basket'></i> See Detailed
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-	</section>
-</template>
-
-<script>
-	export default {
-		props: ['products', 'categories', 'carts'],
-
-		data(){
-			return {
-				pricingicons: [
-				{
-					id: 1,
-					name: 'ekonomis',
-					icon: require('~/assets/img/pricing/landing.png')
-				},
-				{
-					id: 2,
-					name: 'business',
-					icon: require('~/assets/img/pricing/ecommerce.png')
-				},
-				{
-					id: 3,
-					name: 'professional',
-					icon: require('~/assets/img/pricing/branding.png')
-				}
-				]
-			}
-		}
-	}
-</script>
