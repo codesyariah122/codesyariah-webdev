@@ -19,10 +19,10 @@
 				<div class="col-md-6 border-end">
 					<div class="d-flex flex-column justify-content-center">
 						<div class="main_image">
-							<img 
-							v-if="product.image" 
-							:src="product.image.url" 
-							id="main_product_image" 
+							<img
+							v-if="product.image"
+							:src="product.image.url"
+							id="main_product_image"
 							width="350"
 							>
 						</div>
@@ -47,7 +47,7 @@
 							<p v-html="product.description"></p>
 						</div>
 						<!-- <h3>{{ product.price.formatted_with_code }}</h3> -->
-						
+
 						<div class="buttons d-flex flex-row mt-5 gap-3">
 							<button @click="openOrder" class="btn btn-outline-dark"><i class='bx bx-chat'></i> Live Order Now</button>
 						</div>
@@ -109,7 +109,7 @@
 					description: 'Produk Profesional adalah pilihan sempurna untuk Anda yang menginginkan kualitas tanpa kompromi. Didesain untuk memenuhi standar tertinggi dalam industri, produk ini menawarkan kinerja luar biasa dan fitur inovatif. Sangat ideal untuk para profesional yang membutuhkan alat yang dapat diandalkan dalam setiap proyek. Dengan Produk Profesional, Anda akan siap menghadapi tantangan dengan percaya diri, menghasilkan karya terbaik setiap saat.',
 					image: { url: require('~/assets/img/website-category/al-azhar2.png') },
 					assets: [
-						{ id: 1, url: require('~/assets/img/website-category/al-azhar2.png') },
+						{ id: 1, url: require('~/assets/img/website-category/pesona-nirwana-waterpark4n.png') },
 						{ id: 2, url: require('~/assets/img/website-category/dntourtravel.png') },
 						{ id: 3, url: require('~/assets/img/website-category/business-website.jpg') },
 						],
