@@ -107,7 +107,7 @@
 					price: { formatted_with_code: 'IDR 1,000,000' },
 					name: 'Produk Bisnis',
 					description: 'Produk Profesional adalah pilihan sempurna untuk Anda yang menginginkan kualitas tanpa kompromi. Didesain untuk memenuhi standar tertinggi dalam industri, produk ini menawarkan kinerja luar biasa dan fitur inovatif. Sangat ideal untuk para profesional yang membutuhkan alat yang dapat diandalkan dalam setiap proyek. Dengan Produk Profesional, Anda akan siap menghadapi tantangan dengan percaya diri, menghasilkan karya terbaik setiap saat.',
-					image: { url: require('~/assets/img/website-category/al-azhar2.png') },
+					image: { url: require('~/assets/img/website-category/pesona-nirwana-waterpark4.png') },
 					assets: [
 						{ id: 1, url: require('~/assets/img/website-category/pesona-nirwana-waterpark4.png') },
 						{ id: 2, url: require('~/assets/img/website-category/dntourtravel.png') },
