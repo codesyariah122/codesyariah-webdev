@@ -130,22 +130,33 @@
 			fetchProduct() {
 				this.product = this.products.find(p => p.permalink === this.permalink);
 				if (!this.product) {
-					// Handle case where product is not found
 					console.error('Product not found');
 				}
 			},
 			changeImage(asset) {
-				this.change.status = true;
-				this.change.asset = asset;
+				console.log(asset);
+				this.product.image.url = asset;
 			},
 			openOrder() {
-				// Logic untuk membuka chat live
+				if (window.$crisp) {
+					window.$crisp.push(['do', 'chat:open']);
+					$crisp.push([
+						"set",
+						"message:text",
+						[
+							"Halo Codesyariah Webdev saya ingin membuat website dari layanan codesyariah webdev",
+							],
+						]);
+				} else {
+					console.error("Crisp tidak terinisialisasi");
+				}
 			},
 			whatsOrder() {
 				const message = `Saya ingin order jasa pembuatan website ${this.product.name}`;
 				window.open(`https://wa.me/6285971630027?text=${encodeURIComponent(message)}`, '_blank');
 			}
 		}
+
 	}
 </script>
 
