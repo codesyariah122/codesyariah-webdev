@@ -1,23 +1,37 @@
 <template>
   <main id="main">
-    <HomepageGalleryProduct/>
-
-    <HomepageBlog/>
-    
-    <HomepageServices/>
-
-    <HomepageTestimonial/>
-
+    <!-- Komponen halaman -->
+    <HomepageGalleryProduct />
+    <HomepageBlog />
+    <HomepageServices />
+    <HomepageTestimonial />
     <HomepagePricing :categories="categories" />
+    <HomepageAbout />
+    <HomepageContact />
 
-    <HomepageAbout/>
-
-    <HomepageContact/>
-
+    <!-- Tombol WhatsApp Floating -->
     <div class="whatsapp-float">
-      <a :href="whatsappUrl" target="_blank" class="whatsapp-button">
-        <i class='bx bxl-whatsapp'></i>
-      </a>
+      <div class="whatsapp-button" @click="toggleChatbox">
+        <i class="bx bxl-whatsapp"></i>
+      </div>
+
+      <!-- Chatbox WhatsApp -->
+      <div v-if="showChatbox" class="whatsapp-chatbox">
+        <div class="chatbox-header">
+          <span>Hubungi Admin</span>
+          <button @click="toggleChatbox">&times;</button>
+        </div>
+        <div class="chatbox-body">
+          <div v-for="(admin, index) in admins" :key="index" class="admin-chat">
+            <img :src="admin.avatar" class="avatar" alt="avatar" />
+            <div class="chat-info">
+              <strong>{{ admin.name }}</strong>
+              <p>{{ admin.position }}</p>
+              <button @click="contactAdmin(admin)">Hubungi Sekarang</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Promo Popup -->
@@ -25,151 +39,173 @@
       <div class="popup-content" @click.stop>
         <span class="close-popup" @click="closePopup">&times;</span>
         <h2>Promo Pembuatan Website</h2>
-        <blockquote>Pesan website di bulan ini dan dapatkan bonus T-shirt eksklusif!</blockquote>
-        <button @click="whatsOrder" class="btn btn-outline-success mt-2">Order Sekarang <i class='bx bxl-whatsapp'></i></button>
-        <img src="~/assets/img/tshirt-codesyariah.jpeg" alt="Bonus T-shirt" class="promo-image"/>
+        <blockquote>
+          Pesan website di bulan ini dan dapatkan bonus T-shirt eksklusif!
+        </blockquote>
+        <button @click="whatsOrder" class="btn btn-outline-success mt-2">
+          Order Sekarang <i class="bx bxl-whatsapp"></i>
+        </button>
+        <img
+          src="~/assets/img/tshirt-codesyariah.jpeg"
+          alt="Bonus T-shirt"
+          class="promo-image"
+        />
       </div>
     </div>
   </main>
 </template>
 
 <style scoped>
-  .whatsapp-float {
-    position: fixed;
-    bottom: 90px;
-    right: 13px;
-    z-index: 1000;
-  }
+.whatsapp-float {
+  position: fixed;
+  bottom: 90px;
+  right: 13px;
+  z-index: 1000;
+}
 
-  .whatsapp-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366; /* WhatsApp Green */
-    color: white;
-    border-radius: 50%;
-    font-size: 37px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    text-decoration: none;
-  }
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  font-size: 37px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
 
-  .whatsapp-button:hover {
-    background-color: #128C7E; /* Darker Green */
-  }
+.whatsapp-chatbox {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
 
-  .promo-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-    overflow: auto;
-  }
+.chatbox-header {
+  background: #075e54;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .popup-content {
-    background: url('~/assets/img/bg-pattern.png') repeat, white; /* Background pattern */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-    max-height: 80%;
-    overflow-y: auto; /* Enable scroll if content overflows */
-    position: relative; /* Position for close button */
-  }
+.chatbox-body {
+  max-height: 300px;
+  overflow-y: auto;
+  background: #f0f0f0;
+  padding: 10px;
+}
 
-  .popup-content h2 {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.5rem; /* Adjusted for better visibility */
-    font-weight: 700;
-  }
+.admin-chat {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+}
 
-  .popup-content p {
-    color: #666;
-    font-size: 1rem; /* Adjust font size for better readability */
-  }
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 
-  .promo-image {
-    width: 100%;
-    max-width: 300px;
-    margin: 20px 0;
-  }
+.chat-info strong {
+  display: block;
+  color: #333;
+}
 
-  .close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    color: #333; /* Color of the close icon */
-    cursor: pointer;
-  }
+.chat-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #888;
+}
 
-  .close-popup:hover {
-    color: #ed2d56; /* Change color on hover for better UX */
-  }
+.chat-info button {
+  margin-top: 5px;
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-info button:hover {
+  background: #128c7e;
+}
 </style>
 
 <script>
-  export default {
-    name: 'IndexPage',
-    layout: 'default',
+export default {
+  name: "IndexPage",
+  layout: "default",
 
-    async asyncData({ $commerce, $axios, $config }) {
-      // const { data: products } = await $commerce?.products?.list();
-      // const { data: categories } = await $commerce?.categories?.list();
+  data() {
+    return {
+      whatsappUrl: "https://wa.me/085971630027?text=Hallo%20codesyariah",
+      showPopup: true,
+      showChatbox: false,
+      categories: [],
+      admins: [
+        {
+          name: "Deddy Ndi",
+          position: "Marketing & Sales",
+          phone: "6289621142235",
+          avatar: require("~/assets/img/kontak/deddy.jpg"),
+        },
+        {
+          name: "Puji Ermanto",
+          position: "Support & Helpdesk",
+          phone: "6285971630027",
+          avatar: require("~/assets/img/kontak/puji.jpg"),
+        },
+      ],
+    };
+  },
 
-      // console.log(categories);
+  mounted() {
+    setTimeout(() => {
+      this.showPopup = false;
+    }, 500);
+  },
 
-      return {
-        // products,
-        // categories,
-        whatsappUrl: 'https://wa.me/085971630027?text=Hallo%20codesyariah%20web%20development%2C%20saya%20ingin%20bertanya%20seputar%20jasa%20pembuatan%20website%20.',
-      };
+  methods: {
+    closePopup() {
+      this.showPopup = false;
     },
-
-    data() {
-      return {
-        showPopup: true,
-        categories: []
-      };
-    },
-
-    mounted() {
-      $crisp.push(['do', 'chat:hide']);
-      setTimeout(() => {
-        this.showPopup = true;
-      }, 500); // Show popup after 500ms
-    },
-
-    methods: {
-      closePopup() {
-        this.showPopup = false;
-      },
-      handleOutsideClick(event) {
-        // Check if click is outside of popup-content
-        const popupContent = this.$el.querySelector('.popup-content');
-        if (!popupContent.contains(event.target)) {
-          this.closePopup();
-        }
-      },
-      whatsOrder(){
-        const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
-        const whatsappNumber = '6285971630027'; // Ganti dengan nomor WhatsApp Anda
-        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
+    handleOutsideClick(event) {
+      const popupContent = this.$el.querySelector(".popup-content");
+      if (!popupContent.contains(event.target)) {
+        this.closePopup();
       }
     },
-
-    beforeDestroy() {
-      window.removeEventListener('click', this.handleOutsideClick);
-    }
-  };
+    whatsOrder() {
+      const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
+      const whatsappNumber = "6285971630027";
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(url, "_blank");
+    },
+    toggleChatbox() {
+      this.showChatbox = !this.showChatbox;
+    },
+    contactAdmin(admin) {
+      const url = `https://wa.me/${admin.phone}?text=Hallo%20${admin.name}%2C%20saya%20tertarik%20dengan%20layanan%20Anda.`;
+      window.open(url, "_blank");
+    },
+  },
+};
 </script>
