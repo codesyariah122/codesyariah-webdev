@@ -21,7 +21,7 @@
       <div class="row g-0">
         <div class="col-md-6 border-end">
           <div class="d-flex flex-column justify-content-center">
-            <div class="browser-window main-image-window">
+            <div class="browser-window">
               <div class="browser-header">
                 <span class="circle red"></span>
                 <span class="circle yellow"></span>
@@ -36,7 +36,6 @@
                 />
               </div>
             </div>
-
             <div class="thumbnail_images mt-3 horizontal-scroll">
               <div
                 class="browser-window"
@@ -125,20 +124,20 @@ export default {
           description:
             "Produk Ekonomis dirancang khusus untuk Anda yang ingin mendapatkan kualitas terbaik dengan budget yang terjangkau. Dengan bahan berkualitas dan desain yang fungsional, produk ini cocok untuk penggunaan sehari-hari. Anda tidak perlu mengorbankan kebutuhan tanpa harus mengeluarkan biaya berlebih. Ideal untuk individu atau keluarga yang mencari solusi praktis tanpa menguras kantong.",
           image: {
-            url: require("~/assets/img/website-category/landing-page-1.jpg"),
+            url: require("~/assets/img/website-category/pesonanirwana-waterpark-project-web.png"),
           },
           assets: [
             {
               id: 1,
-              url: require("~/assets/img/website-category/landing-page-1.jpg"),
+              url: require("~/assets/img/website-category/pesonanirwana-waterpark-project-web.png"),
             },
             {
               id: 2,
-              url: require("~/assets/img/website-category/landing-page-2.jpg"),
+              url: require("~/assets/img/website-category/fitri-cake-project-web.png"),
             },
             {
               id: 3,
-              url: require("~/assets/img/website-category/draet-diet-consult1.png"),
+              url: require("~/assets/img/website-category/screencapture-winseeoptik-2025-07-13-01_57_41.png"),
             },
           ],
         },
@@ -150,18 +149,21 @@ export default {
           description:
             "Produk Bisnis hadir untuk mendukung kebutuhan profesional Anda. Dirancang dengan fitur unggulan dan material premium, produk ini membantu meningkatkan efisiensi dan produktivitas di lingkungan kerja. Cocok untuk perusahaan kecil hingga besar yang ingin memberikan nilai tambah kepada klien dan karyawan. Dengan desain elegan dan performa handal, Produk Bisnis adalah investasi yang tepat untuk kesuksesan usaha Anda.",
           image: {
-            url: require("~/assets/img/website-category/business-page-2.png"),
+            url: require("~/assets/img/website-category/grosir-elektronik-123.jpg"),
           },
           assets: [
             {
               id: 1,
-              url: require("~/assets/img/website-category/business-page-2.png"),
+              url: require("~/assets/img/website-category/grosir-elektronik-123.jpg"),
             },
             {
               id: 2,
-              url: require("~/assets/img/website-category/pesona-nirwana-waterpark1.png"),
+              url: require("~/assets/img/website-category/alfihurayiah-project-web.png"),
             },
-            { id: 3, url: require("~/assets/img/website-category/saved5.jpg") },
+            {
+              id: 3,
+              url: require("~/assets/img/website-category/upfast-topup-game-web-project.png"),
+            },
           ],
         },
         {
@@ -172,30 +174,44 @@ export default {
           description:
             "Produk Profesional adalah pilihan sempurna untuk Anda yang menginginkan kualitas tanpa kompromi. Didesain untuk memenuhi standar tertinggi dalam industri, produk ini menawarkan kinerja luar biasa dan fitur inovatif. Sangat ideal untuk para profesional yang membutuhkan alat yang dapat diandalkan dalam setiap proyek. Dengan Produk Profesional, Anda akan siap menghadapi tantangan dengan percaya diri, menghasilkan karya terbaik setiap saat.",
           image: {
-            url: require("~/assets/img/website-category/al-azhar2.png"),
+            url: require("~/assets/img/website-category/pesona-nirwana-waterpark4.png"),
           },
           assets: [
             {
               id: 1,
-              url: require("~/assets/img/website-category/al-azhar2.png"),
+              url: require("~/assets/img/website-category/alazhar-sbp-project-web.png"),
             },
             {
               id: 2,
-              url: require("~/assets/img/website-category/dntourtravel.png"),
+              url: require("~/assets/img/website-category/crm-project-management-web.png"),
             },
             {
               id: 3,
-              url: require("~/assets/img/website-category/business-website.jpg"),
+              url: require("~/assets/img/website-category/alazhar-ppdb-system.png"),
             },
           ],
         },
       ],
       product: {},
-      change: {
-        status: null,
-        asset: "",
-      },
+      change: { status: null, asset: "" },
       permalink: this.$route.params.permalink,
+      showChatbox: false,
+      admins: [
+        {
+          name: "Deddy Ndi",
+          position: "Marketing & Sales",
+          phone: "6289621142235",
+          avatar: require("~/assets/img/kontak/deddy.jpg"),
+          message: "Halo Admin, saya ingin order produk ini.",
+        },
+        {
+          name: "Puji Ermanto",
+          position: "Support & Helpdesk",
+          phone: "6285971630027",
+          avatar: require("~/assets/img/kontak/puji.jpg"),
+          message: "Halo Admin, saya tertarik dengan produk ini.",
+        },
+      ],
     };
   },
   mounted() {
@@ -204,34 +220,15 @@ export default {
   methods: {
     fetchProduct() {
       this.product = this.products.find((p) => p.permalink === this.permalink);
-      if (!this.product) {
-        console.error("Product not found");
-      }
+      if (!this.product) console.error("Product not found");
     },
     changeImage(asset) {
-      console.log(asset);
-      this.product.image.url = asset;
+      this.change.status = true;
+      this.change.asset = asset;
     },
-    openOrder() {
-      if (window.$crisp) {
-        window.$crisp.push(["do", "chat:open"]);
-        $crisp.push([
-          "set",
-          "message:text",
-          [
-            "Halo Codesyariah Webdev saya ingin membuat website dari layanan codesyariah webdev",
-          ],
-        ]);
-      } else {
-        console.error("Crisp tidak terinisialisasi");
-      }
-    },
-    whatsOrder() {
-      const message = `Saya ingin order jasa pembuatan website ${this.product.name}`;
-      window.open(
-        `https://wa.me/6285971630027?text=${encodeURIComponent(message)}`,
-        "_blank"
-      );
+    openOrder() {},
+    toggleChatbox() {
+      this.showChatbox = !this.showChatbox;
     },
   },
 };
@@ -239,6 +236,53 @@ export default {
 
 <style>
 /* Browser-style Container */
+.browser-window {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 1rem;
+}
+
+.browser-header {
+  background: #f5f5f5;
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.browser-header .circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.circle.red {
+  background-color: #ff5f56;
+}
+
+.circle.yellow {
+  background-color: #ffbd2e;
+}
+
+.circle.green {
+  background-color: #27c93f;
+}
+.main_image {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.main_image {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.main_image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .horizontal-scroll {
   display: flex;
   flex-direction: row;
@@ -297,81 +341,20 @@ export default {
   border-radius: 4px;
 }
 
-.main-image-window {
-  max-height: 400px;
+/* Gaya thumbnail mini browser window */
+.thumb-box {
+  cursor: pointer;
+  max-height: 150px;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
 }
 
-.main-image-window .browser-header {
-  background: #f5f5f5;
-  padding: 8px 12px;
-  display: flex;
-  gap: 6px;
-}
-
-.main-image-window .main_image {
-  flex: 1;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main-image-window .main_image img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  border-radius: 4px;
-}
-
-.browser-window {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  margin-bottom: 1rem;
-}
-
-.browser-header {
-  background: #f5f5f5;
-  padding: 8px 12px;
-  display: flex;
-  gap: 6px;
-}
-
-.browser-header .circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.circle.red {
-  background-color: #ff5f56;
-}
-
-.circle.yellow {
-  background-color: #ffbd2e;
-}
-
-.circle.green {
-  background-color: #27c93f;
-}
-.main_image {
-  max-height: 400px;
-  overflow-y: auto;
-}
-.main_image img {
+.thumb-box img {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
 }
+
 /* Thumbnail Produk */
 #thumbnail {
   display: grid;
