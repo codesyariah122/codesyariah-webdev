@@ -1,5 +1,10 @@
 # codesyariah-webdev
-
+### For error run dev  
+```
+"scripts": {
+  "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt"
+}
+```
 ## Build Setup
 
 ```bash
