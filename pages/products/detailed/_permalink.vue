@@ -65,11 +65,11 @@
             <div class="mt-2 pr-3 content">
               <p v-html="product.description"></p>
             </div>
-            <div class="buttons d-flex flex-row mt-5 gap-3">
+            <!-- <div class="buttons d-flex flex-row mt-5 gap-3">
               <button @click="openOrder" class="btn btn-outline-dark">
                 <i class="bx bx-chat"></i> Live Order Now
               </button>
-            </div>
+            </div> -->
             <div class="buttons d-flex flex-row mt-3 gap-3">
               <button @click="toggleChatbox" class="btn btn-outline-success">
                 Order Via Whatsapp <i class="bx bxl-whatsapp"></i>
@@ -195,7 +195,7 @@ export default {
       product: {},
       change: { status: null, asset: "" },
       permalink: this.$route.params.permalink,
-      showChatbox: false,
+      showChatbox: true,
       admins: [
         {
           name: "Deddy Ndi",

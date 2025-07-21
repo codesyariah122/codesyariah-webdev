@@ -503,7 +503,7 @@ export default {
           description:
             "UpFast.id adalah platform top-up dan voucher game tercepat dan terpercaya di Indonesia. Menyediakan layanan isi ulang item dan voucher untuk berbagai game populer seperti Mobile Legends, Free Fire, COD Mobile, hingga Genshin Impact medibuddy.in+3upfast.id+3 upfast.id+3. Pengguna cukup memilih produk, mengisi data akun game, lalu memilih metode pembayaran (QRIS, transfer bank, e‑wallet, minimarket, dsb.) upfast.id. Setelah pembayaran, item/game voucher dikirim langsung—biasanya instan—dengan dukungan customer service 24/7",
           price: 15000000,
-          link: "hhttps://upfast.id/",
+          link: "https://upfast.id/",
         },
 
         {

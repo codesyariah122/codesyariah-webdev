@@ -55,6 +55,69 @@
   </main>
 </template>
 
+<script>
+export default {
+  name: "IndexPage",
+  layout: "default",
+
+  data() {
+    return {
+      whatsappUrl: "https://wa.me/085971630027?text=Hallo%20codesyariah",
+      showPopup: true,
+      showChatbox: true,
+      categories: [],
+      admins: [
+        {
+          name: "Deddy Ndi",
+          position: "Marketing & Sales",
+          phone: "6289621142235",
+          avatar: require("~/assets/img/kontak/deddy.jpg"),
+        },
+        {
+          name: "Puji Ermanto",
+          position: "Support & Helpdesk",
+          phone: "6285971630027",
+          avatar: require("~/assets/img/kontak/puji.jpg"),
+        },
+      ],
+    };
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.showPopup = false;
+    }, 500);
+  },
+
+  methods: {
+    closePopup() {
+      this.showPopup = false;
+    },
+    handleOutsideClick(event) {
+      const popupContent = this.$el.querySelector(".popup-content");
+      if (!popupContent.contains(event.target)) {
+        this.closePopup();
+      }
+    },
+    whatsOrder() {
+      const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
+      const whatsappNumber = "6285971630027";
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(url, "_blank");
+    },
+    toggleChatbox() {
+      this.showChatbox = !this.showChatbox;
+    },
+    contactAdmin(admin) {
+      const url = `https://wa.me/${admin.phone}?text=Hallo%20${admin.name}%2C%20saya%20tertarik%20dengan%20layanan%20Anda.`;
+      window.open(url, "_blank");
+    },
+  },
+};
+</script>
+
 <style scoped>
 .whatsapp-float {
   position: fixed;
@@ -146,66 +209,3 @@
   background: #128c7e;
 }
 </style>
-
-<script>
-export default {
-  name: "IndexPage",
-  layout: "default",
-
-  data() {
-    return {
-      whatsappUrl: "https://wa.me/085971630027?text=Hallo%20codesyariah",
-      showPopup: true,
-      showChatbox: false,
-      categories: [],
-      admins: [
-        {
-          name: "Deddy Ndi",
-          position: "Marketing & Sales",
-          phone: "6289621142235",
-          avatar: require("~/assets/img/kontak/deddy.jpg"),
-        },
-        {
-          name: "Puji Ermanto",
-          position: "Support & Helpdesk",
-          phone: "6285971630027",
-          avatar: require("~/assets/img/kontak/puji.jpg"),
-        },
-      ],
-    };
-  },
-
-  mounted() {
-    setTimeout(() => {
-      this.showPopup = false;
-    }, 500);
-  },
-
-  methods: {
-    closePopup() {
-      this.showPopup = false;
-    },
-    handleOutsideClick(event) {
-      const popupContent = this.$el.querySelector(".popup-content");
-      if (!popupContent.contains(event.target)) {
-        this.closePopup();
-      }
-    },
-    whatsOrder() {
-      const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
-      const whatsappNumber = "6285971630027";
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        message
-      )}`;
-      window.open(url, "_blank");
-    },
-    toggleChatbox() {
-      this.showChatbox = !this.showChatbox;
-    },
-    contactAdmin(admin) {
-      const url = `https://wa.me/${admin.phone}?text=Hallo%20${admin.name}%2C%20saya%20tertarik%20dengan%20layanan%20Anda.`;
-      window.open(url, "_blank");
-    },
-  },
-};
-</script>
