@@ -73,8 +73,7 @@ plugins: [
   { src: '~/plugins/nuxt-leaflet', mode: 'client', ssr: false },
   { src: '~/plugins/isotope', mode: 'client', ssr: false },
   { src: '~/plugins/disqus', mode: 'client', ssr: false },
-  { src: '~/plugins/commerce' },
-  { src: '~/plugins/crisp', mode: 'client', ssr: false}
+  { src: '~/plugins/commerce' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

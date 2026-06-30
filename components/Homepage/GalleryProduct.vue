@@ -15,8 +15,8 @@
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  color: #f3a200;
-  border-color: #ffb727;
+  color: #08946d;
+  border-color: #18d19b;
 }
 .portfolio #portfolio-flters {
   list-style: none;
@@ -39,8 +39,8 @@
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  color: #f3a200;
-  border-color: #ffb727;
+  color: #08946d;
+  border-color: #18d19b;
 }
 
 .portfolio .portfolio-item {
@@ -95,7 +95,7 @@
 
 .portfolio .portfolio-item .portfolio-info .preview-link:hover,
 .portfolio .portfolio-item .portfolio-info .details-link:hover {
-  color: #ffc041;
+  color: #4fe0b4;
 }
 
 .portfolio .portfolio-item .portfolio-info .details-link {
@@ -131,14 +131,14 @@
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #ffb727;
+  border: 1px solid #18d19b;
 }
 
 .portfolio-details
   .portfolio-details-slider
   .swiper-pagination
   .swiper-pagination-bullet-active {
-  background-color: #ffb727;
+  background-color: #18d19b;
 }
 
 .portfolio-details .portfolio-info {
@@ -243,6 +243,7 @@
 
 .browser-window h4 {
   margin-top: 10px;
+  margin-bottom: 8px;
   font-size: 16px;
   font-weight: 600;
 }
@@ -253,7 +254,16 @@
 }
 
 .browser-window h4 a:hover {
-  color: #f3a200;
+  color: #08946d;
+}
+
+.browser-window .project-summary {
+  max-width: 94%;
+  min-height: 58px;
+  margin: 0 auto;
+  color: #627277;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .window-style .content {
@@ -335,7 +345,7 @@
       <div class="row portfolio-container">
         <div v-if="loading">
           <div class="d-flex justify-content-center">
-            <div class="spinner-border text-warning" role="status">
+            <div class="spinner-border text-success" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
           </div>
@@ -366,6 +376,9 @@
             <h4>
               <a :href="list.link" target="_blank">{{ list.title }}</a>
             </h4>
+            <p class="project-summary">
+              {{ shortDescription(list.description) }}
+            </p>
           </li>
         </ul>
       </div>
@@ -459,8 +472,9 @@ export default {
         { id: 9, name: "gaming", title: "Gaming Service" },
         { id: 10, name: "system", title: "system" },
         { id: 11, name: "tourism", title: "Tourism" },
-        { id: 12, name: "crm", title: "Management" },
+        { id: 12, name: "crm", title: "Customer Relationship Management" },
         { id: 12, name: "compro", title: "Company Profile" },
+        { id: 13, name: "reservation-booking", title: "Reservation / Booking" },
       ];
     },
     WebsiteCategorySample() {
@@ -477,14 +491,23 @@ export default {
         },
         {
           id: 2,
-          title: "Gudang Elektronik123",
+          title: "Snatchlab Store",
           categories: "eccommerce",
-          image: require("~/assets/img/website-category/grosir-elektronik-123.jpg"),
-          description:
-            "Website gudang elektronik123 adalah toko online modern yang menampilkan berbagai produk dengan tampilan bersih, responsif, dan mudah digunakan. Situs ini dirancang sebagai contoh e-commerce dengan fitur seperti katalog produk, detail produk, keranjang belanja, dan halaman checkout, cocok untuk pemilik bisnis yang ingin menjual produknya secara online.",
-          price: 5000000,
-          link: "https://grosirelektronik123.co.id/",
+          image: require("~/assets/img/website-category/SNATCH-—-Lab-Tested-Snatch-Approved.png"),
+          description: `Snatchlab Store adalah toko online modern yang menampilkan berbagai produk dengan tampilan bersih, responsif, dan mudah digunakan. Situs ini dirancang sebagai contoh e-commerce dengan fitur seperti katalog produk, detail produk, keranjang belanja, dan halaman checkout, cocok untuk pemilik bisnis yang ingin menjual produknya secara online.`,
+          price: 3000000,
+          link: "https://snatchlab.store/",
         },
+        // {
+        //   id: 2,
+        //   title: "Gudang Elektronik123",
+        //   categories: "eccommerce",
+        //   image: require("~/assets/img/website-category/grosir-elektronik-123.jpg"),
+        //   description:
+        //     "Website gudang elektronik123 adalah toko online modern yang menampilkan berbagai produk dengan tampilan bersih, responsif, dan mudah digunakan. Situs ini dirancang sebagai contoh e-commerce dengan fitur seperti katalog produk, detail produk, keranjang belanja, dan halaman checkout, cocok untuk pemilik bisnis yang ingin menjual produknya secara online.",
+        //   price: 5000000,
+        //   link: "https://grosirelektronik123.co.id/",
+        // },
         {
           id: 3,
           title: "alfihuraiyah",
@@ -630,7 +653,133 @@ export default {
           price: 10000000,
           link: "https://codesyariah-project-management-ui.vercel.app/",
         },
+        {
+          id: 15,
+          title: "Toyota Djakarta Promo Kredit",
+          categories: "sales",
+          image: require("~/assets/img/website-category/toyota-djakarta1.png"),
+          description: `Sales promotion website untuk kebutuhan campaign otomotif, menampilkan promo bulanan, simulasi kredit, CTA konsultasi cepat, dan informasi produk yang mudah discan calon pembeli. Cocok untuk dealer, sales force, dan brand yang membutuhkan landing page promosi dengan fokus konversi leads WhatsApp.`,
+          price: 4500000,
+          link: "https://toyota-djakarta.com/",
+        },
+        // {
+        //   id: 16,
+        //   title: "Digital Marketing Promo Page",
+        //   categories: "sales",
+        //   image: require("~/assets/img/website-category/Landing Page adalah Kunci Keberhasilan Pemasaran Digital Anda.jpg"),
+        //   description: `Konsep halaman promosi untuk campaign digital marketing dengan headline kuat, visual produk/jasa, penawaran utama, tombol CTA, dan narasi benefit yang membantu customer awam memahami alasan mereka perlu mulai promosi digital.`,
+        //   price: 2500000,
+        //   link: "https://codesyariah-webdev.vercel.app/#contact",
+        // },
+        // {
+        //   id: 17,
+        //   title: "Product Launch Campaign",
+        //   categories: "sales",
+        //   image: require("~/assets/img/website-category/landing-page-1.jpg"),
+        //   description: `Template campaign untuk launching produk digital, event, kelas, atau layanan baru. Struktur halaman dirancang untuk memperkenalkan value proposition, highlight fitur, bukti sosial, paket harga, dan CTA agar visitor lebih cepat mengambil keputusan.`,
+        //   price: 3000000,
+        //   link: "https://codesyariah-webdev.vercel.app/#pricing",
+        // },
+        // {
+        //   id: 18,
+        //   title: "Lead Generation Landing Page",
+        //   categories: "sales",
+        //   image: require("~/assets/img/website-category/landing-page-2.jpg"),
+        //   description: `Landing page penawaran yang fokus mengumpulkan prospek dari iklan, WhatsApp, atau social media. Cocok untuk promo jasa, campaign seasonal, webinar, konsultasi gratis, dan penawaran terbatas dengan copywriting yang jelas dan mobile friendly.`,
+        //   price: 3500000,
+        //   link: "https://dev-grandia.netlify.app/",
+        // },
+        {
+          id: 19,
+          title: "Booking Hotel Admin Dashboard",
+          categories: "system",
+          image: require("~/assets/img/website-category/Admin-Grandia.png"),
+          description: `Admin dashboard untuk sistem booking hotel, menampilkan manajemen kamar, reservasi, pembayaran, dan laporan. Desain modern dan responsif memudahkan staf hotel mengelola operasional secara efisien.`,
+          price: 3000000,
+          link: "https://dev-admin-grandia.netlify.app/",
+        },
+        {
+          id: 20,
+          title: "Reservation & Booking System",
+          categories: "reservation-booking",
+          image: require("~/assets/img/website-category/Grandia-Hotel-Bandung-Akomodasi-Nyaman-Strategis.png"),
+          description: `Sistem reservasi dan booking online untuk berbagai jenis bisnis, termasuk restoran, spa, dan layanan profesional. Fitur meliputi kalender ketersediaan, konfirmasi otomatis, integrasi pembayaran, dan dashboard admin untuk mengelola pemesanan dengan mudah.`,
+          price: 4000000,
+          link: "https://dev-grandia.netlify.app/",
+        },
+        {
+          id: 21,
+          title: "SaaS Payroll & HR Management System",
+          categories: "system",
+          image: require("~/assets/img/website-category/PayrollSystem.png"),
+          description: `SaaS Payroll & HR Management System adalah platform berbasis web untuk mengelola penggajian, absensi, dan data karyawan secara efisien. Fitur utama meliputi perhitungan gaji otomatis, manajemen cuti, laporan keuangan, dan integrasi dengan sistem akuntansi. Desain responsif dan user-friendly memudahkan HR dan manajer dalam mengelola sumber daya manusia perusahaan.`,
+          price: 5000000,
+          link: "https://citrarasakulinerindonesia.com",
+        },
+        {
+          id: 22,
+          title: "Assessment Student Web Apps",
+          categories: "education",
+          image: require("~/assets/img/website-category/Student-Assessment.png"),
+          description: `Student Assessment Web Apps adalah platform berbasis web untuk mengelola penilaian dan evaluasi siswa secara digital. Fitur utama meliputi pembuatan kuis, ujian online, pelacakan hasil belajar, dan laporan kinerja siswa. Desain responsif dan intuitif memudahkan guru dan siswa dalam proses pembelajaran dan penilaian.`,
+          price: 6000000,
+          link: "https://admin-student-assessment.netlify.app/dashboard/student",
+        },
+        {
+          id: 23,
+          title: "HD Living Desain Interior",
+          categories: "professional",
+          image: require("~/assets/img/website-category/HD-Living-–-Home-Decor.png"),
+          description: `HD Living Desain Interior adalah platform berbasis web untuk mengelola desain interior rumah dan kantor secara digital. Fitur utama meliputi pembuatan desain 3D, galeri inspirasi, konsultasi online, dan laporan proyek. Desain responsif dan intuitif memudahkan pengguna dalam merancang ruangan mereka.`,
+          price: 1000000,
+          link: "https://hd-living-showcase.vercel.app/",
+        },
+        {
+          id: 24,
+          title: "Sinar Berkat Abadi - SBA Compro",
+          categories: "compro",
+          image: require("~/assets/img/website-category/SBA-Sinar-Berkat-Abadi-–-Company-Profile-–-Company-profile-SBA-Sinar-Berkat-Abadi-anak-perusahaan-Pertamina--07-01-2026_02_44_AM.png"),
+          description: `Sinar Berkat Abadi - SBA Compro adalah website resmi yang menampilkan informasi lengkap tentang perusahaan. Situs ini menyediakan profil perusahaan, visi dan misi, serta layanan yang ditawarkan. Desain modern dan responsif memudahkan pengunjung dalam memahami identitas dan nilai-nilai perusahaan.`,
+          price: 10000000,
+          link: "https://dev-sinarberkatabadi.wangun.co",
+        },
+        {
+          id: 25,
+          title: "SaaS WA Business Generator",
+          categories: "business",
+          image: require("~/assets/img/website-category/WALink.png"),
+          description: `SaaS WA Business Generator adalah platform berbasis web yang memungkinkan bisnis untuk membuat tautan WhatsApp khusus untuk komunikasi dengan pelanggan. Fitur utama meliputi pembuatan link WA, integrasi dengan situs web, dan analitik penggunaan. Desain responsif dan user-friendly memudahkan bisnis dalam meningkatkan interaksi dengan pelanggan melalui WhatsApp.`,
+          price: 10000000,
+          link: "https://codesyariah-webdev.vercel.app/#pricing",
+        },
+        {
+          id: 26,
+          title: "Tracer Study UMAHA Admin Panel",
+          categories: "study",
+          image: require("~/assets/img/website-category/Admin-Panel-Tracer-Study-UMAHA.png"),
+          description: `Tracer Study UMAHA Admin Panel adalah platform administrasi untuk mengelola data tracer study mahasiswa. Fitur utama meliputi input data, analisis statistik, dan laporan hasil tracer study. Desain responsif dan user-friendly memudahkan administrator dalam mengelola informasi tracer study.`,
+          price: 10000000,
+          link: "https://tracer-stury-umaha.tokoweb.live/",
+        },
+        {
+          id: 27,
+          title: "Hasiwa Japanese Academy – Bridge Beyond Border",
+          categories: "education",
+          image: require("~/assets/img/website-category/Hashiwa-Japanese-Academy-–-Bridge-Beyond-Border-07-01-2026_03_02_AM.png"),
+          description: `Hasiwa Japanese Academy adalah platform edukasi berbasis web yang menyediakan kursus bahasa Jepang dan program pertukaran budaya. Situs ini menampilkan informasi tentang program pembelajaran, jadwal kelas, dan pendaftaran online. Desain modern dan responsif memudahkan siswa dalam mengakses materi pembelajaran dan berinteraksi dengan pengajar.`,
+          price: 10000000,
+          link: "https://hashiwa.id",
+        },
       ];
+    },
+    shortDescription(description) {
+      const text = String(description || "")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/[🎂🛒🌟📱🎨🌐📍💼🎓🏙️🌱📁📞🔧-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      return text.length > 118 ? `${text.slice(0, 118)}...` : text;
     },
   },
 

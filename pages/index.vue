@@ -1,11 +1,11 @@
 <template>
   <main id="main">
     <!-- Komponen halaman -->
-    <HomepageGalleryProduct />
-    <HomepageBlog />
     <HomepageServices />
-    <HomepageTestimonial />
     <HomepagePricing :categories="categories" />
+    <HomepageGalleryProduct />
+    <HomepageTestimonial />
+    <HomepageBlog />
     <HomepageAbout />
     <HomepageContact />
 
@@ -62,20 +62,14 @@ export default {
 
   data() {
     return {
-      whatsappUrl: "https://wa.me/085971630027?text=Hallo%20codesyariah",
+      whatsappUrl: "https://wa.me/6285971630027?text=Hallo%20codesyariah",
       showPopup: true,
-      showChatbox: true,
+      showChatbox: false,
       categories: [],
       admins: [
         {
-          name: "Deddy Ndi",
-          position: "Marketing & Sales",
-          phone: "6289621142235",
-          avatar: require("~/assets/img/kontak/deddy.jpg"),
-        },
-        {
           name: "Puji Ermanto",
-          position: "Support & Helpdesk",
+          position: "Consultant & Helpdesk",
           phone: "6285971630027",
           avatar: require("~/assets/img/kontak/puji.jpg"),
         },

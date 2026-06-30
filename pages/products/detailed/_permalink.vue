@@ -119,10 +119,10 @@ export default {
         {
           id: 1,
           permalink: "product-1",
-          price: { formatted_with_code: "IDR 200,000" },
-          name: "Produk Ekonomis",
+          price: { formatted_with_code: "Mulai 1.5JT" },
+          name: "Company Profile",
           description:
-            "Produk Ekonomis dirancang khusus untuk Anda yang ingin mendapatkan kualitas terbaik dengan budget yang terjangkau. Dengan bahan berkualitas dan desain yang fungsional, produk ini cocok untuk penggunaan sehari-hari. Anda tidak perlu mengorbankan kebutuhan tanpa harus mengeluarkan biaya berlebih. Ideal untuk individu atau keluarga yang mencari solusi praktis tanpa menguras kantong.",
+            "Paket Company Profile cocok untuk bisnis yang ingin terlihat lebih profesional, mudah ditemukan, dan mudah dihubungi calon customer. Fokusnya adalah struktur halaman yang jelas, penjelasan layanan yang mudah dipahami, tampilan responsive, CTA WhatsApp, dan pondasi SEO basic supaya website siap dipakai sebagai alat promosi.",
           image: {
             url: require("~/assets/img/website-category/pesonanirwana-waterpark-project-web.png"),
           },
@@ -144,10 +144,10 @@ export default {
         {
           id: 2,
           permalink: "product-2",
-          price: { formatted_with_code: "IDR 500,000" },
-          name: "Produk Profesional",
+          price: { formatted_with_code: "Mulai 4JT" },
+          name: "Business Website",
           description:
-            "Produk Bisnis hadir untuk mendukung kebutuhan profesional Anda. Dirancang dengan fitur unggulan dan material premium, produk ini membantu meningkatkan efisiensi dan produktivitas di lingkungan kerja. Cocok untuk perusahaan kecil hingga besar yang ingin memberikan nilai tambah kepada klien dan karyawan. Dengan desain elegan dan performa handal, Produk Bisnis adalah investasi yang tepat untuk kesuksesan usaha Anda.",
+            "Paket Business Website ditujukan untuk bisnis yang butuh website lebih lengkap dari company profile biasa. Cocok untuk katalog produk, halaman layanan detail, form order atau inquiry, integrasi ringan, dashboard sederhana, serta setup domain, hosting, dan SSL agar website siap dipublikasikan.",
           image: {
             url: require("~/assets/img/website-category/grosir-elektronik-123.jpg"),
           },
@@ -169,10 +169,10 @@ export default {
         {
           id: 3,
           permalink: "product-3",
-          price: { formatted_with_code: "IDR 1,000,000" },
-          name: "Produk Bisnis",
+          price: { formatted_with_code: "By Scope" },
+          name: "Web App & Automation",
           description:
-            "Produk Profesional adalah pilihan sempurna untuk Anda yang menginginkan kualitas tanpa kompromi. Didesain untuk memenuhi standar tertinggi dalam industri, produk ini menawarkan kinerja luar biasa dan fitur inovatif. Sangat ideal untuk para profesional yang membutuhkan alat yang dapat diandalkan dalam setiap proyek. Dengan Produk Profesional, Anda akan siap menghadapi tantangan dengan percaya diri, menghasilkan karya terbaik setiap saat.",
+            "Paket Web App & Automation cocok untuk perusahaan yang ingin mengubah proses manual menjadi sistem digital. Scope bisa mencakup dashboard admin, role user, database custom, REST API, booking, CRM, inventory, laporan, integrasi payment, deployment VPS, dan maintenance awal.",
           image: {
             url: require("~/assets/img/website-category/pesona-nirwana-waterpark4.png"),
           },
@@ -195,18 +195,11 @@ export default {
       product: {},
       change: { status: null, asset: "" },
       permalink: this.$route.params.permalink,
-      showChatbox: true,
+      showChatbox: false,
       admins: [
         {
-          name: "Deddy Ndi",
-          position: "Marketing & Sales",
-          phone: "6289621142235",
-          avatar: require("~/assets/img/kontak/deddy.jpg"),
-          message: "Halo Admin, saya ingin order produk ini.",
-        },
-        {
           name: "Puji Ermanto",
-          position: "Support & Helpdesk",
+          position: "Consultant & Helpdesk",
           phone: "6285971630027",
           avatar: require("~/assets/img/kontak/puji.jpg"),
           message: "Halo Admin, saya tertarik dengan produk ini.",

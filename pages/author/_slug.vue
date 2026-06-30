@@ -13,7 +13,7 @@
 	export default {
 		name: 'author',
 		mounted(){
-			$crisp.push(['do', 'chat:hide']);
+			if (process.client && window.$crisp) window.$crisp.push(['do', 'chat:hide']);
 		},
 		computed: {
 			authors(){

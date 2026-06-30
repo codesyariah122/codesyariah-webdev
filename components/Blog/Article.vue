@@ -10,7 +10,7 @@
         <strong>Tags : </strong>
       </div>
       <div v-for="tag in post.fields.tags" class="col-md-1">
-        <span class="badge rounded-pill bg-warning text-white">
+        <span class="badge rounded-pill bg-success text-white">
           #{{ tag }} </span
         >&nbsp;&nbsp;
       </div>

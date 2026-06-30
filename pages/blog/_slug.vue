@@ -102,7 +102,7 @@
 			};
 		},
 		mounted(){
-			$crisp.push(['do', 'chat:hide']);
+			if (process.client && window.$crisp) window.$crisp.push(['do', 'chat:hide']);
 		},
 		computed: {
 			post() {

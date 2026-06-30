@@ -1,197 +1,186 @@
 <template>
-	<section id="pricing" class="pricing">
+	<section id="pricing" class="pricing modern-pricing">
 		<div class="container" data-aos="fade-up">
 			<div class="section-title">
 				<span>Pricing</span>
-				<h2>Check Our Pricing</h2>
-				<p class="text-center">Product digital kami selalu menghadirkan solusi terbaik bagi alur dan strategy perjalanan bisnis anda.</p>
+				<h2>Paket Sesuai Kondisi Bisnis</h2>
+				<p class="text-center">Pilih kebutuhan paling dekat dengan kondisi Anda sekarang. Kalau belum yakin, mulai dari konsultasi singkat supaya scope, timeline, dan budget bisa lebih rasional.</p>
 			</div>
 
-			<div class="row justify-content-center gy-4" data-aos="fade-left">
-				<div v-if="products?.length > 0" v-for="product in products" :key="product.id" class="col-lg-3 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-					<div class="box">
-						<span class="featured">Featured</span>
-						<h3 style="color: #07d5c0;">{{ product.categories[0]?.name }}</h3>
-						<!-- <div class="price">
-							<sup>{{ product.price.formatted_with_code }}</sup>
-						</div> -->
-						<div v-for="category in product.categories" :key="category.id">
-							<div v-for="icon in pricingicons" :key="icon.id">
-								<img v-if="icon.name === category.slug" :src="icon.icon" class="img-fluid" alt="">
-							</div>
-						</div>
-						<div class="d-grid gap-2">
-							<a :href="`/products/detailed/${product.permalink}`" class="btn btn-primary rounded-pill btn-sm">
-								<i class='bx bx-basket'></i> See Detailed
-							</a>
-						</div>
+			<div class="pricing-grid" data-aos="fade-left">
+				<article v-for="product in products" :key="product.id" class="price-card" :class="{ highlighted: product.highlighted }">
+					<div class="price-head">
+						<span>{{ product.label }}</span>
+						<h3>{{ product.name }}</h3>
+						<strong>{{ product.price }}</strong>
 					</div>
-				</div>
+					<p>{{ product.description }}</p>
+					<ul>
+						<li v-for="feature in product.features" :key="feature">
+							<i class="bx bx-check"></i>
+							{{ feature }}
+						</li>
+					</ul>
+					<a :href="`/products/detailed/${product.permalink}`" class="price-link">
+						Lihat Detail <i class="bx bx-right-arrow-alt"></i>
+					</a>
+				</article>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script>
-	export default {
-		props: ['categories', 'carts'],
+export default {
+	props: ["categories", "carts"],
 
-		data() {
-			return {
-				products: [
+	data() {
+		return {
+			products: [
 				{
 					id: 1,
-					permalink: 'product-1',
-					price: { formatted_with_code: 'IDR 200,000' },
-					categories: [
-						{ id: 1, name: 'Ekonomis', slug: 'ekonomis' },
-						],
+					permalink: "product-1",
+					label: "Launch cepat",
+					name: "Company Profile",
+					price: "Mulai 1.5JT",
+					description: "Untuk bisnis yang ingin tampil kredibel, punya halaman layanan jelas, dan mudah dihubungi calon customer.",
+					features: ["Landing page atau company profile", "Copywriting dasar dan CTA WhatsApp", "Responsive mobile dan desktop", "SEO basic dan struktur konten rapi"],
 				},
 				{
 					id: 2,
-					permalink: 'product-2',
-					price: { formatted_with_code: 'IDR 500,000' },
-					categories: [
-						{ id: 1, name: 'Professional', slug: 'professional' },
-						],
+					permalink: "product-2",
+					label: "Paling fleksibel",
+					name: "Business Website",
+					price: "Mulai 4JT",
+					description: "Untuk bisnis yang butuh website dengan katalog, form, integrasi, halaman detail, dan pengelolaan konten lebih serius.",
+					features: ["Katalog produk atau layanan", "Dashboard/admin sesuai kebutuhan", "Integrasi payment atau API ringan", "Setup domain, hosting, dan SSL"],
+					highlighted: true,
 				},
 				{
 					id: 3,
-					permalink: 'product-3',
-					price: { formatted_with_code: 'IDR 1,000,000' },
-					categories: [
-						{ id: 2, name: 'Business', slug: 'business' },
-						],
+					permalink: "product-3",
+					label: "Sistem custom",
+					name: "Web App & Automation",
+					price: "By Scope",
+					description: "Untuk perusahaan yang ingin merapikan proses manual menjadi sistem internal, dashboard, booking, CRM, atau workflow khusus.",
+					features: ["Analisis flow bisnis", "Role user dan database custom", "REST API dan integrasi third party", "Testing, deploy, dan support awal"],
 				},
-				],
-				pricingicons: [
-				{
-					id: 1,
-					name: 'ekonomis',
-					icon: require('~/assets/img/pricing/landing.png'),
-				},
-				{
-					id: 2,
-					name: 'business',
-					icon: require('~/assets/img/pricing/ecommerce.png'),
-				},
-				{
-					id: 3,
-					name: 'professional',
-					icon: require('~/assets/img/pricing/branding.png'),
-				},
-				],
-			};
-		},
-	};
+			],
+		};
+	},
+};
 </script>
 
-<style lang="css">
-	@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:wght@300;400;700&family=Lobster&family=Montserrat:wght@300;400&family=Roboto+Mono:wght@300;400&family=Ubuntu&display=swap');
+<style scoped>
+.modern-pricing {
+	background: #ffffff;
+}
 
-	.truncate2 {
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: normal;
-	}
+.pricing-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+}
 
-	.pricing .box {
-		padding: 40px 20px;
-		background: #fff;
-		text-align: center;
-		box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
-		border-radius: 4px;
-		position: relative;
-		overflow: hidden;
-		transition: 0.3s;
-	}
+.price-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	padding: 28px;
+	border-radius: 8px;
+	border: 1px solid #e4eeee;
+	background: #ffffff;
+	box-shadow: 0 18px 50px rgba(20, 50, 58, 0.08);
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
 
-	.pricing .box:hover {
-		transform: scale(1.1);
-		box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
-	}
+.price-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 26px 62px rgba(20, 50, 58, 0.14);
+}
 
-	.pricing h3 {
-		font-weight: 700;
-		font-size: 18px;
-		margin-bottom: 15px;
-		font-family: 'Ubuntu';
-	}
+.price-card.highlighted {
+	border-color: #18d19b;
+	background: linear-gradient(180deg, #f2fffb 0%, #ffffff 52%);
+}
 
-	.pricing .price {
-		font-size: 36px;
-		color: #444444;
-		font-weight: 600;
-		font-family: 'Poppins', sans-serif;
-	}
+.price-head span {
+	display: inline-flex;
+	padding: 7px 11px;
+	border-radius: 999px;
+	background: #e8fbf5;
+	color: #087756;
+	font-size: 12px;
+	font-weight: 800;
+}
 
-	.pricing .price sup {
-		font-size: 20px;
-		top: -15px;
-		left: -3px;
-	}
+.price-head h3 {
+	margin: 18px 0 10px;
+	color: #102d35;
+	font-size: 24px;
+	font-weight: 800;
+	font-family: "Raleway", sans-serif;
+}
 
-	.pricing .price span {
-		color: #bababa;
-		font-size: 16px;
-		font-weight: 300;
-	}
+.price-head strong {
+	display: block;
+	color: #07946d;
+	font-size: 28px;
+	line-height: 1.1;
+}
 
-	.pricing img {
-		padding: 30px 40px;
-	}
+.price-card p {
+	margin: 18px 0;
+	color: #5f6f74;
+	line-height: 1.65;
+}
 
-	.pricing ul {
-		padding: 0;
-		list-style: none;
-		color: #444444;
-		text-align: center;
-		line-height: 26px;
-		font-size: 16px;
-		margin-bottom: 25px;
-	}
+.price-card ul {
+	padding: 0;
+	margin: 0 0 24px;
+	list-style: none;
+	display: grid;
+	gap: 10px;
+	text-align: left;
+}
 
-	.pricing ul li {
-		padding-bottom: 10px;
-	}
+.price-card li {
+	display: flex;
+	gap: 9px;
+	align-items: flex-start;
+	color: #31464d;
+	line-height: 1.45;
+}
 
-	.pricing ul .na {
-		color: #ccc;
-		text-decoration: line-through;
-	}
+.price-card li i {
+	color: #18d19b;
+	font-size: 20px;
+	margin-top: 1px;
+}
 
-	.pricing .btn-buy {
-		display: inline-block;
-		padding: 8px 40px 10px 40px;
-		border-radius: 50px;
-		color: #fff;
-		transition: none;
-		font-size: 16px;
-		font-weight: 400;
-		font-family: 'Ubuntu', sans-serif;
-		font-weight: 600;
-		transition: 0.3s;
-		border: 2px solid #e3e5e6;
-	}
+.price-link {
+	margin-top: auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	min-height: 44px;
+	padding: 0 18px;
+	border-radius: 999px;
+	background: #0d2b33;
+	color: #ffffff;
+	font-weight: 800;
+}
 
-	.pricing .btn-buy:hover {
-		background: #7fc5fa;
-		color: #fff;
-	}
+.price-link:hover {
+	color: #ffffff;
+	background: #18a77d;
+}
 
-	.pricing .featured {
-		width: 200px;
-		position: absolute;
-		top: 18px;
-		right: -68px;
-		transform: rotate(45deg);
-		z-index: 1;
-		font-size: 14px;
-		padding: 1px 0 3px 0;
-		background: #4154f1;
-		color: #fff;
+@media (max-width: 991px) {
+	.pricing-grid {
+		grid-template-columns: 1fr;
 	}
+}
 </style>
