@@ -1,4 +1,11 @@
 require('dotenv').config()
+
+const siteUrl = 'https://codesyariah-webdev.vercel.app'
+const siteTitle = 'Codesyariah Webdevelopment - Jasa Website, Web App, API & Server'
+const siteDescription = 'Codesyariah Webdevelopment membantu bisnis membangun company profile, landing page, web app, dashboard, API, VPS, deploy, dan maintenance dengan arahan yang mudah dipahami.'
+const siteKeywords = 'jasa pembuatan website, jasa web development, landing page bisnis, company profile, web app, dashboard bisnis, API, VPS, deploy website, maintenance website, Codesyariah Webdevelopment'
+const siteImage = `${siteUrl}/assets/img/codesyariah-og-flyer.png`
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -26,15 +33,37 @@ export default {
 body: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
 head: {
-  title: 'Codesyariah - Webdevelopment',
+  title: siteTitle,
   meta: [
     { charset: 'utf-8' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { hid: 'description', name: 'description', content: '' },
+    { hid: 'description', name: 'description', content: siteDescription },
+    { hid: 'keywords', name: 'keywords', content: siteKeywords },
+    { hid: 'author', name: 'author', content: 'Codesyariah Webdevelopment' },
+    { hid: 'robots', name: 'robots', content: 'index, follow' },
+    { hid: 'theme-color', name: 'theme-color', content: '#061b20' },
+    { hid: 'og:type', property: 'og:type', content: 'website' },
+    { hid: 'og:url', property: 'og:url', content: siteUrl },
+    { hid: 'og:title', property: 'og:title', content: siteTitle },
+    { hid: 'og:description', property: 'og:description', content: siteDescription },
+    { hid: 'og:image', property: 'og:image', content: siteImage },
+    { hid: 'og:image:secure_url', property: 'og:image:secure_url', content: siteImage },
+    { hid: 'og:image:type', property: 'og:image:type', content: 'image/png' },
+    { hid: 'og:image:width', property: 'og:image:width', content: '1200' },
+    { hid: 'og:image:height', property: 'og:image:height', content: '630' },
+    { hid: 'og:image:alt', property: 'og:image:alt', content: 'Codesyariah Webdevelopment - layanan pembuatan website, web app, API, VPS, dan maintenance.' },
+    { hid: 'og:site_name', property: 'og:site_name', content: 'Codesyariah Webdevelopment' },
+    { hid: 'og:locale', property: 'og:locale', content: 'id_ID' },
+    { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
+    { hid: 'twitter:title', name: 'twitter:title', content: siteTitle },
+    { hid: 'twitter:description', name: 'twitter:description', content: siteDescription },
+    { hid: 'twitter:image', name: 'twitter:image', content: siteImage },
+    { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'Codesyariah Webdevelopment - Website dan sistem bisnis siap jalan.' },
     { name: 'format-detection', content: 'telephone=no' }
     ],
   link: [
     { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+    { rel: 'canonical', href: siteUrl },
     { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy'},
     { rel: 'stylesheet', type: 'text/css', href: '/assets/vendor/bootstrap/css/bootstrap.min.css', ssr: false},
     { rel: 'stylesheet', type: 'text/css', href: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css', ssr: false},
@@ -162,19 +191,20 @@ workbox: {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
 pwa: {
   meta: {
-    title: 'Codesyariah WebDev',
-    author: 'Puji',
+    title: siteTitle,
+    author: 'Codesyariah Webdevelopment',
     icon: true,
-    canonical: 'https://codesyariah-webdev.vercel.app/',
-    description: 'Jasa pembuatan website sesuai permintaan dengan harga yang bersahabat dan bersaudara.',
-    keywords: 'Jasa Pembuatan Website - Codesyariah WebDev',
-    ogUrl: 'https://codesyariah-webdev.vercel.app/',
+    canonical: siteUrl,
+    description: siteDescription,
+    keywords: siteKeywords,
+    ogUrl: siteUrl,
     ogType: 'website',
-    ogSiteName: 'Codesyariah WebDev',
-    ogTitle: 'Codesyariah WebDev',
-    ogImage: '/icon.png',
-    ogImageWidth: '600',
-    ogImageHeight: '400'
+    ogSiteName: 'Codesyariah Webdevelopment',
+    ogTitle: siteTitle,
+    ogDescription: siteDescription,
+    ogImage: '/assets/img/codesyariah-og-flyer.png',
+    ogImageWidth: '1200',
+    ogImageHeight: '630'
   },
   manifest: {
     lang: 'en',
