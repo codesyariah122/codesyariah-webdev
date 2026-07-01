@@ -1,10 +1,10 @@
 require('dotenv').config()
 
-const siteUrl = 'https://codesyariah-webdev.vercel.app'
+const siteUrl = 'https://codesyariah-webdev.vercel.app/'
 const siteTitle = 'Codesyariah Webdevelopment - Jasa Website, Web App, API & Server'
 const siteDescription = 'Codesyariah Webdevelopment membantu bisnis membangun company profile, landing page, web app, dashboard, API, VPS, deploy, dan maintenance dengan arahan yang mudah dipahami.'
 const siteKeywords = 'jasa pembuatan website, jasa web development, landing page bisnis, company profile, web app, dashboard bisnis, API, VPS, deploy website, maintenance website, Codesyariah Webdevelopment'
-const siteImage = `${siteUrl}/assets/img/codesyariah-og-flyer.png`
+const siteImage = `${siteUrl}assets/img/codesyariah-og-flyer.png?v=20260701`
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -47,6 +47,7 @@ head: {
     { hid: 'og:title', property: 'og:title', content: siteTitle },
     { hid: 'og:description', property: 'og:description', content: siteDescription },
     { hid: 'og:image', property: 'og:image', content: siteImage },
+    { hid: 'og:image:url', property: 'og:image:url', content: siteImage },
     { hid: 'og:image:secure_url', property: 'og:image:secure_url', content: siteImage },
     { hid: 'og:image:type', property: 'og:image:type', content: 'image/png' },
     { hid: 'og:image:width', property: 'og:image:width', content: '1200' },
