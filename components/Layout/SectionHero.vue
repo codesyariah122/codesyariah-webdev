@@ -36,8 +36,8 @@
 	export default {
 		data(){
 			return {
-				bg_mobile: `background: url(${require('~/assets/img/new-hero-bg-1-mobile.jpg')}) top right no-repeat; height: 70vh;width: 100%;background-size: cover;`,
-				bg_desktop: `background: url(${require('~/assets/img/new-hero-bg-1-desktop.jpg')}) no-repeat center; height: 100vh;width: 100%;`
+				bg_mobile: `background: url(${require('~/assets/img/new-hero-bg-1-mobile.jpg')}) top center / cover no-repeat;`,
+				bg_desktop: `background: url(${require('~/assets/img/new-hero-bg-1-desktop.jpg')}) center / cover no-repeat;`
 			}
 		}
 	}
@@ -45,8 +45,10 @@
 
 <style scoped>
 #hero {
-	min-height: 760px;
+	min-height: max(720px, 100svh);
 	overflow: hidden;
+	display: flex;
+	align-items: center;
 }
 
 #hero:before {
@@ -55,14 +57,17 @@
 }
 
 #hero .hero-container {
+	position: relative;
+	inset: auto;
 	align-items: stretch;
 	justify-content: center;
 	display: grid;
-	grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+	grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.75fr);
 	gap: 34px;
-	max-width: 1160px;
+	width: min(100%, 1180px);
+	max-width: 1180px;
 	margin: 0 auto;
-	padding: 120px 24px 80px;
+	padding: clamp(96px, 13vh, 132px) 24px clamp(64px, 10vh, 90px);
 }
 
 .hero-copy {
@@ -158,6 +163,9 @@
 	position: relative;
 	z-index: 2;
 	align-self: center;
+	width: 100%;
+	max-width: 430px;
+	margin-left: auto;
 	padding: 24px;
 	border-radius: 8px;
 	border: 1px solid rgba(255, 255, 255, 0.18);
@@ -223,16 +231,118 @@
 @media (max-width: 991px) {
 	#hero {
 		min-height: auto;
+		align-items: stretch;
 	}
 
 	#hero .hero-container {
 		position: relative;
 		grid-template-columns: 1fr;
-		padding-top: 110px;
+		padding: 112px 22px 64px;
+		gap: 26px;
+	}
+
+	.hero-copy {
+		max-width: 720px;
+	}
+
+	.hero-panel {
+		max-width: 720px;
+		margin-left: 0;
 	}
 
 	.hero-signals {
 		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	#hero .hero-container {
+		padding: 104px 18px 54px;
+	}
+
+	#hero h1 {
+		font-size: clamp(38px, 12vw, 58px);
+		line-height: 1;
+		margin-bottom: 18px;
+	}
+
+	#hero h2 {
+		font-size: 16px;
+		line-height: 1.55;
+		margin-bottom: 24px;
+	}
+
+	.hero-eyebrow {
+		font-size: 12px;
+		line-height: 1.35;
+		white-space: normal;
+	}
+
+	.hero-actions {
+		margin-bottom: 22px;
+	}
+
+	.hero-btn {
+		flex: 1 1 180px;
+		min-height: 46px;
+		padding: 0 18px;
+	}
+
+	.hero-panel {
+		padding: 18px;
+	}
+
+	.panel-metric {
+		margin: 18px 0;
+		padding: 18px;
+	}
+
+	.panel-grid div {
+		padding: 14px;
+	}
+}
+
+@media (max-width: 420px) {
+	#hero .hero-container {
+		padding: 96px 14px 46px;
+	}
+
+	.hero-actions {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
+
+	.hero-btn {
+		width: 100%;
+	}
+}
+
+@media (max-width: 340px) {
+	.panel-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (min-width: 992px) and (max-height: 760px) {
+	#hero {
+		min-height: 760px;
+	}
+
+	#hero .hero-container {
+		padding-top: 96px;
+		padding-bottom: 54px;
+	}
+
+	#hero h1 {
+		font-size: clamp(42px, 5vw, 64px);
+	}
+
+	#hero h2 {
+		margin-bottom: 24px;
+	}
+
+	.hero-actions {
+		margin-bottom: 22px;
 	}
 }
 </style>
