@@ -257,29 +257,45 @@
 
 @media (max-width: 767px) {
 	#hero .hero-container {
-		padding: 84px 18px 54px;
+		padding: 66px 16px 48px;
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.hero-copy {
+		width: 100%;
+		max-width: 390px;
+		margin: 0 auto;
+		text-align: center;
 	}
 
 	#hero h1 {
-		font-size: clamp(38px, 12vw, 58px);
-		line-height: 1;
-		margin-bottom: 18px;
+		max-width: 100%;
+		font-size: clamp(32px, 9.8vw, 42px);
+		line-height: 1.04;
+		margin-bottom: 16px;
+		overflow-wrap: normal;
+		text-wrap: balance;
 	}
 
 	#hero h2 {
-		font-size: 16px;
+		font-size: 15px;
 		line-height: 1.55;
-		margin-bottom: 24px;
+		margin-bottom: 22px;
+		text-align: center;
 	}
 
 	.hero-eyebrow {
-		font-size: 12px;
+		justify-content: center;
+		max-width: 100%;
+		font-size: 11px;
 		line-height: 1.35;
 		white-space: normal;
+		text-align: center;
 	}
 
 	.hero-actions {
-		margin-bottom: 22px;
+		margin-bottom: 20px;
 	}
 
 	.hero-btn {
@@ -304,7 +320,19 @@
 
 @media (max-width: 420px) {
 	#hero .hero-container {
-		padding: 78px 14px 46px;
+		padding: 58px 14px 44px;
+	}
+
+	.hero-copy {
+		max-width: 360px;
+	}
+
+	#hero h1 {
+		font-size: clamp(31px, 9.2vw, 36px);
+	}
+
+	#hero h2 {
+		font-size: 14px;
 	}
 
 	.hero-actions {
