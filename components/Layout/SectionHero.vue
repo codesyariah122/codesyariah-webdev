@@ -257,7 +257,7 @@
 
 @media (max-width: 767px) {
 	#hero .hero-container {
-		padding: 104px 18px 54px;
+		padding: 84px 18px 54px;
 	}
 
 	#hero h1 {
@@ -304,7 +304,7 @@
 
 @media (max-width: 420px) {
 	#hero .hero-container {
-		padding: 96px 14px 46px;
+		padding: 78px 14px 46px;
 	}
 
 	.hero-actions {
