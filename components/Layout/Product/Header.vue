@@ -8,6 +8,7 @@
 				<li><a class="nav-link scrollto" href="../../#blog">Blog</a></li>
 				<li><a class="nav-link scrollto" href="../../#services">Services</a></li>
 				<li><a class="nav-link scrollto " href="../../#pricing">Pricing</a></li>
+				<li><a class="nav-link scrollto" href="../../#site-pulse">Produk</a></li>
 				<li><a class="nav-link scrollto" href="../../#about">About</a></li>
 				<li><a class="nav-link scrollto" href="../../#contact">Contact</a></li>
 			</ul>

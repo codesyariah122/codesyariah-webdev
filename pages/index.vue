@@ -4,7 +4,11 @@
     <HomepageServices />
     <HomepagePricing :categories="categories" />
     <HomepageGalleryProduct />
-    <section class="site-pulse-product" aria-labelledby="site-pulse-title">
+    <section
+      id="site-pulse"
+      class="site-pulse-product"
+      aria-labelledby="site-pulse-title"
+    >
       <div class="site-pulse-container">
         <div class="site-pulse-copy">
           <span class="site-pulse-kicker">Produk Digital WordPress</span>
