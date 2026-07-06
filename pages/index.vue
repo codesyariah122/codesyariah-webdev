@@ -4,6 +4,42 @@
     <HomepageServices />
     <HomepagePricing :categories="categories" />
     <HomepageGalleryProduct />
+    <section class="site-pulse-product" aria-labelledby="site-pulse-title">
+      <div class="site-pulse-container">
+        <div class="site-pulse-copy">
+          <span class="site-pulse-kicker">Produk Digital WordPress</span>
+          <h2 id="site-pulse-title">WP Agency Site Pulse</h2>
+          <p>
+            Plugin WordPress untuk agency, developer, dan company yang mengelola
+            banyak website klien. Pantau health website, kirim report otomatis,
+            dan aktifkan fitur premium dengan sistem subscription license.
+          </p>
+
+          <div class="site-pulse-points">
+            <span><i class="bx bx-check"></i> Site health snapshot</span>
+            <span><i class="bx bx-check"></i> Daily maintenance report</span>
+            <span><i class="bx bx-check"></i> License key subscription</span>
+            <span><i class="bx bx-check"></i> Cocok untuk WordPress agency</span>
+          </div>
+
+          <div class="site-pulse-pricing">
+            <strong>Mulai dari $9/bulan</strong>
+            <span>Early access tersedia untuk agency pertama.</span>
+          </div>
+
+          <button type="button" class="site-pulse-cta" @click="orderSitePulse">
+            Konsultasi Produk <i class="bx bxl-whatsapp"></i>
+          </button>
+        </div>
+
+        <div class="site-pulse-preview">
+          <img
+            src="/assets/site-pulse/admin-preview-desktop.png"
+            alt="Preview dashboard WP Agency Site Pulse"
+          />
+        </div>
+      </div>
+    </section>
     <HomepageTestimonial />
     <HomepageBlog />
     <HomepageAbout />
@@ -175,6 +211,14 @@ export default {
       )}`;
       window.open(url, "_blank", "noopener");
     },
+    orderSitePulse() {
+      const message =
+        "Halo Codesyariah, saya tertarik dengan WP Agency Site Pulse untuk monitoring dan report website WordPress.";
+      const url = `https://wa.me/${this.admin.phone}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(url, "_blank", "noopener");
+    },
     contactAdmin(admin) {
       const url = `https://wa.me/${admin.phone}?text=Hallo%20${admin.name}%2C%20saya%20tertarik%20dengan%20layanan%20Anda.`;
       window.open(url, "_blank");
@@ -184,6 +228,124 @@ export default {
 </script>
 
 <style scoped>
+.site-pulse-product {
+  scroll-margin-top: 96px;
+  padding: 88px 0;
+  background: #f7fafc;
+}
+
+#site-pulse-title {
+  scroll-margin-top: 96px;
+}
+
+.site-pulse-container {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.site-pulse-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.site-pulse-copy h2 {
+  margin: 0 0 16px;
+  color: #111827;
+  font-size: 40px;
+  line-height: 1.12;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.site-pulse-copy p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.site-pulse-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.site-pulse-points span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.site-pulse-points i {
+  color: #10b981;
+  font-size: 20px;
+}
+
+.site-pulse-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 22px;
+  color: #4b5563;
+}
+
+.site-pulse-pricing strong {
+  color: #111827;
+  font-size: 20px;
+}
+
+.site-pulse-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 6px;
+  background: #0f766e;
+  color: #ffffff;
+  font-weight: 800;
+  box-shadow: 0 18px 38px rgba(15, 118, 110, 0.22);
+  cursor: pointer;
+}
+
+.site-pulse-cta i {
+  font-size: 20px;
+}
+
+.site-pulse-preview {
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #ffffff;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+}
+
+.site-pulse-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
@@ -401,6 +563,23 @@ export default {
 }
 
 @media (max-width: 575px) {
+  .site-pulse-product {
+    padding: 58px 0;
+  }
+
+  .site-pulse-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .site-pulse-copy h2 {
+    font-size: 30px;
+  }
+
+  .site-pulse-points {
+    grid-template-columns: 1fr;
+  }
+
   .whatsapp-float {
     left: 14px;
     bottom: 14px;
