@@ -200,7 +200,7 @@ export default {
         {
           name: "Puji Ermanto",
           position: "Consultant & Helpdesk",
-          phone: "6285971630027",
+          phone: "6288222668778",
           avatar: require("~/assets/img/kontak/puji.jpg"),
           message: "Halo Admin, saya tertarik dengan produk ini.",
         },

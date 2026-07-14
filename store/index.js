@@ -1,5 +1,15 @@
 import client from "~/plugins/contentful";
 
+const profileOverrides = {
+  phone: "6288222668778",
+  city: {
+    lat: -7.0503005,
+    lon: 107.595406,
+  },
+  address:
+    "Komplek Bumi Sasak Dua Blok B3 / No.5 Jl. Kapten Sarwono RT. 004 / Rw.07, Banjaran Wetan 40377.",
+};
+
 export const state = () => ({
  posts: null,
  allposts: null,
@@ -82,7 +92,25 @@ export const actions = {
       const response = await client.getEntries({
         content_type: "profile"
       })
-      if (response.items.length > 0) commit("updateProfiles", response.items);
+      if (response.items.length > 0) {
+        const profiles = response.items.map((profile, index) => {
+          if (index !== 0) return profile;
+
+          return {
+            ...profile,
+            fields: {
+              ...profile.fields,
+              ...profileOverrides,
+              city: {
+                ...(profile.fields.city || {}),
+                ...profileOverrides.city,
+              },
+            },
+          };
+        });
+
+        commit("updateProfiles", profiles);
+      }
     } catch (err) {
      console.error(err);
    }

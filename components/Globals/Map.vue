@@ -23,6 +23,10 @@
 						<small class="text-success">
 							{{ coordinate.region }}
 						</small>
+						<br>
+						<small class="text-muted">
+							{{ coordinate.address }}
+						</small>
 
 						<br>
 
@@ -74,8 +78,9 @@
 				},
 				coordinate: {
 					title: 'Codesyariah Webdeveloper - Office',
-					region: 'Cimahi Selatan',
-					external_link: 'https://www.google.com/maps/place/Jl.+Boeing+Utara+I+No.7,+Melong,+Kec.+Cimahi+Sel.,+Kota+Cimahi,+Jawa+Barat+40534/@-6.9254994,107.5542601,17z/data=!4m13!1m7!3m6!1s0x2e68e5f479e26977:0xf11143e38b100a69!2sJl.+Boeing+Utara+I+No.7,+Melong,+Kec.+Cimahi+Sel.,+Kota+Cimahi,+Jawa+Barat+40534!3b1!8m2!3d-6.9254994!4d107.5542601!3m4!1s0x2e68e5f479e26977:0xf11143e38b100a69!8m2!3d-6.9254994!4d107.5542601'
+					region: 'Banjaran Wetan 40377',
+					address: 'Komplek Bumi Sasak Dua Blok B3 / No.5 Jl. Kapten Sarwono RT. 004 / Rw.07, Banjaran Wetan 40377.',
+					external_link: 'https://www.google.com/maps/search/?api=1&query=Komplek%20Bumi%20Sasak%20Dua%20Blok%20B3%20No.5%20Jl.%20Kapten%20Sarwono%20RT.%20004%20Rw.07%20Banjaran%20Wetan%2040377'
 
 				}
 

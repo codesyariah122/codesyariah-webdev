@@ -148,7 +148,7 @@ export default {
 
   data() {
     return {
-      whatsappUrl: "https://wa.me/6285971630027?text=Hallo%20codesyariah",
+      whatsappUrl: "https://wa.me/6288222668778?text=Hallo%20codesyariah",
       showPopup: true,
       showChatbox: true,
       chatMessage:
@@ -158,7 +158,7 @@ export default {
         {
           name: "Puji Ermanto",
           position: "Consultant & Helpdesk",
-          phone: "6285971630027",
+          phone: "6288222668778",
           avatar: require("~/assets/img/kontak/puji.jpg"),
         },
       ],
@@ -194,7 +194,7 @@ export default {
     },
     whatsOrder() {
       const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
-      const whatsappNumber = "6285971630027";
+      const whatsappNumber = "6288222668778";
       const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
         message
       )}`;

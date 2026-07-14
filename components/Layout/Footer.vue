@@ -85,7 +85,7 @@ export default {
 	data() {
 		return {
 			year: new Date().getFullYear(),
-			whatsappLink: "https://wa.me/6285971630027?text=Halo%20Codesyariah%2C%20saya%20ingin%20konsultasi%20layanan%20website%20atau%20sistem%20bisnis.",
+			whatsappLink: "https://wa.me/6288222668778?text=Halo%20Codesyariah%2C%20saya%20ingin%20konsultasi%20layanan%20website%20atau%20sistem%20bisnis.",
 			services: [
 				"Company profile & landing page",
 				"Laravel, API & dashboard admin",
