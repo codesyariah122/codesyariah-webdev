@@ -9,6 +9,7 @@
 			<ul>
 				<li><a class="nav-link scrollto active" href="#hero">Home</a></li>
 				<li><a class="nav-link scrollto" href="#services">Layanan</a></li>
+				<li><a class="nav-link scrollto" href="#tools">Tools</a></li>
 				<li><a class="nav-link scrollto " href="#pricing">Paket</a></li>
 				<li><a class="nav-link scrollto " href="#gallery">Portfolio</a></li>
 				<li><a class="nav-link scrollto" href="#site-pulse">Produk</a></li>

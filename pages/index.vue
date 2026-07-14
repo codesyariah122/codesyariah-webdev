@@ -2,6 +2,7 @@
   <main id="main">
     <!-- Komponen halaman -->
     <HomepageServices />
+    <HomepageOpenSourceTools />
     <HomepagePricing :categories="categories" />
     <HomepageGalleryProduct />
     <section
