@@ -113,10 +113,26 @@
   /**
    * Mobile nav toggle
    */
+  const closeMobileNav = () => {
+    let navbar = select('#navbar')
+    if (!navbar || !navbar.classList.contains('navbar-mobile')) return
+
+    navbar.classList.remove('navbar-mobile')
+    document.body.classList.remove('mobile-nav-open')
+
+    let navbarToggle = select('.mobile-nav-toggle')
+    if (navbarToggle) {
+      navbarToggle.classList.add('bi-list')
+      navbarToggle.classList.remove('bi-x')
+    }
+  }
+
   on('click', '.mobile-nav-toggle', function(e) {
-    select('#navbar').classList.toggle('navbar-mobile')
+    let navbar = select('#navbar')
+    navbar.classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
+    document.body.classList.toggle('mobile-nav-open', navbar.classList.contains('navbar-mobile'))
   })
 
   /**
@@ -133,16 +149,15 @@
    * Scrool with ofset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {
+    if (!this.hash) {
+      closeMobileNav()
+      return
+    }
+
     if (select(this.hash)) {
       e.preventDefault()
 
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
+      closeMobileNav()
       scrollto(this.hash)
     }
   }, true)

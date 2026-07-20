@@ -220,19 +220,24 @@ h6 {
   transition: 0.5s;
 }
 
+body.mobile-nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
 @media (max-width: 991px) {
   #header,
   #header.header-transparent,
   #header.header-scrolled {
-    height: 72px;
-    padding: 12px 14px;
+    height: 70px;
+    padding: max(10px, env(safe-area-inset-top)) 14px 10px;
     background: linear-gradient(180deg, rgba(5, 22, 27, 0.92), rgba(5, 22, 27, 0.58));
     backdrop-filter: blur(14px);
   }
 
   .navbar {
     width: 100%;
-    max-width: 520px;
+    max-width: 640px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -276,8 +281,9 @@ h6 {
   .mobile-nav-toggle {
     display: grid;
     place-items: center;
-    width: 42px;
-    height: 42px;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -292,57 +298,61 @@ h6 {
 
 .navbar-mobile {
   position: fixed !important;
-  overflow: hidden;
+  overflow: hidden !important;
   top: 0;
   right: 0;
   left: 0;
   bottom: 0;
   width: 100vw;
   height: 100vh;
+  min-height: 100dvh;
   background:
     radial-gradient(circle at top left, rgba(24, 209, 155, 0.2), transparent 36%),
+    linear-gradient(135deg, rgba(5, 18, 23, 0.98), rgba(7, 42, 47, 0.96)),
     rgba(5, 18, 23, 0.96);
   transition: 0.3s;
   z-index: 9999;
   display: block !important;
   max-width: none;
   margin: 0;
-  padding: 14px;
+  padding: max(14px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom));
 }
 
 .navbar-mobile .mobile-brand {
   position: fixed;
-  top: 16px;
+  top: max(14px, env(safe-area-inset-top));
   left: 16px;
   z-index: 10001;
 }
 
 .navbar-mobile .mobile-nav-toggle {
   position: fixed;
-  top: 14px;
+  top: max(12px, env(safe-area-inset-top));
   right: 14px;
   z-index: 10001;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.16);
 }
 
 #navbar.navbar-mobile>ul {
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
   align-items: stretch !important;
   justify-content: flex-start !important;
-  gap: 9px;
+  gap: 10px;
   position: fixed !important;
-  top: 84px !important;
+  top: calc(max(76px, env(safe-area-inset-top) + 66px)) !important;
   right: 14px !important;
-  bottom: auto !important;
+  bottom: max(14px, env(safe-area-inset-bottom)) !important;
   left: 14px !important;
   width: auto !important;
-  max-height: calc(100vh - 108px);
-  min-height: 342px;
+  max-height: none;
+  min-height: 0;
   margin: 0 !important;
   padding: 14px !important;
   border-radius: 8px;
-  background: rgba(6, 22, 25, 0.92);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.045)),
+    rgba(6, 22, 25, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
   backdrop-filter: blur(18px);
@@ -358,7 +368,7 @@ h6 {
 #navbar.navbar-mobile>ul>li {
   display: block !important;
   width: 100% !important;
-  min-height: 46px;
+  min-height: 48px;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -367,20 +377,39 @@ h6 {
 #navbar.navbar-mobile>ul>li>a:focus {
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
+  justify-content: space-between !important;
   width: 100% !important;
-  min-height: 46px;
-  padding: 14px 15px !important;
+  min-height: 48px;
+  padding: 14px 16px !important;
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.9) !important;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.065);
   font-size: 13px !important;
-  font-weight: 800;
+  font-weight: 900;
   line-height: 1.2 !important;
-  letter-spacing: 0.6px;
+  letter-spacing: 0;
   text-transform: uppercase;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+#navbar.navbar-mobile>ul>li>a::after {
+  content: "\F285";
+  font-family: "bootstrap-icons";
+  color: rgba(255, 255, 255, 0.36);
+  font-size: 13px;
+}
+
+#navbar.navbar-mobile>ul>li>a[href="/website-builder"] {
+  background: #18d19b !important;
+  color: #05201a !important;
+  box-shadow: 0 14px 28px rgba(24, 209, 155, 0.22);
+}
+
+#navbar.navbar-mobile>ul>li>a[href="/website-builder"]::after,
+#navbar.navbar-mobile>ul>li>a:hover::after,
+#navbar.navbar-mobile>ul>li>a.active::after {
+  color: currentColor;
 }
 
 #navbar.navbar-mobile>ul>li>a:hover,
