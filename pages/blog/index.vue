@@ -8,12 +8,12 @@
 				</div>
 			</div>
 			<div class="row">
-				<div v-for="post in allposts" class="col-sm-12 col-md-6 col-lg-4 mb-4">
-					<div class="card text-white card-has-bg click-col" :style="`background-image:url('https://${post.fields.heroImage.fields.file.url}');`">
-					<img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+				<div v-for="post in allposts" :key="post.fields.slug" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+					<div class="card text-white card-has-bg click-col" :style="{ backgroundImage: `url('${assetUrl(post.fields.heroImage)}')` }">
+					<img class="card-img d-none" :src="assetUrl(post.fields.heroImage)" :alt="post.fields.title">
 					<div class="card-img-overlay d-flex flex-column">
 						<div class="card-body">
-							<small v-for="tag in post.fields.tags" class="badge rounded-pill bg-success mb-3 ml-3">
+							<small v-for="tag in post.fields.tags" :key="tag" class="badge rounded-pill bg-success mb-3 ml-3">
 								#{{tag}}
 							</small>
 							<h4 class="card-title mt-0 ">
@@ -23,7 +23,7 @@
 						</div>
 						<div class="card-footer">
 							<div class="media">
-								<img class="mr-3 rounded-circle" :src="`https://${post.fields.author.fields.profilePhoto.fields.file.url}`" alt="Generic placeholder image" style="max-width:50px">
+								<img class="mr-3 rounded-circle" :src="assetUrl(post.fields.author.fields.profilePhoto)" :alt="post.fields.author.fields.name" style="max-width:50px">
 								<div class="media-body">
 									<h6 class="my-0 text-white d-block">{{post.fields.author.fields.name}}</h6>
 									<small>Author of Codesyariah WebDev</small>
@@ -40,16 +40,37 @@
 </template>
 
 <script>
+	import { blogFallbackPosts } from "@/data/blogFallbackPosts";
+
 	export default {
 		name: 'blog',
 		layout: 'page',
+		data() {
+			return {
+				fallbackPosts: blogFallbackPosts,
+			};
+		},
 		mounted(){
 			if (process.client && window.$crisp) window.$crisp.push(['do', 'chat:hide']);
+			this.$store.dispatch("allPosts");
 		},
 		computed: {
 			allposts() {
-				return this.$store.state.allposts
+				const allposts = this.$store.state.allposts || [];
+				const homepagePosts = this.$store.state.posts || [];
+				return allposts.length ? allposts : homepagePosts.length ? homepagePosts : this.fallbackPosts;
 			}
+		},
+		methods: {
+			assetUrl(asset) {
+				const url = asset?.fields?.file?.url || '/assets/img/new-hero-bg-1-desktop.jpg';
+
+				if (url.startsWith('http://') || url.startsWith('https://')) return url;
+				if (url.startsWith('//')) return `https:${url}`;
+				if (url.startsWith('/')) return url;
+
+				return `https://${url}`;
+			},
 		}
 	}
 </script>

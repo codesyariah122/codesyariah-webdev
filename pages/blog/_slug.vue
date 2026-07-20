@@ -75,7 +75,7 @@
 			</div>
 			<div class="container">
 
-				<Article/>
+				<Article :post="post"/>
 
 				<!-- <Comment/> -->
 				<Disqus/>
@@ -87,6 +87,7 @@
 <script>
 	import Comment from '@/components/Blog/Comment'
 	import Article from '@/components/Blog/Article'
+	import { blogFallbackPosts } from "@/data/blogFallbackPosts";
 
 	export default{
 		name: 'blog',
@@ -103,23 +104,27 @@
 		},
 		mounted(){
 			if (process.client && window.$crisp) window.$crisp.push(['do', 'chat:hide']);
+			this.$store.dispatch("allPosts");
 		},
 		computed: {
+			posts() {
+				const allposts = this.$store.state.allposts || [];
+				const homepagePosts = this.$store.state.posts || [];
+				return allposts.length ? allposts : homepagePosts.length ? homepagePosts : blogFallbackPosts;
+			},
 			post() {
-				let post = this.$store.state.allposts.filter(
-					el => el.fields.slug === this.slug
-					);
-				return post[0];
+				return this.posts.find(el => el.fields.slug === this.slug) || this.posts[0];
 			}
 		},
 		head() {
+			const title = this.post?.fields?.title || 'Codesyariah Webdevelopment Blog';
 			return {
-				title: this.post.fields.title,
+				title,
         meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.post.fields.title
+          content: title
         }
         ]
 			};

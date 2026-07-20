@@ -32,11 +32,11 @@
 	}
 </style>
 <template>
-	<section id="hero" :style="`${$device.isDesktop ? bg_desktop : bg_mobile}`">
+	<section id="hero" :style="$device.isDesktop ? bg_desktop : bg_mobile">
 		<div class="hero-container">
-			<h1>{{ post.fields.title }}</h1>
-			<h2 class="mt-5">By {{ post.fields.author.fields.name }}</h2>
-			<img :src="`https:${post.fields.author.fields.profilePhoto.fields.file.url}`" style="width: 50px!important;"class="rounded-circle">
+			<h1>{{ postTitle }}</h1>
+			<h2 class="mt-5">By {{ authorName }}</h2>
+			<img :src="authorPhoto" :alt="authorName" style="width: 50px!important;" class="rounded-circle">
 			<a href="#post" class="btn-scroll scrollto" title="Scroll Down"><i class="bx bx-chevron-down"></i></a>
 		</div>
 	</section>
@@ -45,11 +45,36 @@
 <script>
 	export default {
 		props: ['post'],
-		data(){
-			return {
-				bg_mobile: `background: url(https:${this.post.fields.heroImage.fields.file.url}) top center no-repeat; height: 70vh;width: 100%;background-size: cover;`,
-				bg_desktop: `background: url(https:${this.post.fields.heroImage.fields.file.url}) no-repeat center; height: 100vh;width: 100%;background-size: cover;`
+		computed: {
+			postTitle() {
+				return this.post?.fields?.title || 'Codesyariah WebDevelopment Blog';
+			},
+			authorName() {
+				return this.post?.fields?.author?.fields?.name || 'Codesyariah WebDev';
+			},
+			authorPhoto() {
+				return this.assetUrl(this.post?.fields?.author?.fields?.profilePhoto, '/assets/img/me.jpg');
+			},
+			heroImage() {
+				return this.assetUrl(this.post?.fields?.heroImage, '/assets/img/new-hero-bg-1-desktop.jpg');
+			},
+			bg_mobile() {
+				return `background: url('${this.heroImage}') top center no-repeat; height: 70vh;width: 100%;background-size: cover;`;
+			},
+			bg_desktop() {
+				return `background: url('${this.heroImage}') no-repeat center; height: 100vh;width: 100%;background-size: cover;`;
+			},
+		},
+		methods: {
+			assetUrl(asset, fallback) {
+				const url = asset?.fields?.file?.url || fallback;
+
+				if (url.startsWith('http://') || url.startsWith('https://')) return url;
+				if (url.startsWith('//')) return `https:${url}`;
+				if (url.startsWith('/')) return url;
+
+				return `https://${url}`;
 			}
-		}
+		},
 	}
 </script>
