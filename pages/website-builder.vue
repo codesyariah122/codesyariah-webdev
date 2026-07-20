@@ -2112,97 +2112,101 @@ export default {
 
 .preview-shell.friendly {
 	background:
-		radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0) 30%),
-		linear-gradient(135deg, #fff7ed, #e8fff8 52%, #f6fbff);
+		linear-gradient(135deg, rgba(16, 45, 53, 0.08), rgba(24, 209, 155, 0.14)),
+		#f6fbf8;
 }
 
 .preview-shell.friendly .mock-website {
-	border-radius: 18px;
-	background: #fffdf8;
-	box-shadow: 0 28px 80px rgba(15, 118, 110, 0.18);
+	border-radius: 8px;
+	background: #fbfaf6;
+	box-shadow: 0 26px 70px rgba(16, 45, 53, 0.18);
 }
 
 .preview-shell.friendly .mock-nav {
-	min-height: 72px;
-	padding: 0 26px;
-	background: #fffdf8;
-	color: #12343b;
-	border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+	min-height: 70px;
+	padding: 0 28px;
+	background: #fbfaf6;
+	color: #14353c;
+	border-bottom: 1px solid rgba(16, 45, 53, 0.12);
 }
 
 .preview-shell.friendly .mock-nav strong {
 	display: inline-flex;
 	align-items: center;
-	gap: 9px;
+	gap: 10px;
+	font-size: 18px;
 }
 
 .preview-shell.friendly .mock-nav strong::before {
 	content: "";
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
+	width: 10px;
+	height: 36px;
+	border-radius: 999px;
 	background:
-		linear-gradient(135deg, var(--builder-primary), #ffd166);
-	box-shadow: 0 10px 24px rgba(15, 118, 110, 0.2);
+		linear-gradient(180deg, var(--builder-primary), #f59e0b);
+	box-shadow: 0 12px 24px rgba(16, 45, 53, 0.14);
 }
 
 .preview-shell.friendly .mock-nav nav {
-	color: #557177;
+	gap: 10px;
+	color: #526b71;
 	text-transform: none;
 }
 
 .preview-shell.friendly .mock-nav nav span {
-	padding: 8px 10px;
-	border-radius: 999px;
+	padding: 9px 12px;
+	border-radius: 8px;
 }
 
 .preview-shell.friendly .mock-nav nav span:first-child {
-	background: var(--builder-soft);
+	background: #dffbf1;
 	color: var(--builder-dark);
 }
 
 .preview-shell.friendly .mock-menu-toggle {
-	border-color: rgba(15, 118, 110, 0.18);
-	background: var(--builder-soft);
+	border-color: rgba(16, 45, 53, 0.14);
+	background: #ffffff;
 	color: var(--builder-dark);
 }
 
 .preview-shell.friendly .mock-hero {
 	position: relative;
-	grid-template-columns: minmax(0, 1fr) minmax(230px, 0.72fr);
-	min-height: 300px;
-	padding: 40px;
+	grid-template-columns: minmax(0, 0.98fr) minmax(250px, 0.82fr);
+	min-height: 335px;
+	padding: 36px 36px 34px;
 	background:
-		linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(234, 255, 246, 0.9)),
-		linear-gradient(135deg, #fff7ed, var(--builder-soft));
+		linear-gradient(90deg, #fbfaf6 0 52%, rgba(223, 251, 241, 0.92) 52% 100%);
 }
 
 .preview-shell.friendly .mock-hero::after {
-	content: "";
+	content: "Customer paham lebih cepat";
 	position: absolute;
-	right: 34px;
-	bottom: 24px;
-	width: 86px;
-	height: 86px;
-	border-radius: 32px;
-	background: rgba(255, 209, 102, 0.28);
-	transform: rotate(12deg);
+	right: 36px;
+	top: 34px;
+	z-index: 1;
+	padding: 9px 12px;
+	border-radius: 8px;
+	background: #ffffff;
+	color: #14353c;
+	box-shadow: 0 14px 30px rgba(16, 45, 53, 0.12);
+	font-size: 11px;
+	font-weight: 900;
 }
 
 .preview-shell.friendly .mock-badge {
-	padding: 9px 13px;
-	background: #ffffff;
-	color: var(--builder-dark);
-	border: 1px solid rgba(15, 118, 110, 0.13);
-	box-shadow: 0 12px 28px rgba(15, 118, 110, 0.1);
+	padding: 9px 12px;
+	background: #14353c;
+	color: #ffffff;
+	border: 0;
+	box-shadow: none;
 	text-transform: none;
 }
 
 .preview-shell.friendly .mock-hero h3 {
-	max-width: 620px;
-	color: #12343b;
-	font-size: clamp(30px, 4vw, 48px);
-	line-height: 1.08;
+	max-width: 560px;
+	color: #14353c;
+	font-size: clamp(34px, 4vw, 54px);
+	line-height: 1;
 	letter-spacing: 0;
 }
 
@@ -2211,70 +2215,70 @@ export default {
 .preview-shell.friendly .mock-service-grid p,
 .preview-shell.friendly .mock-price-grid p,
 .preview-shell.friendly .mock-contact-section p {
-	color: #5f7378;
+	color: #5e7378;
 }
 
 .preview-shell.friendly .mock-actions span {
 	min-height: 42px;
-	border-radius: 999px;
+	border-radius: 8px;
 }
 
 .preview-shell.friendly .mock-actions span:first-child {
-	background: linear-gradient(135deg, var(--builder-primary), #35d7a7);
+	background: var(--builder-primary);
 	color: #06201a;
 }
 
 .preview-shell.friendly .mock-actions span:last-child {
 	background: #ffffff;
-	border-color: rgba(15, 118, 110, 0.16);
-	color: #12343b;
+	border-color: rgba(16, 45, 53, 0.18);
+	color: #14353c;
 }
 
 .preview-shell.friendly .mock-visual {
 	position: relative;
 	z-index: 1;
 	overflow: hidden;
-	min-height: 230px;
-	border-radius: 28px;
+	min-height: 235px;
+	border-radius: 8px;
 	background:
-		linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.2)),
-		linear-gradient(135deg, var(--builder-primary), #ffd166);
-	box-shadow: 0 24px 52px rgba(15, 118, 110, 0.22);
+		linear-gradient(135deg, rgba(20, 53, 60, 0.94), rgba(15, 118, 110, 0.82));
+	box-shadow: 0 22px 46px rgba(16, 45, 53, 0.2);
 }
 
 .preview-shell.friendly .mock-visual::before {
-	content: "Siap dibuka dari HP";
+	content: "alur konsultasi";
 	position: absolute;
 	top: 18px;
 	left: 18px;
-	padding: 8px 11px;
-	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.82);
-	color: #12343b;
+	padding: 7px 10px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.12);
+	color: rgba(255, 255, 255, 0.84);
 	font-size: 11px;
 	font-weight: 900;
+	text-transform: uppercase;
 }
 
 .preview-shell.friendly .visual-card {
-	width: min(210px, 82%);
-	border-radius: 26px;
-	background: rgba(255, 255, 255, 0.74);
-	color: #12343b;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+	width: min(218px, 84%);
+	border-radius: 8px;
+	background: #ffffff;
+	color: #14353c;
+	box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
 }
 
 .preview-shell.friendly .visual-card i {
-	color: var(--builder-dark);
+	color: var(--builder-primary);
 }
 
 .preview-shell.friendly .visual-card span {
-	color: #5f7378;
+	color: #5e7378;
 }
 
 .preview-shell.friendly .mock-sections {
-	gap: 14px;
-	padding: 22px;
-	background: #fffdf8;
+	gap: 16px;
+	padding: 24px;
+	background: #fbfaf6;
 }
 
 .preview-shell.friendly .mock-sections article,
@@ -2285,16 +2289,16 @@ export default {
 .preview-shell.friendly .mock-blog-grid article,
 .preview-shell.friendly .mock-price-grid article,
 .preview-shell.friendly .mock-contact-card {
-	border-radius: 18px;
+	border-radius: 8px;
 	background: #ffffff;
-	border-color: rgba(15, 118, 110, 0.12);
-	box-shadow: 0 14px 34px rgba(16, 45, 53, 0.06);
+	border-color: rgba(16, 45, 53, 0.1);
+	box-shadow: 0 12px 30px rgba(16, 45, 53, 0.07);
 }
 
 .preview-shell.friendly .mock-sections article:nth-child(2n),
 .preview-shell.friendly .mock-service-grid article:nth-child(2n),
 .preview-shell.friendly .mock-price-grid article.featured {
-	background: #f0fff9;
+	background: #ecfff8;
 }
 
 .preview-shell.friendly .mock-sections i,
@@ -2305,19 +2309,21 @@ export default {
 	width: 36px;
 	height: 36px;
 	margin-bottom: 10px;
-	border-radius: 14px;
-	background: var(--builder-soft);
+	border-radius: 8px;
+	background: #dffbf1;
 	color: var(--builder-dark);
 }
 
 .preview-shell.friendly .mock-feature-strip {
-	margin: 4px 22px 0;
-	border-radius: 18px;
-	background: #12343b;
+	margin: 0 24px;
+	padding: 14px;
+	border-radius: 8px;
+	background: #14353c;
 }
 
 .preview-shell.friendly .mock-feature-strip span {
 	color: rgba(255, 255, 255, 0.88);
+	background: rgba(255, 255, 255, 0.09);
 }
 
 .preview-shell.friendly .mock-section-label {
@@ -2329,12 +2335,13 @@ export default {
 .preview-shell.friendly .mock-content-section,
 .preview-shell.friendly .mock-pricing-section,
 .preview-shell.friendly .mock-contact-section {
-	margin-inline: 22px;
+	margin-inline: 24px;
 }
 
 .preview-shell.friendly .mock-contact-section {
-	border-radius: 20px;
-	background: linear-gradient(135deg, #12343b, #0f766e);
+	border-radius: 8px;
+	background:
+		linear-gradient(135deg, #14353c, #0f766e);
 	color: #ffffff;
 }
 
@@ -2344,20 +2351,20 @@ export default {
 }
 
 .preview-shell.friendly .mock-footer {
-	border-top-color: rgba(15, 118, 110, 0.12);
-	background: #fff7ed;
-	color: #12343b;
+	border-top-color: rgba(16, 45, 53, 0.12);
+	background: #f4f0e8;
+	color: #14353c;
 }
 
 .preview-shell.friendly .dashboard-mock {
-	border-radius: 18px;
-	background: #fffdf8;
+	border-radius: 8px;
+	background: #fbfaf6;
 }
 
 .preview-shell.friendly .dashboard-sidebar {
-	background: #fff7ed;
-	color: #12343b;
-	border-right: 1px solid rgba(15, 118, 110, 0.12);
+	background: #14353c;
+	color: #ffffff;
+	border-right: 1px solid rgba(16, 45, 53, 0.12);
 }
 
 .preview-shell.friendly .dashboard-sidebar nav span.active,
@@ -2367,9 +2374,9 @@ export default {
 .preview-shell.friendly .dashboard-module-grid article,
 .preview-shell.friendly .dashboard-user,
 .preview-shell.friendly .dashboard-task-list li {
-	border-radius: 18px;
+	border-radius: 8px;
 	background: #ffffff;
-	border-color: rgba(15, 118, 110, 0.12);
+	border-color: rgba(16, 45, 53, 0.1);
 	box-shadow: 0 12px 30px rgba(16, 45, 53, 0.06);
 }
 
