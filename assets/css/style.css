@@ -334,18 +334,16 @@ body.mobile-nav-open {
 }
 
 #navbar.navbar-mobile>ul {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  align-items: stretch !important;
-  justify-content: flex-start !important;
-  gap: 10px;
+  display: block !important;
   position: fixed !important;
-  top: calc(max(76px, env(safe-area-inset-top) + 66px)) !important;
+  top: 82px !important;
   right: 14px !important;
-  bottom: max(14px, env(safe-area-inset-bottom)) !important;
+  bottom: 14px !important;
   left: 14px !important;
   width: auto !important;
-  max-height: none;
+  height: auto !important;
+  max-height: calc(100vh - 96px) !important;
+  max-height: calc(100dvh - 96px) !important;
   min-height: 0;
   margin: 0 !important;
   padding: 14px !important;
@@ -356,7 +354,8 @@ body.mobile-nav-open {
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
   backdrop-filter: blur(18px);
-  overflow-y: auto;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
   opacity: 1 !important;
   visibility: visible !important;
   pointer-events: auto !important;
@@ -369,8 +368,14 @@ body.mobile-nav-open {
   display: block !important;
   width: 100% !important;
   min-height: 48px;
+  margin: 0 0 10px !important;
+  padding: 0 !important;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+#navbar.navbar-mobile>ul>li:last-child {
+  margin-bottom: 0 !important;
 }
 
 #navbar.navbar-mobile>ul>li>a,
@@ -381,6 +386,7 @@ body.mobile-nav-open {
   width: 100% !important;
   min-height: 48px;
   padding: 14px 16px !important;
+  margin: 0 !important;
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.9) !important;
   background: rgba(255, 255, 255, 0.065);
@@ -391,6 +397,7 @@ body.mobile-nav-open {
   text-transform: uppercase;
   opacity: 1 !important;
   visibility: visible !important;
+  transform: none !important;
 }
 
 #navbar.navbar-mobile>ul>li>a::after {
