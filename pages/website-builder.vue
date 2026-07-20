@@ -2641,27 +2641,67 @@ export default {
 		padding: 62px 0;
 	}
 
-	.checkbox-list,
-	.mock-sections {
+	.checkbox-list {
 		grid-template-columns: 1fr;
 	}
 
 	.preview-shell {
-		min-height: auto;
+		height: 690px;
 		padding: 12px;
+	}
+
+	.preview-shell.desktop {
+		display: flex;
+		align-items: stretch;
+		justify-content: flex-start;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scroll-snap-type: x proximity;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.preview-shell.desktop::after {
+		content: "";
+		flex: 0 0 12px;
+	}
+
+	.preview-shell.desktop .mock-website {
+		flex: 0 0 760px;
+		width: 760px;
+		max-width: none;
+		min-width: 760px;
+		height: 100%;
+		scroll-snap-align: start;
+	}
+
+	.preview-shell.desktop .mock-nav nav {
+		display: flex;
+	}
+
+	.preview-shell.desktop .mock-menu-toggle {
+		display: none;
 	}
 
 	.mock-website {
 		min-height: auto;
 	}
 
-	.mock-hero {
+	.preview-shell.mobile .mock-hero {
 		grid-template-columns: 1fr;
 		padding: 22px;
 	}
 
-	.mock-nav nav {
-		display: none;
+}
+
+@media (max-width: 420px) {
+	.preview-shell.desktop {
+		height: 650px;
+	}
+
+	.preview-shell.desktop .mock-website {
+		flex-basis: 720px;
+		width: 720px;
+		min-width: 720px;
 	}
 }
 </style>

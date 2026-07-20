@@ -334,14 +334,16 @@ body.mobile-nav-open {
 }
 
 #navbar.navbar-mobile>ul {
-  display: block !important;
+  display: flex !important;
+  flex-direction: column !important;
   position: fixed !important;
   top: 82px !important;
   right: 14px !important;
-  bottom: 14px !important;
+  bottom: auto !important;
   left: 14px !important;
   width: auto !important;
-  height: auto !important;
+  height: calc(100vh - 96px) !important;
+  height: calc(100dvh - 96px) !important;
   max-height: calc(100vh - 96px) !important;
   max-height: calc(100dvh - 96px) !important;
   min-height: 0;
@@ -366,6 +368,7 @@ body.mobile-nav-open {
 
 #navbar.navbar-mobile>ul>li {
   display: block !important;
+  flex: 0 0 auto !important;
   width: 100% !important;
   min-height: 48px;
   margin: 0 0 10px !important;
@@ -398,6 +401,15 @@ body.mobile-nav-open {
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
+  text-indent: 0 !important;
+  white-space: normal !important;
+}
+
+#navbar.navbar-mobile>ul>li>a span,
+#navbar.navbar-mobile>ul>li>a strong {
+  color: inherit !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 #navbar.navbar-mobile>ul>li>a::after {

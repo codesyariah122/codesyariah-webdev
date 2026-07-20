@@ -981,45 +981,155 @@ export default {
   }
 
   .builder-popup {
-    padding: 14px;
-    align-items: flex-end;
+    place-items: end center;
+    padding: 12px;
+    overflow-y: auto;
   }
 
   .builder-popup-card {
     grid-template-columns: 1fr;
-    max-height: calc(100vh - 28px);
+    width: 100%;
+    max-height: min(88vh, 640px);
+    max-height: min(88dvh, 640px);
     overflow-y: auto;
+    border-radius: 8px;
   }
 
   .builder-popup-visual {
-    min-height: 250px;
-    padding: 24px;
+    min-height: 180px;
+    padding: 18px;
   }
 
   .builder-flyer-window {
-    width: min(280px, 100%);
+    width: min(250px, 100%);
+    padding: 10px;
+  }
+
+  .builder-popup-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.86);
   }
 
   .flyer-hero-preview {
-    min-height: 124px;
-    padding: 16px;
+    min-height: 96px;
+    padding: 14px;
   }
 
   .flyer-hero-preview strong {
-    font-size: 24px;
+    font-size: 21px;
+  }
+
+  .flyer-hero-preview span,
+  .flyer-dashboard-preview strong {
+    font-size: 13px;
+  }
+
+  .flyer-builder-preview,
+  .flyer-dashboard-preview {
+    margin-top: 10px;
+  }
+
+  .flyer-grid-preview {
+    gap: 6px;
+  }
+
+  .flyer-grid-preview span {
+    min-height: 38px;
   }
 
   .builder-popup-copy {
-    padding: 28px 20px 22px;
+    padding: 22px 18px 18px;
+  }
+
+  .builder-popup-kicker {
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .builder-popup-copy h2 {
+    font-size: 25px;
+    line-height: 1.08;
+  }
+
+  .builder-popup-copy p {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .builder-popup-points {
+    gap: 7px;
+    margin: 14px 0 16px;
+  }
+
+  .builder-popup-points span {
+    align-items: flex-start;
+    font-size: 12px;
+    line-height: 1.35;
   }
 
   .builder-popup-actions {
     display: grid;
+    gap: 8px;
+    margin-bottom: 16px;
   }
 
   .builder-popup-primary,
   .builder-popup-secondary {
     width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+
+  .builder-popup-toggle {
+    align-items: flex-start;
+    gap: 9px;
+  }
+
+  .builder-popup-toggle span {
+    width: 46px;
+    height: 26px;
+    flex-basis: 46px;
+  }
+
+  .builder-popup-toggle span::after {
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .builder-popup-toggle input:checked + span::after {
+    transform: translateX(20px);
+  }
+
+  .builder-popup-toggle strong {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px), (max-height: 720px) {
+  .builder-popup-card {
+    max-height: 92vh;
+    max-height: 92dvh;
+  }
+
+  .builder-popup-visual {
+    min-height: 132px;
+    padding: 14px;
+  }
+
+  .flyer-dashboard-preview,
+  .flyer-builder-preview {
+    display: none;
+  }
+
+  .builder-popup-copy h2 {
+    font-size: 23px;
   }
 }
 </style>
