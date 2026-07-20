@@ -10,6 +10,56 @@ const profileOverrides = {
     "Komplek Bumi Sasak Dua Blok B3 / No.5 Jl. Kapten Sarwono RT. 004 / Rw.07, Banjaran Wetan 40377.",
 };
 
+const resolveInclude = (includes, type, id) => {
+  if (!id) return null;
+  return (includes?.[type] || []).find((item) => item.sys?.id === id) || null;
+};
+
+const resolveLink = (value, includes) => {
+  const linkType = value?.sys?.linkType;
+  const id = value?.sys?.id;
+
+  if (!linkType || value.fields) return value;
+
+  return resolveInclude(includes, linkType, id) || value;
+};
+
+const normalizePost = (post, includes = {}) => {
+  const fields = post.fields || {};
+  const heroImage = resolveLink(fields.heroImage, includes);
+  const author = resolveLink(fields.author, includes);
+  const authorFields = author?.fields || {};
+  const profilePhoto = resolveLink(authorFields.profilePhoto, includes);
+
+  return {
+    ...post,
+    fields: {
+      ...fields,
+      slug: fields.slug || post.sys?.id,
+      title: fields.title || "Insight Bisnis Digital",
+      publishedDate: fields.publishedDate || post.sys?.createdAt || new Date().toISOString(),
+      tags: Array.isArray(fields.tags) ? fields.tags : ["insight", "digital"],
+      heroImage: heroImage?.fields ? heroImage : {
+        fields: { file: { url: "/assets/img/new-hero-bg-1-desktop.jpg" } },
+      },
+      author: {
+        ...(author || {}),
+        fields: {
+          ...authorFields,
+          name: authorFields.name || "Codesyariah WebDev",
+          profilePhoto: profilePhoto?.fields ? profilePhoto : {
+            fields: { file: { url: "/assets/img/me.jpg" } },
+          },
+        },
+      },
+    },
+  };
+};
+
+const normalizePosts = (items = [], includes = {}) => {
+  return items.map((post) => normalizePost(post, includes));
+};
+
 export const state = () => ({
  posts: null,
  allposts: null,
@@ -47,7 +97,7 @@ export const actions = {
          'order':'-sys.createdAt',
          'limit': 3
        });
-       if (response.items.length > 0) commit("updatePosts", response.items);
+       if (response.items.length > 0) commit("updatePosts", normalizePosts(response.items, response.includes));
      } catch (err) {
        console.error(err);
      }
@@ -61,7 +111,7 @@ export const actions = {
        'order':'-sys.updatedAt',
        'limit': 100
      });
-     if (response.items.length > 0) commit("allPosts", response.items);
+     if (response.items.length > 0) commit("allPosts", normalizePosts(response.items, response.includes));
    } catch (err) {
      console.error(err);
    }
