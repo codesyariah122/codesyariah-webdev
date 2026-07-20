@@ -14,6 +14,7 @@
 				<li><a class="nav-link scrollto " href="../../#pricing">Pricing</a></li>
 				<li><a class="nav-link scrollto" href="../../#site-pulse">Produk</a></li>
 				<li><a class="nav-link" href="/website-builder">Builder</a></li>
+				<li><a class="nav-link" href="/website-cost-estimator">Estimator</a></li>
 				<li><a class="nav-link scrollto" href="../../#about">About</a></li>
 				<li><a class="nav-link scrollto" href="../../#contact">Contact</a></li>
 			</ul>

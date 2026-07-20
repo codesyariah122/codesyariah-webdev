@@ -400,7 +400,8 @@ body.mobile-nav-open {
   font-size: 13px;
 }
 
-#navbar.navbar-mobile>ul>li>a[href="/website-builder"] {
+#navbar.navbar-mobile>ul>li>a[href="/website-builder"],
+#navbar.navbar-mobile>ul>li>a[href="/website-cost-estimator"] {
   background: #18d19b !important;
   color: #05201a !important;
   box-shadow: 0 14px 28px rgba(24, 209, 155, 0.22);
@@ -415,6 +416,7 @@ body.mobile-nav-open {
 }
 
 #navbar.navbar-mobile>ul>li>a[href="/website-builder"]::after,
+#navbar.navbar-mobile>ul>li>a[href="/website-cost-estimator"]::after,
 #navbar.navbar-mobile>ul>li>a:hover::after,
 #navbar.navbar-mobile>ul>li>a.active::after {
   color: currentColor;

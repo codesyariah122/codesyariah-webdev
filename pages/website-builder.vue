@@ -2110,14 +2110,267 @@ export default {
 	background-color: #101820;
 }
 
-.preview-shell.friendly .mock-website,
+.preview-shell.friendly {
+	background:
+		radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0) 30%),
+		linear-gradient(135deg, #fff7ed, #e8fff8 52%, #f6fbff);
+}
+
+.preview-shell.friendly .mock-website {
+	border-radius: 18px;
+	background: #fffdf8;
+	box-shadow: 0 28px 80px rgba(15, 118, 110, 0.18);
+}
+
+.preview-shell.friendly .mock-nav {
+	min-height: 72px;
+	padding: 0 26px;
+	background: #fffdf8;
+	color: #12343b;
+	border-bottom: 1px solid rgba(15, 118, 110, 0.12);
+}
+
+.preview-shell.friendly .mock-nav strong {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+}
+
+.preview-shell.friendly .mock-nav strong::before {
+	content: "";
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background:
+		linear-gradient(135deg, var(--builder-primary), #ffd166);
+	box-shadow: 0 10px 24px rgba(15, 118, 110, 0.2);
+}
+
+.preview-shell.friendly .mock-nav nav {
+	color: #557177;
+	text-transform: none;
+}
+
+.preview-shell.friendly .mock-nav nav span {
+	padding: 8px 10px;
+	border-radius: 999px;
+}
+
+.preview-shell.friendly .mock-nav nav span:first-child {
+	background: var(--builder-soft);
+	color: var(--builder-dark);
+}
+
+.preview-shell.friendly .mock-menu-toggle {
+	border-color: rgba(15, 118, 110, 0.18);
+	background: var(--builder-soft);
+	color: var(--builder-dark);
+}
+
+.preview-shell.friendly .mock-hero {
+	position: relative;
+	grid-template-columns: minmax(0, 1fr) minmax(230px, 0.72fr);
+	min-height: 300px;
+	padding: 40px;
+	background:
+		linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(234, 255, 246, 0.9)),
+		linear-gradient(135deg, #fff7ed, var(--builder-soft));
+}
+
+.preview-shell.friendly .mock-hero::after {
+	content: "";
+	position: absolute;
+	right: 34px;
+	bottom: 24px;
+	width: 86px;
+	height: 86px;
+	border-radius: 32px;
+	background: rgba(255, 209, 102, 0.28);
+	transform: rotate(12deg);
+}
+
+.preview-shell.friendly .mock-badge {
+	padding: 9px 13px;
+	background: #ffffff;
+	color: var(--builder-dark);
+	border: 1px solid rgba(15, 118, 110, 0.13);
+	box-shadow: 0 12px 28px rgba(15, 118, 110, 0.1);
+	text-transform: none;
+}
+
+.preview-shell.friendly .mock-hero h3 {
+	max-width: 620px;
+	color: #12343b;
+	font-size: clamp(30px, 4vw, 48px);
+	line-height: 1.08;
+	letter-spacing: 0;
+}
+
+.preview-shell.friendly .mock-hero p,
+.preview-shell.friendly .mock-about-section p,
+.preview-shell.friendly .mock-service-grid p,
+.preview-shell.friendly .mock-price-grid p,
+.preview-shell.friendly .mock-contact-section p {
+	color: #5f7378;
+}
+
+.preview-shell.friendly .mock-actions span {
+	min-height: 42px;
+	border-radius: 999px;
+}
+
+.preview-shell.friendly .mock-actions span:first-child {
+	background: linear-gradient(135deg, var(--builder-primary), #35d7a7);
+	color: #06201a;
+}
+
+.preview-shell.friendly .mock-actions span:last-child {
+	background: #ffffff;
+	border-color: rgba(15, 118, 110, 0.16);
+	color: #12343b;
+}
+
+.preview-shell.friendly .mock-visual {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	min-height: 230px;
+	border-radius: 28px;
+	background:
+		linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.2)),
+		linear-gradient(135deg, var(--builder-primary), #ffd166);
+	box-shadow: 0 24px 52px rgba(15, 118, 110, 0.22);
+}
+
+.preview-shell.friendly .mock-visual::before {
+	content: "Siap dibuka dari HP";
+	position: absolute;
+	top: 18px;
+	left: 18px;
+	padding: 8px 11px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.82);
+	color: #12343b;
+	font-size: 11px;
+	font-weight: 900;
+}
+
+.preview-shell.friendly .visual-card {
+	width: min(210px, 82%);
+	border-radius: 26px;
+	background: rgba(255, 255, 255, 0.74);
+	color: #12343b;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+}
+
+.preview-shell.friendly .visual-card i {
+	color: var(--builder-dark);
+}
+
+.preview-shell.friendly .visual-card span {
+	color: #5f7378;
+}
+
+.preview-shell.friendly .mock-sections {
+	gap: 14px;
+	padding: 22px;
+	background: #fffdf8;
+}
+
 .preview-shell.friendly .mock-sections article,
-.preview-shell.friendly .mock-visual,
+.preview-shell.friendly .mock-about-section,
+.preview-shell.friendly .mock-content-section,
+.preview-shell.friendly .mock-service-grid article,
+.preview-shell.friendly .mock-portfolio-grid article,
+.preview-shell.friendly .mock-blog-grid article,
+.preview-shell.friendly .mock-price-grid article,
+.preview-shell.friendly .mock-contact-card {
+	border-radius: 18px;
+	background: #ffffff;
+	border-color: rgba(15, 118, 110, 0.12);
+	box-shadow: 0 14px 34px rgba(16, 45, 53, 0.06);
+}
+
+.preview-shell.friendly .mock-sections article:nth-child(2n),
+.preview-shell.friendly .mock-service-grid article:nth-child(2n),
+.preview-shell.friendly .mock-price-grid article.featured {
+	background: #f0fff9;
+}
+
+.preview-shell.friendly .mock-sections i,
+.preview-shell.friendly .mock-service-grid i,
+.preview-shell.friendly .mock-contact-card i {
+	display: inline-grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	margin-bottom: 10px;
+	border-radius: 14px;
+	background: var(--builder-soft);
+	color: var(--builder-dark);
+}
+
+.preview-shell.friendly .mock-feature-strip {
+	margin: 4px 22px 0;
+	border-radius: 18px;
+	background: #12343b;
+}
+
+.preview-shell.friendly .mock-feature-strip span {
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.preview-shell.friendly .mock-section-label {
+	color: var(--builder-dark);
+	text-transform: none;
+}
+
+.preview-shell.friendly .mock-about-section,
+.preview-shell.friendly .mock-content-section,
+.preview-shell.friendly .mock-pricing-section,
+.preview-shell.friendly .mock-contact-section {
+	margin-inline: 22px;
+}
+
+.preview-shell.friendly .mock-contact-section {
+	border-radius: 20px;
+	background: linear-gradient(135deg, #12343b, #0f766e);
+	color: #ffffff;
+}
+
+.preview-shell.friendly .mock-contact-section h4,
+.preview-shell.friendly .mock-contact-section p {
+	color: #ffffff;
+}
+
+.preview-shell.friendly .mock-footer {
+	border-top-color: rgba(15, 118, 110, 0.12);
+	background: #fff7ed;
+	color: #12343b;
+}
+
+.preview-shell.friendly .dashboard-mock {
+	border-radius: 18px;
+	background: #fffdf8;
+}
+
+.preview-shell.friendly .dashboard-sidebar {
+	background: #fff7ed;
+	color: #12343b;
+	border-right: 1px solid rgba(15, 118, 110, 0.12);
+}
+
+.preview-shell.friendly .dashboard-sidebar nav span.active,
 .preview-shell.friendly .dashboard-kpi-grid article,
 .preview-shell.friendly .dashboard-panel,
 .preview-shell.friendly .dashboard-table-panel,
-.preview-shell.friendly .dashboard-module-grid article {
-	border-radius: 8px;
+.preview-shell.friendly .dashboard-module-grid article,
+.preview-shell.friendly .dashboard-user,
+.preview-shell.friendly .dashboard-task-list li {
+	border-radius: 18px;
+	background: #ffffff;
+	border-color: rgba(15, 118, 110, 0.12);
+	box-shadow: 0 12px 30px rgba(16, 45, 53, 0.06);
 }
 
 .preview-shell.mobile .mock-nav {

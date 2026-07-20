@@ -1,0 +1,47 @@
+WEBSITE COST ESTIMATOR - LICENSE & OWNERSHIP NOTICE
+
+Copyright (c) 2026 Codesyariah Webdev.
+Creator, engineer, and developer: Puji Ermanto.
+
+Website Cost Estimator is an original digital product feature created for
+Codesyariah Webdev. The feature helps prospective clients estimate website
+budget ranges, complexity, timeline, package recommendations, feature
+priorities, and consultation direction before starting a project discussion.
+
+The implementation, source code, calculation structure, pricing logic, user
+interface, user experience flow, copywriting, recommendation model, WhatsApp
+brief integration, and related documentation are proprietary works owned by
+Codesyariah Webdev and created by Puji Ermanto.
+
+No permission is granted to copy, clone, redistribute, resell, sublicense,
+publish, scrape for commercial reuse, or create commercial derivative works
+from this Website Cost Estimator feature without prior written permission from
+Codesyariah Webdev.
+
+Visitors and prospective clients may use the public Website Cost Estimator only
+to calculate an initial project estimate and send a consultation brief to
+Codesyariah Webdev. This permission does not include any right to extract,
+reproduce, or reuse the underlying source code, pricing model, visual design
+system, copywriting, or product concept implementation.
+
+All rights reserved.
+
+Release & Version Evidence:
+Public repository: https://github.com/codesyariah122/codesyariah-webdev
+Initial public release date declared for this feature: 20 July 2026
+Latest recorded Git commit at the time of this notice:
+- Commit hash: 1643bf8dd0011747211469a220265bd0dcfb4eeb
+- Short hash: 1643bf8
+- Commit date: 2026-07-20T15:49:41+07:00
+- Commit author: codesyariah122
+- Commit message: fix: licence add history commit github repo this project
+
+The Git repository history, commit timestamps, source files, deployed web page,
+screenshots, and this license notice may be used as supporting evidence of
+authorship, publication timeline, and ownership claim for the Website Cost
+Estimator feature.
+
+Contact:
+Codesyariah Webdev
+Puji Ermanto
+WhatsApp: +62 882-2266-8778

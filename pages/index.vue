@@ -171,18 +171,22 @@
             <span class="builder-popup-kicker">Fitur Baru Codesyariah</span>
             <h2 id="builder-popup-title">Coba preview website impian Anda sebelum mulai project.</h2>
             <p>
-              Pilih jenis website, style visual, halaman, dan fitur. Calon customer bisa melihat gambaran awal company profile, landing page, katalog, travel, sales mobile, sampai dashboard sistem.
+              Pilih jenis website, style visual, halaman, fitur, lalu hitung estimasi budget awal. Calon customer bisa melihat gambaran company profile, landing page, katalog, travel, sales mobile, sampai dashboard sistem.
             </p>
 
             <div class="builder-popup-points">
               <span><i class="bx bx-check"></i> Cocok untuk owner awam teknologi</span>
               <span><i class="bx bx-check"></i> Preview desktop dan mobile</span>
+              <span><i class="bx bx-check"></i> Estimasi budget dan timeline lebih transparan</span>
               <span><i class="bx bx-check"></i> Brief bisa langsung dikirim ke WhatsApp</span>
             </div>
 
             <div class="builder-popup-actions">
               <NuxtLink to="/website-builder" class="builder-popup-primary" @click.native="closeBuilderPopup">
                 Coba Website Builder <i class="bx bx-slider-alt"></i>
+              </NuxtLink>
+              <NuxtLink to="/website-cost-estimator" class="builder-popup-secondary" @click.native="closeBuilderPopup">
+                Hitung Estimasi
               </NuxtLink>
               <button type="button" class="builder-popup-secondary" @click="closeBuilderPopup">
                 Nanti saja
