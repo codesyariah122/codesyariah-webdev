@@ -13,6 +13,7 @@
 				<li><a class="nav-link scrollto " href="#pricing">Paket</a></li>
 				<li><a class="nav-link scrollto " href="#gallery">Portfolio</a></li>
 				<li><a class="nav-link scrollto" href="#site-pulse">Produk</a></li>
+				<li><a class="nav-link" href="/website-builder">Builder</a></li>
 				<li><a class="nav-link scrollto" href="#blog">Insight</a></li>
 				<li><a class="nav-link scrollto" href="#about">Kapabilitas</a></li>
 				<li><a class="nav-link scrollto" href="#contact">Konsultasi</a></li>
