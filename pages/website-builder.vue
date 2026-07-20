@@ -405,6 +405,23 @@
 						Kirim Brief Preview ke WhatsApp <i class="bx bxl-whatsapp"></i>
 					</button>
 				</div>
+
+				<section class="builder-license" aria-labelledby="builder-license-title">
+					<div>
+						<span>License & Ownership Notice</span>
+						<h2 id="builder-license-title">Website Builder Preview adalah karya original Codesyariah Webdev.</h2>
+						<p>
+							Konsep implementasi, source code, UI/UX, copywriting, struktur preview, dan materi visual pada fitur ini dibuat dan dikembangkan oleh Puji Ermanto selaku engineer / developer Codesyariah Webdev. Dilarang menyalin, mendistribusikan ulang, menjual ulang, atau membuat turunan komersial dari fitur ini tanpa izin tertulis.
+						</p>
+					</div>
+					<div class="builder-license-card">
+						<strong>Copyright © {{ currentYear }} Codesyariah Webdev</strong>
+						<span>Creator & Developer: Puji Ermanto</span>
+						<a href="/WEBSITE-BUILDER-LICENSE.txt" target="_blank" rel="noreferrer">
+							Baca license notice <i class="bx bx-link-external"></i>
+						</a>
+					</div>
+				</section>
 			</div>
 		</section>
 	</main>
@@ -796,6 +813,9 @@ export default {
 				name: "Starter Website",
 				description: "Cocok untuk validasi awal brand, company profile ringan, atau landing promosi.",
 			};
+		},
+		currentYear() {
+			return new Date().getFullYear();
 		},
 	},
 	watch: {
@@ -2249,9 +2269,80 @@ export default {
 	min-width: 240px;
 }
 
+.builder-license {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(280px, 0.6fr);
+	gap: 20px;
+	align-items: center;
+	margin-top: 20px;
+	padding: 24px;
+	border: 1px solid rgba(16, 45, 53, 0.12);
+	border-radius: 8px;
+	background:
+		linear-gradient(135deg, rgba(8, 32, 39, 0.96), rgba(8, 53, 55, 0.92)),
+		url("~/assets/img/new-hero-bg-1-desktop.jpg") center / cover;
+	color: #ffffff;
+	box-shadow: 0 24px 70px rgba(16, 45, 53, 0.16);
+}
+
+.builder-license span {
+	display: inline-flex;
+	margin-bottom: 8px;
+	color: #18d19b;
+	font-size: 12px;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.builder-license h2 {
+	margin: 0;
+	color: #ffffff;
+	font-size: clamp(24px, 3vw, 38px);
+	line-height: 1.15;
+}
+
+.builder-license p {
+	margin: 12px 0 0;
+	color: rgba(255, 255, 255, 0.72);
+	line-height: 1.7;
+}
+
+.builder-license-card {
+	display: grid;
+	gap: 8px;
+	padding: 18px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.16);
+	backdrop-filter: blur(16px);
+}
+
+.builder-license-card strong {
+	color: #ffffff;
+	font-size: 18px;
+	line-height: 1.3;
+}
+
+.builder-license-card span {
+	margin: 0;
+	color: rgba(255, 255, 255, 0.72);
+	text-transform: none;
+}
+
+.builder-license-card a {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	width: fit-content;
+	margin-top: 4px;
+	color: #18d19b;
+	font-weight: 900;
+}
+
 @media (max-width: 1100px) {
 	.builder-grid,
-	.builder-summary {
+	.builder-summary,
+	.builder-license {
 		grid-template-columns: 1fr;
 	}
 

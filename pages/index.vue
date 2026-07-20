@@ -121,24 +121,83 @@
       </button>
     </div>
 
-    <!-- Promo Popup -->
-    <div v-if="showPopup" class="promo-popup" @click="handleOutsideClick">
-      <div class="popup-content" @click.stop>
-        <span class="close-popup" @click="closePopup">&times;</span>
-        <h2>Promo Pembuatan Website</h2>
-        <blockquote>
-          Pesan website di bulan ini dan dapatkan bonus T-shirt eksklusif!
-        </blockquote>
-        <button @click="whatsOrder" class="btn btn-outline-success mt-2">
-          Order Sekarang <i class="bx bxl-whatsapp"></i>
-        </button>
-        <img
-          src="~/assets/img/tshirt-codesyariah.jpeg"
-          alt="Bonus T-shirt"
-          class="promo-image"
-        />
+    <transition name="builder-popup">
+      <div
+        v-if="showBuilderPopup"
+        class="builder-popup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="builder-popup-title"
+        @click="closeBuilderPopup"
+      >
+        <div class="builder-popup-card" @click.stop>
+          <button
+            type="button"
+            class="builder-popup-close"
+            aria-label="Tutup popup Website Builder"
+            @click="closeBuilderPopup"
+          >
+            <i class="bx bx-x"></i>
+          </button>
+
+          <div class="builder-popup-visual">
+            <div class="builder-flyer-window">
+              <div class="flyer-window-top">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="flyer-hero-preview">
+                <small>LIVE PREVIEW</small>
+                <strong>Company Profile</strong>
+                <p>Hero, layanan, portfolio, paket, kontak.</p>
+              </div>
+              <div class="flyer-grid-preview">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="flyer-dashboard-preview">
+                <i class="bx bx-layout"></i>
+                <div>
+                  <strong>Web Builder</strong>
+                  <small>Desktop + Mobile</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="builder-popup-copy">
+            <span class="builder-popup-kicker">Fitur Baru Codesyariah</span>
+            <h2 id="builder-popup-title">Coba preview website impian Anda sebelum mulai project.</h2>
+            <p>
+              Pilih jenis website, style visual, halaman, dan fitur. Calon customer bisa melihat gambaran awal company profile, landing page, katalog, travel, sales mobile, sampai dashboard sistem.
+            </p>
+
+            <div class="builder-popup-points">
+              <span><i class="bx bx-check"></i> Cocok untuk owner awam teknologi</span>
+              <span><i class="bx bx-check"></i> Preview desktop dan mobile</span>
+              <span><i class="bx bx-check"></i> Brief bisa langsung dikirim ke WhatsApp</span>
+            </div>
+
+            <div class="builder-popup-actions">
+              <NuxtLink to="/website-builder" class="builder-popup-primary" @click.native="closeBuilderPopup">
+                Coba Website Builder <i class="bx bx-slider-alt"></i>
+              </NuxtLink>
+              <button type="button" class="builder-popup-secondary" @click="closeBuilderPopup">
+                Nanti saja
+              </button>
+            </div>
+
+            <label class="builder-popup-toggle">
+              <input v-model="dontShowBuilderPopup" type="checkbox" @change="handleBuilderPopupPreference">
+              <span></span>
+              <strong>Jangan tampilkan lagi popup ini</strong>
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
+    </transition>
   </main>
 </template>
 
@@ -150,7 +209,8 @@ export default {
   data() {
     return {
       whatsappUrl: "https://wa.me/6288222668778?text=Hallo%20codesyariah",
-      showPopup: true,
+      showBuilderPopup: false,
+      dontShowBuilderPopup: false,
       showChatbox: true,
       chatMessage:
         "Halo Codesyariah, saya ingin konsultasi kebutuhan website atau sistem bisnis.",
@@ -178,28 +238,21 @@ export default {
   },
 
   mounted() {
-    setTimeout(() => {
-      this.showPopup = false;
-    }, 500);
+    this.showBuilderPopup =
+      window.localStorage.getItem("codesyariah_hide_builder_popup") !== "true";
   },
 
   methods: {
-    closePopup() {
-      this.showPopup = false;
+    closeBuilderPopup() {
+      this.showBuilderPopup = false;
     },
-    handleOutsideClick(event) {
-      const popupContent = this.$el.querySelector(".popup-content");
-      if (!popupContent.contains(event.target)) {
-        this.closePopup();
+    handleBuilderPopupPreference() {
+      if (this.dontShowBuilderPopup) {
+        window.localStorage.setItem("codesyariah_hide_builder_popup", "true");
+        this.closeBuilderPopup();
+      } else {
+        window.localStorage.removeItem("codesyariah_hide_builder_popup");
       }
-    },
-    whatsOrder() {
-      const message = `Saya ingin order PROMO jasa pembuatan website Codesyariah Webdev`;
-      const whatsappNumber = "6288222668778";
-      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-        message
-      )}`;
-      window.open(url, "_blank");
     },
     toggleChatbox() {
       this.showChatbox = !this.showChatbox;
@@ -567,6 +620,313 @@ export default {
   cursor: pointer;
 }
 
+.builder-popup-enter-active,
+.builder-popup-leave-active {
+  transition: opacity 0.24s ease;
+}
+
+.builder-popup-enter-active .builder-popup-card,
+.builder-popup-leave-active .builder-popup-card {
+  transition: transform 0.24s ease, opacity 0.24s ease;
+}
+
+.builder-popup-enter,
+.builder-popup-leave-to {
+  opacity: 0;
+}
+
+.builder-popup-enter .builder-popup-card,
+.builder-popup-leave-to .builder-popup-card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+}
+
+.builder-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(24, 209, 155, 0.24), transparent 28%),
+    radial-gradient(circle at 82% 80%, rgba(56, 189, 248, 0.18), transparent 32%),
+    rgba(5, 18, 23, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.builder-popup-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1fr);
+  width: min(920px, 100%);
+  overflow: hidden;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 36px 90px rgba(3, 18, 24, 0.36);
+}
+
+.builder-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(5, 18, 23, 0.1);
+  color: #082027;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.builder-popup-visual {
+  display: grid;
+  place-items: center;
+  min-height: 480px;
+  padding: 34px;
+  background:
+    linear-gradient(135deg, rgba(8, 32, 39, 0.94), rgba(7, 70, 65, 0.88)),
+    url("~/assets/img/new-hero-bg-1-desktop.jpg") center / cover;
+}
+
+.builder-flyer-window {
+  width: min(330px, 100%);
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+}
+
+.flyer-window-top {
+  display: flex;
+  gap: 6px;
+  padding: 4px 4px 12px;
+}
+
+.flyer-window-top span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.flyer-hero-preview,
+.flyer-dashboard-preview {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #082027;
+}
+
+.flyer-hero-preview {
+  min-height: 160px;
+  padding: 22px;
+}
+
+.flyer-hero-preview small,
+.flyer-dashboard-preview small {
+  display: block;
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.flyer-hero-preview strong {
+  display: block;
+  margin: 10px 0;
+  font-size: 30px;
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+.flyer-hero-preview p {
+  margin: 0;
+  color: #4b6368;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.flyer-grid-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.flyer-grid-preview span {
+  min-height: 58px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #18d19b, #0f766e);
+}
+
+.flyer-dashboard-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+}
+
+.flyer-dashboard-preview i {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #d9fff1;
+  color: #0f766e;
+  font-size: 24px;
+}
+
+.flyer-dashboard-preview strong {
+  display: block;
+  color: #082027;
+  font-size: 16px;
+}
+
+.builder-popup-copy {
+  padding: 50px 42px 34px;
+}
+
+.builder-popup-kicker {
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #d9fff1;
+  color: #0f766e;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.builder-popup-copy h2 {
+  margin: 0;
+  color: #082027;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.04;
+  font-weight: 900;
+}
+
+.builder-popup-copy p {
+  margin: 16px 0 0;
+  color: #526a70;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.builder-popup-points {
+  display: grid;
+  gap: 9px;
+  margin: 20px 0 24px;
+}
+
+.builder-popup-points span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #28444b;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.builder-popup-points i {
+  color: #18d19b;
+  font-size: 20px;
+}
+
+.builder-popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.builder-popup-primary,
+.builder-popup-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.builder-popup-primary {
+  background: #18d19b;
+  color: #06201a;
+  box-shadow: 0 18px 38px rgba(24, 209, 155, 0.22);
+}
+
+.builder-popup-primary:hover {
+  color: #06201a;
+}
+
+.builder-popup-secondary {
+  border: 1px solid #d7e7e8;
+  background: #ffffff;
+  color: #27434b;
+}
+
+.builder-popup-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #526a70;
+  cursor: pointer;
+}
+
+.builder-popup-toggle input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.builder-popup-toggle span {
+  position: relative;
+  width: 52px;
+  height: 30px;
+  flex: 0 0 52px;
+  border-radius: 999px;
+  background: #d7e7e8;
+  transition: background 0.2s ease;
+}
+
+.builder-popup-toggle span::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.builder-popup-toggle input:checked + span {
+  background: #18d19b;
+}
+
+.builder-popup-toggle input:checked + span::after {
+  transform: translateX(22px);
+}
+
+.builder-popup-toggle strong {
+  color: #526a70;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
 @media (max-width: 575px) {
   .site-pulse-product {
     padding: 58px 0;
@@ -614,6 +974,48 @@ export default {
 
   .wa-widget-compose {
     padding: 9px;
+  }
+
+  .builder-popup {
+    padding: 14px;
+    align-items: flex-end;
+  }
+
+  .builder-popup-card {
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 28px);
+    overflow-y: auto;
+  }
+
+  .builder-popup-visual {
+    min-height: 250px;
+    padding: 24px;
+  }
+
+  .builder-flyer-window {
+    width: min(280px, 100%);
+  }
+
+  .flyer-hero-preview {
+    min-height: 124px;
+    padding: 16px;
+  }
+
+  .flyer-hero-preview strong {
+    font-size: 24px;
+  }
+
+  .builder-popup-copy {
+    padding: 28px 20px 22px;
+  }
+
+  .builder-popup-actions {
+    display: grid;
+  }
+
+  .builder-popup-primary,
+  .builder-popup-secondary {
+    width: 100%;
   }
 }
 </style>

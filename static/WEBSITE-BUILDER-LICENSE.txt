@@ -1,0 +1,27 @@
+WEBSITE BUILDER PREVIEW - LICENSE & OWNERSHIP NOTICE
+
+Copyright (c) 2026 Codesyariah Webdev.
+Creator, engineer, and developer: Puji Ermanto.
+
+Website Builder Preview is an original digital product feature created for
+Codesyariah Webdev. The implementation, source code, interface structure,
+UI/UX composition, preview layouts, written content, visual presentation, and
+related documentation are proprietary works owned by Codesyariah Webdev and
+created by Puji Ermanto.
+
+No permission is granted to copy, clone, redistribute, resell, sublicense,
+publish, or create commercial derivative works from this Website Builder
+Preview feature without prior written permission from Codesyariah Webdev.
+
+Visitors and prospective clients may use the public Website Builder Preview
+only to simulate, explore, and send an initial project brief to Codesyariah
+Webdev. This permission does not include any right to extract, reproduce, or
+reuse the underlying source code, visual design system, copywriting, or product
+concept implementation.
+
+All rights reserved.
+
+Contact:
+Codesyariah Webdev
+Puji Ermanto
+WhatsApp: +62 882-2266-8778
