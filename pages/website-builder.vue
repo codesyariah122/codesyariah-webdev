@@ -417,6 +417,8 @@
 					<div class="builder-license-card">
 						<strong>Copyright © {{ currentYear }} Codesyariah Webdev</strong>
 						<span>Creator & Developer: Puji Ermanto</span>
+						<span>Release date: 20 July 2026</span>
+						<span>GitHub commit: 5593009 / 2026-07-20 15:23 WIB</span>
 						<a href="/WEBSITE-BUILDER-LICENSE.txt" target="_blank" rel="noreferrer">
 							Baca license notice <i class="bx bx-link-external"></i>
 						</a>

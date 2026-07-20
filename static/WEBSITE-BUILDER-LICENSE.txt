@@ -21,6 +21,21 @@ concept implementation.
 
 All rights reserved.
 
+Release & Version Evidence:
+Public repository: https://github.com/codesyariah122/codesyariah-webdev
+Initial public release date declared for this feature: 20 July 2026
+Latest recorded Git commit at the time of this notice:
+- Commit hash: 55930092013d4309eae0a433311daa1f4c9cde9d
+- Short hash: 5593009
+- Commit date: 2026-07-20T15:23:23+07:00
+- Commit author: codesyariah122
+- Commit message: fix: licence as a codesyariah webdev
+
+The Git repository history, commit timestamps, source files, deployed web page,
+screenshots, and this license notice may be used as supporting evidence of
+authorship, publication timeline, and ownership claim for the Website Builder
+Preview feature.
+
 Contact:
 Codesyariah Webdev
 Puji Ermanto
