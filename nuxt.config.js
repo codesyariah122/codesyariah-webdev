@@ -5,6 +5,7 @@ const siteTitle = 'Codesyariah Webdevelopment - Jasa Website, Web App, API & Ser
 const siteDescription = 'Codesyariah Webdevelopment membantu bisnis membangun company profile, landing page, web app, dashboard, API, VPS, deploy, dan maintenance dengan arahan yang mudah dipahami.'
 const siteKeywords = 'jasa pembuatan website, jasa web development, landing page bisnis, company profile, web app, dashboard bisnis, API, VPS, deploy website, maintenance website, Codesyariah Webdevelopment'
 const siteImage = `${siteUrl}assets/img/codesyariah-og-flyer.png?v=20260701`
+const buildVersion = process.env.VERCEL_GIT_COMMIT_SHA || process.env.NUXT_APP_VERSION || `local-${Date.now()}`
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -20,7 +21,8 @@ export default {
   env: {
     CONTENTFUL_SPACE: process.env.NUXT_APP_CONTENTFUL_SPACE,
     CONTENTFUL_ACCESS_TOKEN: process.env.NUXT_APP_CONTENTFUL_ACCESS_TOKEN,
-    CONTENTFUL_ENVIRONMENT: process.env.NUXT_APP_CONTENTFUL_ENVIRONMENT
+    CONTENTFUL_ENVIRONMENT: process.env.NUXT_APP_CONTENTFUL_ENVIRONMENT,
+    APP_VERSION: buildVersion
   },
   generate: {
    dir: 'dist',
@@ -97,6 +99,7 @@ css: [
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 plugins: [
+  { src: "~/plugins/cache-version", mode: "client" },
   { src: "~/plugins/contentful" },
   { src: "~/plugins/posts" },
   { src: "~/plugins/profiles" },
@@ -147,7 +150,9 @@ axios: {
 
 workbox: {
   workboxOptions: {
-    skipWaiting: true
+    skipWaiting: true,
+    clientsClaim: true,
+    cleanupOutdatedCaches: true
   },
     // offline: true,
     // offlineStrategy: 'NetworkFirst',
@@ -156,35 +161,74 @@ workbox: {
   runtimeCaching: [
   {
     urlPattern: '/assets/css/.*',
-    handler: 'cacheFirst',
+    handler: 'staleWhileRevalidate',
     method: 'GET',
-    strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    strategyOptions: {
+      cacheName: `codesyariah-css-${buildVersion}`,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 7 }
+    }
   },
   {
     urlPattern: '/assets/fonts/.*',
     handler: 'cacheFirst',
     method: 'GET',
-    strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    strategyOptions: {
+      cacheName: `codesyariah-fonts-${buildVersion}`,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 30 }
+    }
   },
   {
     urlPattern: '/assets/img/.*',
+    handler: 'staleWhileRevalidate',
     method: 'GET',
-    strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    strategyOptions: {
+      cacheName: `codesyariah-images-${buildVersion}`,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 7 }
+    }
   },
   {
     urlPattern: '/assets/js/.*',
+    handler: 'staleWhileRevalidate',
     method: 'GET',
-    strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    strategyOptions: {
+      cacheName: `codesyariah-js-${buildVersion}`,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 7 }
+    }
   },
   {
     urlPattern: '/assets/scss/.*',
+    handler: 'networkFirst',
     method: 'GET',
-    strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    strategyOptions: {
+      cacheName: `codesyariah-scss-${buildVersion}`,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 7 }
+    }
   },
   {
     urlPattern: '/assets/vendor/.*',
+    handler: 'staleWhileRevalidate',
     method: 'GET',
-    strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+    strategyOptions: {
+      cacheName: `codesyariah-vendor-${buildVersion}`,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 7 }
+    }
+  },
+  {
+    urlPattern: 'https://cdn.contentful.com/.*',
+    handler: 'networkFirst',
+    method: 'GET',
+    strategyOptions: {
+      cacheName: `codesyariah-contentful-${buildVersion}`,
+      networkTimeoutSeconds: 8,
+      cacheableResponse: { statuses: [0, 200] },
+      expiration: { maxEntries: 30, maxAgeSeconds: 60 * 10 }
+    }
   }
   ]
 },
