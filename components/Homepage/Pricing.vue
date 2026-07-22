@@ -9,10 +9,18 @@
 
 			<div class="pricing-grid" data-aos="fade-left">
 				<article v-for="product in products" :key="product.id" class="price-card" :class="{ highlighted: product.highlighted }">
+					<div class="merdeka-ribbon">
+						<i class="bx bxs-coupon"></i>
+						{{ product.discount }}
+					</div>
 					<div class="price-head">
 						<span>{{ product.label }}</span>
 						<h3>{{ product.name }}</h3>
-						<strong>{{ product.price }}</strong>
+						<div class="promo-price">
+							<del>{{ product.originalPrice }}</del>
+							<strong>{{ product.price }}</strong>
+							<small>{{ product.promoNote }}</small>
+						</div>
 					</div>
 					<p>{{ product.description }}</p>
 					<ul>
@@ -42,7 +50,10 @@ export default {
 					permalink: "product-1",
 					label: "Launch cepat",
 					name: "Company Profile",
-					price: "Mulai 1.5JT",
+					originalPrice: "Mulai 1.8JT",
+					price: "Promo 1.5JT",
+					discount: "Hemat 300RB",
+					promoNote: "Promo Merdeka untuk 10 claim/hari",
 					description: "Untuk bisnis yang ingin tampil kredibel, punya halaman layanan jelas, dan mudah dihubungi calon customer.",
 					features: ["Landing page atau company profile", "Copywriting dasar dan CTA WhatsApp", "Responsive mobile dan desktop", "SEO basic dan struktur konten rapi"],
 				},
@@ -51,7 +62,10 @@ export default {
 					permalink: "product-2",
 					label: "Paling fleksibel",
 					name: "Business Website",
-					price: "Mulai 4JT",
+					originalPrice: "Mulai 5JT",
+					price: "Promo 4JT",
+					discount: "Hemat 1JT",
+					promoNote: "Bonus konsultasi scope dan struktur konten",
 					description: "Untuk bisnis yang butuh website dengan katalog, form, integrasi, halaman detail, dan pengelolaan konten lebih serius.",
 					features: ["Katalog produk atau layanan", "Dashboard/admin sesuai kebutuhan", "Integrasi payment atau API ringan", "Setup domain, hosting, dan SSL"],
 					highlighted: true,
@@ -61,7 +75,10 @@ export default {
 					permalink: "product-3",
 					label: "Sistem custom",
 					name: "Web App & Automation",
-					price: "By Scope",
+					originalPrice: "By Scope",
+					price: "Diskon 17%",
+					discount: "Merdeka 17%",
+					promoNote: "Potongan jasa development setelah scope disepakati",
 					description: "Untuk perusahaan yang ingin merapikan proses manual menjadi sistem internal, dashboard, booking, CRM, atau workflow khusus.",
 					features: ["Analisis flow bisnis", "Role user dan database custom", "REST API dan integrasi third party", "Testing, deploy, dan support awal"],
 				},
@@ -93,6 +110,27 @@ export default {
 	background: #ffffff;
 	box-shadow: 0 18px 50px rgba(20, 50, 58, 0.08);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.merdeka-ribbon {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 30px;
+	padding: 6px 10px;
+	border-radius: 999px;
+	background: #ef4444;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 900;
+	box-shadow: 0 12px 24px rgba(239, 68, 68, 0.22);
+}
+
+.merdeka-ribbon i {
+	font-size: 16px;
 }
 
 .price-card:hover {
@@ -128,6 +166,24 @@ export default {
 	color: #07946d;
 	font-size: 28px;
 	line-height: 1.1;
+}
+
+.promo-price {
+	display: grid;
+	gap: 5px;
+}
+
+.promo-price del {
+	color: #92a1a6;
+	font-size: 15px;
+	font-weight: 800;
+}
+
+.promo-price small {
+	color: #e11d48;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 1.35;
 }
 
 .price-card p {

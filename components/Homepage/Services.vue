@@ -25,6 +25,10 @@
 			<div class="row g-4">
 				<div v-for="service in services" :key="service.title" class="col-md-6 col-lg-4 d-flex align-items-stretch">
 					<article class="service-card">
+						<div class="service-promo-badge">
+							<i class="bx bxs-discount"></i>
+							Promo Merdeka 17%
+						</div>
 						<div class="service-top">
 							<div class="icon"><i :class="service.icon"></i></div>
 							<span>{{ service.code }}</span>
@@ -181,6 +185,7 @@ export default {
 }
 
 .service-card {
+	position: relative;
 	width: 100%;
 	padding: 26px;
 	border: 1px solid #e2eeee;
@@ -188,6 +193,24 @@ export default {
 	background: #ffffff;
 	box-shadow: 0 18px 44px rgba(21, 54, 65, 0.07);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-promo-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 28px;
+	padding: 5px 10px;
+	margin-bottom: 16px;
+	border-radius: 999px;
+	background: #fff1f2;
+	color: #e11d48;
+	font-size: 12px;
+	font-weight: 900;
+}
+
+.service-promo-badge i {
+	font-size: 16px;
 }
 
 .service-card:hover {

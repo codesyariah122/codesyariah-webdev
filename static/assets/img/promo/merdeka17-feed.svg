@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b0710"/>
+      <stop offset="0.45" stop-color="#06272b"/>
+      <stop offset="1" stop-color="#03181d"/>
+    </linearGradient>
+    <radialGradient id="glowGreen" cx="18%" cy="90%" r="58%">
+      <stop offset="0" stop-color="#20d39b" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#20d39b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowRed" cx="82%" cy="10%" r="52%">
+      <stop offset="0" stop-color="#ef3340" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#ef3340" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+    <style>
+      .sans{font-family:Arial, Helvetica, sans-serif}.white{fill:#f8fffb}.muted{fill:#cbe2de}.deep{fill:#03181d}.green{fill:#20d39b}.red{fill:#ef3340}.bold{font-weight:800}.med{font-weight:700}.ls{letter-spacing:3px}
+    </style>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#glowGreen)"/>
+  <rect width="1080" height="1080" fill="url(#glowRed)"/>
+  <path d="M0 112 L1080 18 L1080 138 L0 232Z" fill="#fff" opacity=".12"/>
+  <path d="M0 148 L1080 55 L1080 104 L0 196Z" fill="#ef3340" opacity=".52"/>
+  <g opacity=".12" stroke="#fff">
+    <path d="M80 0V1080M160 0V1080M240 0V1080M320 0V1080M400 0V1080M480 0V1080M560 0V1080M640 0V1080M720 0V1080M800 0V1080M880 0V1080M960 0V1080"/>
+    <path d="M0 80H1080M0 160H1080M0 240H1080M0 320H1080M0 400H1080M0 480H1080M0 560H1080M0 640H1080M0 720H1080M0 800H1080M0 880H1080M0 960H1080"/>
+  </g>
+  <g transform="translate(72 72)">
+    <rect width="78" height="78" rx="18" fill="#8af8cf"/>
+    <text x="39" y="49" text-anchor="middle" class="sans deep bold" font-size="26">CS</text>
+    <text x="104" y="28" class="sans white bold ls" font-size="25">CODESYARIAH</text>
+    <text x="104" y="61" class="sans muted med ls" font-size="22">WEBDEVELOPMENT</text>
+  </g>
+  <g transform="translate(72 192)">
+    <rect width="430" height="52" rx="26" fill="#ef3340"/>
+    <text x="215" y="35" text-anchor="middle" class="sans white bold ls" font-size="20">PROMO KEMERDEKAAN 17 AGUSTUS</text>
+  </g>
+  <text x="72" y="334" class="sans white bold" font-size="88">
+    <tspan x="72">PROMO</tspan><tspan x="72" dy="92">MERDEKA</tspan><tspan x="72" dy="92">WEBSITE</tspan>
+  </text>
+  <text x="72" y="612" class="sans muted" font-size="34">
+    <tspan x="72">Diskon hingga 17% untuk semua layanan</tspan><tspan x="72" dy="44">website, web app, API, dan deploy server.</tspan>
+  </text>
+  <g filter="url(#shadow)" transform="translate(72 694)">
+    <rect width="936" height="120" rx="30" fill="#f8fffb"/>
+    <text x="38" y="43" class="sans med" font-size="24" fill="#66797b">KUPON</text>
+    <text x="38" y="92" class="sans deep bold" font-size="50">MERDEKA17</text>
+    <rect x="642" y="33" width="252" height="56" rx="28" fill="#20d39b"/>
+    <text x="768" y="70" text-anchor="middle" class="sans deep bold" font-size="21">10 CLAIM / HARI</text>
+  </g>
+  <g transform="translate(72 852)" filter="url(#shadow)">
+    <g>
+      <rect width="292" height="130" rx="24" fill="#fff" opacity=".14" stroke="#fff" stroke-opacity=".35"/>
+      <text x="26" y="36" class="sans muted bold" font-size="22">Company Profile</text>
+      <text x="26" y="76" class="sans muted bold" font-size="28">1.8JT</text><line x1="25" y1="66" x2="110" y2="66" stroke="#ef3340" stroke-width="5"/>
+      <text x="26" y="116" class="sans green bold" font-size="41">1.5JT</text>
+    </g>
+    <g transform="translate(322 0)">
+      <rect width="292" height="130" rx="24" fill="#fff" opacity=".14" stroke="#fff" stroke-opacity=".35"/>
+      <text x="26" y="36" class="sans muted bold" font-size="22">Business Website</text>
+      <text x="26" y="76" class="sans muted bold" font-size="28">5JT</text><line x1="25" y1="66" x2="76" y2="66" stroke="#ef3340" stroke-width="5"/>
+      <text x="26" y="116" class="sans green bold" font-size="41">4JT</text>
+    </g>
+    <g transform="translate(644 0)">
+      <rect width="292" height="130" rx="24" fill="#fff" opacity=".14" stroke="#fff" stroke-opacity=".35"/>
+      <text x="26" y="36" class="sans muted bold" font-size="22">Web App</text>
+      <text x="26" y="76" class="sans muted bold" font-size="28">By Scope</text><line x1="25" y1="66" x2="150" y2="66" stroke="#ef3340" stroke-width="5"/>
+      <text x="26" y="116" class="sans green bold" font-size="41">-17%</text>
+    </g>
+  </g>
+  <text x="72" y="1030" class="sans muted bold" font-size="26">Claim via WhatsApp</text>
+  <text x="332" y="1030" class="sans white bold" font-size="36">0882-2266-8778</text>
+  <rect x="776" y="990" width="232" height="58" rx="18" fill="#20d39b"/>
+  <text x="892" y="1027" text-anchor="middle" class="sans deep bold" font-size="20">CLAIM SEKARANG</text>
+</svg>

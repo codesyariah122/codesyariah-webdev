@@ -62,6 +62,12 @@
                 <i class="bx bx-heart"></i>
               </span>
             </div>
+            <div class="product-promo-price" v-if="product.price">
+              <span class="promo-label">Promo Kemerdekaan 17 Agustus</span>
+              <del>{{ product.originalPrice }}</del>
+              <strong>{{ product.price.formatted_with_code }}</strong>
+              <small>{{ product.promoNote }}</small>
+            </div>
             <div class="mt-2 pr-3 content">
               <p v-html="product.description"></p>
             </div>
@@ -119,7 +125,9 @@ export default {
         {
           id: 1,
           permalink: "product-1",
-          price: { formatted_with_code: "Mulai 1.5JT" },
+          originalPrice: "Mulai 1.8JT",
+          price: { formatted_with_code: "Promo 1.5JT" },
+          promoNote: "Claim kupon MERDEKA17 untuk mengunci harga promo.",
           name: "Company Profile",
           description:
             "Paket Company Profile cocok untuk bisnis yang ingin terlihat lebih profesional, mudah ditemukan, dan mudah dihubungi calon customer. Fokusnya adalah struktur halaman yang jelas, penjelasan layanan yang mudah dipahami, tampilan responsive, CTA WhatsApp, dan pondasi SEO basic supaya website siap dipakai sebagai alat promosi.",
@@ -144,7 +152,9 @@ export default {
         {
           id: 2,
           permalink: "product-2",
-          price: { formatted_with_code: "Mulai 4JT" },
+          originalPrice: "Mulai 5JT",
+          price: { formatted_with_code: "Promo 4JT" },
+          promoNote: "Bonus konsultasi scope dan struktur konten awal.",
           name: "Business Website",
           description:
             "Paket Business Website ditujukan untuk bisnis yang butuh website lebih lengkap dari company profile biasa. Cocok untuk katalog produk, halaman layanan detail, form order atau inquiry, integrasi ringan, dashboard sederhana, serta setup domain, hosting, dan SSL agar website siap dipublikasikan.",
@@ -169,7 +179,9 @@ export default {
         {
           id: 3,
           permalink: "product-3",
-          price: { formatted_with_code: "By Scope" },
+          originalPrice: "By Scope",
+          price: { formatted_with_code: "Diskon 17%" },
+          promoNote: "Potongan jasa development setelah scope disepakati.",
           name: "Web App & Automation",
           description:
             "Paket Web App & Automation cocok untuk perusahaan yang ingin mengubah proses manual menjadi sistem digital. Scope bisa mencakup dashboard admin, role user, database custom, REST API, booking, CRM, inventory, laporan, integrasi payment, deployment VPS, dan maintenance awal.",
@@ -276,6 +288,44 @@ export default {
   height: auto;
   display: block;
 }
+
+.product-promo-price {
+  display: grid;
+  gap: 5px;
+  margin: 14px 0 18px;
+  padding: 16px;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fff1f2, #ffffff);
+}
+
+.product-promo-price .promo-label {
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.product-promo-price del {
+  color: #94a3b8;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.product-promo-price strong {
+  color: #0f766e;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.product-promo-price small {
+  color: #be123c;
+  font-weight: 800;
+}
+
 .horizontal-scroll {
   display: flex;
   flex-direction: row;

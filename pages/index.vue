@@ -2,6 +2,32 @@
   <main id="main">
     <!-- Komponen halaman -->
     <HomepageServices />
+    <section class="merdeka-promo-banner" aria-labelledby="merdeka-promo-title">
+      <div class="merdeka-promo-shell">
+        <div class="merdeka-promo-copy">
+          <span class="merdeka-kicker">Promo Kemerdekaan 17 Agustus</span>
+          <h2 id="merdeka-promo-title">Claim kupon Merdeka untuk semua layanan Codesyariah.</h2>
+          <p>
+            Diskon jasa development sampai 17%, harga coret untuk paket website,
+            dan slot promo dibatasi 10 calon customer per hari supaya konsultasi
+            tetap fokus dan cepat ditangani.
+          </p>
+          <div class="merdeka-promo-meta">
+            <span><i class="bx bx-time-five"></i> Berlaku selama campaign Agustus</span>
+            <span><i class="bx bxs-coupon"></i> Sisa {{ promoRemaining }} claim hari ini</span>
+            <span><i class="bx bxl-whatsapp"></i> Redeem via WhatsApp</span>
+          </div>
+        </div>
+        <div class="merdeka-promo-ticket">
+          <small>COUPON</small>
+          <strong>MERDEKA17</strong>
+          <span>Diskon hingga 17%</span>
+          <button type="button" @click="claimPromoCoupon">
+            Claim Kupon <i class="bx bx-right-arrow-alt"></i>
+          </button>
+        </div>
+      </div>
+    </section>
     <HomepageOpenSourceTools />
     <HomepagePricing :categories="categories" />
     <HomepageGalleryProduct />
@@ -121,6 +147,67 @@
       </button>
     </div>
 
+    <transition name="coupon-ticket">
+      <button
+        v-if="showPromoTicket"
+        type="button"
+        class="floating-coupon"
+        aria-label="Claim kupon promo kemerdekaan"
+        @click="claimPromoCoupon"
+      >
+        <span class="coupon-pulse"></span>
+        <i class="bx bxs-coupon"></i>
+        <span>
+          <strong>MERDEKA17</strong>
+          <small>{{ promoRemaining }} claim tersisa</small>
+        </span>
+      </button>
+    </transition>
+
+    <transition name="builder-popup">
+      <div
+        v-if="showCouponPopup"
+        class="coupon-popup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="coupon-popup-title"
+        @click="closeCouponPopup"
+      >
+        <div class="coupon-popup-card" @click.stop>
+          <button
+            type="button"
+            class="coupon-popup-close"
+            aria-label="Tutup popup kupon"
+            @click="closeCouponPopup"
+          >
+            <i class="bx bx-x"></i>
+          </button>
+
+          <div class="coupon-popup-visual">
+            <span class="coupon-label">Selamat!</span>
+            <strong id="coupon-popup-title">Kamu dapat kupon promo Merdeka.</strong>
+            <div class="coupon-code">{{ promoCode }}</div>
+            <p>
+              Tunjukkan kode ini saat konsultasi WhatsApp untuk mengunci harga
+              promo dan diskon layanan sampai 17%.
+            </p>
+          </div>
+
+          <div class="coupon-popup-detail">
+            <h3>Benefit kupon</h3>
+            <ul>
+              <li><i class="bx bx-check"></i> Diskon semua layanan website dan web app.</li>
+              <li><i class="bx bx-check"></i> Harga coret berlaku untuk paket utama.</li>
+              <li><i class="bx bx-check"></i> Prioritas konsultasi scope awal.</li>
+            </ul>
+            <button type="button" @click="redeemPromoCoupon">
+              Redeem via WhatsApp <i class="bx bxl-whatsapp"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
+
     <transition name="builder-popup">
       <div
         v-if="showBuilderPopup"
@@ -215,6 +302,12 @@ export default {
       whatsappUrl: "https://wa.me/6288222668778?text=Hallo%20codesyariah",
       showBuilderPopup: false,
       dontShowBuilderPopup: false,
+      showCouponPopup: false,
+      showPromoTicket: true,
+      promoCode: "MERDEKA17",
+      promoDailyLimit: 10,
+      promoClaimed: false,
+      promoClaimCount: 0,
       showChatbox: true,
       chatMessage:
         "Halo Codesyariah, saya ingin konsultasi kebutuhan website atau sistem bisnis.",
@@ -239,14 +332,65 @@ export default {
     admin() {
       return this.admins[0];
     },
+    promoRemaining() {
+      return Math.max(0, this.promoDailyLimit - this.promoClaimCount);
+    },
   },
 
   mounted() {
     this.showBuilderPopup =
       window.localStorage.getItem("codesyariah_hide_builder_popup") !== "true";
+    this.initPromoCoupon();
   },
 
   methods: {
+    todayKey() {
+      return new Date().toISOString().slice(0, 10);
+    },
+    initPromoCoupon() {
+      const today = this.todayKey();
+      const storedDate = window.localStorage.getItem("codesyariah_coupon_date");
+      const storedCount = Number(
+        window.localStorage.getItem("codesyariah_coupon_claim_count") || 0
+      );
+
+      if (storedDate !== today) {
+        window.localStorage.setItem("codesyariah_coupon_date", today);
+        window.localStorage.setItem("codesyariah_coupon_claim_count", "0");
+        window.localStorage.removeItem("codesyariah_coupon_claimed");
+        this.promoClaimCount = 0;
+        this.promoClaimed = false;
+        return;
+      }
+
+      this.promoClaimCount = storedCount;
+      this.promoClaimed =
+        window.localStorage.getItem("codesyariah_coupon_claimed") === "true";
+    },
+    claimPromoCoupon() {
+      if (!this.promoClaimed && this.promoRemaining > 0) {
+        this.promoClaimCount += 1;
+        this.promoClaimed = true;
+        window.localStorage.setItem("codesyariah_coupon_date", this.todayKey());
+        window.localStorage.setItem(
+          "codesyariah_coupon_claim_count",
+          String(this.promoClaimCount)
+        );
+        window.localStorage.setItem("codesyariah_coupon_claimed", "true");
+      }
+
+      this.showCouponPopup = true;
+    },
+    closeCouponPopup() {
+      this.showCouponPopup = false;
+    },
+    redeemPromoCoupon() {
+      const message = `Halo Codesyariah, saya sudah claim kupon promo ${this.promoCode}. Saya ingin konsultasi layanan website/web app dan cek harga promo kemerdekaan.`;
+      const url = `https://wa.me/${this.admin.phone}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(url, "_blank", "noopener");
+    },
     closeBuilderPopup() {
       this.showBuilderPopup = false;
     },
@@ -290,6 +434,378 @@ export default {
 </script>
 
 <style scoped>
+.merdeka-promo-banner {
+  position: relative;
+  overflow: hidden;
+  padding: 74px 0;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.28), transparent 24%),
+    linear-gradient(135deg, #b91c1c 0%, #ef4444 42%, #ffffff 42%, #ffffff 50%, #082027 50%, #061b20 100%);
+}
+
+.merdeka-promo-banner:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.45;
+}
+
+.merdeka-promo-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.55fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.merdeka-promo-copy,
+.merdeka-promo-ticket {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(6, 27, 32, 0.82);
+  color: #ffffff;
+  box-shadow: 0 28px 70px rgba(3, 18, 24, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.merdeka-promo-copy {
+  padding: clamp(28px, 4vw, 46px);
+}
+
+.merdeka-kicker {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fecaca;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.merdeka-promo-copy h2 {
+  margin: 16px 0 14px;
+  max-width: 760px;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.02;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.merdeka-promo-copy p {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.merdeka-promo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.merdeka-promo-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.merdeka-promo-meta i {
+  color: #34d399;
+  font-size: 17px;
+}
+
+.merdeka-promo-ticket {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 30px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+    #082027;
+}
+
+.merdeka-promo-ticket:before,
+.merdeka-promo-ticket:after {
+  content: "";
+  position: absolute;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f7fbfb;
+}
+
+.merdeka-promo-ticket:before {
+  top: 28px;
+}
+
+.merdeka-promo-ticket:after {
+  bottom: 28px;
+}
+
+.merdeka-promo-ticket small,
+.merdeka-promo-ticket span {
+  color: rgba(255, 255, 255, 0.68);
+  font-weight: 900;
+}
+
+.merdeka-promo-ticket strong {
+  color: #ffffff;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.merdeka-promo-ticket button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 46px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #b91c1c;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.floating-coupon {
+  position: fixed;
+  right: 24px;
+  bottom: 104px;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(260px, calc(100vw - 32px));
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ef4444, #991b1b);
+  color: #ffffff;
+  box-shadow: 0 22px 48px rgba(153, 27, 27, 0.32);
+  cursor: pointer;
+}
+
+.floating-coupon i {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 24px;
+}
+
+.floating-coupon strong,
+.floating-coupon small {
+  display: block;
+  text-align: left;
+}
+
+.floating-coupon strong {
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.floating-coupon small {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.coupon-pulse {
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(239, 68, 68, 0.34);
+  border-radius: 12px;
+  animation: couponPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes couponPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+.coupon-ticket-enter-active,
+.coupon-ticket-leave-active {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.coupon-ticket-enter,
+.coupon-ticket-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.coupon-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(239, 68, 68, 0.24), transparent 28%),
+    radial-gradient(circle at 82% 80%, rgba(24, 209, 155, 0.18), transparent 32%),
+    rgba(5, 18, 23, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.coupon-popup-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1fr);
+  width: min(820px, 100%);
+  overflow: hidden;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 36px 90px rgba(3, 18, 24, 0.36);
+}
+
+.coupon-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(5, 18, 23, 0.12);
+  color: #082027;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.coupon-popup-visual {
+  display: grid;
+  align-content: center;
+  min-height: 410px;
+  padding: 38px;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(153, 27, 27, 0.92), rgba(6, 27, 32, 0.94)),
+    url("~/assets/img/new-hero-bg-1-desktop.jpg") center / cover;
+}
+
+.coupon-label {
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fecaca;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.coupon-popup-visual strong {
+  display: block;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+}
+
+.coupon-code {
+  width: fit-content;
+  margin: 22px 0 14px;
+  padding: 14px 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.46);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.coupon-popup-visual p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.7;
+}
+
+.coupon-popup-detail {
+  padding: 54px 42px 36px;
+}
+
+.coupon-popup-detail h3 {
+  margin: 0 0 18px;
+  color: #082027;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.coupon-popup-detail ul {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+.coupon-popup-detail li {
+  display: flex;
+  gap: 9px;
+  color: #334b52;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.coupon-popup-detail li i {
+  color: #18d19b;
+  font-size: 21px;
+}
+
+.coupon-popup-detail button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: #18d19b;
+  color: #06201a;
+  font-weight: 900;
+  cursor: pointer;
+}
+
 .site-pulse-product {
   scroll-margin-top: 96px;
   padding: 88px 0;
@@ -932,6 +1448,40 @@ export default {
 }
 
 @media (max-width: 575px) {
+  .merdeka-promo-banner {
+    padding: 52px 0;
+    background:
+      linear-gradient(145deg, #b91c1c 0%, #ef4444 46%, #082027 46%, #061b20 100%);
+  }
+
+  .merdeka-promo-shell,
+  .coupon-popup-card {
+    grid-template-columns: 1fr;
+  }
+
+  .merdeka-promo-ticket:before,
+  .merdeka-promo-ticket:after {
+    display: none;
+  }
+
+  .floating-coupon {
+    right: 14px;
+    bottom: 86px;
+  }
+
+  .coupon-popup {
+    padding: 14px;
+  }
+
+  .coupon-popup-visual {
+    min-height: auto;
+    padding: 34px 24px;
+  }
+
+  .coupon-popup-detail {
+    padding: 30px 24px 24px;
+  }
+
   .site-pulse-product {
     padding: 58px 0;
   }
