@@ -140,10 +140,10 @@
       <button
         type="button"
         class="whatsapp-button"
-        aria-label="Buka chat WhatsApp"
+        :aria-label="showChatbox ? 'Tutup chat WhatsApp' : 'Buka chat WhatsApp'"
         @click="toggleChatbox"
       >
-        <i class="bx bxl-whatsapp"></i>
+        <i :class="showChatbox ? 'bx bx-x' : 'bx bxl-whatsapp'"></i>
       </button>
     </div>
 
@@ -951,6 +951,16 @@ export default {
 .whatsapp-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 24px 48px rgba(16, 185, 129, 0.42);
+}
+
+.whatsapp-float.is-open .whatsapp-button {
+  background: linear-gradient(135deg, #102d35, #1f3f49);
+  font-size: 34px;
+  box-shadow: 0 18px 38px rgba(5, 18, 23, 0.28);
+}
+
+.whatsapp-float.is-open .whatsapp-button:hover {
+  box-shadow: 0 24px 48px rgba(5, 18, 23, 0.34);
 }
 
 .wa-widget-panel {
