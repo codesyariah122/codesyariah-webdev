@@ -473,8 +473,10 @@ export default {
         { id: 10, name: "system", title: "system" },
         { id: 11, name: "tourism", title: "Tourism" },
         { id: 12, name: "crm", title: "Customer Relationship Management" },
-        { id: 12, name: "compro", title: "Company Profile" },
-        { id: 13, name: "reservation-booking", title: "Reservation / Booking" },
+        { id: 13, name: "ai-crm", title: "AI CRM Dashboard" },
+        { id: 14, name: "api-docs", title: "API Docs / Internal Tools" },
+        { id: 15, name: "compro", title: "Company Profile" },
+        { id: 16, name: "reservation-booking", title: "Reservation / Booking" },
       ];
     },
     WebsiteCategorySample() {
@@ -655,6 +657,24 @@ export default {
         },
         {
           id: 15,
+          title: "SBA CRM AI Marketing Analysis Dashboard",
+          categories: "ai-crm",
+          image: require("~/assets/img/website-category/sba-crm-ai-analysis-preview.png"),
+          description: `SBA CRM AI Marketing Analysis Dashboard adalah sistem analisis marketing dan sales berbasis AI untuk membantu owner, manager, dan tim sales membaca data Excel yang biasanya masih dicek manual. Dashboard ini menampilkan revenue analysed, total tonase, best region, ranking wilayah dan tim sales, grafik performa, executive summary, risk analysis, rekomendasi follow-up, serta monitoring customer. Cocok untuk perusahaan distribusi, sales force, B2B, retail, dan bisnis yang ingin mengubah data penjualan harian menjadi insight yang mudah dipahami tanpa harus membaca spreadsheet satu per satu.`,
+          price: 25000000,
+          link: "https://codesyariah-webdev.vercel.app/#contact",
+        },
+        {
+          id: 16,
+          title: "SBA CRM Internal API Documentation Hub",
+          categories: "api-docs",
+          image: require("~/assets/img/website-category/sba-crm-api-docs.png"),
+          description: `SBA CRM Internal API Documentation Hub adalah dokumentasi teknis internal untuk membantu tim developer memahami integrasi CRM dengan lebih cepat dan rapi. Fitur utamanya mencakup halaman access key yang diproteksi server-side Laravel session, overview API, auth contract, access control, flow bisnis, dokumentasi endpoint, contoh request-response, interactive API tester, response pattern, dan QA checklist. Cocok untuk project CRM, ERP, mobile apps, dashboard admin, dan sistem internal yang membutuhkan dokumentasi developer agar maintenance, onboarding tim, dan integrasi lintas aplikasi lebih aman dan terukur.`,
+          price: 12000000,
+          link: "https://codesyariah-webdev.vercel.app/#contact",
+        },
+        {
+          id: 17,
           title: "Toyota Djakarta Promo Kredit",
           categories: "sales",
           image: require("~/assets/img/website-category/toyota-djakarta1.png"),

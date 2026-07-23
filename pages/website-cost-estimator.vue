@@ -13,10 +13,12 @@
 						<NuxtLink to="/website-builder" class="secondary-action">Lihat Builder <i class="bx bx-slider-alt"></i></NuxtLink>
 					</div>
 				</div>
-				<div class="estimator-hero-card">
-					<span>Estimasi awal</span>
+					<div class="estimator-hero-card">
+					<span>Estimasi promo awal</span>
 					<strong>{{ formattedRange }}</strong>
+					<del>{{ formattedNormalRange }}</del>
 					<p>{{ packageName }} - {{ timelineLabel }}</p>
+					<small>{{ promoLabel }}</small>
 				</div>
 			</div>
 		</section>
@@ -29,7 +31,7 @@
 						<h2>Range harga dibuat realistis, bukan tebak-tebakan.</h2>
 					</div>
 					<p>
-						Angka ini adalah estimasi awal untuk market UMKM/profesional lokal. Harga final tetap mengikuti scope, materi, revisi, integrasi, dan kondisi teknis sebenarnya.
+						Angka ini mengikuti promo Merdeka yang sedang berlangsung. Harga final tetap mengikuti scope, materi, revisi, integrasi, dan kondisi teknis sebenarnya.
 					</p>
 				</div>
 
@@ -81,9 +83,14 @@
 
 					<section class="estimator-result" aria-label="Hasil estimasi biaya website">
 						<div class="result-top">
-							<span>Estimasi Budget</span>
+							<span>Estimasi Budget Promo</span>
 							<strong>{{ formattedRange }}</strong>
+							<del>{{ formattedNormalRange }}</del>
 							<p>{{ selectedWebsite.description }}</p>
+							<div class="promo-estimator-badge">
+								<i class="bx bxs-coupon"></i>
+								{{ promoLabel }}
+							</div>
 						</div>
 
 						<div class="result-metrics">
@@ -123,6 +130,10 @@
 								<li v-if="deadlineMultiplier > 0">
 									<span>Penyesuaian deadline cepat</span>
 									<strong>+{{ Math.round(deadlineMultiplier * 100) }}%</strong>
+								</li>
+								<li class="promo-breakdown">
+									<span>Promo Kemerdekaan 17 Agustus</span>
+									<strong>-{{ formattedPromoSavings }}</strong>
 								</li>
 							</ul>
 						</div>
@@ -232,6 +243,9 @@ export default {
 		whatsappPhone() {
 			return this.profiles?.fields?.phone || "6288222668778";
 		},
+		promoCode() {
+			return "MERDEKA17";
+		},
 		selectedWebsite() {
 			return this.websiteTypes.find((item) => item.id === this.form.websiteType) || this.websiteTypes[0];
 		},
@@ -271,14 +285,67 @@ export default {
 		deadlineMultiplier() {
 			return this.selectedDeadline.multiplier;
 		},
-		totalRange() {
+		totalNormalRange() {
 			return {
 				min: Math.round(this.subtotal.min * (1 + this.deadlineMultiplier)),
 				max: Math.round(this.subtotal.max * (1 + this.deadlineMultiplier)),
 			};
 		},
+		promoRule() {
+			const isAdvanced =
+				this.form.websiteType === "dashboard" || this.complexityLabel === "Advanced";
+			const isBusiness = ["catalog", "travel", "sales"].includes(this.form.websiteType);
+
+			if (isAdvanced) {
+				return {
+					type: "percentage",
+					discount: 0.17,
+					label: "Diskon 17% jasa development dengan kupon MERDEKA17",
+				};
+			}
+
+			if (isBusiness || this.complexityLabel === "Medium") {
+				return {
+					type: "floor",
+					minFloor: 4000000,
+					maxDiscount: 0.12,
+					label: "Promo Business Website mulai Rp4jt",
+				};
+			}
+
+			return {
+				type: "floor",
+				minFloor: 1500000,
+				maxDiscount: 0.1,
+				label: "Promo Starter Website mulai Rp1.5jt",
+			};
+		},
+		totalRange() {
+			if (this.promoRule.type === "percentage") {
+				return {
+					min: Math.round(this.totalNormalRange.min * (1 - this.promoRule.discount)),
+					max: Math.round(this.totalNormalRange.max * (1 - this.promoRule.discount)),
+				};
+			}
+
+			return {
+				min: Math.min(this.totalNormalRange.min, Math.max(this.promoRule.minFloor, Math.round(this.totalNormalRange.min * 0.92))),
+				max: Math.round(this.totalNormalRange.max * (1 - this.promoRule.maxDiscount)),
+			};
+		},
 		formattedRange() {
 			return `${this.formatCurrency(this.totalRange.min)} - ${this.formatCurrency(this.totalRange.max)}`;
+		},
+		formattedNormalRange() {
+			return `${this.formatCurrency(this.totalNormalRange.min)} - ${this.formatCurrency(this.totalNormalRange.max)}`;
+		},
+		formattedPromoSavings() {
+			const min = Math.max(0, this.totalNormalRange.min - this.totalRange.min);
+			const max = Math.max(0, this.totalNormalRange.max - this.totalRange.max);
+			return `${this.formatCurrency(min)} - ${this.formatCurrency(max)}`;
+		},
+		promoLabel() {
+			return `${this.promoRule.label} - claim terbatas 10 calon customer/hari`;
 		},
 		complexityScore() {
 			const featureScore = this.selectedFeatures.reduce((sum, item) => sum + item.complexity, 0);
@@ -333,7 +400,9 @@ export default {
 				`Bantuan konten: ${this.selectedContent.title}`,
 				`Deadline: ${this.selectedDeadline.title}`,
 				`Fitur: ${this.selectedFeatures.map((item) => item.title).join(", ") || "Belum pilih fitur"}`,
-				`Estimasi budget: ${this.formattedRange}`,
+				`Estimasi normal: ${this.formattedNormalRange}`,
+				`Estimasi promo ${this.promoCode}: ${this.formattedRange}`,
+				`Promo: ${this.promoLabel}`,
 				`Paket rekomendasi: ${this.packageName}`,
 				`Kompleksitas: ${this.complexityLabel}`,
 				`Timeline: ${this.timelineLabel}`,
@@ -462,9 +531,30 @@ export default {
 	line-height: 1.15;
 }
 
+.estimator-hero-card del,
+.result-top del {
+	display: block;
+	width: fit-content;
+	margin-top: 8px;
+	color: rgba(255, 255, 255, 0.55);
+	font-size: 15px;
+	font-weight: 900;
+	text-decoration-color: #ef4444;
+	text-decoration-thickness: 2px;
+}
+
 .estimator-hero-card p {
 	margin: 10px 0 0;
 	color: rgba(255, 255, 255, 0.72);
+}
+
+.estimator-hero-card small {
+	display: block;
+	margin-top: 12px;
+	color: #fef3c7;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 1.45;
 }
 
 .estimator-tool {
@@ -599,6 +689,26 @@ export default {
 	line-height: 1.65;
 }
 
+.promo-estimator-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 16px;
+	padding: 9px 12px;
+	border-radius: 999px;
+	background: rgba(239, 68, 68, 0.16);
+	border: 1px solid rgba(254, 202, 202, 0.22);
+	color: #fee2e2;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 1.35;
+}
+
+.promo-estimator-badge i {
+	color: #fca5a5;
+	font-size: 17px;
+}
+
 .result-metrics {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -654,6 +764,17 @@ export default {
 	color: #102d35;
 	text-align: right;
 	white-space: nowrap;
+}
+
+.result-breakdown li.promo-breakdown {
+	background: #fff5f5;
+	border-color: #fecaca;
+	color: #991b1b;
+	font-weight: 900;
+}
+
+.result-breakdown li.promo-breakdown strong {
+	color: #dc2626;
 }
 
 .recommendation-box {
