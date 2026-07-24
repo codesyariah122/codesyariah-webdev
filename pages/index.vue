@@ -33,139 +33,52 @@
       </div>
     </section>
     <HomepageOpenSourceTools />
-    <HomepagePricing :categories="categories" />
-    <HomepageGalleryProduct />
     <section
-      id="site-pulse"
-      class="site-pulse-product"
-      aria-labelledby="site-pulse-title"
+      id="pricing"
+      class="home-routing-teaser"
+      aria-labelledby="home-routing-title"
     >
-      <div class="site-pulse-container">
-        <div class="site-pulse-copy">
-          <span class="site-pulse-kicker"
-            >Produk Digital WordPress | Sudah dipakai client</span
-          >
-          <h2 id="site-pulse-title">
-            WP Agency Site Pulse untuk monitoring website WordPress.
+      <div class="home-routing-shell">
+        <div class="home-routing-head">
+          <span>Paket & Produk Digital</span>
+          <h2 id="home-routing-title">
+            Pilih jalur yang paling pas sebelum konsultasi.
           </h2>
           <p>
-            Plugin WordPress Codesyariah Webdev yang sudah mulai digunakan di
-            website company profile PT Sinar Berkat Abadi. Cocok untuk owner,
-            agency, dan tim IT yang ingin memantau health website, report
-            maintenance, serta status teknis WordPress dengan bahasa yang mudah
-            dipahami.
+            Homepage ini cukup memberi gambaran. Detail paket layanan dan produk
+            digital WordPress sudah dipisah supaya calon customer bisa membaca
+            lebih fokus tanpa halaman utama jadi terlalu panjang.
           </p>
-
-          <div class="site-pulse-trust">
-            <span>Preview client: PT Sinar Berkat Abadi</span>
-            <span>Harga rupiah</span>
-            <span>Untuk UMKM, company, dan agency</span>
-          </div>
-
-          <div class="site-pulse-points">
-            <span><i class="bx bx-check"></i> Health check WordPress</span>
-            <span><i class="bx bx-check"></i> Report maintenance harian</span>
-            <span><i class="bx bx-check"></i> License & subscription local</span>
-            <span><i class="bx bx-check"></i> Cocok untuk company profile</span>
-          </div>
-
-          <div class="site-pulse-pricing">
-            <strong>Harga resmi mengikuti paket Freemius</strong>
-            <span>
-              Checkout lisensi plugin tersedia langsung via Freemius. Untuk
-              UMKM Indonesia, Codesyariah tetap membuka penawaran harga lokal
-              dan bantuan setup lewat WhatsApp.
-            </span>
-            <div class="site-pulse-plan-grid">
-              <a
-                class="site-pulse-plan"
-                href="https://checkout.freemius.com/plugin/33732/plan/55410/"
-                target="_blank"
-                rel="noopener"
-              >
-                <b>Starter</b>
-                <small>$9/month</small>
-                <em>Untuk 1 website aktif</em>
-                <span>Checkout Freemius</span>
-              </a>
-              <a
-                class="site-pulse-plan"
-                href="https://checkout.freemius.com/plugin/33732/plan/55411/"
-                target="_blank"
-                rel="noopener"
-              >
-                <b>Agency</b>
-                <small>$29/month</small>
-                <em>Untuk pengelolaan beberapa website</em>
-                <span>Checkout Freemius</span>
-              </a>
-              <a
-                class="site-pulse-plan"
-                href="https://checkout.freemius.com/plugin/33732/plan/55412/"
-                target="_blank"
-                rel="noopener"
-              >
-                <b>Pro</b>
-                <small>$79/month</small>
-                <em>Untuk agency dan kebutuhan lebih serius</em>
-                <span>Checkout Freemius</span>
-              </a>
-            </div>
-            <div class="site-pulse-umkm-offer">
-              <div>
-                <b>Butuh harga UMKM?</b>
-                <span>
-                  Ajukan penawaran lokal untuk plugin, instalasi, training, dan
-                  setup awal website WordPress.
-                </span>
-              </div>
-              <button type="button" @click="orderSitePulse">
-                Minta Penawaran UMKM <i class="bx bxl-whatsapp"></i>
-              </button>
-            </div>
-          </div>
-
-          <button type="button" class="site-pulse-cta" @click="orderSitePulse">
-            Konsultasi Plugin WordPress <i class="bx bxl-whatsapp"></i>
-          </button>
         </div>
 
-        <div class="site-pulse-preview">
-          <div class="site-pulse-preview-badge">
-            <span>Client preview</span>
-            <strong>Terpasang di admin WordPress PT Sinar Berkat Abadi</strong>
-          </div>
-          <div class="site-pulse-preview-stack">
-            <figure class="site-pulse-preview-main">
-              <img
-                src="/assets/site-pulse/agency-site-pulse-sba-wordpress-admin.png"
-                alt="Preview plugin Agency Site Pulse di dashboard WordPress PT Sinar Berkat Abadi"
-              />
-              <figcaption>
-                Live WordPress admin preview: health score, license, report,
-                dan subscription.
-              </figcaption>
-            </figure>
-            <div class="site-pulse-preview-gallery">
-              <figure class="site-pulse-preview-mini">
-                <span>Health snapshot</span>
-                <img
-                  src="/assets/site-pulse/Site-Health-Status-‹-SBA-Sinar-Berkat-Abadi-Company-Profile-—-WordPress.png"
-                  alt="Preview site health status WP Agency Site Pulse"
-                />
-              </figure>
-              <figure class="site-pulse-preview-mini">
-                <span>Upgrade plans</span>
-                <img
-                  src="/assets/site-pulse/agency-site-pulse-sba-wordpress-upgrade-plans.png"
-                  alt="Preview upgrade plans WP Agency Site Pulse di WordPress PT Sinar Berkat Abadi"
-                />
-              </figure>
-            </div>
-          </div>
+        <div class="home-routing-grid">
+          <article class="home-routing-card">
+            <span class="routing-card-kicker">Paket layanan</span>
+            <h3>Website, web app, API, server, dan maintenance.</h3>
+            <p>
+              Lihat pilihan paket berdasarkan kebutuhan bisnis: company profile,
+              landing page, business website, sampai sistem custom.
+            </p>
+            <NuxtLink to="/paket" class="routing-card-link">
+              Lihat Daftar Paket <i class="bx bx-right-arrow-alt"></i>
+            </NuxtLink>
+          </article>
+
+          <article class="home-routing-card product-card">
+            <span class="routing-card-kicker">Produk digital WordPress</span>
+            <h3>WP Agency Site Pulse sudah dipublish dan diproduksi.</h3>
+            <p>
+              Plugin monitoring WordPress dengan health snapshot, report,
+              license subscription, dan checkout Freemius.
+            </p>
+            <NuxtLink to="/produk-digital" class="routing-card-link">
+              Lihat Produk Digital <i class="bx bx-right-arrow-alt"></i>
+            </NuxtLink>
+          </article>
         </div>
       </div>
     </section>
+    <HomepageGalleryProduct />
     <HomepageTestimonial />
     <HomepageBlog />
     <HomepageAbout />
@@ -974,6 +887,116 @@ export default {
   color: #06201a;
   font-weight: 900;
   cursor: pointer;
+}
+
+.home-routing-teaser {
+  padding: 78px 0;
+  background:
+    linear-gradient(135deg, rgba(16, 185, 129, 0.08), transparent 36%),
+    #ffffff;
+}
+
+.home-routing-shell {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.home-routing-head {
+  max-width: 760px;
+  margin-bottom: 30px;
+}
+
+.home-routing-head span,
+.routing-card-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-routing-head h2 {
+  margin: 16px 0 12px;
+  color: #082027;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.08;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.home-routing-head p,
+.home-routing-card p {
+  color: #52636f;
+  line-height: 1.75;
+}
+
+.home-routing-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.home-routing-card {
+  display: grid;
+  align-content: start;
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid rgba(15, 118, 110, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 250, 0.78)),
+    #ffffff;
+  box-shadow: 0 22px 58px rgba(15, 23, 42, 0.08);
+}
+
+.home-routing-card.product-card {
+  background:
+    linear-gradient(145deg, rgba(6, 32, 32, 0.94), rgba(15, 118, 110, 0.78)),
+    #062020;
+}
+
+.home-routing-card h3 {
+  margin: 18px 0 12px;
+  color: #082027;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.14;
+  font-weight: 900;
+}
+
+.home-routing-card.product-card h3,
+.home-routing-card.product-card p {
+  color: #ffffff;
+}
+
+.home-routing-card.product-card p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.routing-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 44px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: #10b981;
+  color: #052e2b;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.home-routing-card:not(.product-card) .routing-card-link {
+  background: #082027;
+  color: #ffffff;
 }
 
 .site-pulse-product {
@@ -1926,6 +1949,23 @@ export default {
 
   .coupon-popup-detail {
     padding: 30px 24px 24px;
+  }
+
+  .home-routing-teaser {
+    padding: 56px 0;
+  }
+
+  .home-routing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-routing-card {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .routing-card-link {
+    width: 100%;
   }
 
   .site-pulse-product {
