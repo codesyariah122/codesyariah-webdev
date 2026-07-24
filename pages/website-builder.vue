@@ -54,6 +54,38 @@
           </p>
         </div>
 
+        <section
+          v-if="importedScope"
+          class="imported-scope-card"
+          aria-label="Brief dari Website Cost Estimator"
+        >
+          <div>
+            <span>Brief dari Cost Estimator</span>
+            <h3>{{ importedScope.packageName }} - {{ importedScope.budget }}</h3>
+            <p>
+              {{ importedScope.offer }}
+            </p>
+          </div>
+          <div class="imported-scope-meta">
+            <article>
+              <span>Halaman</span>
+              <strong>{{ importedScope.pages }} halaman</strong>
+            </article>
+            <article>
+              <span>Timeline</span>
+              <strong>{{ importedScope.timeline }}</strong>
+            </article>
+            <article>
+              <span>Kompleksitas</span>
+              <strong>{{ importedScope.complexity }}</strong>
+            </article>
+          </div>
+          <div class="imported-scope-ai">
+            <i class="bx bx-brain"></i>
+            <p>{{ importedScope.ai }}</p>
+          </div>
+        </section>
+
         <div class="builder-grid">
           <aside class="builder-controls" aria-label="Pengaturan website">
             <div class="control-group">
@@ -330,6 +362,12 @@
                     </div>
                   </div>
                   <div class="mock-visual">
+                    <div class="mock-visual-image">
+                      <img
+                        :src="selectedBusiness.image"
+                        :alt="`Preview visual ${selectedBusiness.title}`"
+                      />
+                    </div>
                     <div class="visual-card">
                       <i :class="selectedBusiness.icon"></i>
                       <strong>{{ selectedBusiness.metric }}</strong>
@@ -585,6 +623,8 @@ export default {
         pages: ["Home", "Layanan", "Portfolio", "Kontak"],
         features: ["WhatsApp CTA", "SEO Basic", "Responsive Design"],
       },
+      importedScope: null,
+      applyingImportedScope: false,
       businessTypes: [
         {
           id: "company",
@@ -603,6 +643,7 @@ export default {
           icon: "bx bx-buildings",
           metric: "24/7",
           metricLabel: "brand presence",
+          image: require("~/assets/img/website-category/SBA-Sinar-Berkat-Abadi-–-Company-Profile-–-Company-profile-SBA-Sinar-Berkat-Abadi-anak-perusahaan-Pertamina--07-01-2026_02_44_AM.png"),
         },
         {
           id: "landing",
@@ -621,6 +662,7 @@ export default {
           icon: "bx bx-rocket",
           metric: "1 CTA",
           metricLabel: "fokus konversi",
+          image: require("~/assets/img/website-category/mindsparks-landing-page.png"),
         },
         {
           id: "catalog",
@@ -639,6 +681,7 @@ export default {
           icon: "bx bx-store",
           metric: "100+",
           metricLabel: "produk siap tampil",
+          image: require("~/assets/img/website-category/HD-Living-–-Home-Decor.png"),
         },
         {
           id: "mobile-sales",
@@ -657,6 +700,7 @@ export default {
           icon: "bx bx-mobile-alt",
           metric: "1 tap",
           metricLabel: "hubungi prospek",
+          image: require("~/assets/img/website-category/WALink.png"),
         },
         {
           id: "travel",
@@ -676,6 +720,7 @@ export default {
           icon: "bx bx-map-alt",
           metric: "WA",
           metricLabel: "booking cepat",
+          image: require("~/assets/img/website-category/transholiday.png"),
         },
         {
           id: "system",
@@ -694,6 +739,7 @@ export default {
           icon: "bx bx-data",
           metric: "Role",
           metricLabel: "akses terkontrol",
+          image: require("~/assets/img/website-category/sba-crm-ai-analysis-preview.png"),
         },
       ],
       visualStyles: [
@@ -761,6 +807,9 @@ export default {
         "Bisa dikirim sebagai brief awal via WhatsApp.",
       ],
     };
+  },
+  mounted() {
+    this.applyEstimatorScope();
   },
   computed: {
     profiles() {
@@ -1274,6 +1323,10 @@ export default {
       }
     },
     "form.businessType"(value) {
+      if (this.applyingImportedScope) {
+        return;
+      }
+
       this.mockMenuOpen = false;
 
       const presets = {
@@ -1308,7 +1361,105 @@ export default {
     },
   },
   methods: {
+    applyEstimatorScope() {
+      if (this.$route.query.from !== "estimator") {
+        return;
+      }
+
+      const query = this.$route.query;
+      const typeMap = {
+        landing: "landing",
+        company: "company",
+        catalog: "catalog",
+        travel: "travel",
+        sales: "mobile-sales",
+        dashboard: "system",
+      };
+      const featureMap = {
+        whatsapp: "WhatsApp CTA",
+        seo: "SEO Basic",
+        responsive: "Responsive Design",
+        form: "Form Konsultasi",
+        catalog: "Katalog Produk",
+        cms: "Blog CMS",
+        payment: "Payment Gateway",
+        dashboard: "Dashboard Admin",
+        api: "Dashboard Admin",
+      };
+      const businessType = typeMap[query.type] || "company";
+      const featureIds = String(query.features || "")
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean);
+      const features = featureIds
+        .map((item) => featureMap[item])
+        .filter(Boolean);
+      const pages = this.getPagesFromEstimate(
+        businessType,
+        Number(query.pages || 5),
+        features
+      );
+
+      this.applyingImportedScope = true;
+      this.form.businessType = businessType;
+      this.form.mainOffer = query.offer || "";
+      this.form.pages = pages;
+      this.form.features = features.length
+        ? Array.from(new Set(features))
+        : ["WhatsApp CTA", "SEO Basic", "Responsive Design"];
+      this.previewMode = "desktop";
+      this.mockMenuOpen = false;
+
+      this.importedScope = {
+        pages: Number(query.pages || pages.length),
+        budget: query.budget || "-",
+        normal: query.normal || "-",
+        packageName: query.package || this.packageRecommendation.name,
+        complexity: query.complexity || this.complexityLabel,
+        timeline: query.timeline || "-",
+        promo: query.promo || "",
+        offer: query.offer || this.selectedBusiness.offer,
+        ai:
+          query.ai ||
+          "Scope awal sudah terbaca. Preview ini bisa dipakai sebagai gambaran struktur website sebelum konsultasi.",
+      };
+
+      this.$nextTick(() => {
+        this.applyingImportedScope = false;
+      });
+    },
+    getPagesFromEstimate(businessType, pageCount, features) {
+      const baseByType = {
+        landing: ["Home", "Layanan", "Testimoni", "Kontak"],
+        company: ["Home", "Tentang", "Layanan", "Portfolio", "Kontak"],
+        catalog: ["Home", "Produk", "Layanan", "Testimoni", "Kontak"],
+        "mobile-sales": ["Home", "Produk", "Testimoni", "Kontak"],
+        travel: ["Home", "Produk", "Layanan", "Testimoni", "Kontak"],
+        system: ["Home", "Layanan", "Portfolio", "Kontak"],
+      };
+      const pages = [...(baseByType[businessType] || baseByType.company)];
+
+      if (features.includes("Blog CMS") || pageCount >= 8) {
+        pages.push("Blog");
+      }
+      if (features.includes("Katalog Produk") && !pages.includes("Produk")) {
+        pages.splice(2, 0, "Produk");
+      }
+      if (pageCount >= 6 && !pages.includes("Testimoni")) {
+        pages.splice(Math.max(1, pages.length - 1), 0, "Testimoni");
+      }
+
+      return Array.from(new Set(pages)).slice(0, 8);
+    },
     sendBrief() {
+      const importedLines = this.importedScope
+        ? [
+            `Estimasi promo: ${this.importedScope.budget}`,
+            `Estimasi normal: ${this.importedScope.normal}`,
+            `Timeline estimator: ${this.importedScope.timeline}`,
+            `Catatan AI: ${this.importedScope.ai}`,
+          ]
+        : [];
       const message = [
         "Halo Codesyariah, saya ingin konsultasi dari Website Builder Preview.",
         `Nama brand: ${this.previewBrand}`,
@@ -1320,6 +1471,7 @@ export default {
         `Fitur: ${this.previewFeatures.join(", ")}`,
         `Rekomendasi paket: ${this.packageRecommendation.name}`,
         `Kompleksitas: ${this.complexityLabel}`,
+        ...importedLines,
       ].join("\n");
 
       window.open(
@@ -1507,6 +1659,95 @@ export default {
 
 .builder-heading > p {
   color: #5b6d72;
+}
+
+.imported-scope-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.84fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-bottom: 22px;
+  padding: 20px;
+  border: 1px solid rgba(24, 209, 155, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(24, 209, 155, 0.12), transparent 42%),
+    #ffffff;
+  box-shadow: 0 18px 46px rgba(17, 51, 60, 0.08);
+}
+
+.imported-scope-card span {
+  display: block;
+  margin-bottom: 7px;
+  color: #0f766e;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.imported-scope-card h3 {
+  margin: 0;
+  color: #102d35;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.12;
+  font-weight: 900;
+}
+
+.imported-scope-card p {
+  margin: 10px 0 0;
+  color: #526a70;
+  line-height: 1.65;
+}
+
+.imported-scope-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.imported-scope-meta article {
+  display: grid;
+  align-content: center;
+  min-height: 98px;
+  padding: 14px;
+  border: 1px solid #dcebea;
+  border-radius: 8px;
+  background: #f8fcfc;
+}
+
+.imported-scope-meta strong {
+  color: #102d35;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.imported-scope-ai {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 8px;
+  background: #eafff7;
+  color: #315059;
+}
+
+.imported-scope-ai i {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #102d35;
+  color: #18d19b;
+  font-size: 19px;
+}
+
+.imported-scope-ai p {
+  margin: 0;
+  font-size: 14px;
 }
 
 .builder-grid {
@@ -1805,6 +2046,8 @@ export default {
 }
 
 .mock-visual {
+  position: relative;
+  overflow: hidden;
   display: grid;
   place-items: center;
   min-height: 200px;
@@ -1816,7 +2059,35 @@ export default {
   );
 }
 
+.mock-visual-image {
+  position: absolute;
+  inset: 10px;
+  overflow: hidden;
+  border-radius: 8px;
+  opacity: 0.48;
+}
+
+.mock-visual-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: saturate(0.9) contrast(1.02);
+}
+
+.mock-visual-image::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(8, 32, 39, 0.18), rgba(8, 32, 39, 0.78)),
+    radial-gradient(circle at 70% 20%, rgba(24, 209, 155, 0.28), transparent 34%);
+}
+
 .visual-card {
+  position: relative;
+  z-index: 2;
   display: grid;
   gap: 6px;
   place-items: center;
@@ -3098,6 +3369,7 @@ export default {
 
 @media (max-width: 1100px) {
   .builder-grid,
+  .imported-scope-card,
   .builder-summary,
   .builder-license {
     grid-template-columns: 1fr;
@@ -3116,6 +3388,10 @@ export default {
   .builder-hero .builder-container,
   .builder-heading {
     grid-template-columns: 1fr;
+  }
+
+  .imported-scope-meta {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .builder-trust-panel {
@@ -3137,6 +3413,10 @@ export default {
   }
 
   .checkbox-list {
+    grid-template-columns: 1fr;
+  }
+
+  .imported-scope-meta {
     grid-template-columns: 1fr;
   }
 

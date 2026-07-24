@@ -8,9 +8,9 @@
 					<p>
 						Jawab beberapa pertanyaan sederhana. Estimator ini membantu calon customer memahami range biaya, timeline, kompleksitas, dan fitur yang sebaiknya diprioritaskan sebelum ngobrol teknis.
 					</p>
-					<div class="estimator-actions">
-						<a href="#estimator-tool" class="primary-action scrollto">Mulai Hitung <i class="bx bx-calculator"></i></a>
-						<NuxtLink to="/website-builder" class="secondary-action">Lihat Builder <i class="bx bx-slider-alt"></i></NuxtLink>
+						<div class="estimator-actions">
+							<a href="#estimator-tool" class="primary-action scrollto">Mulai Hitung <i class="bx bx-calculator"></i></a>
+							<NuxtLink :to="builderPreviewRoute" class="secondary-action">Lihat Builder <i class="bx bx-slider-alt"></i></NuxtLink>
 					</div>
 				</div>
 					<div class="estimator-hero-card">
@@ -205,7 +205,7 @@
 							<button type="button" @click="sendEstimate">
 								Kirim Estimasi ke WhatsApp <i class="bx bxl-whatsapp"></i>
 							</button>
-							<NuxtLink to="/website-builder">Lihat Preview Website</NuxtLink>
+							<NuxtLink :to="builderPreviewRoute">Lihat Preview Website</NuxtLink>
 						</div>
 					</section>
 				</div>
@@ -452,6 +452,10 @@ export default {
 		},
 		aiPayload() {
 			return {
+				websiteTypeId: this.form.websiteType,
+				contentHelpId: this.form.contentHelp,
+				deadlineId: this.form.deadline,
+				featureIds: this.form.features,
 				websiteType: this.selectedWebsite.title,
 				pages: this.form.pageCount,
 				contentHelp: this.selectedContent.title,
@@ -464,6 +468,27 @@ export default {
 				timeline: this.timelineLabel,
 				promo: this.promoLabel,
 				recommendation: this.recommendationText,
+			};
+		},
+		builderPreviewRoute() {
+			return {
+				path: "/website-builder",
+				query: {
+					from: "estimator",
+					type: this.form.websiteType,
+					pages: String(this.form.pageCount),
+					content: this.form.contentHelp,
+					deadline: this.form.deadline,
+					features: this.form.features.join(","),
+					budget: this.formattedRange,
+					normal: this.formattedNormalRange,
+					package: this.packageName,
+					complexity: this.complexityLabel,
+					timeline: this.timelineLabel,
+					promo: this.promoCode,
+					offer: this.selectedWebsite.description,
+					ai: this.aiAnalysis?.summary || this.recommendationText,
+				},
 			};
 		},
 	},
