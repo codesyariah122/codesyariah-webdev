@@ -143,6 +143,64 @@
 							<p>{{ recommendationText }}</p>
 						</div>
 
+						<div class="ai-analysis-box">
+							<div class="ai-analysis-head">
+								<div>
+									<span>AI Scope Analysis</span>
+									<h3>Analisa kebutuhan customer awam teknologi.</h3>
+								</div>
+								<button
+									type="button"
+									:disabled="aiLoading"
+									@click="generateAiAnalysis"
+								>
+									{{ aiLoading ? "Menganalisa..." : "Analisa AI" }}
+									<i class="bx bx-brain"></i>
+								</button>
+							</div>
+
+							<div v-if="aiError" class="ai-analysis-note">
+								<i class="bx bx-info-circle"></i>
+								{{ aiError }}
+							</div>
+
+							<div v-if="aiAnalysis" class="ai-analysis-content">
+								<p>{{ aiAnalysis.summary }}</p>
+								<div class="ai-analysis-grid">
+									<article>
+										<strong>Cocok untuk</strong>
+										<span>{{ aiAnalysis.customer_fit }}</span>
+									</article>
+									<article>
+										<strong>Next step</strong>
+										<span>{{ aiAnalysis.next_step }}</span>
+									</article>
+								</div>
+								<div class="ai-analysis-lists">
+									<div>
+										<strong>Prioritas fitur</strong>
+										<ul>
+											<li v-for="item in aiAnalysis.priority_features" :key="item">
+												{{ item }}
+											</li>
+										</ul>
+									</div>
+									<div>
+										<strong>Catatan risiko</strong>
+										<ul>
+											<li v-for="item in aiAnalysis.risk_notes" :key="item">
+												{{ item }}
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<p v-else class="ai-analysis-empty">
+								Klik Analisa AI untuk mendapatkan insight scope, prioritas, risiko,
+								dan arahan konsultasi yang lebih mudah dipahami.
+							</p>
+						</div>
+
 						<div class="result-actions">
 							<button type="button" @click="sendEstimate">
 								Kirim Estimasi ke WhatsApp <i class="bx bxl-whatsapp"></i>
@@ -158,6 +216,7 @@
 						<h2 id="estimator-license-title">Website Cost Estimator adalah fitur original Codesyariah Webdev.</h2>
 						<p>
 							Konsep kalkulasi estimasi biaya, struktur pertanyaan, rekomendasi paket, logic range harga, UI/UX, copywriting, dan integrasi WhatsApp pada fitur ini dibuat dan dikembangkan oleh Puji Ermanto selaku engineer / developer Codesyariah Webdev.
+							Termasuk pengembangan AI Scope Analysis yang membantu calon customer memahami prioritas fitur, risiko scope, dan next step konsultasi.
 						</p>
 					</div>
 					<div class="estimator-license-card">
@@ -206,6 +265,9 @@ export default {
 				deadline: "normal",
 				features: ["whatsapp", "seo", "responsive"],
 			},
+			aiLoading: false,
+			aiError: "",
+			aiAnalysis: null,
 			websiteTypes: [
 				{ id: "landing", title: "Landing Page Promosi", min: 1200000, max: 3500000, basePages: 1, timelineMin: 3, timelineMax: 7, description: "Untuk campaign, iklan, promo, launching produk, atau validasi penawaran." },
 				{ id: "company", title: "Company Profile", min: 1500000, max: 5000000, basePages: 5, timelineMin: 5, timelineMax: 14, description: "Untuk bisnis yang ingin tampil kredibel, punya layanan jelas, dan mudah dihubungi." },
@@ -388,6 +450,31 @@ export default {
 			}
 			return "Scope berada di tengah. Fokuskan fitur yang paling dekat dengan lead, order, dan kepercayaan calon customer.";
 		},
+		aiPayload() {
+			return {
+				websiteType: this.selectedWebsite.title,
+				pages: this.form.pageCount,
+				contentHelp: this.selectedContent.title,
+				deadline: this.selectedDeadline.title,
+				features: this.selectedFeatures.map((item) => item.title),
+				budgetPromo: this.formattedRange,
+				budgetNormal: this.formattedNormalRange,
+				packageName: this.packageName,
+				complexity: this.complexityLabel,
+				timeline: this.timelineLabel,
+				promo: this.promoLabel,
+				recommendation: this.recommendationText,
+			};
+		},
+	},
+	watch: {
+		form: {
+			deep: true,
+			handler() {
+				this.aiError = "";
+				this.aiAnalysis = null;
+			},
+		},
 	},
 	methods: {
 		formatCurrency(value) {
@@ -397,7 +484,55 @@ export default {
 			}
 			return `Rp${Math.round(value / 1000)}rb`;
 		},
+		normalizeAiAnalysis(analysis) {
+			return {
+				summary: analysis?.summary || "AI analysis belum menghasilkan ringkasan.",
+				customer_fit: analysis?.customer_fit || "Calon customer yang ingin estimasi awal sebelum konsultasi.",
+				priority_features: Array.isArray(analysis?.priority_features)
+					? analysis.priority_features.slice(0, 3)
+					: [],
+				risk_notes: Array.isArray(analysis?.risk_notes)
+					? analysis.risk_notes.slice(0, 3)
+					: [],
+				next_step: analysis?.next_step || "Lanjutkan dengan konsultasi singkat untuk validasi scope.",
+			};
+		},
+		async generateAiAnalysis() {
+			this.aiLoading = true;
+			this.aiError = "";
+
+			try {
+				const response = await fetch("/api/estimator-analysis", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(this.aiPayload),
+				});
+				const result = await response.json();
+
+				this.aiAnalysis = this.normalizeAiAnalysis(result.analysis);
+				this.aiError = result.fallback
+					? result.message || "AI sedang memakai fallback lokal."
+					: "";
+			} catch (error) {
+				this.aiAnalysis = this.normalizeAiAnalysis(null);
+				this.aiError = "AI analysis gagal dihubungi. Fallback lokal ditampilkan.";
+			} finally {
+				this.aiLoading = false;
+			}
+		},
 		sendEstimate() {
+			const aiLines = this.aiAnalysis
+				? [
+					"",
+					"AI Scope Analysis:",
+					this.aiAnalysis.summary,
+					`Prioritas: ${this.aiAnalysis.priority_features.join(", ")}`,
+					`Risiko: ${this.aiAnalysis.risk_notes.join(", ")}`,
+					`Next step: ${this.aiAnalysis.next_step}`,
+				]
+				: [];
 			const message = [
 				"Halo Codesyariah, saya ingin konsultasi dari Website Cost Estimator.",
 				`Jenis website: ${this.selectedWebsite.title}`,
@@ -411,6 +546,7 @@ export default {
 				`Paket rekomendasi: ${this.packageName}`,
 				`Kompleksitas: ${this.complexityLabel}`,
 				`Timeline: ${this.timelineLabel}`,
+				...aiLines,
 			].join("\n");
 
 			window.open(`https://wa.me/${this.whatsappPhone}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
@@ -792,6 +928,157 @@ export default {
 	line-height: 1.65;
 }
 
+.ai-analysis-box {
+	margin: 0 18px 18px;
+	padding: 16px;
+	border: 1px solid rgba(24, 209, 155, 0.2);
+	border-radius: 8px;
+	background:
+		linear-gradient(135deg, rgba(24, 209, 155, 0.1), transparent 48%),
+		#f8fffd;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.ai-analysis-head {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 14px;
+	align-items: center;
+}
+
+.ai-analysis-head span {
+	display: block;
+	margin-bottom: 5px;
+	color: #0f766e;
+	font-size: 11px;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.ai-analysis-head h3 {
+	margin: 0;
+	color: #102d35;
+	font-size: 19px;
+	line-height: 1.25;
+}
+
+.ai-analysis-head button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 42px;
+	padding: 10px 14px;
+	border: 0;
+	border-radius: 8px;
+	background: #102d35;
+	color: #ffffff;
+	font-weight: 900;
+	cursor: pointer;
+	white-space: nowrap;
+	box-shadow: 0 14px 28px rgba(16, 45, 53, 0.16);
+}
+
+.ai-analysis-head button:disabled {
+	cursor: wait;
+	opacity: 0.72;
+}
+
+.ai-analysis-head button i {
+	color: #18d19b;
+	font-size: 18px;
+}
+
+.ai-analysis-note {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+	margin-top: 12px;
+	padding: 10px 12px;
+	border-radius: 8px;
+	background: rgba(250, 204, 21, 0.13);
+	color: #854d0e;
+	font-size: 12px;
+	font-weight: 800;
+	line-height: 1.45;
+}
+
+.ai-analysis-content {
+	display: grid;
+	gap: 14px;
+	margin-top: 14px;
+}
+
+.ai-analysis-content > p,
+.ai-analysis-empty {
+	margin: 0;
+	color: #526a70;
+	line-height: 1.65;
+}
+
+.ai-analysis-grid,
+.ai-analysis-lists {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.ai-analysis-grid article,
+.ai-analysis-lists > div {
+	padding: 14px;
+	border: 1px solid #dcebea;
+	border-radius: 8px;
+	background: #ffffff;
+}
+
+.ai-analysis-grid strong,
+.ai-analysis-lists strong {
+	display: block;
+	margin-bottom: 7px;
+	color: #102d35;
+	font-size: 13px;
+	font-weight: 900;
+}
+
+.ai-analysis-grid span {
+	color: #526a70;
+	font-size: 13px;
+	line-height: 1.55;
+}
+
+.ai-analysis-lists ul {
+	display: grid;
+	gap: 7px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ai-analysis-lists li {
+	position: relative;
+	padding-left: 18px;
+	color: #526a70;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.ai-analysis-lists li:before {
+	position: absolute;
+	top: 8px;
+	left: 0;
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: #18d19b;
+	content: "";
+}
+
+.ai-analysis-empty {
+	margin-top: 12px;
+	font-size: 13px;
+}
+
 .result-actions {
 	display: flex;
 	flex-wrap: wrap;
@@ -905,8 +1192,18 @@ export default {
 	}
 
 	.checkbox-list,
-	.result-metrics {
+	.result-metrics,
+	.ai-analysis-grid,
+	.ai-analysis-lists {
 		grid-template-columns: 1fr;
+	}
+
+	.ai-analysis-head {
+		grid-template-columns: 1fr;
+	}
+
+	.ai-analysis-head button {
+		width: 100%;
 	}
 
 	.result-breakdown li {

@@ -6,12 +6,14 @@ Creator, engineer, and developer: Puji Ermanto.
 Website Cost Estimator is an original digital product feature created for
 Codesyariah Webdev. The feature helps prospective clients estimate website
 budget ranges, complexity, timeline, package recommendations, feature
-priorities, and consultation direction before starting a project discussion.
+priorities, AI-assisted scope analysis, risk notes, next-step recommendations,
+and consultation direction before starting a project discussion.
 
 The implementation, source code, calculation structure, pricing logic, user
 interface, user experience flow, copywriting, recommendation model, WhatsApp
-brief integration, and related documentation are proprietary works owned by
-Codesyariah Webdev and created by Puji Ermanto.
+brief integration, serverless AI analysis integration, prompt structure,
+fallback recommendation logic, and related documentation are proprietary works
+owned by Codesyariah Webdev and created by Puji Ermanto.
 
 No permission is granted to copy, clone, redistribute, resell, sublicense,
 publish, scrape for commercial reuse, or create commercial derivative works
