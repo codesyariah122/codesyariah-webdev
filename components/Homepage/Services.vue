@@ -27,7 +27,7 @@
 					<article class="service-card">
 						<div class="service-promo-badge">
 							<i class="bx bxs-discount"></i>
-							Promo Merdeka 17%
+							{{ activePromo.serviceBadge }}
 						</div>
 						<div class="service-top">
 							<div class="icon"><i :class="service.icon"></i></div>
@@ -55,9 +55,12 @@
 </template>
 
 <script>
+import { getActiveMonthlyPromo } from "~/data/monthlyPromos";
+
 export default {
 	data() {
 		return {
+			activePromo: getActiveMonthlyPromo(),
 			painPoints: [
 				"Bisnis butuh website yang terlihat kredibel dan mudah dihubungi.",
 				"Order, booking, data customer, atau laporan masih dikerjakan manual.",

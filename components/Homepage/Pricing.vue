@@ -8,7 +8,7 @@
 			</div>
 
 			<div class="pricing-grid" data-aos="fade-left">
-				<article v-for="product in products" :key="product.id" class="price-card" :class="{ highlighted: product.highlighted }">
+				<article v-for="product in pricedProducts" :key="product.id" class="price-card" :class="{ highlighted: product.highlighted }">
 					<div class="merdeka-ribbon">
 						<i class="bx bxs-coupon"></i>
 						{{ product.discount }}
@@ -39,21 +39,23 @@
 </template>
 
 <script>
+import { getActiveMonthlyPromo } from "~/data/monthlyPromos";
+
 export default {
 	props: ["categories", "carts"],
 
 	data() {
+		const activePromo = getActiveMonthlyPromo();
+
 		return {
+			activePromo,
 			products: [
 				{
 					id: 1,
 					permalink: "product-1",
 					label: "Launch cepat",
 					name: "Company Profile",
-					originalPrice: "Mulai 1.8JT",
-					price: "Promo 1.5JT",
-					discount: "Hemat 300RB",
-					promoNote: "Promo Merdeka untuk 10 claim/hari",
+					type: "starter",
 					description: "Untuk bisnis yang ingin tampil kredibel, punya halaman layanan jelas, dan mudah dihubungi calon customer.",
 					features: ["Landing page atau company profile", "Copywriting dasar dan CTA WhatsApp", "Responsive mobile dan desktop", "SEO basic dan struktur konten rapi"],
 				},
@@ -62,10 +64,7 @@ export default {
 					permalink: "product-2",
 					label: "Paling fleksibel",
 					name: "Business Website",
-					originalPrice: "Mulai 5JT",
-					price: "Promo 4JT",
-					discount: "Hemat 1JT",
-					promoNote: "Bonus konsultasi scope dan struktur konten",
+					type: "business",
 					description: "Untuk bisnis yang butuh website dengan katalog, form, integrasi, halaman detail, dan pengelolaan konten lebih serius.",
 					features: ["Katalog produk atau layanan", "Dashboard/admin sesuai kebutuhan", "Integrasi payment atau API ringan", "Setup domain, hosting, dan SSL"],
 					highlighted: true,
@@ -76,14 +75,45 @@ export default {
 					label: "Sistem custom",
 					name: "Web App & Automation",
 					originalPrice: "By Scope",
-					price: "Diskon 17%",
-					discount: "Merdeka 17%",
-					promoNote: "Potongan jasa development setelah scope disepakati",
+					type: "custom",
 					description: "Untuk perusahaan yang ingin merapikan proses manual menjadi sistem internal, dashboard, booking, CRM, atau workflow khusus.",
 					features: ["Analisis flow bisnis", "Role user dan database custom", "REST API dan integrasi third party", "Testing, deploy, dan support awal"],
 				},
 			],
 		};
+	},
+
+	computed: {
+		pricedProducts() {
+			return this.products.map((product) => {
+				if (product.type === "starter") {
+					return {
+						...product,
+						originalPrice: this.activePromo.starterOriginal,
+						price: this.activePromo.starterPriceLabel,
+						discount: this.activePromo.starterSavings,
+						promoNote: `${this.activePromo.name} untuk ${this.activePromo.dailyLimit} claim/hari`,
+					};
+				}
+
+				if (product.type === "business") {
+					return {
+						...product,
+						originalPrice: this.activePromo.businessOriginal,
+						price: this.activePromo.businessPriceLabel,
+						discount: this.activePromo.businessSavings,
+						promoNote: "Bonus konsultasi scope dan struktur konten awal",
+					};
+				}
+
+				return {
+					...product,
+					price: this.activePromo.webAppPriceLabel,
+					discount: this.activePromo.serviceBadge,
+					promoNote: "Potongan jasa development setelah scope disepakati",
+				};
+			});
+		},
 	},
 };
 </script>

@@ -5,23 +5,21 @@
     <section class="merdeka-promo-banner" aria-labelledby="merdeka-promo-title">
       <div class="merdeka-promo-shell">
         <div class="merdeka-promo-copy">
-          <span class="merdeka-kicker">Promo Kemerdekaan 17 Agustus</span>
-          <h2 id="merdeka-promo-title">Claim kupon Merdeka untuk semua layanan Codesyariah.</h2>
+          <span class="merdeka-kicker">{{ activePromo.kicker }}</span>
+          <h2 id="merdeka-promo-title">{{ activePromo.title }}</h2>
           <p>
-            Diskon jasa development sampai 17%, harga coret untuk paket website,
-            dan slot promo dibatasi 10 calon customer per hari supaya konsultasi
-            tetap fokus dan cepat ditangani.
+            {{ activePromo.description }}
           </p>
           <div class="merdeka-promo-meta">
-            <span><i class="bx bx-time-five"></i> Berlaku selama campaign Agustus</span>
+            <span><i class="bx bx-time-five"></i> {{ activePromo.periodLabel }}</span>
             <span><i class="bx bxs-coupon"></i> Sisa {{ promoRemaining }} claim hari ini</span>
             <span><i class="bx bxl-whatsapp"></i> Redeem via WhatsApp</span>
           </div>
         </div>
         <div class="merdeka-promo-ticket">
           <small>COUPON</small>
-          <strong>MERDEKA17</strong>
-          <span>Diskon hingga 17%</span>
+          <strong>{{ promoCode }}</strong>
+          <span>{{ activePromo.discountLabel }}</span>
           <button type="button" @click="claimPromoCoupon">
             Claim Kupon <i class="bx bx-right-arrow-alt"></i>
           </button>
@@ -152,13 +150,13 @@
         v-if="showPromoTicket"
         type="button"
         class="floating-coupon"
-        aria-label="Claim kupon promo kemerdekaan"
+        :aria-label="`Claim kupon ${activePromo.name}`"
         @click="claimPromoCoupon"
       >
         <span class="coupon-pulse"></span>
         <i class="bx bxs-coupon"></i>
         <span>
-          <strong>MERDEKA17</strong>
+          <strong>{{ promoCode }}</strong>
           <small>{{ promoRemaining }} claim tersisa</small>
         </span>
       </button>
@@ -185,20 +183,20 @@
 
           <div class="coupon-popup-visual">
             <span class="coupon-label">Selamat!</span>
-            <strong id="coupon-popup-title">Kamu dapat kupon promo Merdeka.</strong>
+            <strong id="coupon-popup-title">Kamu dapat kupon {{ activePromo.name }}.</strong>
             <div class="coupon-code">{{ promoCode }}</div>
             <p>
               Tunjukkan kode ini saat konsultasi WhatsApp untuk mengunci harga
-              promo dan diskon layanan sampai 17%.
+              promo. {{ activePromo.discountLabel }}.
             </p>
           </div>
 
           <div class="coupon-popup-detail">
             <h3>Benefit kupon</h3>
             <ul>
-              <li><i class="bx bx-check"></i> Diskon semua layanan website dan web app.</li>
-              <li><i class="bx bx-check"></i> Harga coret berlaku untuk paket utama.</li>
-              <li><i class="bx bx-check"></i> Prioritas konsultasi scope awal.</li>
+              <li v-for="benefit in activePromo.benefits" :key="benefit">
+                <i class="bx bx-check"></i> {{ benefit }}
+              </li>
             </ul>
             <button type="button" @click="redeemPromoCoupon">
               Redeem via WhatsApp <i class="bx bxl-whatsapp"></i>
@@ -293,19 +291,23 @@
 </template>
 
 <script>
+import { getActiveMonthlyPromo } from "~/data/monthlyPromos";
+
 export default {
   name: "IndexPage",
   layout: "default",
 
   data() {
+    const activePromo = getActiveMonthlyPromo();
+
     return {
       whatsappUrl: "https://wa.me/6288222668778?text=Hallo%20codesyariah",
       showBuilderPopup: false,
       dontShowBuilderPopup: false,
       showCouponPopup: false,
       showPromoTicket: true,
-      promoCode: "MERDEKA17",
-      promoDailyLimit: 10,
+      activePromo,
+      promoDailyLimit: activePromo.dailyLimit,
       promoClaimed: false,
       promoClaimCount: 0,
       showChatbox: true,
@@ -335,6 +337,9 @@ export default {
     promoRemaining() {
       return Math.max(0, this.promoDailyLimit - this.promoClaimCount);
     },
+    promoCode() {
+      return this.activePromo.code;
+    },
   },
 
   mounted() {
@@ -347,17 +352,20 @@ export default {
     todayKey() {
       return new Date().toISOString().slice(0, 10);
     },
+    promoStorageKey(suffix) {
+      return `codesyariah_coupon_${this.promoCode}_${suffix}`;
+    },
     initPromoCoupon() {
       const today = this.todayKey();
-      const storedDate = window.localStorage.getItem("codesyariah_coupon_date");
+      const storedDate = window.localStorage.getItem(this.promoStorageKey("date"));
       const storedCount = Number(
-        window.localStorage.getItem("codesyariah_coupon_claim_count") || 0
+        window.localStorage.getItem(this.promoStorageKey("claim_count")) || 0
       );
 
       if (storedDate !== today) {
-        window.localStorage.setItem("codesyariah_coupon_date", today);
-        window.localStorage.setItem("codesyariah_coupon_claim_count", "0");
-        window.localStorage.removeItem("codesyariah_coupon_claimed");
+        window.localStorage.setItem(this.promoStorageKey("date"), today);
+        window.localStorage.setItem(this.promoStorageKey("claim_count"), "0");
+        window.localStorage.removeItem(this.promoStorageKey("claimed"));
         this.promoClaimCount = 0;
         this.promoClaimed = false;
         return;
@@ -365,18 +373,18 @@ export default {
 
       this.promoClaimCount = storedCount;
       this.promoClaimed =
-        window.localStorage.getItem("codesyariah_coupon_claimed") === "true";
+        window.localStorage.getItem(this.promoStorageKey("claimed")) === "true";
     },
     claimPromoCoupon() {
       if (!this.promoClaimed && this.promoRemaining > 0) {
         this.promoClaimCount += 1;
         this.promoClaimed = true;
-        window.localStorage.setItem("codesyariah_coupon_date", this.todayKey());
+        window.localStorage.setItem(this.promoStorageKey("date"), this.todayKey());
         window.localStorage.setItem(
-          "codesyariah_coupon_claim_count",
+          this.promoStorageKey("claim_count"),
           String(this.promoClaimCount)
         );
-        window.localStorage.setItem("codesyariah_coupon_claimed", "true");
+        window.localStorage.setItem(this.promoStorageKey("claimed"), "true");
       }
 
       this.showCouponPopup = true;
@@ -385,7 +393,7 @@ export default {
       this.showCouponPopup = false;
     },
     redeemPromoCoupon() {
-      const message = `Halo Codesyariah, saya sudah claim kupon promo ${this.promoCode}. Saya ingin konsultasi layanan website/web app dan cek harga promo kemerdekaan.`;
+      const message = `Halo Codesyariah, saya sudah claim kupon promo ${this.promoCode} (${this.activePromo.name}). Saya ingin konsultasi layanan website/web app dan cek harga promo yang sedang berlangsung.`;
       const url = `https://wa.me/${this.admin.phone}?text=${encodeURIComponent(
         message
       )}`;

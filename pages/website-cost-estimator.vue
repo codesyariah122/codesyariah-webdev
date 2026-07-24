@@ -176,6 +176,8 @@
 </template>
 
 <script>
+import { getActiveMonthlyPromo } from "~/data/monthlyPromos";
+
 export default {
 	name: "WebsiteCostEstimatorPage",
 	layout: "page",
@@ -193,7 +195,10 @@ export default {
 		};
 	},
 	data() {
+		const activePromo = getActiveMonthlyPromo();
+
 		return {
+			activePromo,
 			form: {
 				websiteType: "company",
 				pageCount: 5,
@@ -244,7 +249,7 @@ export default {
 			return this.profiles?.fields?.phone || "6288222668778";
 		},
 		promoCode() {
-			return "MERDEKA17";
+			return this.activePromo.code;
 		},
 		selectedWebsite() {
 			return this.websiteTypes.find((item) => item.id === this.form.websiteType) || this.websiteTypes[0];
@@ -299,25 +304,25 @@ export default {
 			if (isAdvanced) {
 				return {
 					type: "percentage",
-					discount: 0.17,
-					label: "Diskon 17% jasa development dengan kupon MERDEKA17",
+					discount: this.activePromo.discountPercent,
+					label: `${this.activePromo.webAppPriceLabel} jasa development dengan kupon ${this.promoCode}`,
 				};
 			}
 
 			if (isBusiness || this.complexityLabel === "Medium") {
 				return {
 					type: "floor",
-					minFloor: 4000000,
-					maxDiscount: 0.12,
-					label: "Promo Business Website mulai Rp4jt",
+					minFloor: this.activePromo.businessPrice,
+					maxDiscount: Math.min(this.activePromo.discountPercent, 0.16),
+					label: `Promo Business Website mulai ${this.formatCurrency(this.activePromo.businessPrice)}`,
 				};
 			}
 
 			return {
 				type: "floor",
-				minFloor: 1500000,
-				maxDiscount: 0.1,
-				label: "Promo Starter Website mulai Rp1.5jt",
+				minFloor: this.activePromo.starterPrice,
+				maxDiscount: Math.min(this.activePromo.discountPercent, 0.14),
+				label: `Promo Starter Website mulai ${this.formatCurrency(this.activePromo.starterPrice)}`,
 			};
 		},
 		totalRange() {
@@ -345,7 +350,7 @@ export default {
 			return `${this.formatCurrency(min)} - ${this.formatCurrency(max)}`;
 		},
 		promoLabel() {
-			return `${this.promoRule.label} - claim terbatas 10 calon customer/hari`;
+			return `${this.promoRule.label} - ${this.activePromo.name}, claim terbatas ${this.activePromo.dailyLimit} calon customer/hari`;
 		},
 		complexityScore() {
 			const featureScore = this.selectedFeatures.reduce((sum, item) => sum + item.complexity, 0);

@@ -63,7 +63,7 @@
               </span>
             </div>
             <div class="product-promo-price" v-if="product.price">
-              <span class="promo-label">Promo Kemerdekaan 17 Agustus</span>
+              <span class="promo-label">{{ activePromo.name }}</span>
               <del>{{ product.originalPrice }}</del>
               <strong>{{ product.price.formatted_with_code }}</strong>
               <small>{{ product.promoNote }}</small>
@@ -117,17 +117,22 @@
 </template>
 
 <script>
+import { getActiveMonthlyPromo } from "~/data/monthlyPromos";
+
+const activePromo = getActiveMonthlyPromo();
+
 export default {
   name: "products",
   data() {
     return {
+      activePromo,
       products: [
         {
           id: 1,
           permalink: "product-1",
-          originalPrice: "Mulai 1.8JT",
-          price: { formatted_with_code: "Promo 1.5JT" },
-          promoNote: "Claim kupon MERDEKA17 untuk mengunci harga promo.",
+          originalPrice: activePromo.starterOriginal,
+          price: { formatted_with_code: activePromo.starterPriceLabel },
+          promoNote: activePromo.note,
           name: "Company Profile",
           description:
             "Paket Company Profile cocok untuk bisnis yang ingin terlihat lebih profesional, mudah ditemukan, dan mudah dihubungi calon customer. Fokusnya adalah struktur halaman yang jelas, penjelasan layanan yang mudah dipahami, tampilan responsive, CTA WhatsApp, dan pondasi SEO basic supaya website siap dipakai sebagai alat promosi.",
@@ -152,8 +157,8 @@ export default {
         {
           id: 2,
           permalink: "product-2",
-          originalPrice: "Mulai 5JT",
-          price: { formatted_with_code: "Promo 4JT" },
+          originalPrice: activePromo.businessOriginal,
+          price: { formatted_with_code: activePromo.businessPriceLabel },
           promoNote: "Bonus konsultasi scope dan struktur konten awal.",
           name: "Business Website",
           description:
@@ -180,7 +185,7 @@ export default {
           id: 3,
           permalink: "product-3",
           originalPrice: "By Scope",
-          price: { formatted_with_code: "Diskon 17%" },
+          price: { formatted_with_code: activePromo.webAppPriceLabel },
           promoNote: "Potongan jasa development setelah scope disepakati.",
           name: "Web App & Automation",
           description:
