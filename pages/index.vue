@@ -42,38 +42,86 @@
     >
       <div class="site-pulse-container">
         <div class="site-pulse-copy">
-          <span class="site-pulse-kicker">Produk Digital WordPress</span>
-          <h2 id="site-pulse-title">WP Agency Site Pulse</h2>
+          <span class="site-pulse-kicker"
+            >Produk Digital WordPress | Sudah dipakai client</span
+          >
+          <h2 id="site-pulse-title">
+            WP Agency Site Pulse untuk monitoring website WordPress.
+          </h2>
           <p>
-            Plugin WordPress untuk agency, developer, dan company yang mengelola
-            banyak website klien. Pantau health website, kirim report otomatis,
-            dan aktifkan fitur premium dengan sistem subscription license.
+            Plugin WordPress Codesyariah Webdev yang sudah mulai digunakan di
+            website company profile PT Sinar Berkat Abadi. Cocok untuk owner,
+            agency, dan tim IT yang ingin memantau health website, report
+            maintenance, serta status teknis WordPress dengan bahasa yang mudah
+            dipahami.
           </p>
 
+          <div class="site-pulse-trust">
+            <span>Preview client: PT Sinar Berkat Abadi</span>
+            <span>Harga rupiah</span>
+            <span>Untuk UMKM, company, dan agency</span>
+          </div>
+
           <div class="site-pulse-points">
-            <span><i class="bx bx-check"></i> Site health snapshot</span>
-            <span><i class="bx bx-check"></i> Daily maintenance report</span>
-            <span><i class="bx bx-check"></i> License key subscription</span>
-            <span
-              ><i class="bx bx-check"></i> Cocok untuk WordPress agency</span
-            >
+            <span><i class="bx bx-check"></i> Health check WordPress</span>
+            <span><i class="bx bx-check"></i> Report maintenance harian</span>
+            <span><i class="bx bx-check"></i> License & subscription local</span>
+            <span><i class="bx bx-check"></i> Cocok untuk company profile</span>
           </div>
 
           <div class="site-pulse-pricing">
-            <strong>Mulai dari $9/bulan</strong>
-            <span>Early access tersedia untuk agency pertama.</span>
+            <strong>Mulai Rp149.000/bulan</strong>
+            <span>
+              Paket ringan untuk 1 website WordPress. Setup awal mulai
+              Rp750.000.
+            </span>
+            <div class="site-pulse-plan-grid">
+              <span class="site-pulse-plan">
+                <b>Starter Site</b>
+                <small>Rp149.000/bulan</small>
+                <em>1 website</em>
+              </span>
+              <span class="site-pulse-plan">
+                <b>Agency Lite</b>
+                <small>Rp299.000/bulan</small>
+                <em>Sampai 3 website</em>
+              </span>
+              <span class="site-pulse-plan">
+                <b>Agency Pro</b>
+                <small>Rp499.000/bulan</small>
+                <em>Sampai 7 website</em>
+              </span>
+            </div>
           </div>
 
           <button type="button" class="site-pulse-cta" @click="orderSitePulse">
-            Konsultasi Produk <i class="bx bxl-whatsapp"></i>
+            Konsultasi Plugin WordPress <i class="bx bxl-whatsapp"></i>
           </button>
         </div>
 
         <div class="site-pulse-preview">
-          <img
-            src="/assets/site-pulse/Site-Health-Status-‹-SBA-Sinar-Berkat-Abadi-Company-Profile-—-WordPress.png"
-            alt="Preview dashboard WP Agency Site Pulse"
-          />
+          <div class="site-pulse-preview-badge">
+            <span>Client preview</span>
+            <strong>Terpasang di admin WordPress PT Sinar Berkat Abadi</strong>
+          </div>
+          <div class="site-pulse-preview-stack">
+            <figure class="site-pulse-preview-main">
+              <img
+                src="/assets/site-pulse/agency-site-pulse-sba-wordpress-admin.png"
+                alt="Preview plugin Agency Site Pulse di dashboard WordPress PT Sinar Berkat Abadi"
+              />
+              <figcaption>
+                Live WordPress admin preview: health score, license, report,
+                dan subscription.
+              </figcaption>
+            </figure>
+            <figure class="site-pulse-preview-mini">
+              <img
+                src="/assets/site-pulse/Site-Health-Status-‹-SBA-Sinar-Berkat-Abadi-Company-Profile-—-WordPress.png"
+                alt="Preview site health status WP Agency Site Pulse"
+              />
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -474,7 +522,7 @@ export default {
     },
     orderSitePulse() {
       const message =
-        "Halo Codesyariah, saya tertarik dengan WP Agency Site Pulse untuk monitoring dan report website WordPress.";
+        "Halo Codesyariah, saya tertarik dengan WP Agency Site Pulse untuk monitoring website WordPress. Saya ingin konsultasi paket mulai Rp149.000/bulan dan setup awalnya.";
       const url = `https://wa.me/${this.admin.phone}?text=${encodeURIComponent(
         message
       )}`;
@@ -890,7 +938,10 @@ export default {
 .site-pulse-product {
   scroll-margin-top: 96px;
   padding: 88px 0;
-  background: #f7fafc;
+  background:
+    linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent 34%),
+    linear-gradient(315deg, rgba(15, 118, 110, 0.1), transparent 34%),
+    #f7fbfa;
 }
 
 #site-pulse-title {
@@ -913,7 +964,7 @@ export default {
   padding: 4px 10px;
   margin-bottom: 16px;
   border-radius: 999px;
-  background: rgba(16, 185, 129, 0.12);
+  background: rgba(16, 185, 129, 0.14);
   color: #047857;
   font-size: 12px;
   font-weight: 800;
@@ -924,7 +975,7 @@ export default {
 .site-pulse-copy h2 {
   margin: 0 0 16px;
   color: #111827;
-  font-size: 40px;
+  font-size: 42px;
   line-height: 1.12;
   font-weight: 900;
   letter-spacing: 0;
@@ -935,6 +986,27 @@ export default {
   color: #4b5563;
   font-size: 16px;
   line-height: 1.75;
+}
+
+.site-pulse-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.site-pulse-trust span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: #0f3d39;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
 .site-pulse-points {
@@ -961,14 +1033,57 @@ export default {
 .site-pulse-pricing {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
   margin-bottom: 22px;
   color: #4b5563;
 }
 
 .site-pulse-pricing strong {
   color: #111827;
-  font-size: 20px;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.site-pulse-pricing > span {
+  line-height: 1.6;
+}
+
+.site-pulse-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.site-pulse-plan {
+  display: flex;
+  min-height: 112px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  border: 1px solid rgba(15, 118, 110, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+}
+
+.site-pulse-plan b {
+  color: #0f3d39;
+  font-size: 13px;
+}
+
+.site-pulse-plan small {
+  color: #0f766e;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.site-pulse-plan em {
+  color: #64748b;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .site-pulse-cta {
@@ -980,7 +1095,7 @@ export default {
   padding: 10px 18px;
   border: 0;
   border-radius: 6px;
-  background: #0f766e;
+  background: linear-gradient(135deg, #0f766e, #10b981);
   color: #ffffff;
   font-weight: 800;
   box-shadow: 0 18px 38px rgba(15, 118, 110, 0.22);
@@ -992,17 +1107,101 @@ export default {
 }
 
 .site-pulse-preview {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid rgba(15, 23, 42, 0.1);
-  background: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 42%),
+    #ffffff;
   box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+}
+
+.site-pulse-preview-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: calc(100% - 32px);
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(6, 32, 32, 0.82);
+  color: #ffffff;
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(12px);
+}
+
+.site-pulse-preview-badge span {
+  color: #9ff3d8;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-pulse-preview-badge strong {
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.site-pulse-preview-stack {
+  display: grid;
+  gap: 0;
+}
+
+.site-pulse-preview-main,
+.site-pulse-preview-mini {
+  margin: 0;
+}
+
+.site-pulse-preview-main {
+  position: relative;
+  background: #f1f5f9;
+}
+
+.site-pulse-preview-main:after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 28%;
+  content: "";
+  background: linear-gradient(180deg, transparent, rgba(15, 23, 42, 0.48));
+  pointer-events: none;
+}
+
+.site-pulse-preview-main figcaption {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  left: 16px;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.45;
+  text-shadow: 0 2px 10px rgba(15, 23, 42, 0.44);
+}
+
+.site-pulse-preview-mini {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
 }
 
 .site-pulse-preview img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.site-pulse-preview-mini img {
+  max-height: 220px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .whatsapp-float {
@@ -1603,6 +1802,32 @@ export default {
 
   .site-pulse-points {
     grid-template-columns: 1fr;
+  }
+
+  .site-pulse-plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-pulse-plan {
+    min-height: auto;
+    gap: 6px;
+  }
+
+  .site-pulse-preview-badge {
+    top: 10px;
+    left: 10px;
+    padding: 8px 10px;
+  }
+
+  .site-pulse-preview-main figcaption {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+  }
+
+  .site-pulse-preview-mini img {
+    max-height: 160px;
   }
 
   .whatsapp-float {
