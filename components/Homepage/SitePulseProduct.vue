@@ -10,27 +10,48 @@
           >Produk Digital WordPress | Sudah dipakai client</span
         >
         <h2 id="site-pulse-title">
-          WP Agency Site Pulse untuk monitoring website WordPress.
+          WP Agency Site Pulse v0.3.0 untuk monitoring dan analytics website
+          WordPress.
         </h2>
         <p>
           Plugin WordPress Codesyariah Webdev yang sudah mulai digunakan di
           website company profile PT Sinar Berkat Abadi. Cocok untuk owner,
           agency, dan tim IT yang ingin memantau health website, report
-          maintenance, serta status teknis WordPress dengan bahasa yang mudah
-          dipahami.
+          maintenance, visitor analytics, klik WhatsApp, serta status teknis
+          WordPress dengan bahasa yang mudah dipahami.
         </p>
 
         <div class="site-pulse-trust">
+          <span>Versi plugin: 0.3.0</span>
           <span>Preview client: PT Sinar Berkat Abadi</span>
           <span>Checkout Freemius aktif</span>
-          <span>Untuk UMKM, company, dan agency</span>
+          <span>Analytics lokal tanpa simpan IP mentah</span>
         </div>
 
         <div class="site-pulse-points">
           <span><i class="bx bx-check"></i> Health check WordPress</span>
           <span><i class="bx bx-check"></i> Report maintenance harian</span>
-          <span><i class="bx bx-check"></i> License & subscription local</span>
-          <span><i class="bx bx-check"></i> Cocok untuk company profile</span>
+          <span><i class="bx bx-check"></i> Visitor analytics 7 hari</span>
+          <span><i class="bx bx-check"></i> Tracking klik WhatsApp</span>
+          <span><i class="bx bx-check"></i> Top pages 30 hari</span>
+          <span><i class="bx bx-check"></i> Setting tracking on/off</span>
+        </div>
+
+        <div class="site-pulse-release">
+          <div>
+            <small>Upgrade terbaru</small>
+            <strong>Visitor Analytics + WhatsApp Click Tracking</strong>
+            <p>
+              Membantu owner melihat page views, visitor, klik WhatsApp, dan
+              click rate langsung dari Tools > Site Pulse. Data disimpan lokal
+              di database WordPress, sedangkan IP hanya dibuat hash.
+            </p>
+          </div>
+          <div class="site-pulse-release-metrics" aria-label="Metrik baru Site Pulse">
+            <span><b>7d</b> Page Views</span>
+            <span><b>7d</b> Visitors</span>
+            <span><b>WA</b> Click Rate</span>
+          </div>
         </div>
 
         <div class="site-pulse-pricing">
@@ -96,15 +117,15 @@
 
       <div class="site-pulse-preview">
         <div class="site-pulse-preview-badge">
-          <span>Client preview</span>
-          <strong>Terpasang di admin WordPress PT Sinar Berkat Abadi</strong>
+          <span>Client preview | v0.3.0</span>
+          <strong>Visitor Analytics aktif di admin WordPress PT Sinar Berkat Abadi</strong>
         </div>
         <div class="site-pulse-preview-stack">
           <figure
             class="site-pulse-preview-main"
             role="button"
             tabindex="0"
-            aria-label="Perbesar preview admin WordPress WP Agency Site Pulse"
+            aria-label="Perbesar preview fitur WP Agency Site Pulse"
             @click="openLightbox(previewImages[0])"
             @keyup.enter="openLightbox(previewImages[0])"
           >
@@ -176,6 +197,13 @@ export default {
       previewImages: [
         {
           label: "Admin preview",
+          src: "/assets/site-pulse/agency-site-pulse-sba-wordpress-visitor-analytics.png",
+          alt: "Preview fitur Visitor Analytics dan WhatsApp Click Tracking WP Agency Site Pulse versi 0.3.0",
+          caption:
+            "Versi 0.3.0: Visitor Analytics, WhatsApp Click Tracking, top pages 30 hari, dan setting tracking on/off.",
+        },
+        {
+          label: "Dashboard plugin",
           src: "/assets/site-pulse/agency-site-pulse-sba-wordpress-admin.png",
           alt: "Preview plugin Agency Site Pulse di dashboard WordPress PT Sinar Berkat Abadi",
           caption:
@@ -312,6 +340,71 @@ export default {
 .site-pulse-points i {
   color: #10b981;
   font-size: 20px;
+}
+
+.site-pulse-release {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  gap: 14px;
+  align-items: stretch;
+  margin: -4px 0 24px;
+  padding: 16px;
+  border: 1px solid rgba(16, 185, 129, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(6, 32, 32, 0.96), rgba(15, 118, 110, 0.9)),
+    #062020;
+  box-shadow: 0 22px 44px rgba(15, 23, 42, 0.16);
+}
+
+.site-pulse-release small {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: #9ff3d8;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.site-pulse-release strong {
+  display: block;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.site-pulse-release p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.site-pulse-release-metrics {
+  display: grid;
+  gap: 8px;
+}
+
+.site-pulse-release-metrics span {
+  display: flex;
+  min-height: 56px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.site-pulse-release-metrics b {
+  color: #9ff3d8;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .site-pulse-pricing {
@@ -700,6 +793,14 @@ export default {
   .site-pulse-plan-grid,
   .site-pulse-preview-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .site-pulse-release {
+    grid-template-columns: 1fr;
+  }
+
+  .site-pulse-release-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .site-pulse-plan {
