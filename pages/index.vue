@@ -11,8 +11,14 @@
             {{ activePromo.description }}
           </p>
           <div class="merdeka-promo-meta">
-            <span><i class="bx bx-time-five"></i> {{ activePromo.periodLabel }}</span>
-            <span><i class="bx bxs-coupon"></i> Sisa {{ promoRemaining }} claim hari ini</span>
+            <span
+              ><i class="bx bx-time-five"></i>
+              {{ activePromo.periodLabel }}</span
+            >
+            <span
+              ><i class="bx bxs-coupon"></i> Sisa {{ promoRemaining }} claim
+              hari ini</span
+            >
             <span><i class="bx bxl-whatsapp"></i> Redeem via WhatsApp</span>
           </div>
         </div>
@@ -48,7 +54,9 @@
             <span><i class="bx bx-check"></i> Site health snapshot</span>
             <span><i class="bx bx-check"></i> Daily maintenance report</span>
             <span><i class="bx bx-check"></i> License key subscription</span>
-            <span><i class="bx bx-check"></i> Cocok untuk WordPress agency</span>
+            <span
+              ><i class="bx bx-check"></i> Cocok untuk WordPress agency</span
+            >
           </div>
 
           <div class="site-pulse-pricing">
@@ -63,7 +71,7 @@
 
         <div class="site-pulse-preview">
           <img
-            src="/assets/site-pulse/admin-preview-desktop.png"
+            src="/assets/site-pulse/Site-Health-Status-‹-SBA-Sinar-Berkat-Abadi-Company-Profile-—-WordPress.png"
             alt="Preview dashboard WP Agency Site Pulse"
           />
         </div>
@@ -183,7 +191,9 @@
 
           <div class="coupon-popup-visual">
             <span class="coupon-label">Selamat!</span>
-            <strong id="coupon-popup-title">Kamu dapat kupon {{ activePromo.name }}.</strong>
+            <strong id="coupon-popup-title"
+              >Kamu dapat kupon {{ activePromo.name }}.</strong
+            >
             <div class="coupon-code">{{ promoCode }}</div>
             <p>
               Tunjukkan kode ini saat konsultasi WhatsApp untuk mengunci harga
@@ -254,32 +264,64 @@
 
           <div class="builder-popup-copy">
             <span class="builder-popup-kicker">Fitur Baru Codesyariah</span>
-            <h2 id="builder-popup-title">Coba preview website impian Anda sebelum mulai project.</h2>
+            <h2 id="builder-popup-title">
+              Coba preview website impian Anda sebelum mulai project.
+            </h2>
             <p>
-              Pilih jenis website, style visual, halaman, fitur, lalu hitung estimasi budget awal. Calon customer bisa melihat gambaran company profile, landing page, katalog, travel, sales mobile, sampai dashboard sistem.
+              Pilih jenis website, style visual, halaman, fitur, lalu hitung
+              estimasi budget awal. Calon customer bisa melihat gambaran company
+              profile, landing page, katalog, travel, sales mobile, sampai
+              dashboard sistem.
             </p>
 
             <div class="builder-popup-points">
-              <span><i class="bx bx-check"></i> Cocok untuk owner awam teknologi</span>
-              <span><i class="bx bx-check"></i> Preview desktop dan mobile</span>
-              <span><i class="bx bx-check"></i> Estimasi budget dan timeline lebih transparan</span>
-              <span><i class="bx bx-check"></i> Brief bisa langsung dikirim ke WhatsApp</span>
+              <span
+                ><i class="bx bx-check"></i> Cocok untuk owner awam
+                teknologi</span
+              >
+              <span
+                ><i class="bx bx-check"></i> Preview desktop dan mobile</span
+              >
+              <span
+                ><i class="bx bx-check"></i> Estimasi budget dan timeline lebih
+                transparan</span
+              >
+              <span
+                ><i class="bx bx-check"></i> Brief bisa langsung dikirim ke
+                WhatsApp</span
+              >
             </div>
 
             <div class="builder-popup-actions">
-              <NuxtLink to="/website-builder" class="builder-popup-primary" @click.native="closeBuilderPopup">
+              <NuxtLink
+                to="/website-builder"
+                class="builder-popup-primary"
+                @click.native="closeBuilderPopup"
+              >
                 Coba Website Builder <i class="bx bx-slider-alt"></i>
               </NuxtLink>
-              <NuxtLink to="/website-cost-estimator" class="builder-popup-secondary" @click.native="closeBuilderPopup">
+              <NuxtLink
+                to="/website-cost-estimator"
+                class="builder-popup-secondary"
+                @click.native="closeBuilderPopup"
+              >
                 Hitung Estimasi
               </NuxtLink>
-              <button type="button" class="builder-popup-secondary" @click="closeBuilderPopup">
+              <button
+                type="button"
+                class="builder-popup-secondary"
+                @click="closeBuilderPopup"
+              >
                 Nanti saja
               </button>
             </div>
 
             <label class="builder-popup-toggle">
-              <input v-model="dontShowBuilderPopup" type="checkbox" @change="handleBuilderPopupPreference">
+              <input
+                v-model="dontShowBuilderPopup"
+                type="checkbox"
+                @change="handleBuilderPopupPreference"
+              />
               <span></span>
               <strong>Jangan tampilkan lagi popup ini</strong>
             </label>
@@ -357,7 +399,9 @@ export default {
     },
     initPromoCoupon() {
       const today = this.todayKey();
-      const storedDate = window.localStorage.getItem(this.promoStorageKey("date"));
+      const storedDate = window.localStorage.getItem(
+        this.promoStorageKey("date")
+      );
       const storedCount = Number(
         window.localStorage.getItem(this.promoStorageKey("claim_count")) || 0
       );
@@ -379,7 +423,10 @@ export default {
       if (!this.promoClaimed && this.promoRemaining > 0) {
         this.promoClaimCount += 1;
         this.promoClaimed = true;
-        window.localStorage.setItem(this.promoStorageKey("date"), this.todayKey());
+        window.localStorage.setItem(
+          this.promoStorageKey("date"),
+          this.todayKey()
+        );
         window.localStorage.setItem(
           this.promoStorageKey("claim_count"),
           String(this.promoClaimCount)
@@ -446,17 +493,30 @@ export default {
   position: relative;
   overflow: hidden;
   padding: 74px 0;
-  background:
-    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.28), transparent 24%),
-    linear-gradient(135deg, #b91c1c 0%, #ef4444 42%, #ffffff 42%, #ffffff 50%, #082027 50%, #061b20 100%);
+  background: radial-gradient(
+      circle at 18% 22%,
+      rgba(255, 255, 255, 0.28),
+      transparent 24%
+    ),
+    linear-gradient(
+      135deg,
+      #b91c1c 0%,
+      #ef4444 42%,
+      #ffffff 42%,
+      #ffffff 50%,
+      #082027 50%,
+      #061b20 100%
+    );
 }
 
 .merdeka-promo-banner:before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 38px 38px;
   opacity: 0.45;
@@ -549,8 +609,11 @@ export default {
   align-content: center;
   gap: 10px;
   padding: 30px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)),
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.04)
+    ),
     #082027;
 }
 
@@ -685,9 +748,16 @@ export default {
   display: grid;
   place-items: center;
   padding: 22px;
-  background:
-    radial-gradient(circle at 18% 16%, rgba(239, 68, 68, 0.24), transparent 28%),
-    radial-gradient(circle at 82% 80%, rgba(24, 209, 155, 0.18), transparent 32%),
+  background: radial-gradient(
+      circle at 18% 16%,
+      rgba(239, 68, 68, 0.24),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 80%,
+      rgba(24, 209, 155, 0.18),
+      transparent 32%
+    ),
     rgba(5, 18, 23, 0.78);
   backdrop-filter: blur(12px);
 }
@@ -726,8 +796,11 @@ export default {
   min-height: 410px;
   padding: 38px;
   color: #ffffff;
-  background:
-    linear-gradient(135deg, rgba(153, 27, 27, 0.92), rgba(6, 27, 32, 0.94)),
+  background: linear-gradient(
+      135deg,
+      rgba(153, 27, 27, 0.92),
+      rgba(6, 27, 32, 0.94)
+    ),
     url("~/assets/img/new-hero-bg-1-desktop.jpg") center / cover;
 }
 
@@ -1186,9 +1259,16 @@ export default {
   display: grid;
   place-items: center;
   padding: 22px;
-  background:
-    radial-gradient(circle at 18% 16%, rgba(24, 209, 155, 0.24), transparent 28%),
-    radial-gradient(circle at 82% 80%, rgba(56, 189, 248, 0.18), transparent 32%),
+  background: radial-gradient(
+      circle at 18% 16%,
+      rgba(24, 209, 155, 0.24),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 80%,
+      rgba(56, 189, 248, 0.18),
+      transparent 32%
+    ),
     rgba(5, 18, 23, 0.78);
   backdrop-filter: blur(12px);
 }
@@ -1226,8 +1306,11 @@ export default {
   place-items: center;
   min-height: 480px;
   padding: 34px;
-  background:
-    linear-gradient(135deg, rgba(8, 32, 39, 0.94), rgba(7, 70, 65, 0.88)),
+  background: linear-gradient(
+      135deg,
+      rgba(8, 32, 39, 0.94),
+      rgba(7, 70, 65, 0.88)
+    ),
     url("~/assets/img/new-hero-bg-1-desktop.jpg") center / cover;
 }
 
@@ -1468,8 +1551,13 @@ export default {
 @media (max-width: 575px) {
   .merdeka-promo-banner {
     padding: 52px 0;
-    background:
-      linear-gradient(145deg, #b91c1c 0%, #ef4444 46%, #082027 46%, #061b20 100%);
+    background: linear-gradient(
+      145deg,
+      #b91c1c 0%,
+      #ef4444 46%,
+      #082027 46%,
+      #061b20 100%
+    );
   }
 
   .merdeka-promo-shell,
