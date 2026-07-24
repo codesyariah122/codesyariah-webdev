@@ -362,12 +362,6 @@
                     </div>
                   </div>
                   <div class="mock-visual">
-                    <div class="mock-visual-image">
-                      <img
-                        :src="selectedBusiness.image"
-                        :alt="`Preview visual ${selectedBusiness.title}`"
-                      />
-                    </div>
                     <div class="visual-card">
                       <i :class="selectedBusiness.icon"></i>
                       <strong>{{ selectedBusiness.metric }}</strong>
@@ -643,7 +637,6 @@ export default {
           icon: "bx bx-buildings",
           metric: "24/7",
           metricLabel: "brand presence",
-          image: require("~/assets/img/website-category/SBA-Sinar-Berkat-Abadi-–-Company-Profile-–-Company-profile-SBA-Sinar-Berkat-Abadi-anak-perusahaan-Pertamina--07-01-2026_02_44_AM.png"),
         },
         {
           id: "landing",
@@ -662,7 +655,6 @@ export default {
           icon: "bx bx-rocket",
           metric: "1 CTA",
           metricLabel: "fokus konversi",
-          image: require("~/assets/img/website-category/mindsparks-landing-page.png"),
         },
         {
           id: "catalog",
@@ -681,7 +673,6 @@ export default {
           icon: "bx bx-store",
           metric: "100+",
           metricLabel: "produk siap tampil",
-          image: require("~/assets/img/website-category/HD-Living-–-Home-Decor.png"),
         },
         {
           id: "mobile-sales",
@@ -700,7 +691,6 @@ export default {
           icon: "bx bx-mobile-alt",
           metric: "1 tap",
           metricLabel: "hubungi prospek",
-          image: require("~/assets/img/website-category/WALink.png"),
         },
         {
           id: "travel",
@@ -720,7 +710,6 @@ export default {
           icon: "bx bx-map-alt",
           metric: "WA",
           metricLabel: "booking cepat",
-          image: require("~/assets/img/website-category/transholiday.png"),
         },
         {
           id: "system",
@@ -739,7 +728,6 @@ export default {
           icon: "bx bx-data",
           metric: "Role",
           metricLabel: "akses terkontrol",
-          image: require("~/assets/img/website-category/sba-crm-ai-analysis-preview.png"),
         },
       ],
       visualStyles: [
@@ -2046,8 +2034,6 @@ export default {
 }
 
 .mock-visual {
-  position: relative;
-  overflow: hidden;
   display: grid;
   place-items: center;
   min-height: 200px;
@@ -2059,35 +2045,7 @@ export default {
   );
 }
 
-.mock-visual-image {
-  position: absolute;
-  inset: 10px;
-  overflow: hidden;
-  border-radius: 8px;
-  opacity: 0.48;
-}
-
-.mock-visual-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  filter: saturate(0.9) contrast(1.02);
-}
-
-.mock-visual-image::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background:
-    linear-gradient(135deg, rgba(8, 32, 39, 0.18), rgba(8, 32, 39, 0.78)),
-    radial-gradient(circle at 70% 20%, rgba(24, 209, 155, 0.28), transparent 34%);
-}
-
 .visual-card {
-  position: relative;
-  z-index: 2;
   display: grid;
   gap: 6px;
   place-items: center;
