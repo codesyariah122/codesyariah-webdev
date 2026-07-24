@@ -70,27 +70,58 @@
           </div>
 
           <div class="site-pulse-pricing">
-            <strong>Mulai Rp149.000/bulan</strong>
+            <strong>Harga resmi mengikuti paket Freemius</strong>
             <span>
-              Paket ringan untuk 1 website WordPress. Setup awal mulai
-              Rp750.000.
+              Checkout lisensi plugin tersedia langsung via Freemius. Untuk
+              UMKM Indonesia, Codesyariah tetap membuka penawaran harga lokal
+              dan bantuan setup lewat WhatsApp.
             </span>
             <div class="site-pulse-plan-grid">
-              <span class="site-pulse-plan">
-                <b>Starter Site</b>
-                <small>Rp149.000/bulan</small>
-                <em>1 website</em>
-              </span>
-              <span class="site-pulse-plan">
-                <b>Agency Lite</b>
-                <small>Rp299.000/bulan</small>
-                <em>Sampai 3 website</em>
-              </span>
-              <span class="site-pulse-plan">
-                <b>Agency Pro</b>
-                <small>Rp499.000/bulan</small>
-                <em>Sampai 7 website</em>
-              </span>
+              <a
+                class="site-pulse-plan"
+                href="https://checkout.freemius.com/plugin/33732/plan/55410/"
+                target="_blank"
+                rel="noopener"
+              >
+                <b>Starter</b>
+                <small>$9/month</small>
+                <em>Untuk 1 website aktif</em>
+                <span>Checkout Freemius</span>
+              </a>
+              <a
+                class="site-pulse-plan"
+                href="https://checkout.freemius.com/plugin/33732/plan/55411/"
+                target="_blank"
+                rel="noopener"
+              >
+                <b>Agency</b>
+                <small>$29/month</small>
+                <em>Untuk pengelolaan beberapa website</em>
+                <span>Checkout Freemius</span>
+              </a>
+              <a
+                class="site-pulse-plan"
+                href="https://checkout.freemius.com/plugin/33732/plan/55412/"
+                target="_blank"
+                rel="noopener"
+              >
+                <b>Pro</b>
+                <small>$79/month</small>
+                <em>Untuk agency dan kebutuhan lebih serius</em>
+                <span>Checkout Freemius</span>
+              </a>
+            </div>
+            <div class="site-pulse-umkm-offer">
+              <div>
+                <b>Butuh harga UMKM?</b>
+                <span>
+                  Ajukan penawaran lokal untuk plugin, instalasi, training, dan
+                  setup awal website WordPress.
+                </span>
+              </div>
+              <button type="button" @click="orderSitePulse">
+                Minta Penawaran UMKM <i class="bx bxl-whatsapp"></i>
+              </button>
             </div>
           </div>
 
@@ -115,12 +146,22 @@
                 dan subscription.
               </figcaption>
             </figure>
-            <figure class="site-pulse-preview-mini">
-              <img
-                src="/assets/site-pulse/Site-Health-Status-‹-SBA-Sinar-Berkat-Abadi-Company-Profile-—-WordPress.png"
-                alt="Preview site health status WP Agency Site Pulse"
-              />
-            </figure>
+            <div class="site-pulse-preview-gallery">
+              <figure class="site-pulse-preview-mini">
+                <span>Health snapshot</span>
+                <img
+                  src="/assets/site-pulse/Site-Health-Status-‹-SBA-Sinar-Berkat-Abadi-Company-Profile-—-WordPress.png"
+                  alt="Preview site health status WP Agency Site Pulse"
+                />
+              </figure>
+              <figure class="site-pulse-preview-mini">
+                <span>Upgrade plans</span>
+                <img
+                  src="/assets/site-pulse/agency-site-pulse-sba-wordpress-upgrade-plans.png"
+                  alt="Preview upgrade plans WP Agency Site Pulse di WordPress PT Sinar Berkat Abadi"
+                />
+              </figure>
+            </div>
           </div>
         </div>
       </div>
@@ -522,7 +563,7 @@ export default {
     },
     orderSitePulse() {
       const message =
-        "Halo Codesyariah, saya tertarik dengan WP Agency Site Pulse untuk monitoring website WordPress. Saya ingin konsultasi paket mulai Rp149.000/bulan dan setup awalnya.";
+        "Halo Codesyariah, saya tertarik dengan WP Agency Site Pulse. Saya ingin minta penawaran harga plugin untuk UMKM Indonesia, termasuk instalasi, training singkat, dan setup awal website WordPress.";
       const url = `https://wa.me/${this.admin.phone}?text=${encodeURIComponent(
         message
       )}`;
@@ -1065,6 +1106,17 @@ export default {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.site-pulse-plan:hover {
+  border-color: rgba(16, 185, 129, 0.46);
+  box-shadow: 0 18px 40px rgba(15, 118, 110, 0.16);
+  transform: translateY(-2px);
 }
 
 .site-pulse-plan b {
@@ -1084,6 +1136,67 @@ export default {
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
+  line-height: 1.35;
+}
+
+.site-pulse-plan span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: #0f3d39;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.site-pulse-umkm-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 16px;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(16, 185, 129, 0.14), transparent 58%),
+    rgba(255, 255, 255, 0.9);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+.site-pulse-umkm-offer b {
+  display: block;
+  color: #0f3d39;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.site-pulse-umkm-offer span {
+  display: block;
+  margin-top: 4px;
+  color: #52636f;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.site-pulse-umkm-offer button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: #10b981;
+  color: #052e2b;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .site-pulse-cta {
@@ -1187,9 +1300,37 @@ export default {
   text-shadow: 0 2px 10px rgba(15, 23, 42, 0.44);
 }
 
-.site-pulse-preview-mini {
+.site-pulse-preview-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
   border-top: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(248, 250, 252, 0.92);
+}
+
+.site-pulse-preview-mini {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 8px;
   background: #ffffff;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.site-pulse-preview-mini span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(6, 32, 32, 0.82);
+  color: #9ff3d8;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .site-pulse-preview img {
@@ -1813,6 +1954,14 @@ export default {
     gap: 6px;
   }
 
+  .site-pulse-umkm-offer {
+    grid-template-columns: 1fr;
+  }
+
+  .site-pulse-umkm-offer button {
+    width: 100%;
+  }
+
   .site-pulse-preview-badge {
     top: 10px;
     left: 10px;
@@ -1824,6 +1973,12 @@ export default {
     bottom: 10px;
     left: 10px;
     font-size: 12px;
+  }
+
+  .site-pulse-preview-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
   }
 
   .site-pulse-preview-mini img {
