@@ -315,12 +315,16 @@ export default {
       canonical: siteUrl,
       description: siteDescription,
       keywords: siteKeywords,
+
       ogUrl: siteUrl,
       ogType: 'website',
       ogSiteName: 'Codesyariah Webdevelopment',
+
       ogTitle: siteTitle,
       ogDescription: siteDescription,
-      ogImage: '/assets/img/codesyariah-og-flyer.png',
+
+      ogImage: siteImage,
+
       ogImageWidth: '1200',
       ogImageHeight: '630'
     },
