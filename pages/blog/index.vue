@@ -80,7 +80,10 @@
                   <span>{{ readTime(post) }} min read</span>
                 </div>
 
-                <div class="blog-tags" v-if="post.fields.tags && post.fields.tags.length">
+                <div
+                  class="blog-tags"
+                  v-if="post.fields.tags && post.fields.tags.length"
+                >
                   <small
                     v-for="tag in post.fields.tags"
                     :key="tag"
@@ -132,7 +135,10 @@
                   </div>
                 </div>
 
-                <nuxt-link class="blog-read-link" :to="`/blog/${post.fields.slug}`">
+                <nuxt-link
+                  class="blog-read-link"
+                  :to="`/blog/${post.fields.slug}`"
+                >
                   Baca Insight
                   <i class="bx bx-right-arrow-alt"></i>
                 </nuxt-link>
@@ -186,8 +192,8 @@ export default {
       const selectedPosts = storePosts.length
         ? storePosts
         : homepagePosts.length
-        ? homepagePosts
-        : this.fallbackPosts;
+          ? homepagePosts
+          : this.fallbackPosts;
 
       return selectedPosts.filter((post) => {
         return post && post.fields && post.fields.slug && post.fields.title;
@@ -245,10 +251,17 @@ export default {
 
     excerpt(post) {
       const text =
-        (post && post.fields && (post.fields.description || post.fields.body)) ||
+        (post &&
+          post.fields &&
+          (post.fields.description || post.fields.body)) ||
         "Insight praktis seputar website, teknologi, dan digitalisasi bisnis.";
 
-      return text.replace(/[#*_>`!\[\]()]/g, "").slice(0, 132).trim() + "...";
+      return (
+        text
+          .replace(/[#*_>`!\[\]()]/g, "")
+          .slice(0, 132)
+          .trim() + "..."
+      );
     },
 
     primaryTag(post) {
@@ -258,12 +271,111 @@ export default {
 
     readTime(post) {
       const text =
-        (post && post.fields && (post.fields.body || post.fields.description)) ||
+        (post &&
+          post.fields &&
+          (post.fields.body || post.fields.description)) ||
         "";
       const words = text.trim().split(/\s+/).filter(Boolean).length;
 
       return Math.max(2, Math.ceil(words / 180));
     },
+  },
+
+  head() {
+    const siteUrl = "https://codesyariah-webdev.vercel.app";
+    const title =
+      "Blog Codesyariah Webdevelopment | Insight Website, Digital Marketing & Teknologi";
+    const description =
+      "Kumpulan artikel tentang website, digitalisasi bisnis, landing page, SEO, web app, API, VPS, dan teknologi yang mudah dipahami.";
+
+    const image = `${siteUrl}/assets/img/codesyariah-og-flyer.png?v=20260701`;
+
+    return {
+      title,
+
+      link: [
+        {
+          hid: "canonical",
+          rel: "canonical",
+          href: `${siteUrl}/blog`,
+        },
+      ],
+
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: description,
+        },
+
+        {
+          hid: "robots",
+          name: "robots",
+          content: "index,follow",
+        },
+
+        {
+          hid: "keywords",
+          name: "keywords",
+          content:
+            "blog website, jasa website, digital marketing, web development, SEO, landing page, API, VPS",
+        },
+
+        {
+          hid: "og:type",
+          property: "og:type",
+          content: "website",
+        },
+
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: title,
+        },
+
+        {
+          hid: "og:description",
+          property: "og:description",
+          content: description,
+        },
+
+        {
+          hid: "og:url",
+          property: "og:url",
+          content: `${siteUrl}/blog`,
+        },
+
+        {
+          hid: "og:image",
+          property: "og:image",
+          content: image,
+        },
+
+        {
+          hid: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+
+        {
+          hid: "twitter:title",
+          name: "twitter:title",
+          content: title,
+        },
+
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: description,
+        },
+
+        {
+          hid: "twitter:image",
+          name: "twitter:image",
+          content: image,
+        },
+      ],
+    };
   },
 };
 </script>
@@ -274,8 +386,16 @@ export default {
   overflow: hidden;
   padding: 132px 0 120px;
   background:
-    radial-gradient(circle at 14% 12%, rgba(31, 211, 166, 0.2), transparent 28%),
-    radial-gradient(circle at 86% 8%, rgba(120, 255, 214, 0.13), transparent 24%),
+    radial-gradient(
+      circle at 14% 12%,
+      rgba(31, 211, 166, 0.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 86% 8%,
+      rgba(120, 255, 214, 0.13),
+      transparent 24%
+    ),
     linear-gradient(180deg, #061b20 0%, #0a2b31 42%, #f4fbf9 42%, #f4fbf9 100%);
 }
 
@@ -420,7 +540,11 @@ export default {
   margin: 34px 0;
   padding: 28px;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.03)
+  );
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -487,7 +611,9 @@ export default {
   border: 1px solid rgba(8, 37, 44, 0.1);
   box-shadow: 0 24px 58px rgba(6, 27, 32, 0.16);
   transform: translateY(0);
-  transition: transform 240ms ease, box-shadow 240ms ease;
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease;
 }
 
 .blog-card:hover {
@@ -621,8 +747,18 @@ export default {
   .blog-page {
     padding-top: 104px;
     background:
-      radial-gradient(circle at 18% 6%, rgba(31, 211, 166, 0.18), transparent 34%),
-      linear-gradient(180deg, #061b20 0%, #0a2b31 52%, #f4fbf9 52%, #f4fbf9 100%);
+      radial-gradient(
+        circle at 18% 6%,
+        rgba(31, 211, 166, 0.18),
+        transparent 34%
+      ),
+      linear-gradient(
+        180deg,
+        #061b20 0%,
+        #0a2b31 52%,
+        #f4fbf9 52%,
+        #f4fbf9 100%
+      );
   }
 
   .blog-hero-copy,
