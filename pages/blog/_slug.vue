@@ -105,7 +105,6 @@ export default {
     if (process.client && window.$crisp)
       window.$crisp.push(["do", "chat:hide"]);
 
-    console.log(this.post.fields.heroImage.fields.file);
     this.$store.dispatch("allPosts");
   },
   computed: {
@@ -115,8 +114,8 @@ export default {
       return allposts.length
         ? allposts
         : homepagePosts.length
-        ? homepagePosts
-        : blogFallbackPosts;
+          ? homepagePosts
+          : blogFallbackPosts;
     },
     post() {
       return (
@@ -163,8 +162,14 @@ export default {
 
     const publishedTime = fields.publishedDate || this.post.sys?.createdAt;
 
+    const body = fields.body || "";
+
     return {
       title,
+      __dangerouslyDisableSanitizersByTagID: {
+        "article-schema": ["innerHTML"],
+        "breadcrumb-schema": ["innerHTML"],
+      },
 
       link: [
         {
@@ -289,6 +294,17 @@ export default {
         },
 
         {
+          hid: "twitter:site",
+          name: "twitter:site",
+          content: "@pujiermanto",
+        },
+        {
+          hid: "og:image:alt",
+          property: "og:image:alt",
+          content: title,
+        },
+
+        {
           hid: "robots",
           name: "robots",
           content: "index,follow",
@@ -298,18 +314,6 @@ export default {
           hid: "og:locale",
           property: "og:locale",
           content: "id_ID",
-        },
-
-        {
-          hid: "og:image:alt",
-          property: "og:image:alt",
-          content: title,
-        },
-
-        {
-          hid: "twitter:image:alt",
-          name: "twitter:image:alt",
-          content: title,
         },
 
         {
@@ -345,6 +349,122 @@ export default {
           hid: "article:modified_time",
           property: "article:modified_time",
           content: modifiedTime,
+        },
+      ],
+
+      script: [
+        {
+          hid: "article-schema",
+          type: "application/ld+json",
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+
+            "@type": "BlogPosting",
+
+            "@id": `${url}#article`,
+
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": url,
+            },
+
+            headline: title,
+
+            description,
+
+            articleBody: body
+              .replace(/[#*_>`]/g, "")
+              .replace(/\n+/g, " ")
+              .trim(),
+
+            image: {
+              "@type": "ImageObject",
+              "@id": `${url}#primaryimage`,
+              url: image,
+              width: imageWidth,
+              height: imageHeight,
+            },
+
+            datePublished: publishedTime,
+
+            dateModified: modifiedTime || publishedTime,
+
+            author: {
+              "@type": "Person",
+              name: authorName,
+            },
+
+            publisher: {
+              "@type": "Organization",
+              "@id": `${siteUrl}#organization`,
+
+              name: "Codesyariah Webdevelopment",
+
+              url: siteUrl,
+
+              logo: {
+                "@type": "ImageObject",
+                url: `${siteUrl}/assets/img/codesyariah-og-flyer.png?v=20260701`,
+                width: 1200,
+                height: 630,
+              },
+
+              image: {
+                "@type": "ImageObject",
+                url: image,
+              },
+
+              sameAs: [
+                "https://github.com/codesyariah122",
+                "https://www.linkedin.com/in/pujiermanto",
+                "https://www.instagram.com/codesyariahwebdev",
+              ],
+            },
+
+            articleSection: fields.tags || [],
+
+            keywords: (fields.tags || []).join(", "),
+
+            url,
+
+            inLanguage: "id-ID",
+
+            isPartOf: {
+              "@type": "Blog",
+              "@id": `${siteUrl}/blog#collection`,
+              name: "Codesyariah Blog",
+            },
+          }),
+        },
+
+        {
+          hid: "breadcrumb-schema",
+          type: "application/ld+json",
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: siteUrl,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Blog",
+                item: `${siteUrl}/blog`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: title,
+                item: url,
+              },
+            ],
+          }),
         },
       ],
     };
