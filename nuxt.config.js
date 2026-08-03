@@ -1,5 +1,12 @@
 require('dotenv').config()
 
+const contentful = require("contentful");
+const client = contentful.createClient({
+  space: process.env.NUXT_APP_CONTENTFUL_SPACE,
+  accessToken: process.env.NUXT_APP_CONTENTFUL_ACCESS_TOKEN,
+  environment:
+    process.env.NUXT_APP_CONTENTFUL_ENVIRONMENT || "master",
+});
 const siteUrl = 'https://codesyariah-webdev.vercel.app'
 const siteTitle = 'Codesyariah Webdevelopment - Jasa Website, Web App, API & Server'
 const siteDescription = 'Codesyariah Webdevelopment membantu bisnis membangun company profile, landing page, web app, dashboard, API, VPS, deploy, dan maintenance dengan arahan yang mudah dipahami.'
@@ -39,11 +46,61 @@ export default {
     hostname: siteUrl,
     gzip: true,
 
-    defaults: {
-      changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date()
-    }
+    async routes() {
+      try {
+        const response = await client.getEntries({
+          content_type: "myBlog",
+          order: "-sys.updatedAt",
+          limit: 1000,
+          include: 0,
+        });
+
+        const latestUpdated =
+          response.items[0]?.sys?.updatedAt ??
+          new Date().toISOString();
+
+        return [
+          {
+            url: "/",
+            priority: 1,
+            changefreq: "weekly",
+            lastmod: latestUpdated,
+          },
+          {
+            url: "/blog",
+            priority: 0.9,
+            changefreq: "daily",
+            lastmod: latestUpdated,
+          },
+
+          ...response.items.map((post) => ({
+            url: `/blog/${post.fields.slug}`,
+            priority: 0.8,
+            changefreq: "weekly",
+            lastmod: post.sys.updatedAt,
+          })),
+        ];
+      } catch (err) {
+        console.error("Failed generating sitemap:", err);
+
+        const now = new Date().toISOString();
+
+        return [
+          {
+            url: "/",
+            priority: 1,
+            changefreq: "weekly",
+            lastmod: now,
+          },
+          {
+            url: "/blog",
+            priority: 0.9,
+            changefreq: "daily",
+            lastmod: now,
+          },
+        ];
+      }
+    },
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -74,6 +131,11 @@ export default {
       { hid: 'twitter:description', name: 'twitter:description', content: siteDescription },
       { hid: 'twitter:image', name: 'twitter:image', content: siteImage },
       { hid: 'twitter:image:alt', name: 'twitter:image:alt', content: 'Codesyariah Webdevelopment - Website dan sistem bisnis siap jalan.' },
+      {
+        hid: 'twitter:image:src',
+        name: 'twitter:image:src',
+        content: siteImage
+      },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [

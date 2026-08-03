@@ -136,20 +136,30 @@ export default {
       fields.summary ||
       "Artikel terbaru dari Codesyariah Webdevelopment.";
 
-    const imageType =
-      fields.heroImage?.fields?.file?.contentType || "image/jpeg";
-
-    const image = fields.heroImage?.fields?.file?.url
-      ? "https:" + fields.heroImage.fields.file.url
-      : `${siteUrl}/assets/img/codesyariah-og-flyer.png`;
+    const authorName =
+      fields.author?.fields?.name || "Codesyariah Webdevelopment";
 
     const heroFile = fields.heroImage?.fields?.file;
+
+    const heroUrl = heroFile?.url;
+
+    const image = heroUrl
+      ? heroUrl.startsWith("//")
+        ? `https:${heroUrl}`
+        : heroUrl
+      : `${siteUrl}/assets/img/codesyariah-og-flyer.png`;
 
     const imageWidth = heroFile?.details?.image?.width || 1200;
 
     const imageHeight = heroFile?.details?.image?.height || 630;
 
+    const imageType = heroFile?.contentType || "image/jpeg";
+
     const url = `${siteUrl}/blog/${fields.slug}`;
+
+    const modifiedTime = this.post.sys?.updatedAt;
+
+    const publishedTime = fields.publishedDate || this.post.sys?.createdAt;
 
     return {
       title,
@@ -247,6 +257,12 @@ export default {
         },
 
         {
+          hid: "twitter:image:src",
+          name: "twitter:image:src",
+          content: image,
+        },
+
+        {
           hid: "robots",
           name: "robots",
           content: "index,follow",
@@ -285,25 +301,24 @@ export default {
         {
           hid: "article:published_time",
           property: "article:published_time",
-          content: fields.publishedDate,
+          content: publishedTime,
         },
 
         {
           hid: "author",
           name: "author",
-          content: fields.author?.fields?.name || "Codesyariah Webdevelopment",
+          content: authorName,
         },
-
         {
           hid: "article:author",
           property: "article:author",
-          content: fields.author?.fields?.name || "Codesyariah Webdevelopment",
+          content: authorName,
         },
 
         {
           hid: "article:modified_time",
           property: "article:modified_time",
-          content: this.post.sys?.updatedAt,
+          content: modifiedTime,
         },
       ],
     };
