@@ -292,6 +292,9 @@ export default {
 
     return {
       title,
+      __dangerouslyDisableSanitizersByTagID: {
+        "blog-schema": ["innerHTML"],
+      },
 
       link: [
         {
@@ -319,6 +322,12 @@ export default {
           name: "keywords",
           content:
             "blog website, jasa website, digital marketing, web development, SEO, landing page, API, VPS",
+        },
+
+        {
+          hid: "author",
+          name: "author",
+          content: "Codesyariah Webdevelopment",
         },
 
         {
@@ -352,6 +361,48 @@ export default {
         },
 
         {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: "Codesyariah Webdevelopment",
+        },
+
+        {
+          hid: "og:locale",
+          property: "og:locale",
+          content: "id_ID",
+        },
+        {
+          hid: "og:image:url",
+          property: "og:image:url",
+          content: image,
+        },
+        {
+          hid: "og:image:secure_url",
+          property: "og:image:secure_url",
+          content: image,
+        },
+        {
+          hid: "og:image:type",
+          property: "og:image:type",
+          content: "image/png",
+        },
+        {
+          hid: "og:image:width",
+          property: "og:image:width",
+          content: "1200",
+        },
+        {
+          hid: "og:image:height",
+          property: "og:image:height",
+          content: "630",
+        },
+        {
+          hid: "og:image:alt",
+          property: "og:image:alt",
+          content: title,
+        },
+
+        {
           hid: "twitter:card",
           name: "twitter:card",
           content: "summary_large_image",
@@ -373,6 +424,131 @@ export default {
           hid: "twitter:image",
           name: "twitter:image",
           content: image,
+        },
+
+        {
+          hid: "twitter:url",
+          name: "twitter:url",
+          content: `${siteUrl}/blog`,
+        },
+        {
+          hid: "twitter:image:src",
+          name: "twitter:image:src",
+          content: image,
+        },
+        {
+          hid: "twitter:image:alt",
+          name: "twitter:image:alt",
+          content: title,
+        },
+        {
+          hid: "twitter:creator",
+          name: "twitter:creator",
+          content: "@pujiermanto",
+        },
+        {
+          hid: "twitter:site",
+          name: "twitter:site",
+          content: "@pujiermanto",
+        },
+      ],
+
+      script: [
+        {
+          hid: "blog-schema",
+          type: "application/ld+json",
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+
+            "@type": "CollectionPage",
+
+            "@id": `${siteUrl}/blog#collection`,
+
+            url: `${siteUrl}/blog`,
+
+            name: title,
+
+            description,
+
+            image,
+
+            isPartOf: {
+              "@type": "WebSite",
+              "@id": `${siteUrl}#website`,
+              url: siteUrl,
+              name: "Codesyariah Webdevelopment",
+            },
+
+            about: {
+              "@type": "Blog",
+              name: "Codesyariah Blog",
+            },
+
+            publisher: {
+              "@type": "Organization",
+              "@id": `${siteUrl}#organization`,
+              name: "Codesyariah Webdevelopment",
+
+              logo: {
+                "@type": "ImageObject",
+                url: image,
+              },
+
+              image,
+
+              url: siteUrl,
+
+              sameAs: [
+                "https://github.com/codesyariah122",
+                "https://www.linkedin.com/in/pujiermanto",
+                "https://www.instagram.com/codesyariahwebdev",
+              ],
+            },
+
+            mainEntity: this.allposts.map((post) => {
+              const hero = post.fields.heroImage?.fields?.file?.url || image;
+
+              const heroUrl = hero.startsWith("//")
+                ? `https:${hero}`
+                : hero.startsWith("/")
+                  ? `${siteUrl}${hero}`
+                  : hero;
+
+              return {
+                "@type": "BlogPosting",
+
+                "@id": `${siteUrl}/blog/${post.fields.slug}`,
+
+                headline: post.fields.title,
+
+                url: `${siteUrl}/blog/${post.fields.slug}`,
+
+                image: heroUrl,
+
+                description: post.fields.description || this.excerpt(post),
+
+                datePublished: post.fields.publishedDate || post.sys?.createdAt,
+
+                dateModified: post.sys?.updatedAt || post.fields.publishedDate,
+
+                author: {
+                  "@type": "Person",
+                  name: this.authorName(post),
+                },
+
+                publisher: {
+                  "@type": "Organization",
+                  "@id": `${siteUrl}#organization`,
+                  name: "Codesyariah Webdevelopment",
+
+                  logo: {
+                    "@type": "ImageObject",
+                    url: image,
+                  },
+                },
+              };
+            }),
+          }),
         },
       ],
     };
