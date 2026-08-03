@@ -210,6 +210,18 @@ export default {
         },
 
         {
+          hid: "og:image:url",
+          property: "og:image:url",
+          content: image,
+        },
+
+        {
+          hid: "og:image:secure_url",
+          property: "og:image:secure_url",
+          content: image,
+        },
+
+        {
           hid: "og:image:width",
           property: "og:image:width",
           content: String(imageWidth),
@@ -248,6 +260,18 @@ export default {
           hid: "twitter:description",
           name: "twitter:description",
           content: description,
+        },
+
+        {
+          hid: "twitter:url",
+          name: "twitter:url",
+          content: url,
+        },
+
+        {
+          hid: "twitter:creator",
+          name: "twitter:creator",
+          content: "@pujiermanto",
         },
 
         {
