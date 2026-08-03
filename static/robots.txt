@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://codesyariah-webdev.vercel.app/sitemap.xml
