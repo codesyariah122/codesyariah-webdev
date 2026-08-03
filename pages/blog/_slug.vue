@@ -104,6 +104,8 @@ export default {
   mounted() {
     if (process.client && window.$crisp)
       window.$crisp.push(["do", "chat:hide"]);
+
+    console.log(this.post.fields.heroImage.fields.file);
     this.$store.dispatch("allPosts");
   },
   computed: {
