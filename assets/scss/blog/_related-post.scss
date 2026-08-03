@@ -1,0 +1,105 @@
+.related-posts {
+
+  margin-top: 100px;
+
+}
+
+.related-posts h2 {
+
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  margin-bottom: 40px;
+
+}
+
+.related-card {
+
+  display: block;
+
+  background: #fff;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow: 0 20px 45px rgba(0, 0, 0, .08);
+
+  transition: .35s;
+
+  height: 100%;
+
+  text-decoration: none;
+
+}
+
+.related-card:hover {
+
+  transform: translateY(-8px);
+
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .15);
+
+}
+
+.related-card img {
+
+  height: 220px;
+
+  width: 100%;
+
+  object-fit: cover;
+
+}
+
+.related-card .content {
+
+  padding: 25px;
+
+}
+
+.related-card h3 {
+
+  font-size: 1.3rem;
+
+  font-weight: 700;
+
+  color: #222;
+
+  margin: 15px 0;
+
+}
+
+.related-card p {
+
+  font-size: .95rem;
+
+  color: #666;
+
+  line-height: 1.8;
+
+}
+
+.related-card .tags {
+
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+}
+
+.related-card .tags span {
+
+  background: #e7fff5;
+
+  padding: 5px 12px;
+
+  border-radius: 50px;
+
+  font-size: .8rem;
+
+  color: #16c784;
+
+}

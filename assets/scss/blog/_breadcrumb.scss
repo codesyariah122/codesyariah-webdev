@@ -1,0 +1,47 @@
+.blog-breadcrumb {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 35px;
+
+  font-size: .95rem;
+
+  font-weight: 500;
+
+  flex-wrap: wrap;
+
+}
+
+.blog-breadcrumb a {
+
+  color: #16c784;
+
+  text-decoration: none;
+
+  transition: .25s;
+
+}
+
+.blog-breadcrumb a:hover {
+
+  text-decoration: underline;
+
+}
+
+.blog-breadcrumb span {
+
+  color: #94a3b8;
+
+}
+
+.blog-breadcrumb .active {
+
+  color: #1e293b;
+
+  font-weight: 700;
+
+}

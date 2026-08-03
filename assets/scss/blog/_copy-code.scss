@@ -1,0 +1,37 @@
+.blog-content pre {
+
+  position: relative;
+
+}
+
+.copy-btn {
+
+  position: absolute;
+
+  top: 15px;
+
+  right: 15px;
+
+  border: none;
+
+  padding: 8px 14px;
+
+  border-radius: 8px;
+
+  background: #16c784;
+
+  color: white;
+
+  font-size: .8rem;
+
+  cursor: pointer;
+
+  transition: .3s;
+
+}
+
+.copy-btn:hover {
+
+  background: #11b36e;
+
+}

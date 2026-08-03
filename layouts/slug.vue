@@ -1,27 +1,25 @@
 <template>
-	<div>
-		<LayoutSlugHeader/>
+  <div>
+    <LayoutSlugHeader />
 
-		<GlobalsScrollToTop/>
+    <GlobalsScrollToTop />
 
-		<Nuxt/>
+    <Nuxt />
 
-		<LayoutFooter/>
-
-	</div>
+    <LayoutFooter />
+  </div>
 </template>
 
 <script>
-	export default {
-		head: {
-			link: [
-
-			],
-			script: [
-			{
-				src: '/assets/js/main.js', ssr: false
-			}
-			],
-		}
-	}
+export default {
+  head: {
+    link: [],
+    script: [
+      {
+        src: "/assets/js/main.js",
+        ssr: false,
+      },
+    ],
+  },
+};
 </script>
