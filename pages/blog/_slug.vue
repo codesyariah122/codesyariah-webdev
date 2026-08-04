@@ -101,6 +101,10 @@ export default {
     const authorName =
       fields.author?.fields?.name || "Codesyariah Webdevelopment";
 
+    const authorUrl =
+      fields.author?.fields?.url ||
+      "https://codesyariah-webdev.vercel.app/about";
+
     const heroFile = fields.heroImage?.fields?.file;
 
     const heroUrl = heroFile?.url;
@@ -353,6 +357,16 @@ export default {
             author: {
               "@type": "Person",
               name: authorName,
+              url: authorUrl,
+              image: this.post.fields.author?.fields?.profilePhoto?.fields?.file
+                ?.url
+                ? `https:${this.post.fields.author.fields.profilePhoto.fields.file.url}`
+                : `${siteUrl}/assets/img/author.webp`,
+              sameAs: [
+                "https://github.com/codesyariah122",
+                "https://linkedin.com/in/pujiermanto",
+                "https://instagram.com/codesyariahwebdev",
+              ],
             },
 
             publisher: {
