@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { blogFallbackPosts } from "@/data/blogFallbackPosts";
+
 export default {
   props: {
     currentPost: Object,
@@ -40,22 +42,25 @@ export default {
 
   computed: {
     posts() {
-      return this.$store.state.allposts || [];
+      const allposts = this.$store.state.allposts || [];
+      const homepagePosts = this.$store.state.posts || [];
+
+      return allposts.length
+        ? allposts
+        : homepagePosts.length
+        ? homepagePosts
+        : blogFallbackPosts;
     },
 
     relatedPosts() {
       const currentTags = this.currentPost.fields.tags || [];
 
       return this.posts
-
         .filter((p) => p.fields.slug !== this.currentPost.fields.slug)
-
         .filter((p) => {
           const tags = p.fields.tags || [];
-
           return tags.some((tag) => currentTags.includes(tag));
         })
-
         .slice(0, 3);
     },
   },
