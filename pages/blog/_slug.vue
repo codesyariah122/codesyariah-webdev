@@ -43,6 +43,7 @@ import TableOfContents from "@/components/Blog/TableOfContents";
 import ShareButtons from "@/components/Blog/ShareButtons";
 import CopyCodeButton from "@/components/Blog/CopyCodeButton";
 import { blogFallbackPosts } from "@/data/blogFallbackPosts";
+import { toHttps } from "@/utils/image";
 
 export default {
   name: "blog",
@@ -89,6 +90,8 @@ export default {
 
     const siteUrl = "https://codesyariah-webdev.vercel.app";
 
+    const { sys } = this.post;
+
     const fields = this.post.fields;
 
     const title = fields.title;
@@ -106,14 +109,17 @@ export default {
       "https://codesyariah-webdev.vercel.app/about";
 
     const heroFile = fields.heroImage?.fields?.file;
-
     const heroUrl = heroFile?.url;
 
-    const image = heroUrl
-      ? heroUrl.startsWith("//")
-        ? `https:${heroUrl}`
-        : heroUrl
-      : `${siteUrl}/assets/img/codesyariah-og-flyer.png`;
+    const profilePhotoFile = fields.author?.fields?.profilePhoto?.fields?.file;
+
+    const profilePhotoUrl = profilePhotoFile?.url;
+
+    const heroFallback = `${siteUrl}/assets/img/codesyariah-og-flyer.png`;
+    const authorFallback = `${siteUrl}/assets/img/author.webp`;
+
+    const image = toHttps(heroUrl, heroFallback);
+    const authorImage = toHttps(profilePhotoUrl, authorFallback);
 
     const imageWidth = heroFile?.details?.image?.width || 1200;
 
@@ -123,9 +129,9 @@ export default {
 
     const url = `${siteUrl}/blog/${fields.slug}`;
 
-    const modifiedTime = this.post.sys?.updatedAt;
+    const modifiedTime = sys?.updatedAt;
 
-    const publishedTime = fields.publishedDate || this.post.sys?.createdAt;
+    const publishedTime = fields.publishedDate || sys?.createdAt;
 
     const body = fields.body || "";
 
@@ -358,10 +364,7 @@ export default {
               "@type": "Person",
               name: authorName,
               url: authorUrl,
-              image: this.post.fields.author?.fields?.profilePhoto?.fields?.file
-                ?.url
-                ? `https:${this.post.fields.author.fields.profilePhoto.fields.file.url}`
-                : `${siteUrl}/assets/img/author.webp`,
+              image: authorImage,
               sameAs: [
                 "https://github.com/codesyariah122",
                 "https://linkedin.com/in/pujiermanto",
