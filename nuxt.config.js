@@ -199,8 +199,21 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/google-gtag'
   ],
+
+  'google-gtag': {
+    id: 'G-EET58GS9QJ',
+
+    config: {
+      send_page_view: false
+    },
+
+    debug: false,
+
+    disableAutoPageTrack: false
+  },
 
   device: {
     refreshOnResize: true
