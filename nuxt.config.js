@@ -78,6 +78,18 @@ export default {
             changefreq: "weekly",
             lastmod: latestUpdated,
           },
+          {
+            url: "/privacy-policy",
+            priority: 0.3,
+            changefreq: "yearly",
+            lastmod: latestUpdated,
+          },
+          {
+            url: "/terms",
+            priority: 0.3,
+            changefreq: "yearly",
+            lastmod: latestUpdated,
+          },
 
           ...response.items.map((post) => ({
             url: `/blog/${post.fields.slug}`,
@@ -108,6 +120,18 @@ export default {
             url: "/quickfix",
             priority: 0.9,
             changefreq: "weekly",
+            lastmod: now,
+          },
+          {
+            url: "/privacy-policy",
+            priority: 0.3,
+            changefreq: "yearly",
+            lastmod: now,
+          },
+          {
+            url: "/terms",
+            priority: 0.3,
+            changefreq: "yearly",
             lastmod: now,
           },
         ];
