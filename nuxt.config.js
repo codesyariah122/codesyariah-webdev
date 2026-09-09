@@ -72,6 +72,12 @@ export default {
             changefreq: "daily",
             lastmod: latestUpdated,
           },
+          {
+            url: "/quickfix",
+            priority: 0.9,
+            changefreq: "weekly",
+            lastmod: latestUpdated,
+          },
 
           ...response.items.map((post) => ({
             url: `/blog/${post.fields.slug}`,
@@ -96,6 +102,12 @@ export default {
             url: "/blog",
             priority: 0.9,
             changefreq: "daily",
+            lastmod: now,
+          },
+          {
+            url: "/quickfix",
+            priority: 0.9,
+            changefreq: "weekly",
             lastmod: now,
           },
         ];
