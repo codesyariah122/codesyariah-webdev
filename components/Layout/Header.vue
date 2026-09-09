@@ -27,6 +27,11 @@
         </li>
         <li><a class="nav-link" href="/paket" @click="closeMenu">Paket</a></li>
         <li>
+          <a class="nav-link quickfix-nav" href="/quickfix" @click="closeMenu"
+            >QuickFix</a
+          >
+        </li>
+        <li>
           <a class="nav-link scrollto" href="/#gallery" @click="closeMenu"
             >Portfolio</a
           >

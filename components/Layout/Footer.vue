@@ -64,6 +64,10 @@
 
 			<div class="footer-strip">
 				<p>&copy; {{ year }} Codesyariah Webdevelopment. All Rights Reserved.</p>
+				<div class="footer-legal">
+					<NuxtLink to="/privacy-policy">Privacy Policy</NuxtLink>
+					<NuxtLink to="/terms">Terms</NuxtLink>
+				</div>
 				<div class="footer-social">
 					<a href="https://www.instagram.com/codesyariahwebdev/" target="_blank" rel="noreferrer" aria-label="Instagram">
 						<i class="bx bxl-instagram"></i>
@@ -316,6 +320,21 @@ export default {
 .footer-social {
 	display: flex;
 	gap: 10px;
+}
+
+.footer-legal {
+	display: flex;
+	gap: 16px;
+}
+
+.footer-legal a {
+	color: rgba(255, 255, 255, 0.68);
+	font-size: 13px;
+	text-decoration: none;
+}
+
+.footer-legal a:hover {
+	color: #18d19b;
 }
 
 .footer-social a {

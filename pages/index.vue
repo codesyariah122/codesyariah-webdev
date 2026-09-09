@@ -75,6 +75,18 @@
               Lihat Produk Digital <i class="bx bx-right-arrow-alt"></i>
             </NuxtLink>
           </article>
+
+          <article class="home-routing-card quickfix-card">
+            <span class="routing-card-kicker">Butuh perbaikan cepat?</span>
+            <h3>Codesyariah QuickFix untuk website atau aplikasi yang sedang bermasalah.</h3>
+            <p>
+              Diagnosis dan perbaikan issue Laravel, WordPress, server, API,
+              deployment, email, database, hingga website down. Mulai dari Rp250 ribu.
+            </p>
+            <NuxtLink to="/quickfix" class="routing-card-link">
+              Konsultasikan Error <i class="bx bx-right-arrow-alt"></i>
+            </NuxtLink>
+          </article>
         </div>
       </div>
     </section>
@@ -959,6 +971,23 @@ export default {
   background:
     linear-gradient(145deg, rgba(6, 32, 32, 0.94), rgba(15, 118, 110, 0.78)),
     #062020;
+}
+
+.home-routing-card.quickfix-card {
+  border-color: rgba(249, 115, 22, 0.28);
+  background:
+    linear-gradient(145deg, rgba(255, 247, 237, 0.98), rgba(255, 255, 255, 0.96)),
+    #ffffff;
+}
+
+.home-routing-card.quickfix-card .routing-card-kicker {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.home-routing-card.quickfix-card .routing-card-link {
+  background: #ea580c;
+  color: #ffffff;
 }
 
 .home-routing-card h3 {
