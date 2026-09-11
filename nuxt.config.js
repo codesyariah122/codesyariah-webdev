@@ -33,6 +33,28 @@ export default {
 
     fallback: true,
 
+    // Pre-render published Contentful articles. This is essential for social
+    // preview crawlers: they read the initial HTML and do not execute the app
+    // long enough to wait for client-side Contentful requests.
+    async routes() {
+      try {
+        const response = await client.getEntries({
+          content_type: "myBlog",
+          order: "-sys.updatedAt",
+          limit: 1000,
+          include: 0,
+        });
+
+        return response.items
+          .map((post) => post.fields?.slug)
+          .filter(Boolean)
+          .map((slug) => `/blog/${slug}`);
+      } catch (err) {
+        console.error("Failed pre-rendering Contentful blog routes:", err);
+        return [];
+      }
+    },
+
     crawler: true,
 
     subFolders: true,
