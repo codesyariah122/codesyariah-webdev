@@ -63,11 +63,17 @@ export default {
       slug: this.$route.params.slug,
     };
   },
+  async asyncData({ store }) {
+    // Social crawlers read the server-rendered document and do not wait for
+    // mounted(). Fetch posts before rendering so an article's own OG tags are
+    // present in the first HTML response.
+    await store.dispatch("allPosts");
+  },
   mounted() {
     if (process.client && window.$crisp)
       window.$crisp.push(["do", "chat:hide"]);
 
-    this.$store.dispatch("allPosts");
+    if (!this.$store.state.allposts?.length) this.$store.dispatch("allPosts");
   },
   computed: {
     posts() {
